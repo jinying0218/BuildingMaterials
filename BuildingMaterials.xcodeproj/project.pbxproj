@@ -51,6 +51,9 @@
 		B03AC4D319F904AB002FC299 /* register_btn_test.png in Resources */ = {isa = PBXBuildFile; fileRef = B03AC4D019F904AB002FC299 /* register_btn_test.png */; };
 		B03AC4D419F904AB002FC299 /* register_textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = B03AC4D119F904AB002FC299 /* register_textfield.png */; };
 		B03AC4D919F90F0C002FC299 /* navigationBar_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B03AC4D819F90F0C002FC299 /* navigationBar_bg.png */; };
+		B05115BE19F956B200CA6E2E /* navi_back_new.png in Resources */ = {isa = PBXBuildFile; fileRef = B05115BD19F956B200CA6E2E /* navi_back_new.png */; };
+		B05115C419F957CA00CA6E2E /* TSRegisterTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B05115C219F957CA00CA6E2E /* TSRegisterTwoViewController.m */; };
+		B05115C519F957CA00CA6E2E /* TSRegisterTwoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B05115C319F957CA00CA6E2E /* TSRegisterTwoViewController.xib */; };
 		B0D2AC0A19F8E4020074D10B /* TSRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D2AC0819F8E4020074D10B /* TSRegisterViewController.m */; };
 		B0D2AC0B19F8E4020074D10B /* TSRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D2AC0919F8E4020074D10B /* TSRegisterViewController.xib */; };
 /* End PBXBuildFile section */
@@ -143,6 +146,10 @@
 		B03AC4D019F904AB002FC299 /* register_btn_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register_btn_test.png; sourceTree = "<group>"; };
 		B03AC4D119F904AB002FC299 /* register_textfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register_textfield.png; sourceTree = "<group>"; };
 		B03AC4D819F90F0C002FC299 /* navigationBar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigationBar_bg.png; sourceTree = "<group>"; };
+		B05115BD19F956B200CA6E2E /* navi_back_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navi_back_new.png; sourceTree = "<group>"; };
+		B05115C119F957CA00CA6E2E /* TSRegisterTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSRegisterTwoViewController.h; sourceTree = "<group>"; };
+		B05115C219F957CA00CA6E2E /* TSRegisterTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSRegisterTwoViewController.m; sourceTree = "<group>"; };
+		B05115C319F957CA00CA6E2E /* TSRegisterTwoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSRegisterTwoViewController.xib; sourceTree = "<group>"; };
 		B0D2AC0719F8E4020074D10B /* TSRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSRegisterViewController.h; sourceTree = "<group>"; };
 		B0D2AC0819F8E4020074D10B /* TSRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSRegisterViewController.m; sourceTree = "<group>"; };
 		B0D2AC0919F8E4020074D10B /* TSRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSRegisterViewController.xib; sourceTree = "<group>"; };
@@ -440,8 +447,29 @@
 			isa = PBXGroup;
 			children = (
 				B03AC4D819F90F0C002FC299 /* navigationBar_bg.png */,
+				B05115BD19F956B200CA6E2E /* navi_back_new.png */,
 			);
 			path = NavigationBar;
+			sourceTree = "<group>";
+		};
+		B05115BF19F9579900CA6E2E /* 注册第一步 */ = {
+			isa = PBXGroup;
+			children = (
+				B0D2AC0719F8E4020074D10B /* TSRegisterViewController.h */,
+				B0D2AC0819F8E4020074D10B /* TSRegisterViewController.m */,
+				B0D2AC0919F8E4020074D10B /* TSRegisterViewController.xib */,
+			);
+			name = "注册第一步";
+			sourceTree = "<group>";
+		};
+		B05115C019F957A800CA6E2E /* 注册第二步 */ = {
+			isa = PBXGroup;
+			children = (
+				B05115C119F957CA00CA6E2E /* TSRegisterTwoViewController.h */,
+				B05115C219F957CA00CA6E2E /* TSRegisterTwoViewController.m */,
+				B05115C319F957CA00CA6E2E /* TSRegisterTwoViewController.xib */,
+			);
+			name = "注册第二步";
 			sourceTree = "<group>";
 		};
 		B0D2AC0519F8E3DE0074D10B /* Main */ = {
@@ -454,9 +482,8 @@
 		B0D2AC0619F8E3DE0074D10B /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				B0D2AC0719F8E4020074D10B /* TSRegisterViewController.h */,
-				B0D2AC0819F8E4020074D10B /* TSRegisterViewController.m */,
-				B0D2AC0919F8E4020074D10B /* TSRegisterViewController.xib */,
+				B05115BF19F9579900CA6E2E /* 注册第一步 */,
+				B05115C019F957A800CA6E2E /* 注册第二步 */,
 			);
 			path = Register;
 			sourceTree = "<group>";
@@ -542,9 +569,11 @@
 				B03AC4D419F904AB002FC299 /* register_textfield.png in Resources */,
 				B031218619F8B7B0008721C4 /* login_bg.jpg in Resources */,
 				B03AC4D919F90F0C002FC299 /* navigationBar_bg.png in Resources */,
+				B05115BE19F956B200CA6E2E /* navi_back_new.png in Resources */,
 				B018472D19F898BF00938054 /* InfoPlist.strings in Resources */,
 				B031218719F8B7B0008721C4 /* login_btn.png in Resources */,
 				B0D2AC0B19F8E4020074D10B /* TSRegisterViewController.xib in Resources */,
+				B05115C519F957CA00CA6E2E /* TSRegisterTwoViewController.xib in Resources */,
 				B018473519F898BF00938054 /* Images.xcassets in Resources */,
 				B031218819F8B7B0008721C4 /* login_header.png in Resources */,
 				B03AC4D319F904AB002FC299 /* register_btn_test.png in Resources */,
@@ -621,6 +650,7 @@
 				B01847E519F89DCC00938054 /* UIColor+TSUIColorEX.m in Sources */,
 				B018482719F89DCC00938054 /* TSImageUtil.m in Sources */,
 				B01847D819F89DCC00938054 /* TSBaseViewController.m in Sources */,
+				B05115C419F957CA00CA6E2E /* TSRegisterTwoViewController.m in Sources */,
 				B01847E019F89DCC00938054 /* NSDictionary+BSJSONAdditions.m in Sources */,
 				B01847D919F89DCC00938054 /* TSUserModel.m in Sources */,
 				B01847DE19F89DCC00938054 /* BSJSONEncoder.m in Sources */,
