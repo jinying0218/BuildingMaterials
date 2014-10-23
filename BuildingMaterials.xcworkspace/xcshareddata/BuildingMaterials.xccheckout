@@ -10,14 +10,14 @@
 	<string>BuildingMaterials</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>07983F5F6AFEC205E3A2EBAF6B154600A67D5020</key>
+		<key>DD362A4297631A99C8C04101DF9F28025A37F3DE</key>
 		<string>https://github.com/jinying0218/BuildingMaterials.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>BuildingMaterials.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>07983F5F6AFEC205E3A2EBAF6B154600A67D5020</key>
+		<key>DD362A4297631A99C8C04101DF9F28025A37F3DE</key>
 		<string>..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>07983F5F6AFEC205E3A2EBAF6B154600A67D5020</string>
+	<string>DD362A4297631A99C8C04101DF9F28025A37F3DE</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>07983F5F6AFEC205E3A2EBAF6B154600A67D5020</string>
+			<string>DD362A4297631A99C8C04101DF9F28025A37F3DE</string>
 			<key>IDESourceControlWCCName</key>
 			<string>BuildingMaterials</string>
 		</dict>
