@@ -22,4 +22,11 @@
 #define KscreenW  [UIScreen mainScreen].bounds.size.width    // 屏幕的宽度
 #define KscreenH  [UIScreen mainScreen].bounds.size.height // 屏幕的高度
 
+//类名的key
+#define CLASS_NAME_KEY @"CLASSNAME"
+//标题的key
+#define TITLE_KEY @"TITLE"
+//item项图片名的key
+#define IMAGE_NAME_KEY @"IMAGENAME"
+
 #endif

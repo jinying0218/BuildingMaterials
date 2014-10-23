@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>CLASSNAME</key>
+		<string>TSFristViewController</string>
+		<key>TITLE</key>
+		<string>首页</string>
+		<key>IMAGENAME</key>
+		<string>first_icon</string>
+	</dict>
+	<dict>
+		<key>CLASSNAME</key>
+		<string>TSCategoryViewController</string>
+		<key>TITLE</key>
+		<string>分类</string>
+		<key>IMAGENAME</key>
+		<string>category_icon</string>
+	</dict>
+	<dict>
+		<key>CLASSNAME</key>
+		<string>TSForumViewController</string>
+		<key>TITLE</key>
+		<string>论坛</string>
+		<key>IMAGENAME</key>
+		<string>forum_icon</string>
+	</dict>
+	<dict>
+		<key>CLASSNAME</key>
+		<string>TSInviteViewController</string>
+		<key>TITLE</key>
+		<string>招聘</string>
+		<key>IMAGENAME</key>
+		<string>invite_icon</string>
+	</dict>
+	<dict>
+		<key>CLASSNAME</key>
+		<string>TSMineViewController</string>
+		<key>TITLE</key>
+		<string>我的信息</string>
+		<key>IMAGENAME</key>
+		<string>my_icon</string>
+	</dict>
+</array>
+</plist>

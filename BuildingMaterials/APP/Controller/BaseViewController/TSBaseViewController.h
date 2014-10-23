@@ -16,6 +16,9 @@
 @property (nonatomic, strong) TSScrollView *rootScrollView;
 @property (nonatomic, strong) UIView *navigationBar;
 
+//初始化
+-(id)initWithDict:(NSDictionary*)dict;
+
 - (void)createRootScrollView;
 - (void)creatRootView;
 - (void)createNavigationBarTitle:(NSString *)title leftButtonImageName:(NSString *)leftImage rightButtonImageName:(NSString *)rightImage;
@@ -23,4 +26,5 @@
 - (void)showProgressHUD:(NSString *)content delay:(double)delaySeconds;
 - (void)showProgressHUD;
 - (void)hideProgressHUD;
+
 @end
