@@ -7,6 +7,7 @@
 //
 
 #import "TSRegisterViewController.h"
+#import "TSRegisterTwoViewController.h"
 
 @interface TSRegisterViewController ()
 
@@ -29,6 +30,8 @@
 - (IBAction)getTestButtonClick:(UIButton *)sender {
 }
 - (IBAction)nextButtonClick:(UIButton *)sender {
+    TSRegisterTwoViewController *registerTwoVC = [[TSRegisterTwoViewController alloc] init];
+    [self.navigationController pushViewController:registerTwoVC animated:YES];
 }
 
 @end
