@@ -24,10 +24,29 @@
     return self;
 }
 
+-(id)initWithDict:(NSDictionary *)dict
+{
+    if (self=[super init]) {
+        
+        self.title=[dict objectForKey:TITLE_KEY];
+        
+        NSString *imageName = [dict objectForKey:IMAGE_NAME_KEY];
+        NSString *selectedImageName = [imageName stringByReplacingOccurrencesOfString:@"_icon" withString:@"_icon_selected"];
+
+        
+        self.tabBarItem = [self.tabBarItem initWithTitle:[dict objectForKey:TITLE_KEY] image:[UIImage imageNamedString:selectedImageName] selectedImage:[UIImage imageNamedString:imageName]];
+        [self.tabBarItem setImageInsets:UIEdgeInsetsMake( 4, 5, 10, 5)];
+        [self.tabBarItem setTitlePositionAdjustment:UIOffsetMake( 0, -3)];
+    }
+    return self;
+}
+
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationController.navigationBarHidden = YES;
+    self.view.backgroundColor = [UIColor blackColor];
+//    self.navigationController.navigationBarHidden = YES;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     if (IOS7) {
         self.automaticallyAdjustsScrollViewInsets = NO;

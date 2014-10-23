@@ -8,6 +8,7 @@
 
 #import "TSLoginViewController.h"
 #import "TSRegisterViewController.h"
+#import "TSMainTabBarViewController.h"
 
 @interface TSLoginViewController ()
 
@@ -15,12 +16,27 @@
 
 @implementation TSLoginViewController
 
+#pragma mark - controllers methods
 - (void)viewDidLoad {
     [super viewDidLoad];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+#pragma mark - set UI
+- (void)createTabbarController{
+
+}
+
+#pragma mark - button actions
+- (IBAction)loginButtonClick:(UIButton *)sender {
+    
+    TSMainTabBarViewController *tabbarController = [[TSMainTabBarViewController alloc] init];
+//    [UIApplication sharedApplication].keyWindow.rootViewController = tabbarController;
+    [self presentViewController:tabbarController animated:YES completion:^{
+        
+    }];
 }
 
 - (IBAction)registerButtonClick:(UIButton *)sender {
