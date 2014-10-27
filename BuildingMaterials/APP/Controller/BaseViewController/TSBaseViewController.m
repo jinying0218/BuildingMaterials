@@ -46,7 +46,7 @@
 {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
-//    self.navigationController.navigationBarHidden = YES;
+    self.navigationController.navigationBarHidden = YES;
     [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
     if (IOS7) {
         self.automaticallyAdjustsScrollViewInsets = NO;
@@ -74,7 +74,7 @@
 - (void)createNavigationBarTitle:(NSString *)title leftButtonImageName:(NSString *)leftImage rightButtonImageName:(NSString *)rightImage
 {
     self.navigationBar = [[UIView alloc] initWithFrame:CGRectMake(0, 0, KscreenW, KnaviBarHeight)];
-    self.navigationBar.backgroundColor = [UIColor colorWithHexString:@"#E0655A"];
+    self.navigationBar.backgroundColor = [UIColor colorWithHexString:@"#1CA6DF"];
     self.navigationBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
     if (leftImage != nil) {

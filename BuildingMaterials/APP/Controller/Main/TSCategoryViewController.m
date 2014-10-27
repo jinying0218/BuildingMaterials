@@ -8,7 +8,8 @@
 
 #import "TSCategoryViewController.h"
 
-@interface TSCategoryViewController ()
+@interface TSCategoryViewController ()<UITableViewDelegate,UITableViewDataSource>
+@property (nonatomic, strong) UITableView *categrayTable;
 
 @end
 
@@ -16,22 +17,41 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self setupUI];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
+#pragma mark - set UI
+- (void)setupUI{
+    
+    [self creatRootView];
+    [self createNavigationBarTitle:@"分类" leftButtonImageName:nil rightButtonImageName:nil];
+    [self.rootView addSubview:self.navigationBar];
+    
+    self.categrayTable = [[UITableView alloc] initWithFrame:CGRectMake( 0, KnaviBarHeight, KscreenW, KscreenH - KnaviBarHeight - KbottomBarHeight - STATUS_BAR_HEGHT) style:UITableViewStylePlain];
+    self.categrayTable.delegate = self;
+    self.categrayTable.dataSource = self;
+    self.categrayTable.showsVerticalScrollIndicator = NO;
+    self.categrayTable.rowHeight = 44;
+    [self.rootView addSubview:_categrayTable];
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
+
+#pragma mark - tableView delegate & dataSource
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 15;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+    }
+    cell.textLabel.text = @"商品";
+    return cell;
+}
 
 @end

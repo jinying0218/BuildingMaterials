@@ -12,7 +12,6 @@ typedef void(^CellConfigureBlock)(id cell,id item,NSIndexPath *indexPath);
 
 @interface TSArrayDataSource : NSObject<UITableViewDataSource>
 - (id)initWithNibName:(NSString *)nibName items:(NSArray *)anItems cellIdentifier:(NSString *)aCellIdentifier configureCellBlock:(CellConfigureBlock)aConfigureCellBlock;
-
 - (id)itemAtIndexPath:(NSIndexPath *)indexPath;
 
 @end
