@@ -6,18 +6,23 @@
 //  Copyright (c) 2014年 Ariel. All rights reserved.
 //
 
+
 #import "TSSecondsDealTableViewCell.h"
 
 @implementation TSSecondsDealTableViewCell
 
 - (void)awakeFromNib {
-    // Initialization code
-}
 
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
+}
+
+- (void)configureCell{
+    self.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamedString:@"cell_goodsExchange_bg"]];
+    self.backgroundView.frame = CGRectMake( 0, 0, KscreenW, self.frame.size.height - 50);
+    
 }
 
 @end

@@ -10,4 +10,5 @@
 
 @interface TSSecondsDealTableViewCell : UITableViewCell
 
+- (void)configureCell;
 @end
