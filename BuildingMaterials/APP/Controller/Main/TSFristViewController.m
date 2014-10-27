@@ -13,6 +13,7 @@
 #import "TSGoodsExchangeTableViewCell.h"
 
 static NSString * const goodsRecommendCell = @"goodsRecommendCell";     //商品推荐
+static NSString * const goodsExchangeCell = @"goodsExchangeCell";     //以物换物
 static NSString * const shopRecommendCell = @"shopRecommendCell";     //商家推荐
 static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
 
@@ -45,7 +46,6 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     self.firstTable.delegate = self;
     self.firstTable.dataSource = self;
     self.firstTable.showsVerticalScrollIndicator = NO;
-    self.firstTable.rowHeight = 190;
     self.firstTable.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.firstTable.backgroundColor = [UIColor colorWithHexString:@"DEDEDE"];
     [self.rootView addSubview:_firstTable];
@@ -76,9 +76,12 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
 
 }
 #pragma mark - tableView delegate & dataSource
-
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSArray *array = @[@"185",@"185",@"230",@"245"];
+    return [array[indexPath.row] intValue];
+}
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 1;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -86,6 +89,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     UITableViewCell *cell;
     switch (indexPath.row) {
         case 0:{
+            //掌上秒杀
 //            TSSecondsDealTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:secondsDealCell];
             cell = [tableView dequeueReusableCellWithIdentifier:secondsDealCell];
             if (cell == nil) {
@@ -97,19 +101,31 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
         }
             break;
         case 1:{
+            //商家推荐
+            cell = [tableView dequeueReusableCellWithIdentifier:shopRecommendCell];
             if (cell == nil) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
+                cell = [[[NSBundle mainBundle] loadNibNamed:@"TSShopReccommendTableViewCell" owner:nil options:nil]lastObject];
             }
-            cell.textLabel.text = @"商品";
-
         }
             break;
         case 2:{
-            
+            //商品推荐
+            cell = [tableView dequeueReusableCellWithIdentifier:goodsRecommendCell];
+            if (cell == nil) {
+                cell = [[[NSBundle mainBundle] loadNibNamed:@"TSGoodsRecommendTableViewCell" owner:nil options:nil]lastObject];
+            }
+//            [(TSSecondsDealTableViewCell *)cell configureCell];
+
         }
             break;
         case 3:{
-            
+            //以物换物
+            cell = [tableView dequeueReusableCellWithIdentifier:goodsExchangeCell];
+            if (cell == nil) {
+                cell = [[[NSBundle mainBundle] loadNibNamed:@"TSGoodsExchangeTableViewCell" owner:nil options:nil]lastObject];
+            }
+//            [(TSSecondsDealTableViewCell *)cell configureCell];
+
         }
             break;
         default:
