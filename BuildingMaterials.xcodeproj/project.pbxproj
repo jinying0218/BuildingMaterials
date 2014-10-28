@@ -100,6 +100,20 @@
 		B05B633019FEB5CD008F76E0 /* shopRecommend_ring.png in Resources */ = {isa = PBXBuildFile; fileRef = B05B632E19FEB5CD008F76E0 /* shopRecommend_ring.png */; };
 		B05B633319FEB639008F76E0 /* 分类2111111111_19.png in Resources */ = {isa = PBXBuildFile; fileRef = B05B633119FEB639008F76E0 /* 分类2111111111_19.png */; };
 		B05B633419FEB639008F76E0 /* search_leftView.png in Resources */ = {isa = PBXBuildFile; fileRef = B05B633219FEB639008F76E0 /* search_leftView.png */; };
+		B0C4992719FFE7550092EE09 /* mine_addressManager.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4991919FFE7550092EE09 /* mine_addressManager.png */; };
+		B0C4992819FFE7550092EE09 /* mine_changePassword.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4991A19FFE7550092EE09 /* mine_changePassword.png */; };
+		B0C4992919FFE7550092EE09 /* mine_checknew.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4991B19FFE7550092EE09 /* mine_checknew.png */; };
+		B0C4992A19FFE7550092EE09 /* mine_circleAttention.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4991C19FFE7550092EE09 /* mine_circleAttention.png */; };
+		B0C4992B19FFE7550092EE09 /* mine_collection.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4991D19FFE7550092EE09 /* mine_collection.png */; };
+		B0C4992C19FFE7550092EE09 /* mine_exit.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4991E19FFE7550092EE09 /* mine_exit.png */; };
+		B0C4992D19FFE7550092EE09 /* mine_forum.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4991F19FFE7550092EE09 /* mine_forum.png */; };
+		B0C4992F19FFE7550092EE09 /* mine_headImage.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4992119FFE7550092EE09 /* mine_headImage.png */; };
+		B0C4993019FFE7550092EE09 /* mine_invite.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4992219FFE7550092EE09 /* mine_invite.png */; };
+		B0C4993119FFE7550092EE09 /* mine_payed.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4992319FFE7550092EE09 /* mine_payed.png */; };
+		B0C4993219FFE7550092EE09 /* mine_seperateLineH.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4992419FFE7550092EE09 /* mine_seperateLineH.png */; };
+		B0C4993319FFE7550092EE09 /* mine_shopBag.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4992519FFE7550092EE09 /* mine_shopBag.png */; };
+		B0C4993419FFE7550092EE09 /* mine_waitForpay.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4992619FFE7550092EE09 /* mine_waitForpay.png */; };
+		B0C4993619FFEDEE0092EE09 /* mine_headerBg.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4993519FFEDEE0092EE09 /* mine_headerBg.png */; };
 		B0D2AC0A19F8E4020074D10B /* TSRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D2AC0819F8E4020074D10B /* TSRegisterViewController.m */; };
 		B0D2AC0B19F8E4020074D10B /* TSRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D2AC0919F8E4020074D10B /* TSRegisterViewController.xib */; };
 /* End PBXBuildFile section */
@@ -252,6 +266,20 @@
 		B05B632E19FEB5CD008F76E0 /* shopRecommend_ring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopRecommend_ring.png; sourceTree = "<group>"; };
 		B05B633119FEB639008F76E0 /* 分类2111111111_19.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "分类2111111111_19.png"; sourceTree = "<group>"; };
 		B05B633219FEB639008F76E0 /* search_leftView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_leftView.png; sourceTree = "<group>"; };
+		B0C4991919FFE7550092EE09 /* mine_addressManager.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_addressManager.png; sourceTree = "<group>"; };
+		B0C4991A19FFE7550092EE09 /* mine_changePassword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_changePassword.png; sourceTree = "<group>"; };
+		B0C4991B19FFE7550092EE09 /* mine_checknew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_checknew.png; sourceTree = "<group>"; };
+		B0C4991C19FFE7550092EE09 /* mine_circleAttention.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_circleAttention.png; sourceTree = "<group>"; };
+		B0C4991D19FFE7550092EE09 /* mine_collection.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_collection.png; sourceTree = "<group>"; };
+		B0C4991E19FFE7550092EE09 /* mine_exit.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_exit.png; sourceTree = "<group>"; };
+		B0C4991F19FFE7550092EE09 /* mine_forum.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_forum.png; sourceTree = "<group>"; };
+		B0C4992119FFE7550092EE09 /* mine_headImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_headImage.png; sourceTree = "<group>"; };
+		B0C4992219FFE7550092EE09 /* mine_invite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_invite.png; sourceTree = "<group>"; };
+		B0C4992319FFE7550092EE09 /* mine_payed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_payed.png; sourceTree = "<group>"; };
+		B0C4992419FFE7550092EE09 /* mine_seperateLineH.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_seperateLineH.png; sourceTree = "<group>"; };
+		B0C4992519FFE7550092EE09 /* mine_shopBag.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_shopBag.png; sourceTree = "<group>"; };
+		B0C4992619FFE7550092EE09 /* mine_waitForpay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_waitForpay.png; sourceTree = "<group>"; };
+		B0C4993519FFEDEE0092EE09 /* mine_headerBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_headerBg.png; sourceTree = "<group>"; };
 		B0D2AC0719F8E4020074D10B /* TSRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSRegisterViewController.h; sourceTree = "<group>"; };
 		B0D2AC0819F8E4020074D10B /* TSRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSRegisterViewController.m; sourceTree = "<group>"; };
 		B0D2AC0919F8E4020074D10B /* TSRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSRegisterViewController.xib; sourceTree = "<group>"; };
@@ -763,6 +791,20 @@
 		B05B632119FEB15F008F76E0 /* mine */ = {
 			isa = PBXGroup;
 			children = (
+				B0C4993519FFEDEE0092EE09 /* mine_headerBg.png */,
+				B0C4991919FFE7550092EE09 /* mine_addressManager.png */,
+				B0C4991A19FFE7550092EE09 /* mine_changePassword.png */,
+				B0C4991B19FFE7550092EE09 /* mine_checknew.png */,
+				B0C4991C19FFE7550092EE09 /* mine_circleAttention.png */,
+				B0C4991D19FFE7550092EE09 /* mine_collection.png */,
+				B0C4991E19FFE7550092EE09 /* mine_exit.png */,
+				B0C4991F19FFE7550092EE09 /* mine_forum.png */,
+				B0C4992119FFE7550092EE09 /* mine_headImage.png */,
+				B0C4992219FFE7550092EE09 /* mine_invite.png */,
+				B0C4992319FFE7550092EE09 /* mine_payed.png */,
+				B0C4992419FFE7550092EE09 /* mine_seperateLineH.png */,
+				B0C4992519FFE7550092EE09 /* mine_shopBag.png */,
+				B0C4992619FFE7550092EE09 /* mine_waitForpay.png */,
 			);
 			path = mine;
 			sourceTree = "<group>";
@@ -873,6 +915,7 @@
 			files = (
 				B03AC4D419F904AB002FC299 /* register_textfield.png in Resources */,
 				B05115D619F96A5000CA6E2E /* TSCategoryViewController.xib in Resources */,
+				B0C4992D19FFE7550092EE09 /* mine_forum.png in Resources */,
 				B031218619F8B7B0008721C4 /* login_bg.jpg in Resources */,
 				B05115F519F9748C00CA6E2E /* category_icon_selected.png in Resources */,
 				B05B632819FEB15F008F76E0 /* cell_shopRecommend_bg.jpg in Resources */,
@@ -885,19 +928,27 @@
 				B05B62F619FE8905008F76E0 /* TSGoodsExchangeTableViewCell.xib in Resources */,
 				B05115BE19F956B200CA6E2E /* navi_back_new.png in Resources */,
 				B05115F419F9748C00CA6E2E /* category_icon.png in Resources */,
+				B0C4992A19FFE7550092EE09 /* mine_circleAttention.png in Resources */,
 				B05B633419FEB639008F76E0 /* search_leftView.png in Resources */,
 				B018472D19F898BF00938054 /* InfoPlist.strings in Resources */,
 				B05B62F119FE88F3008F76E0 /* TSGoodsRecommendTableViewCell.xib in Resources */,
 				B05115F619F9748C00CA6E2E /* first_icon.png in Resources */,
 				B05B62E719FE88BC008F76E0 /* TSSecondsDealTableViewCell.xib in Resources */,
 				B05115F819F9748C00CA6E2E /* forum_icon.png in Resources */,
+				B0C4992F19FFE7550092EE09 /* mine_headImage.png in Resources */,
+				B0C4992919FFE7550092EE09 /* mine_checknew.png in Resources */,
 				B05B632619FEB15F008F76E0 /* cell_goodsRecommend_bg.jpg in Resources */,
 				B05B632F19FEB5CD008F76E0 /* separetLine.png in Resources */,
+				B0C4993419FFE7550092EE09 /* mine_waitForpay.png in Resources */,
 				B05B632C19FEB15F008F76E0 /* 秒杀商品01.png in Resources */,
+				B0C4992719FFE7550092EE09 /* mine_addressManager.png in Resources */,
 				B031218719F8B7B0008721C4 /* login_btn.png in Resources */,
 				B0D2AC0B19F8E4020074D10B /* TSRegisterViewController.xib in Resources */,
 				B05115C519F957CA00CA6E2E /* TSRegisterTwoViewController.xib in Resources */,
+				B0C4993619FFEDEE0092EE09 /* mine_headerBg.png in Resources */,
 				B05115C719F9669E00CA6E2E /* TabBarControllers.plist in Resources */,
+				B0C4993019FFE7550092EE09 /* mine_invite.png in Resources */,
+				B0C4992B19FFE7550092EE09 /* mine_collection.png in Resources */,
 				B05B632B19FEB15F008F76E0 /* secondsDeal_ring.png in Resources */,
 				B05B633319FEB639008F76E0 /* 分类2111111111_19.png in Resources */,
 				B05115E519F96A9500CA6E2E /* TSMineViewController.xib in Resources */,
@@ -907,8 +958,11 @@
 				B05115E019F96A8100CA6E2E /* TSInviteViewController.xib in Resources */,
 				B031218819F8B7B0008721C4 /* login_header.png in Resources */,
 				B051160119F9785900CA6E2E /* tabbar_bg.jpeg in Resources */,
+				B0C4993319FFE7550092EE09 /* mine_shopBag.png in Resources */,
+				B0C4993219FFE7550092EE09 /* mine_seperateLineH.png in Resources */,
 				B03AC4D319F904AB002FC299 /* register_btn_test.png in Resources */,
 				B05115F719F9748C00CA6E2E /* first_icon_selected.png in Resources */,
+				B0C4992C19FFE7550092EE09 /* mine_exit.png in Resources */,
 				B05115FD19F9748C00CA6E2E /* my_icon_selected.png in Resources */,
 				B05B633019FEB5CD008F76E0 /* shopRecommend_ring.png in Resources */,
 				B05B62EC19FE88DE008F76E0 /* TSShopReccommendTableViewCell.xib in Resources */,
@@ -917,6 +971,8 @@
 				B05115FA19F9748C00CA6E2E /* invite_icon.png in Resources */,
 				B05B632219FEB15F008F76E0 /* banner1.png in Resources */,
 				B05115CC19F969C600CA6E2E /* TSFristViewController.xib in Resources */,
+				B0C4992819FFE7550092EE09 /* mine_changePassword.png in Resources */,
+				B0C4993119FFE7550092EE09 /* mine_payed.png in Resources */,
 				B05B632419FEB15F008F76E0 /* cell_accessView.png in Resources */,
 				B05115FB19F9748C00CA6E2E /* invite_icon_selected.png in Resources */,
 				B031217F19F8AFA9008721C4 /* TSLoginViewController.xib in Resources */,
