@@ -840,6 +840,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Ariel;
 				TargetAttributes = {
+					B018471E19F898BF00938054 = {
+						DevelopmentTeam = 6GASTWWZR6;
+					};
 					B018473919F898BF00938054 = {
 						TestTargetID = B018471E19F898BF00938054;
 					};
@@ -1062,7 +1065,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -1080,6 +1084,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "290feaf2-553e-43c2-8f30-953ba215aa62";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1100,7 +1105,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1111,6 +1117,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				PROVISIONING_PROFILE = "290feaf2-553e-43c2-8f30-953ba215aa62";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1122,10 +1129,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BuildingMaterials/BuildingMaterials-Prefix.pch";
 				INFOPLIST_FILE = "BuildingMaterials/BuildingMaterials-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "290feaf2-553e-43c2-8f30-953ba215aa62";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1136,10 +1145,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BuildingMaterials/BuildingMaterials-Prefix.pch";
 				INFOPLIST_FILE = "BuildingMaterials/BuildingMaterials-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "290feaf2-553e-43c2-8f30-953ba215aa62";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
