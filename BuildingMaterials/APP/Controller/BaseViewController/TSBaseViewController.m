@@ -11,7 +11,6 @@
 
 
 @interface TSBaseViewController ()
-
 @end
 
 @implementation TSBaseViewController
@@ -78,14 +77,14 @@
     self.navigationBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
     if (leftImage != nil) {
-        UIButton *leftBtn  = [UIButton buttonWithType:UIButtonTypeCustom];
-        leftBtn.frame = CGRectMake( 0, 0, 44, 44);
-        [leftBtn setImage:[UIImage imageNamedString:leftImage] forState:UIControlStateNormal];
-        [leftBtn setImage:[UIImage imageNamedString:[NSString stringWithFormat:@"%@_highlighted",leftImage]] forState:UIControlStateHighlighted];
-        [leftBtn setImageEdgeInsets:UIEdgeInsetsMake( 6, 10, 6, 0)];
-        [leftBtn addTarget:self action:@selector(leftButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        leftBtn.backgroundColor = [UIColor clearColor];
-        [self.navigationBar addSubview:leftBtn];
+        self.naviLeftBtn  = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.naviLeftBtn.frame = CGRectMake( 0, 0, 44, 44);
+        [self.naviLeftBtn setImage:[UIImage imageNamedString:leftImage] forState:UIControlStateNormal];
+        [self.naviLeftBtn setImage:[UIImage imageNamedString:[NSString stringWithFormat:@"%@_highlighted",leftImage]] forState:UIControlStateHighlighted];
+        [self.naviLeftBtn setImageEdgeInsets:UIEdgeInsetsMake( 6, 10, 6, 0)];
+        [self.naviLeftBtn addTarget:self action:@selector(leftButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        self.naviLeftBtn.backgroundColor = [UIColor clearColor];
+        [self.navigationBar addSubview:self.naviLeftBtn];
         
     }
     if (rightImage != nil) {

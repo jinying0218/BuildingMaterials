@@ -7,6 +7,9 @@
 //
 
 #import "TSFristViewController.h"
+#import "TSSecondsDealViewController.h"
+
+
 #import "TSSecondsDealTableViewCell.h"
 #import "TSShopReccommendTableViewCell.h"
 #import "TSGoodsRecommendTableViewCell.h"
@@ -131,7 +134,19 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
         default:
             break;
     }
-    
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    switch (indexPath.row) {
+        case 0:{
+            TSSecondsDealViewController *secondsDealVC = [[TSSecondsDealViewController alloc] init];
+            [self.navigationController pushViewController:secondsDealVC animated:YES];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 @end
