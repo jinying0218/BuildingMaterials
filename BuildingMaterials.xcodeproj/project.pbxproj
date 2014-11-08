@@ -8,6 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		5B377FDA2DCC05B35A3C12D9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3279EFA92E8D5E0A96049531 /* libPods.a */; };
+		B00BB8841A0E8D8A00B94208 /* discount.png in Resources */ = {isa = PBXBuildFile; fileRef = B00BB87E1A0E8D8A00B94208 /* discount.png */; };
+		B00BB8851A0E8D8A00B94208 /* purchase_progress.png in Resources */ = {isa = PBXBuildFile; fileRef = B00BB87F1A0E8D8A00B94208 /* purchase_progress.png */; };
+		B00BB8861A0E8D8A00B94208 /* purchase_progressOver.png in Resources */ = {isa = PBXBuildFile; fileRef = B00BB8801A0E8D8A00B94208 /* purchase_progressOver.png */; };
+		B00BB8871A0E8D8A00B94208 /* purchase.png in Resources */ = {isa = PBXBuildFile; fileRef = B00BB8811A0E8D8A00B94208 /* purchase.png */; };
+		B00BB8881A0E8D8A00B94208 /* purchaseOver.png in Resources */ = {isa = PBXBuildFile; fileRef = B00BB8821A0E8D8A00B94208 /* purchaseOver.png */; };
+		B00BB8891A0E8D8A00B94208 /* time_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B00BB8831A0E8D8A00B94208 /* time_bg.png */; };
+		B00BB88B1A0E931500B94208 /* 商品详情```_02.png in Resources */ = {isa = PBXBuildFile; fileRef = B00BB88A1A0E931500B94208 /* 商品详情```_02.png */; };
 		B018472319F898BF00938054 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B018472219F898BF00938054 /* Foundation.framework */; };
 		B018472519F898BF00938054 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B018472419F898BF00938054 /* CoreGraphics.framework */; };
 		B018472719F898BF00938054 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B018472619F898BF00938054 /* UIKit.framework */; };
@@ -136,6 +143,13 @@
 /* Begin PBXFileReference section */
 		3279EFA92E8D5E0A96049531 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D2F31DEF389312FF5F3525A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B00BB87E1A0E8D8A00B94208 /* discount.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = discount.png; sourceTree = "<group>"; };
+		B00BB87F1A0E8D8A00B94208 /* purchase_progress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purchase_progress.png; sourceTree = "<group>"; };
+		B00BB8801A0E8D8A00B94208 /* purchase_progressOver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purchase_progressOver.png; sourceTree = "<group>"; };
+		B00BB8811A0E8D8A00B94208 /* purchase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purchase.png; sourceTree = "<group>"; };
+		B00BB8821A0E8D8A00B94208 /* purchaseOver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purchaseOver.png; sourceTree = "<group>"; };
+		B00BB8831A0E8D8A00B94208 /* time_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time_bg.png; sourceTree = "<group>"; };
+		B00BB88A1A0E931500B94208 /* 商品详情```_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "商品详情```_02.png"; sourceTree = "<group>"; };
 		B018471F19F898BF00938054 /* BuildingMaterials.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BuildingMaterials.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B018472219F898BF00938054 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		B018472419F898BF00938054 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -775,6 +789,13 @@
 		B05B631319FEB15F008F76E0 /* first */ = {
 			isa = PBXGroup;
 			children = (
+				B00BB88A1A0E931500B94208 /* 商品详情```_02.png */,
+				B00BB87E1A0E8D8A00B94208 /* discount.png */,
+				B00BB87F1A0E8D8A00B94208 /* purchase_progress.png */,
+				B00BB8801A0E8D8A00B94208 /* purchase_progressOver.png */,
+				B00BB8811A0E8D8A00B94208 /* purchase.png */,
+				B00BB8821A0E8D8A00B94208 /* purchaseOver.png */,
+				B00BB8831A0E8D8A00B94208 /* time_bg.png */,
 				B05B632D19FEB5CD008F76E0 /* separetLine.png */,
 				B05B632E19FEB5CD008F76E0 /* shopRecommend_ring.png */,
 				B05B631419FEB15F008F76E0 /* banner1.png */,
@@ -972,10 +993,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B00BB8871A0E8D8A00B94208 /* purchase.png in Resources */,
 				B03AC4D419F904AB002FC299 /* register_textfield.png in Resources */,
 				B05115D619F96A5000CA6E2E /* TSCategoryViewController.xib in Resources */,
 				B0C4992D19FFE7550092EE09 /* mine_forum.png in Resources */,
 				B031218619F8B7B0008721C4 /* login_bg.jpg in Resources */,
+				B00BB8841A0E8D8A00B94208 /* discount.png in Resources */,
 				B05115F519F9748C00CA6E2E /* category_icon_selected.png in Resources */,
 				B05B632819FEB15F008F76E0 /* cell_shopRecommend_bg.jpg in Resources */,
 				B03AC4D919F90F0C002FC299 /* navigationBar_bg.png in Resources */,
@@ -983,6 +1006,7 @@
 				B05115DB19F96A6D00CA6E2E /* TSForumViewController.xib in Resources */,
 				B05B632919FEB15F008F76E0 /* goodExchange_ring.png in Resources */,
 				B05B632A19FEB15F008F76E0 /* goodsRecommend_ring.png in Resources */,
+				B00BB8891A0E8D8A00B94208 /* time_bg.png in Resources */,
 				B05B632719FEB15F008F76E0 /* cell_secondsDeal_bg.jpg in Resources */,
 				B05B632319FEB15F008F76E0 /* bannerBottom.png in Resources */,
 				B05B62F619FE8905008F76E0 /* TSGoodsExchangeTableViewCell.xib in Resources */,
@@ -993,6 +1017,7 @@
 				B05B633419FEB639008F76E0 /* search_leftView.png in Resources */,
 				B018472D19F898BF00938054 /* InfoPlist.strings in Resources */,
 				B05B62F119FE88F3008F76E0 /* TSGoodsRecommendTableViewCell.xib in Resources */,
+				B00BB8861A0E8D8A00B94208 /* purchase_progressOver.png in Resources */,
 				B05115F619F9748C00CA6E2E /* first_icon.png in Resources */,
 				B05B62E719FE88BC008F76E0 /* TSSecondsDealTableViewCell.xib in Resources */,
 				B05115F819F9748C00CA6E2E /* forum_icon.png in Resources */,
@@ -1016,6 +1041,7 @@
 				B05115FC19F9748C00CA6E2E /* my_icon.png in Resources */,
 				B05B632519FEB15F008F76E0 /* cell_goodsExchange_bg.jpg in Resources */,
 				B018473519F898BF00938054 /* Images.xcassets in Resources */,
+				B00BB88B1A0E931500B94208 /* 商品详情```_02.png in Resources */,
 				B05115E019F96A8100CA6E2E /* TSInviteViewController.xib in Resources */,
 				B031218819F8B7B0008721C4 /* login_header.png in Resources */,
 				B051160119F9785900CA6E2E /* tabbar_bg.jpeg in Resources */,
@@ -1030,6 +1056,7 @@
 				B03AC4D219F904AB002FC299 /* register_btn_next.png in Resources */,
 				B05115F919F9748C00CA6E2E /* forum_icon_selected.png in Resources */,
 				B05115FA19F9748C00CA6E2E /* invite_icon.png in Resources */,
+				B00BB8851A0E8D8A00B94208 /* purchase_progress.png in Resources */,
 				B05B632219FEB15F008F76E0 /* banner1.png in Resources */,
 				B05115CC19F969C600CA6E2E /* TSFristViewController.xib in Resources */,
 				B0C4992819FFE7550092EE09 /* mine_changePassword.png in Resources */,
@@ -1037,6 +1064,7 @@
 				B0C4993119FFE7550092EE09 /* mine_payed.png in Resources */,
 				B05B632419FEB15F008F76E0 /* cell_accessView.png in Resources */,
 				B05115FB19F9748C00CA6E2E /* invite_icon_selected.png in Resources */,
+				B00BB8881A0E8D8A00B94208 /* purchaseOver.png in Resources */,
 				B031217F19F8AFA9008721C4 /* TSLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

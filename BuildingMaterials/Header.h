@@ -22,6 +22,7 @@
 #import "UIImage+Alpha.h"
 #import "BlocksKit+UIKit.h"
 #import "EXTScope.h"
+#import <FBKVOController.h>
 
 #import "TSDateFormatterTool.h"
 #import "TSArrayDataSource.h"

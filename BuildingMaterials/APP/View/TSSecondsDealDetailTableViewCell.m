@@ -19,5 +19,7 @@
 
     // Configure the view for the selected state
 }
-
+- (void)configureCellWithModel:(id)model indexPath:(NSIndexPath *)indexPath{
+    
+}
 @end

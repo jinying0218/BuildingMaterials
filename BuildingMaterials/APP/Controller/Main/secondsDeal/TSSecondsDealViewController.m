@@ -7,10 +7,14 @@
 //
 
 #import "TSSecondsDealViewController.h"
+#import "TSSecondsDealDetailTableViewCell.h"
 
-@interface TSSecondsDealViewController ()
+static NSString *const SecondsDealDetailTableViewCel = @"SecondsDealDetailTableViewCel";
+
+@interface TSSecondsDealViewController ()<UITableViewDelegate>
 @property (nonatomic, strong) TSArrayDataSource *dataSource;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSMutableArray *tableDataArray;
 
 @end
 
@@ -18,30 +22,38 @@
 #pragma mark - controller methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self initializeData];
     [self setupUI];
     
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+- (void)initializeData{
+    self.tableDataArray = [[NSMutableArray alloc] initWithObjects:@"莫非瓷砖",@"莫非瓷砖",@"莫非瓷砖",@"莫非瓷砖",@"莫非瓷砖",@"莫非瓷砖", nil];
+}
 #pragma mark - set up UI
 - (void)setupUI{
     
     [self creatRootView];
     [self createNavigationBarTitle:@"掌上秒杀" leftButtonImageName:@"Previous" rightButtonImageName:nil];
-//    [self.naviLeftBtn setTitle:@"返回" forState:UIControlStateNormal];
     [self.rootView addSubview:self.navigationBar];
     
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT - KbottomBarHeight) style:UITableViewStylePlain];
-    self.tableView.rowHeight = 68;
+    self.tableView.rowHeight = 125;
     self.tableView.showsVerticalScrollIndicator = NO;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
-    [self.rootView addSubview:self.tableView];
-//    CellConfigureBlock configureBlock = ^(TSAdminTaskTableViewCell *cell,TSTaskModel *taskModel,NSIndexPath *indexPath){
-//        [cell configureCell:taskModel indexPath:indexPath];
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.backgroundColor = [UIColor colorWithHexString:@"F0F0F0"];
+    CellConfigureBlock configureBlock = ^(TSSecondsDealDetailTableViewCell *cell,id taskModel,NSIndexPath *indexPath){
+        [cell configureCellWithModel:taskModel indexPath:indexPath];
+    };
     
-//    };
-
+    
+    self.dataSource = [[TSArrayDataSource alloc] initWithNibName:@"TSSecondsDealDetailTableViewCell" items:self.tableDataArray cellIdentifier:SecondsDealDetailTableViewCel configureCellBlock:configureBlock];
+    self.tableView.dataSource = self.dataSource;
+    self.tableView.delegate = self;
+    [self.rootView addSubview:self.tableView];
+    
 }
 @end

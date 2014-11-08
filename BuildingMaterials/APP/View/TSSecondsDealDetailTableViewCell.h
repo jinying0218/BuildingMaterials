@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface TSSecondsDealDetailTableViewCell : UITableViewCell
-
+- (void)configureCellWithModel:(id)model indexPath:(NSIndexPath *)indexPath;
 @end
