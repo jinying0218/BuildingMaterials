@@ -8,6 +8,9 @@
 
 #import "TSFristViewController.h"
 #import "TSSecondsDealViewController.h"
+#import "TSShopRecommedViewController.h"
+#import "TSGoodsRecommendViewController.h"
+#import "TSGoodsExchangeViewController.h"
 
 
 #import "TSSecondsDealTableViewCell.h"
@@ -144,7 +147,21 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
             [self.navigationController pushViewController:secondsDealVC animated:YES];
         }
             break;
-            
+        case 1:{
+            TSShopRecommedViewController *shopRecommedVC = [[TSShopRecommedViewController alloc] init];
+            [self.navigationController pushViewController:shopRecommedVC animated:YES];
+        }
+            break;
+        case 2:{
+            TSGoodsRecommendViewController *goodsRecommedVC = [[TSGoodsRecommendViewController alloc] init];
+            [self.navigationController pushViewController:goodsRecommedVC animated:YES];
+        }
+            break;
+        case 3:{
+            TSGoodsExchangeViewController *goodsExchangeVC = [[TSGoodsExchangeViewController alloc] init];
+            [self.navigationController pushViewController:goodsExchangeVC animated:YES];
+        }
+            break;
         default:
             break;
     }

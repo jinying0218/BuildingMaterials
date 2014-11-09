@@ -1,24 +1,25 @@
 //
-//  TSSecondsDealViewController.m
+//  TSShopRecommedViewController.m
 //  BuildingMaterials
 //
-//  Created by Ariel on 14/11/1.
+//  Created by Ariel on 14/11/9.
 //  Copyright (c) 2014年 Ariel. All rights reserved.
 //
 
-#import "TSSecondsDealViewController.h"
-#import "TSSecondsDealDetailTableViewCell.h"
+#import "TSShopRecommedViewController.h"
+#import "TSShopRecommedDetailTableViewCell.h"
 
-static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTableViewCell";
+static NSString *const ShopRecommedDetailTableViewCell = @"ShopRecommedDetailTableViewCell";
 
-@interface TSSecondsDealViewController ()<UITableViewDelegate>
+@interface TSShopRecommedViewController ()<UITableViewDelegate>
 @property (nonatomic, strong) TSArrayDataSource *dataSource;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *tableDataArray;
 
 @end
 
-@implementation TSSecondsDealViewController
+@implementation TSShopRecommedViewController
+
 #pragma mark - controller methods
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -30,13 +31,13 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
     [super didReceiveMemoryWarning];
 }
 - (void)initializeData{
-    self.tableDataArray = [[NSMutableArray alloc] initWithObjects:@"莫非瓷砖",@"莫非瓷砖",@"莫非瓷砖",@"莫非瓷砖",@"莫非瓷砖",@"莫非瓷砖", nil];
+    self.tableDataArray = [[NSMutableArray alloc] initWithObjects:@"莫非瓷砖商家",@"莫非瓷砖商家",@"莫非瓷砖商家",@"莫非瓷砖",@"莫非瓷砖商家",@"莫非瓷砖商家", nil];
 }
 #pragma mark - set up UI
 - (void)setupUI{
     
     [self creatRootView];
-    [self createNavigationBarTitle:@"掌上秒杀" leftButtonImageName:@"Previous" rightButtonImageName:nil];
+    [self createNavigationBarTitle:@"商家推荐" leftButtonImageName:@"Previous" rightButtonImageName:nil];
     [self.rootView addSubview:self.navigationBar];
     
     
@@ -45,15 +46,16 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"F0F0F0"];
-    CellConfigureBlock configureBlock = ^(TSSecondsDealDetailTableViewCell *cell,id taskModel,NSIndexPath *indexPath){
+    CellConfigureBlock configureBlock = ^(TSShopRecommedDetailTableViewCell *cell,id taskModel,NSIndexPath *indexPath){
         [cell configureCellWithModel:taskModel indexPath:indexPath];
     };
     
     
-    self.dataSource = [[TSArrayDataSource alloc] initWithNibName:@"TSSecondsDealDetailTableViewCell" items:self.tableDataArray cellIdentifier:SecondsDealDetailTableViewCell configureCellBlock:configureBlock];
+    self.dataSource = [[TSArrayDataSource alloc] initWithNibName:@"TSShopRecommedDetailTableViewCell" items:self.tableDataArray cellIdentifier:ShopRecommedDetailTableViewCell configureCellBlock:configureBlock];
     self.tableView.dataSource = self.dataSource;
     self.tableView.delegate = self;
     [self.rootView addSubview:self.tableView];
     
 }
+
 @end
