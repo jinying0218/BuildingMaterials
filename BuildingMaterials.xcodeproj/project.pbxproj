@@ -14,7 +14,6 @@
 		B00BB8871A0E8D8A00B94208 /* purchase.png in Resources */ = {isa = PBXBuildFile; fileRef = B00BB8811A0E8D8A00B94208 /* purchase.png */; };
 		B00BB8881A0E8D8A00B94208 /* purchaseOver.png in Resources */ = {isa = PBXBuildFile; fileRef = B00BB8821A0E8D8A00B94208 /* purchaseOver.png */; };
 		B00BB8891A0E8D8A00B94208 /* time_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B00BB8831A0E8D8A00B94208 /* time_bg.png */; };
-		B00BB88B1A0E931500B94208 /* 商品详情```_02.png in Resources */ = {isa = PBXBuildFile; fileRef = B00BB88A1A0E931500B94208 /* 商品详情```_02.png */; };
 		B015C3141A0F0A490060FBE2 /* TSShopRecommedDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B015C3121A0F0A490060FBE2 /* TSShopRecommedDetailTableViewCell.m */; };
 		B015C3151A0F0A490060FBE2 /* TSShopRecommedDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B015C3131A0F0A490060FBE2 /* TSShopRecommedDetailTableViewCell.xib */; };
 		B015C3191A0F0CE70060FBE2 /* TSShopRecommedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B015C3171A0F0CE70060FBE2 /* TSShopRecommedViewController.m */; };
@@ -114,7 +113,6 @@
 		B05B632919FEB15F008F76E0 /* goodExchange_ring.png in Resources */ = {isa = PBXBuildFile; fileRef = B05B631B19FEB15F008F76E0 /* goodExchange_ring.png */; };
 		B05B632A19FEB15F008F76E0 /* goodsRecommend_ring.png in Resources */ = {isa = PBXBuildFile; fileRef = B05B631C19FEB15F008F76E0 /* goodsRecommend_ring.png */; };
 		B05B632B19FEB15F008F76E0 /* secondsDeal_ring.png in Resources */ = {isa = PBXBuildFile; fileRef = B05B631D19FEB15F008F76E0 /* secondsDeal_ring.png */; };
-		B05B632C19FEB15F008F76E0 /* 秒杀商品01.png in Resources */ = {isa = PBXBuildFile; fileRef = B05B631E19FEB15F008F76E0 /* 秒杀商品01.png */; };
 		B05B632F19FEB5CD008F76E0 /* separetLine.png in Resources */ = {isa = PBXBuildFile; fileRef = B05B632D19FEB5CD008F76E0 /* separetLine.png */; };
 		B05B633019FEB5CD008F76E0 /* shopRecommend_ring.png in Resources */ = {isa = PBXBuildFile; fileRef = B05B632E19FEB5CD008F76E0 /* shopRecommend_ring.png */; };
 		B05B633319FEB639008F76E0 /* 分类2111111111_19.png in Resources */ = {isa = PBXBuildFile; fileRef = B05B633119FEB639008F76E0 /* 分类2111111111_19.png */; };
@@ -124,6 +122,8 @@
 		B05E6E981A045B3E009C92CC /* Previous.png in Resources */ = {isa = PBXBuildFile; fileRef = B05E6E971A045B3E009C92CC /* Previous.png */; };
 		B05E6E9C1A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B05E6E9A1A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.m */; };
 		B05E6E9D1A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B05E6E9B1A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.xib */; };
+		B076AB581A18A5B5007CF312 /* goodsDetail.png in Resources */ = {isa = PBXBuildFile; fileRef = B076AB561A18A5B5007CF312 /* goodsDetail.png */; };
+		B076AB591A18A5B5007CF312 /* secondsDealGoodsDetail.png in Resources */ = {isa = PBXBuildFile; fileRef = B076AB571A18A5B5007CF312 /* secondsDealGoodsDetail.png */; };
 		B0C4992719FFE7550092EE09 /* mine_addressManager.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4991919FFE7550092EE09 /* mine_addressManager.png */; };
 		B0C4992819FFE7550092EE09 /* mine_changePassword.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4991A19FFE7550092EE09 /* mine_changePassword.png */; };
 		B0C4992919FFE7550092EE09 /* mine_checknew.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4991B19FFE7550092EE09 /* mine_checknew.png */; };
@@ -161,7 +161,6 @@
 		B00BB8811A0E8D8A00B94208 /* purchase.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purchase.png; sourceTree = "<group>"; };
 		B00BB8821A0E8D8A00B94208 /* purchaseOver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purchaseOver.png; sourceTree = "<group>"; };
 		B00BB8831A0E8D8A00B94208 /* time_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = time_bg.png; sourceTree = "<group>"; };
-		B00BB88A1A0E931500B94208 /* 商品详情```_02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "商品详情```_02.png"; sourceTree = "<group>"; };
 		B015C3111A0F0A490060FBE2 /* TSShopRecommedDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSShopRecommedDetailTableViewCell.h; sourceTree = "<group>"; };
 		B015C3121A0F0A490060FBE2 /* TSShopRecommedDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSShopRecommedDetailTableViewCell.m; sourceTree = "<group>"; };
 		B015C3131A0F0A490060FBE2 /* TSShopRecommedDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSShopRecommedDetailTableViewCell.xib; sourceTree = "<group>"; };
@@ -310,7 +309,6 @@
 		B05B631B19FEB15F008F76E0 /* goodExchange_ring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goodExchange_ring.png; sourceTree = "<group>"; };
 		B05B631C19FEB15F008F76E0 /* goodsRecommend_ring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goodsRecommend_ring.png; sourceTree = "<group>"; };
 		B05B631D19FEB15F008F76E0 /* secondsDeal_ring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = secondsDeal_ring.png; sourceTree = "<group>"; };
-		B05B631E19FEB15F008F76E0 /* 秒杀商品01.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "秒杀商品01.png"; sourceTree = "<group>"; };
 		B05B632D19FEB5CD008F76E0 /* separetLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = separetLine.png; sourceTree = "<group>"; };
 		B05B632E19FEB5CD008F76E0 /* shopRecommend_ring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopRecommend_ring.png; sourceTree = "<group>"; };
 		B05B633119FEB639008F76E0 /* 分类2111111111_19.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "分类2111111111_19.png"; sourceTree = "<group>"; };
@@ -322,6 +320,8 @@
 		B05E6E991A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSecondsDealDetailTableViewCell.h; sourceTree = "<group>"; };
 		B05E6E9A1A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSecondsDealDetailTableViewCell.m; sourceTree = "<group>"; };
 		B05E6E9B1A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSSecondsDealDetailTableViewCell.xib; sourceTree = "<group>"; };
+		B076AB561A18A5B5007CF312 /* goodsDetail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goodsDetail.png; sourceTree = "<group>"; };
+		B076AB571A18A5B5007CF312 /* secondsDealGoodsDetail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = secondsDealGoodsDetail.png; sourceTree = "<group>"; };
 		B0C4991919FFE7550092EE09 /* mine_addressManager.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_addressManager.png; sourceTree = "<group>"; };
 		B0C4991A19FFE7550092EE09 /* mine_changePassword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_changePassword.png; sourceTree = "<group>"; };
 		B0C4991B19FFE7550092EE09 /* mine_checknew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_checknew.png; sourceTree = "<group>"; };
@@ -852,7 +852,8 @@
 		B05B631319FEB15F008F76E0 /* first */ = {
 			isa = PBXGroup;
 			children = (
-				B00BB88A1A0E931500B94208 /* 商品详情```_02.png */,
+				B076AB561A18A5B5007CF312 /* goodsDetail.png */,
+				B076AB571A18A5B5007CF312 /* secondsDealGoodsDetail.png */,
 				B00BB87E1A0E8D8A00B94208 /* discount.png */,
 				B00BB87F1A0E8D8A00B94208 /* purchase_progress.png */,
 				B00BB8801A0E8D8A00B94208 /* purchase_progressOver.png */,
@@ -871,7 +872,6 @@
 				B05B631B19FEB15F008F76E0 /* goodExchange_ring.png */,
 				B05B631C19FEB15F008F76E0 /* goodsRecommend_ring.png */,
 				B05B631D19FEB15F008F76E0 /* secondsDeal_ring.png */,
-				B05B631E19FEB15F008F76E0 /* 秒杀商品01.png */,
 			);
 			path = first;
 			sourceTree = "<group>";
@@ -1088,8 +1088,10 @@
 				B015C3301A0F18AE0060FBE2 /* TSGoodsExchangeDetailTableViewCell.xib in Resources */,
 				B0C4992A19FFE7550092EE09 /* mine_circleAttention.png in Resources */,
 				B05E6E9D1A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.xib in Resources */,
+				B076AB591A18A5B5007CF312 /* secondsDealGoodsDetail.png in Resources */,
 				B015C3151A0F0A490060FBE2 /* TSShopRecommedDetailTableViewCell.xib in Resources */,
 				B015C32A1A0F16F10060FBE2 /* TSGoodsExchangeViewController.xib in Resources */,
+				B076AB581A18A5B5007CF312 /* goodsDetail.png in Resources */,
 				B05B633419FEB639008F76E0 /* search_leftView.png in Resources */,
 				B018472D19F898BF00938054 /* InfoPlist.strings in Resources */,
 				B05B62F119FE88F3008F76E0 /* TSGoodsRecommendTableViewCell.xib in Resources */,
@@ -1102,7 +1104,6 @@
 				B05B632619FEB15F008F76E0 /* cell_goodsRecommend_bg.jpg in Resources */,
 				B05B632F19FEB5CD008F76E0 /* separetLine.png in Resources */,
 				B0C4993419FFE7550092EE09 /* mine_waitForpay.png in Resources */,
-				B05B632C19FEB15F008F76E0 /* 秒杀商品01.png in Resources */,
 				B0C4992719FFE7550092EE09 /* mine_addressManager.png in Resources */,
 				B031218719F8B7B0008721C4 /* login_btn.png in Resources */,
 				B0D2AC0B19F8E4020074D10B /* TSRegisterViewController.xib in Resources */,
@@ -1117,7 +1118,6 @@
 				B05115FC19F9748C00CA6E2E /* my_icon.png in Resources */,
 				B05B632519FEB15F008F76E0 /* cell_goodsExchange_bg.jpg in Resources */,
 				B018473519F898BF00938054 /* Images.xcassets in Resources */,
-				B00BB88B1A0E931500B94208 /* 商品详情```_02.png in Resources */,
 				B05115E019F96A8100CA6E2E /* TSInviteViewController.xib in Resources */,
 				B031218819F8B7B0008721C4 /* login_header.png in Resources */,
 				B051160119F9785900CA6E2E /* tabbar_bg.jpeg in Resources */,
@@ -1365,6 +1365,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BuildingMaterials/BuildingMaterials-Prefix.pch";
 				INFOPLIST_FILE = "BuildingMaterials/BuildingMaterials-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "290feaf2-553e-43c2-8f30-953ba215aa62";
 				WRAPPER_EXTENSION = app;
@@ -1382,6 +1383,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BuildingMaterials/BuildingMaterials-Prefix.pch";
 				INFOPLIST_FILE = "BuildingMaterials/BuildingMaterials-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "290feaf2-553e-43c2-8f30-953ba215aa62";
 				WRAPPER_EXTENSION = app;
