@@ -18,7 +18,7 @@
                         <rect key="frame" x="5" y="5" width="310" height="115"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="商品详情```_02.png" id="LHI-0Q-AIN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="goodsDetail.png" id="LHI-0Q-AIN">
                                 <rect key="frame" x="8" y="6" width="140" height="101"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -69,9 +69,9 @@
     </objects>
     <resources>
         <image name="discount.png" width="62" height="22"/>
+        <image name="goodsDetail.png" width="480" height="234"/>
         <image name="purchase" width="16" height="16"/>
         <image name="purchase_progress.png" width="86" height="29"/>
-        <image name="商品详情```_02.png" width="480" height="234"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

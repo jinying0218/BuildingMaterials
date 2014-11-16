@@ -17,9 +17,6 @@
                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HdL-wk-zOr">
                         <rect key="frame" x="5" y="5" width="310" height="115"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="商品详情```_02.png" translatesAutoresizingMaskIntoConstraints="NO" id="S5a-LN-MX0">
-                                <rect key="frame" x="5" y="5" width="130" height="105"/>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="shopName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSs-UQ-VLy">
                                 <rect key="frame" x="143" y="5" width="136" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -45,6 +42,9 @@
                                 <color key="textColor" red="0.83137254900000002" green="0.83137254900000002" blue="0.83137254900000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="goodsDetail.png" translatesAutoresizingMaskIntoConstraints="NO" id="S5a-LN-MX0">
+                                <rect key="frame" x="5" y="5" width="130" height="105"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -55,6 +55,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="商品详情```_02.png" width="480" height="234"/>
+        <image name="goodsDetail.png" width="480" height="234"/>
     </resources>
 </document>
