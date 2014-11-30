@@ -14,6 +14,7 @@
 
 
 #import "TSSecondsDealTableViewCell.h"
+#import "TSSecondsDealViewModel.h"
 #import "TSShopReccommendTableViewCell.h"
 #import "TSGoodsRecommendTableViewCell.h"
 #import "TSGoodsExchangeTableViewCell.h"
@@ -143,7 +144,9 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.row) {
         case 0:{
-            TSSecondsDealViewController *secondsDealVC = [[TSSecondsDealViewController alloc] init];
+            TSSecondsDealViewModel *viewModel = [[TSSecondsDealViewModel alloc] init];
+            
+            TSSecondsDealViewController *secondsDealVC = [[TSSecondsDealViewController alloc] initWithViewModel:viewModel];
             [self.navigationController pushViewController:secondsDealVC animated:YES];
         }
             break;

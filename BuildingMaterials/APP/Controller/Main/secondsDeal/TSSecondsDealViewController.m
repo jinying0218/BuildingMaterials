@@ -8,10 +8,15 @@
 
 #import "TSSecondsDealViewController.h"
 #import "TSSecondsDealDetailTableViewCell.h"
+#import "TSSecondsDealViewModel.h"
+
+#import "TSSecondDealDetailViewController.h"
+#import "TSSecondDealDetailViewModel.h"
 
 static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTableViewCell";
 
 @interface TSSecondsDealViewController ()<UITableViewDelegate>
+@property (nonatomic, strong) TSSecondsDealViewModel *viewModel;
 @property (nonatomic, strong) TSArrayDataSource *dataSource;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *tableDataArray;
@@ -20,6 +25,16 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
 
 @implementation TSSecondsDealViewController
 #pragma mark - controller methods
+- (instancetype)initWithViewModel:(TSSecondsDealViewModel *)viewModel
+{
+    self = [super init];
+    if (self) {
+        self.viewModel = viewModel;
+    }
+    return self;
+}
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initializeData];
@@ -55,5 +70,12 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
     self.tableView.delegate = self;
     [self.rootView addSubview:self.tableView];
     
+}
+
+#pragma mark - tableView delegateMethod
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    TSSecondDealDetailViewModel *viewModel = [[TSSecondDealDetailViewModel alloc] init];
+    TSSecondDealDetailViewController *secondDealDetailVC = [[TSSecondDealDetailViewController alloc] initWithViewModel:viewModel];
+    [self.navigationController pushViewController:secondDealDetailVC animated:YES];
 }
 @end

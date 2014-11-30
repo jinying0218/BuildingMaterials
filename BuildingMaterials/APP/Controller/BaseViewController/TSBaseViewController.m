@@ -90,13 +90,13 @@
     if (rightImage != nil) {
         UIButton *rightBtn  = [UIButton buttonWithType:UIButtonTypeCustom];
         rightBtn.frame = CGRectMake( KscreenW - 36, 9, 24, 25);
-        if ([rightImage isEqualToString:@"redbook_btn"]) {
-            [rightBtn setImage:[UIImage imageNamedString:rightImage] forState:UIControlStateNormal];
-            [rightBtn setImage:[UIImage imageNamedString:[NSString stringWithFormat:@"%@_highlighted",rightBtn]] forState:UIControlStateHighlighted];
-        }else if ([rightImage isEqualToString:@"edit_btn"]){
-            [rightBtn setImage:[UIImage imageNamedString:rightImage] forState:UIControlStateNormal];
-            [rightBtn setImage:[UIImage imageNamedString:@"nav_cancel"] forState:UIControlStateSelected];
-        }
+        [rightBtn setImage:[UIImage imageNamedString:rightImage] forState:UIControlStateNormal];
+        [rightBtn setImage:[UIImage imageNamedString:[NSString stringWithFormat:@"%@_highlighted",rightBtn]] forState:UIControlStateHighlighted];
+
+//        if ([rightImage isEqualToString:@"redbook_btn"]) {
+//            [rightBtn setImage:[UIImage imageNamedString:rightImage] forState:UIControlStateNormal];
+//            [rightBtn setImage:[UIImage imageNamedString:[NSString stringWithFormat:@"%@_highlighted",rightBtn]] forState:UIControlStateHighlighted];
+//        }
         [rightBtn addTarget:self action:@selector(rightButtonOnClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.navigationBar addSubview:rightBtn];
     }
