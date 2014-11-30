@@ -65,6 +65,7 @@
     [quiteBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [quiteBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     [quiteBtn bk_addEventHandler:^(id sender) {
+        [self.tabBarController dismissViewControllerAnimated:YES completion:nil];
         NSLog(@"退出登录");
     } forControlEvents:UIControlEventTouchUpInside];
     [footerView addSubview:quiteBtn];

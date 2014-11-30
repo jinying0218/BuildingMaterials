@@ -11,7 +11,6 @@
 
 
 @interface TSBaseViewController ()
-
 @end
 
 @implementation TSBaseViewController
@@ -33,10 +32,10 @@
         NSString *imageName = [dict objectForKey:IMAGE_NAME_KEY];
         NSString *selectedImageName = [imageName stringByReplacingOccurrencesOfString:@"_icon" withString:@"_icon_selected"];
 
-        
-        self.tabBarItem = [self.tabBarItem initWithTitle:[dict objectForKey:TITLE_KEY] image:[UIImage imageNamedString:selectedImageName] selectedImage:[UIImage imageNamedString:imageName]];
-        [self.tabBarItem setImageInsets:UIEdgeInsetsMake( 4, 5, 10, 5)];
+//        [self.tabBarItem setImageInsets:UIEdgeInsetsMake( 4, 5, 10, 5)];
         [self.tabBarItem setTitlePositionAdjustment:UIOffsetMake( 0, -3)];
+
+        self.tabBarItem = [self.tabBarItem initWithTitle:[dict objectForKey:TITLE_KEY] image:[UIImage imageNamedString:imageName] selectedImage:[UIImage imageNamedString:selectedImageName]];
     }
     return self;
 }
@@ -78,26 +77,26 @@
     self.navigationBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     
     if (leftImage != nil) {
-        UIButton *leftBtn  = [UIButton buttonWithType:UIButtonTypeCustom];
-        leftBtn.frame = CGRectMake( 0, 0, 44, 44);
-        [leftBtn setImage:[UIImage imageNamedString:leftImage] forState:UIControlStateNormal];
-        [leftBtn setImage:[UIImage imageNamedString:[NSString stringWithFormat:@"%@_highlighted",leftImage]] forState:UIControlStateHighlighted];
-        [leftBtn setImageEdgeInsets:UIEdgeInsetsMake( 6, 10, 6, 0)];
-        [leftBtn addTarget:self action:@selector(leftButtonClick:) forControlEvents:UIControlEventTouchUpInside];
-        leftBtn.backgroundColor = [UIColor clearColor];
-        [self.navigationBar addSubview:leftBtn];
+        self.naviLeftBtn  = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.naviLeftBtn.frame = CGRectMake( 0, 0, 44, 44);
+        [self.naviLeftBtn setImage:[UIImage imageNamedString:leftImage] forState:UIControlStateNormal];
+        [self.naviLeftBtn setImage:[UIImage imageNamedString:[NSString stringWithFormat:@"%@_highlighted",leftImage]] forState:UIControlStateHighlighted];
+        [self.naviLeftBtn setImageEdgeInsets:UIEdgeInsetsMake( 6, 10, 6, 0)];
+        [self.naviLeftBtn addTarget:self action:@selector(leftButtonClick:) forControlEvents:UIControlEventTouchUpInside];
+        self.naviLeftBtn.backgroundColor = [UIColor clearColor];
+        [self.navigationBar addSubview:self.naviLeftBtn];
         
     }
     if (rightImage != nil) {
         UIButton *rightBtn  = [UIButton buttonWithType:UIButtonTypeCustom];
         rightBtn.frame = CGRectMake( KscreenW - 36, 9, 24, 25);
-        if ([rightImage isEqualToString:@"redbook_btn"]) {
-            [rightBtn setImage:[UIImage imageNamedString:rightImage] forState:UIControlStateNormal];
-            [rightBtn setImage:[UIImage imageNamedString:[NSString stringWithFormat:@"%@_highlighted",rightBtn]] forState:UIControlStateHighlighted];
-        }else if ([rightImage isEqualToString:@"edit_btn"]){
-            [rightBtn setImage:[UIImage imageNamedString:rightImage] forState:UIControlStateNormal];
-            [rightBtn setImage:[UIImage imageNamedString:@"nav_cancel"] forState:UIControlStateSelected];
-        }
+        [rightBtn setImage:[UIImage imageNamedString:rightImage] forState:UIControlStateNormal];
+        [rightBtn setImage:[UIImage imageNamedString:[NSString stringWithFormat:@"%@_highlighted",rightBtn]] forState:UIControlStateHighlighted];
+
+//        if ([rightImage isEqualToString:@"redbook_btn"]) {
+//            [rightBtn setImage:[UIImage imageNamedString:rightImage] forState:UIControlStateNormal];
+//            [rightBtn setImage:[UIImage imageNamedString:[NSString stringWithFormat:@"%@_highlighted",rightBtn]] forState:UIControlStateHighlighted];
+//        }
         [rightBtn addTarget:self action:@selector(rightButtonOnClick:) forControlEvents:UIControlEventTouchUpInside];
         [self.navigationBar addSubview:rightBtn];
     }

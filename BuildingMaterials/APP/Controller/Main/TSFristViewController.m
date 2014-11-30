@@ -7,7 +7,14 @@
 //
 
 #import "TSFristViewController.h"
+#import "TSSecondsDealViewController.h"
+#import "TSShopRecommedViewController.h"
+#import "TSGoodsRecommendViewController.h"
+#import "TSGoodsExchangeViewController.h"
+
+
 #import "TSSecondsDealTableViewCell.h"
+#import "TSSecondsDealViewModel.h"
 #import "TSShopReccommendTableViewCell.h"
 #import "TSGoodsRecommendTableViewCell.h"
 #import "TSGoodsExchangeTableViewCell.h"
@@ -27,7 +34,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
 #pragma mark - controller method
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [self setupUI];
 }
 
@@ -131,7 +138,35 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
         default:
             break;
     }
-    
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    switch (indexPath.row) {
+        case 0:{
+            TSSecondsDealViewModel *viewModel = [[TSSecondsDealViewModel alloc] init];
+            
+            TSSecondsDealViewController *secondsDealVC = [[TSSecondsDealViewController alloc] initWithViewModel:viewModel];
+            [self.navigationController pushViewController:secondsDealVC animated:YES];
+        }
+            break;
+        case 1:{
+            TSShopRecommedViewController *shopRecommedVC = [[TSShopRecommedViewController alloc] init];
+            [self.navigationController pushViewController:shopRecommedVC animated:YES];
+        }
+            break;
+        case 2:{
+            TSGoodsRecommendViewController *goodsRecommedVC = [[TSGoodsRecommendViewController alloc] init];
+            [self.navigationController pushViewController:goodsRecommedVC animated:YES];
+        }
+            break;
+        case 3:{
+            TSGoodsExchangeViewController *goodsExchangeVC = [[TSGoodsExchangeViewController alloc] init];
+            [self.navigationController pushViewController:goodsExchangeVC animated:YES];
+        }
+            break;
+        default:
+            break;
+    }
 }
 @end
