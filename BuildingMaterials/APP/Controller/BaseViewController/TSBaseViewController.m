@@ -32,10 +32,10 @@
         NSString *imageName = [dict objectForKey:IMAGE_NAME_KEY];
         NSString *selectedImageName = [imageName stringByReplacingOccurrencesOfString:@"_icon" withString:@"_icon_selected"];
 
-        
-        self.tabBarItem = [self.tabBarItem initWithTitle:[dict objectForKey:TITLE_KEY] image:[UIImage imageNamedString:selectedImageName] selectedImage:[UIImage imageNamedString:imageName]];
-        [self.tabBarItem setImageInsets:UIEdgeInsetsMake( 4, 5, 10, 5)];
+//        [self.tabBarItem setImageInsets:UIEdgeInsetsMake( 4, 5, 10, 5)];
         [self.tabBarItem setTitlePositionAdjustment:UIOffsetMake( 0, -3)];
+
+        self.tabBarItem = [self.tabBarItem initWithTitle:[dict objectForKey:TITLE_KEY] image:[UIImage imageNamedString:imageName] selectedImage:[UIImage imageNamedString:selectedImageName]];
     }
     return self;
 }

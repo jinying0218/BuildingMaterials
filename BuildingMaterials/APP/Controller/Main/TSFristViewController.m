@@ -33,7 +33,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
 #pragma mark - controller method
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [self setupUI];
 }
 
