@@ -150,6 +150,7 @@
 		B08702DD1A2B7DD0008C8088 /* secondDeal_plus_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B08702D81A2B7DD0008C8088 /* secondDeal_plus_bg.png */; };
 		B08702DE1A2B7DD0008C8088 /* secondDeal_plus.png in Resources */ = {isa = PBXBuildFile; fileRef = B08702D91A2B7DD0008C8088 /* secondDeal_plus.png */; };
 		B08702E01A2B8108008C8088 /* secondDeal_countBg.png in Resources */ = {isa = PBXBuildFile; fileRef = B08702DF1A2B8108008C8088 /* secondDeal_countBg.png */; };
+		B09B417C1A4285D200DDF74A /* ss_09.png in Resources */ = {isa = PBXBuildFile; fileRef = B09B417B1A4285D200DDF74A /* ss_09.png */; };
 		B0C4992719FFE7550092EE09 /* mine_addressManager.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4991919FFE7550092EE09 /* mine_addressManager.png */; };
 		B0C4992819FFE7550092EE09 /* mine_changePassword.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4991A19FFE7550092EE09 /* mine_changePassword.png */; };
 		B0C4992919FFE7550092EE09 /* mine_checknew.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4991B19FFE7550092EE09 /* mine_checknew.png */; };
@@ -380,6 +381,7 @@
 		B08702D81A2B7DD0008C8088 /* secondDeal_plus_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = secondDeal_plus_bg.png; sourceTree = "<group>"; };
 		B08702D91A2B7DD0008C8088 /* secondDeal_plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = secondDeal_plus.png; sourceTree = "<group>"; };
 		B08702DF1A2B8108008C8088 /* secondDeal_countBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = secondDeal_countBg.png; sourceTree = "<group>"; };
+		B09B417B1A4285D200DDF74A /* ss_09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ss_09.png; sourceTree = "<group>"; };
 		B0C4991919FFE7550092EE09 /* mine_addressManager.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_addressManager.png; sourceTree = "<group>"; };
 		B0C4991A19FFE7550092EE09 /* mine_changePassword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_changePassword.png; sourceTree = "<group>"; };
 		B0C4991B19FFE7550092EE09 /* mine_checknew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_checknew.png; sourceTree = "<group>"; };
@@ -448,6 +450,7 @@
 			children = (
 				B00ED6C31A4193FC001D6737 /* TSShopDetailCollectionViewCell.h */,
 				B00ED6C41A4193FC001D6737 /* TSShopDetailCollectionViewCell.m */,
+				B09B417B1A4285D200DDF74A /* ss_09.png */,
 				B00ED6C81A4194C2001D6737 /* 商品图片_05.jpg */,
 				B00ED6C51A4193FC001D6737 /* TSShopDetailCollectionViewCell.xib */,
 			);
@@ -1225,6 +1228,7 @@
 				B05115BE19F956B200CA6E2E /* navi_back_new.png in Resources */,
 				B05115F419F9748C00CA6E2E /* category_icon.png in Resources */,
 				B015C3301A0F18AE0060FBE2 /* TSGoodsExchangeDetailTableViewCell.xib in Resources */,
+				B09B417C1A4285D200DDF74A /* ss_09.png in Resources */,
 				B0C4992A19FFE7550092EE09 /* mine_circleAttention.png in Resources */,
 				B05E6E9D1A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.xib in Resources */,
 				B076AB591A18A5B5007CF312 /* secondsDealGoodsDetail.png in Resources */,
