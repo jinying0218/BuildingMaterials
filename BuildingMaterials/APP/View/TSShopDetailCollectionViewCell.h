@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface TSShopDetailCollectionViewCell : UICollectionViewCell
++ (instancetype)cellWithCollectionView:(UICollectionView *)collectionView indexPath:(NSIndexPath *)indexPath;
 
 @end

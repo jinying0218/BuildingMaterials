@@ -8,6 +8,8 @@
 
 #import "TSShopRecommedViewController.h"
 #import "TSShopRecommedDetailTableViewCell.h"
+#import "TSShopDetailViewController.h"
+#import "TSShopDetailViewModel.h"
 
 static NSString *const ShopRecommedDetailTableViewCell = @"ShopRecommedDetailTableViewCell";
 
@@ -58,4 +60,11 @@ static NSString *const ShopRecommedDetailTableViewCell = @"ShopRecommedDetailTab
     
 }
 
+#pragma mark - tableview delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+    TSShopDetailViewModel *viewModel = [[TSShopDetailViewModel alloc] init];
+    TSShopDetailViewController *shopDetailVC = [[TSShopDetailViewController alloc] initWithViewModel:viewModel];
+    [self.navigationController pushViewController:shopDetailVC animated:YES];
+}
 @end

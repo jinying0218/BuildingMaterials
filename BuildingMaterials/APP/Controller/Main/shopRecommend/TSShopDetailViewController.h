@@ -7,7 +7,8 @@
 //
 
 #import "TSBaseViewController.h"
-
+@class TSShopDetailViewModel;
 @interface TSShopDetailViewController : TSBaseViewController
 
+- (instancetype)initWithViewModel:(TSShopDetailViewModel *)viewModel;
 @end
