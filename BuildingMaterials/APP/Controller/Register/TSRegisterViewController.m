@@ -60,6 +60,32 @@
     }];
 }
 - (IBAction)registerButtonClick:(UIButton *)sender {
+    NSString *telPhone = self.phoneNumberTextfield.text;
+    NSString *uuid = [NSString UUIDCode];
+    NSString *messageCode = self.checkNumberTextfield.text;
+    NSString *password = self.secureTextfield.text;
+    NSString *regFrom = @"ios";
+    NSDictionary *params = @{@"telPhone":telPhone,
+                             @"uuid":uuid,
+                             @"messageCode":messageCode,
+                             @"password":password,
+                             @"regFrom":regFrom};
+    [TSHttpTool postWithUrl:Regist_URL params:params success:^(id result) {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.labelText = @"注册成功";
+        dispatch_time_t poptime =
+        dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
+        dispatch_after(poptime, dispatch_get_main_queue(), ^{
+            [hud hide:YES];
+            [self.navigationController popViewControllerAnimated:YES];
+
+        });
+    } failure:^(NSError *error) {
+        
+    }];
+    
+    
 //    TSRegisterTwoViewController *registerTwoVC = [[TSRegisterTwoViewController alloc] init];
 //    [self.navigationController pushViewController:registerTwoVC animated:YES];
 }

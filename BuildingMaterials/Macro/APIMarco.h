@@ -12,9 +12,14 @@
 #define Domain @"http://120.24.230.212/appInterface"
 //获取验证码
 #define codePost_url Domain"/codePost"
-
+//注册
+#define Regist_URL Domain"/reg"
+//找回密码
+#define FindPassword_URL Domain"/findPassword"
 //登陆接口
-#define Login_URL Domain"/inspect/app/user/login.do"
+#define Login_URL Domain"/login"
+
+
 //获取任务列表接口
 #define GetTask_URL Domain"/inspect/app/routine/routineInspectionTask.do"
 //获取任务状态的接口

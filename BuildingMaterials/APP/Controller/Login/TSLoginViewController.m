@@ -11,6 +11,9 @@
 #import "TSMainTabBarViewController.h"
 
 @interface TSLoginViewController ()
+@property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UITextField *userNameTextfield;
+@property (weak, nonatomic) IBOutlet UITextField *pwdTextField;
 
 @end
 
@@ -19,26 +22,38 @@
 #pragma mark - controllers methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self configUIAttributes];
+    [self bindActionHandler];
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 #pragma mark - set UI
-- (void)createTabbarController{
+- (void)configUIAttributes{
 
 }
+- (void)bindActionHandler{
+    @weakify(self);
+    [self.loginButton bk_addEventHandler:^(id sender) {
+        @strongify(self);
+        NSString *telPhone = self.userNameTextfield.text;
+        NSString *password = self.pwdTextField.text;
+        NSDictionary *params = @{@"telPhone":telPhone,@"password":password};
+        [TSHttpTool postWithUrl:Login_URL params:params success:^(id result) {
+            TSMainTabBarViewController *tabbarController = [[TSMainTabBarViewController alloc] init];
+            [self presentViewController:tabbarController animated:YES completion:^{
+                
+            }];
 
+        } failure:^(NSError *error) {
+            
+        }];
+
+    } forControlEvents:UIControlEventTouchUpInside];
+}
 #pragma mark - button actions
-- (IBAction)loginButtonClick:(UIButton *)sender {
-    
-    TSMainTabBarViewController *tabbarController = [[TSMainTabBarViewController alloc] init];
-//    [UIApplication sharedApplication].keyWindow.rootViewController = tabbarController;
-    [self presentViewController:tabbarController animated:YES completion:^{
-        
-    }];
-}
-
 - (IBAction)registerButtonClick:(UIButton *)sender {
     
     TSRegisterViewController *registerVC = [[TSRegisterViewController alloc] init];

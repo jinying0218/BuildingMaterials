@@ -7,6 +7,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TSLoginViewController">
             <connections>
+                <outlet property="loginButton" destination="6Lq-r9-qdt" id="NqT-Td-HXX"/>
+                <outlet property="pwdTextField" destination="Ywh-qI-8N2" id="WPB-Rh-8O4"/>
+                <outlet property="userNameTextfield" destination="ZjK-Jb-EvH" id="VXJ-e9-XTJ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -106,15 +109,12 @@
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <connections>
-                        <action selector="loginButtonClick:" destination="-1" eventType="touchUpInside" id="1Qz-KB-B3c"/>
-                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="531" y="408"/>
+            <point key="canvasLocation" x="547" y="435"/>
         </view>
     </objects>
     <resources>
