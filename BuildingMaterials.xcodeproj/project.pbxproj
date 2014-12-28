@@ -167,6 +167,7 @@
 		B0C4993619FFEDEE0092EE09 /* mine_headerBg.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4993519FFEDEE0092EE09 /* mine_headerBg.png */; };
 		B0D2AC0A19F8E4020074D10B /* TSRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D2AC0819F8E4020074D10B /* TSRegisterViewController.m */; };
 		B0D2AC0B19F8E4020074D10B /* TSRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D2AC0919F8E4020074D10B /* TSRegisterViewController.xib */; };
+		B0FB4BB21A501B9A002C7ACA /* login_title.png in Resources */ = {isa = PBXBuildFile; fileRef = B0FB4BB11A501B9A002C7ACA /* login_title.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -399,6 +400,7 @@
 		B0D2AC0719F8E4020074D10B /* TSRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSRegisterViewController.h; sourceTree = "<group>"; };
 		B0D2AC0819F8E4020074D10B /* TSRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSRegisterViewController.m; sourceTree = "<group>"; };
 		B0D2AC0919F8E4020074D10B /* TSRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSRegisterViewController.xib; sourceTree = "<group>"; };
+		B0FB4BB11A501B9A002C7ACA /* login_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_title.png; sourceTree = "<group>"; };
 		CC85AD3F1CAF437A65DAA63C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -733,6 +735,7 @@
 				B031218319F8B7B0008721C4 /* login_bg.jpg */,
 				B031218419F8B7B0008721C4 /* login_btn.png */,
 				B031218519F8B7B0008721C4 /* login_header.png */,
+				B0FB4BB11A501B9A002C7ACA /* login_title.png */,
 			);
 			path = 1_Login;
 			sourceTree = "<group>";
@@ -1218,6 +1221,7 @@
 				B015C31A1A0F0CE70060FBE2 /* TSShopRecommedViewController.xib in Resources */,
 				B05B632A19FEB15F008F76E0 /* goodsRecommend_ring.png in Resources */,
 				B08702DA1A2B7DD0008C8088 /* secondDeal_count.png in Resources */,
+				B0FB4BB21A501B9A002C7ACA /* login_title.png in Resources */,
 				B00BB8891A0E8D8A00B94208 /* time_bg.png in Resources */,
 				B05B632719FEB15F008F76E0 /* cell_secondsDeal_bg.jpg in Resources */,
 				B05B5A131A3FD9F8008E83C9 /* shop_map_selected.png in Resources */,

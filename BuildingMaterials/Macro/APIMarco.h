@@ -9,10 +9,10 @@
 #ifndef ProInspection_APIMarco_h
 #define ProInspection_APIMarco_h
 
-//#define Domain @"http://192.168.1.234:8081"
-//#define Domain @"http://192.168.5.57:8080"
-#define Domain @"http://42.96.185.45:8083"
-//#define Domain @"http://122.13.71.189"
+#define Domain @"http://120.24.230.212/appInterface"
+//获取验证码
+#define codePost_url Domain"/codePost"
+
 //登陆接口
 #define Login_URL Domain"/inspect/app/user/login.do"
 //获取任务列表接口
