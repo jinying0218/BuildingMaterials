@@ -8,7 +8,7 @@
 
 #import "TSRegisterViewController.h"
 #import "TSRegisterTwoViewController.h"
-#import "TSHttpTool.h"
+#import "TSDateFormatterTool.h"
 
 @interface TSRegisterViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextfield;
@@ -49,15 +49,22 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 - (IBAction)getTestButtonClick:(UIButton *)sender {
+    
     NSString *telPhone = self.phoneNumberTextfield.text;
     NSString *uuid = [NSString UUIDCode];
-    NSDictionary *params = @{ @"telPhone" : telPhone, @"uuid" : uuid};
+    NSDictionary *params = @{ @"telPhone" : telPhone, @"uuid" : [[TSDateFormatterTool shareInstance] dateIntervalString]};
     [TSHttpTool postWithUrl:codePost_url params:params success:^(id result) {
         NSLog(@"%@",result);
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
-
     }];
+
+//    NSLog(@"url:%@",[NSString stringWithFormat:@"%@?telPhone=%@&&uuid=%@",codePost_url,self.phoneNumberTextfield.text,@"234"]);
+//    [TSHttpTool getWithUrl:[NSString stringWithFormat:@"%@?telPhone=%@&&uuid=%@",codePost_url,self.phoneNumberTextfield.text,@"234"] params:nil withCache:NO success:^(id result) {
+//         NSLog(@"%@",result);
+//    } failure:^(NSError *error) {
+//        NSLog(@"%@",error);
+//    }];
 }
 - (IBAction)registerButtonClick:(UIButton *)sender {
     NSString *telPhone = self.phoneNumberTextfield.text;

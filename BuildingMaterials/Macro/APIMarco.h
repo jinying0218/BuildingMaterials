@@ -11,7 +11,7 @@
 
 #define Domain @"http://120.24.230.212/appInterface"
 //获取验证码
-#define codePost_url Domain"/codePost"
+#define codePost_url Domain"/postCode"
 //注册
 #define Regist_URL Domain"/reg"
 //找回密码

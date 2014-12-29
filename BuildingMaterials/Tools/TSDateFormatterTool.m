@@ -6,12 +6,20 @@
 //  Copyright (c) 2014年 Sagitar. All rights reserved.
 //
 
+
 #import "TSDateFormatterTool.h"
 
 @implementation TSDateFormatterTool
 
-SYNTHESIZE_SINGLETON_FOR_CLASS(TSDateFormatterTool);
+static TSDateFormatterTool *_sharedInstance = nil;
+static dispatch_once_t once_token = 0;
 
++ (TSDateFormatterTool *)shareInstance{
+    dispatch_once( &once_token, ^{
+        _sharedInstance = [[TSDateFormatterTool alloc] init];
+    });
+    return _sharedInstance;
+}
 //获取当前时间的时间戳
 - (NSString *)dateIntervalString
 {
@@ -19,8 +27,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(TSDateFormatterTool);
     NSTimeInterval timeInterval = [datenow timeIntervalSince1970] * 1000;
     NSString *timeSp = [NSString stringWithFormat:@"%lld", (long long)timeInterval];
     
-//    NSLog(@"timeSp:%@",timeSp); //时间戳的值
-
+    //    NSLog(@"timeSp:%@",timeSp); //时间戳的值
+    
     return timeSp;
 }
 
@@ -29,17 +37,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(TSDateFormatterTool);
 {
     NSTimeInterval timeInterval = [nowDate timeIntervalSince1970] * 1000;
     NSString *timeSp = [NSString stringWithFormat:@"%lld", (long long)timeInterval];
-
+    
     return timeSp;
 }
 //跟据时间戳生成时间 字符串
 - (NSDate *)dateFromTimeIntervalString:(NSString *)timeInterval
 {
-    [[TSDateFormatterTool sharedTSDateFormatterTool] setDateStyle:NSDateFormatterMediumStyle];
-    [[TSDateFormatterTool sharedTSDateFormatterTool] setTimeStyle:NSDateFormatterShortStyle];
-    [[TSDateFormatterTool sharedTSDateFormatterTool] setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
-    [[TSDateFormatterTool sharedTSDateFormatterTool] setDateFormat:@"yyyy年MM月dd日"];
-    
     NSTimeInterval time = [timeInterval longLongValue];
     NSDate *pastDate = [NSDate dateWithTimeIntervalSince1970:time/1000];
     
@@ -47,7 +50,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(TSDateFormatterTool);
     NSTimeInterval interval = [zone secondsFromGMTForDate:pastDate];
     NSDate *date = [pastDate dateByAddingTimeInterval:interval];
     
-//    NSLog(@"date1:%@",date);
+    //    NSLog(@"date1:%@",date);
     
     return date;
 }

@@ -9,6 +9,7 @@
 #import "TSLoginViewController.h"
 #import "TSRegisterViewController.h"
 #import "TSMainTabBarViewController.h"
+#import "TSUserModel.h"
 
 @interface TSLoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
@@ -42,10 +43,24 @@
         NSString *password = self.pwdTextField.text;
         NSDictionary *params = @{@"telPhone":telPhone,@"password":password};
         [TSHttpTool postWithUrl:Login_URL params:params success:^(id result) {
-            TSMainTabBarViewController *tabbarController = [[TSMainTabBarViewController alloc] init];
-            [self presentViewController:tabbarController animated:YES completion:^{
+            NSLog(@"%@",result);
+            if ([[result objectForKey:@"success"] isEqualToString:@"1"]) {
+                NSDictionary *appUser = [result objectForKey:@"appUser"];
+                TSUserModel *userModel = [[TSUserModel alloc] init];
+                userModel.classFrom = appUser[@"class"];
+                userModel.userId = appUser[@"id"];
+                userModel.isLook = appUser[@"isLook"];
+                userModel.isUsed = appUser[@"isUsed"];
+                userModel.loginTime = appUser[@"loginTime"];
+                userModel.password = appUser[@"password"];
+                userModel.regFrom = appUser[@"regFrom"];
+                userModel.regTime = appUser[@"regTime"];
+                userModel.telephone = appUser[@"telephone"];
                 
-            }];
+                [userModel saveToDisk];
+                TSMainTabBarViewController *tabbarController = [[TSMainTabBarViewController alloc] init];
+                [self presentViewController:tabbarController animated:YES completion:nil];
+            }
 
         } failure:^(NSError *error) {
             

@@ -10,10 +10,11 @@
 
 @interface TSDateFormatterTool : NSDateFormatter
 
-SINGLETON_INTERFACE(TSDateFormatterTool);
++ (TSDateFormatterTool *)shareInstance;
 
 - (NSString *)dateIntervalString;
 - (NSString *)IntervalStringFromDate:(NSDate *)nowDate;
 //yyyy年MM月dd日
 - (NSDate *)dateFromTimeIntervalString:(NSString *)timeInterval;
+
 @end
