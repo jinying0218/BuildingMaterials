@@ -8,7 +8,11 @@
 
 #import "TSMainTabBarViewController.h"
 #import "TSBaseViewController.h"
-
+#import "TSFristViewModel.h"
+#import "TSCategoryViewModel.h"
+#import "TSForumViewModel.h"
+#import "TSInviteViewModel.h"
+#import "TSMineViewModel.h"
 
 @interface TSMainTabBarViewController ()
 
@@ -44,8 +48,22 @@
         //从类名转换成类对象(Class)
         Class class = NSClassFromString(className);
         if (class) {
+            NSObject *viewModel;
+            if ([className isEqualToString:@"TSFristViewController"]) {
+                viewModel = [[TSFristViewModel alloc] init];
+            }else if ([className isEqualToString:@"TSCategoryViewController"]){
+                viewModel = [[TSCategoryViewModel alloc] init];
+            }else if ([className isEqualToString:@"TSForumViewController"]){
+                viewModel = [[TSForumViewModel alloc] init];
+            }else if ([className isEqualToString:@"TSInviteViewController"]){
+                viewModel = [[TSInviteViewModel alloc] init];
+            }else if ([className isEqualToString:@"TSMineViewController"]){
+                viewModel = [[TSMineViewModel alloc] init];
+            }
+            
             //创建指定的类实例
             TSBaseViewController *rvc = [[class alloc] initWithDict:dict];
+            rvc.viewModel = viewModel;
             UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:rvc];
             [controllerArray addObject:nc];
         }

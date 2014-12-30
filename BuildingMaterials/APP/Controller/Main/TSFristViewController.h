@@ -7,7 +7,8 @@
 //
 
 #import "TSBaseViewController.h"
+#import "TSFristViewModel.h"
 
 @interface TSFristViewController : TSBaseViewController
-
+@property (nonatomic, strong) TSFristViewModel *viewModel;
 @end

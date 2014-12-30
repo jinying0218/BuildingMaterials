@@ -11,7 +11,7 @@
 #import "TSRootView.h"
 
 @interface TSBaseViewController : UIViewController
-
+@property (nonatomic, strong) NSObject *viewModel;
 @property (nonatomic, strong) TSRootView *rootView;
 @property (nonatomic, strong) TSScrollView *rootScrollView;
 @property (nonatomic, strong) UIView *navigationBar;

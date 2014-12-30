@@ -19,6 +19,10 @@
 #import "TSGoodsRecommendTableViewCell.h"
 #import "TSGoodsExchangeTableViewCell.h"
 
+#import <UIImageView+WebCache.h>
+#import "TSSecKillModel.h"
+
+
 static NSString * const goodsRecommendCell = @"goodsRecommendCell";     //商品推荐
 static NSString * const goodsExchangeCell = @"goodsExchangeCell";     //以物换物
 static NSString * const shopRecommendCell = @"shopRecommendCell";     //商家推荐
@@ -30,7 +34,14 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
 @end
 
 @implementation TSFristViewController
-
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        
+    }
+    return self;
+}
 #pragma mark - controller method
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -44,11 +55,28 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
 }
 #pragma mark - load date
 - (void)loadData{
+    //广告位
     [TSHttpTool getWithUrl:Frist_ADLoad_URL params:nil withCache:NO success:^(id result) {
-        NSLog(@"%@",result);
+        NSLog(@"Frist_ADLoad_URL:%@",result);
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];
+    
+    [TSHttpTool getWithUrl:Frist_SecKillLoad_URL params:nil withCache:nil success:^(id result) {
+        NSLog(@"Frist_SecKillLoad_URL:%@",result);
+        NSArray *goods_result = result[@"goods_result"];
+        for (NSDictionary *oneGoodsResult in goods_result) {
+            TSSecKillModel *model = [[TSSecKillModel alloc] init];
+            [model setValuesForKeysWithDictionary:oneGoodsResult];
+            [self.viewModel.secKillDataArray addObject:model];
+        }
+        [self.firstTable reloadData];
+        
+    } failure:^(NSError *error) {
+        NSLog(@"Frist_SecKillLoad_URL:%@",error);
+    }];
+    
+    
 }
 
 #pragma mark - set UI
@@ -75,7 +103,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     bannerScrollView.contentSize = CGSizeMake( 3 * KscreenW, 120);
     bannerScrollView.delegate = self;
     bannerScrollView.pagingEnabled = YES;
-    bannerScrollView.backgroundColor = [UIColor yellowColor];
+    bannerScrollView.backgroundColor = [UIColor darkGrayColor];
     [banner addSubview:bannerScrollView];
     
     UIImageView *imageView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamedString:@"banner1"]];
@@ -111,7 +139,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
             if (cell == nil) {
                 cell = [[[NSBundle mainBundle] loadNibNamed:@"TSSecondsDealTableViewCell" owner:nil options:nil]lastObject];
             }
-            [(TSSecondsDealTableViewCell *)cell configureCell];
+            [(TSSecondsDealTableViewCell *)cell configureCellWithModelArray:self.viewModel.secKillDataArray];
 //            cell.textLabel.text = @"商品";
             
         }

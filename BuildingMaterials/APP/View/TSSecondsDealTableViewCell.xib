@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6245" systemVersion="14A389" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1808" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -94,7 +94,18 @@
                 </subviews>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="593" y="456.5"/>
+            <connections>
+                <outlet property="fristGoodsImage" destination="0ES-Bo-S1o" id="BT1-XD-mqX"/>
+                <outlet property="fristGoodsName" destination="0Wt-RJ-7J1" id="qbj-Xx-e0c"/>
+                <outlet property="fristGoodsPrice" destination="jtb-Hp-uRt" id="vhH-in-KOT"/>
+                <outlet property="secondGoodsImage" destination="0xS-RK-YeZ" id="Vk5-6p-CA2"/>
+                <outlet property="secondGoodsName" destination="h2j-SQ-N35" id="gcG-wz-6e0"/>
+                <outlet property="secondGoodsPrice" destination="w99-UU-ZKL" id="JDF-Br-aOs"/>
+                <outlet property="thirdGoodsImage" destination="kdv-P9-cIT" id="0AG-Jr-47J"/>
+                <outlet property="thirdGoodsName" destination="wR8-Oo-Yyq" id="xWX-Q3-Mx6"/>
+                <outlet property="thirdGoodsPrice" destination="GsL-1U-uPz" id="dhZ-Ci-8P0"/>
+            </connections>
+            <point key="canvasLocation" x="307" y="274.5"/>
         </tableViewCell>
     </objects>
     <resources>
