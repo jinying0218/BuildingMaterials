@@ -13,8 +13,7 @@
 
 @interface TSLoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
-@property (weak, nonatomic) IBOutlet UITextField *userNameTextfield;
-@property (weak, nonatomic) IBOutlet UITextField *pwdTextField;
+
 
 @end
 
@@ -44,7 +43,7 @@
         NSDictionary *params = @{@"telPhone":telPhone,@"password":password};
         [TSHttpTool postWithUrl:Login_URL params:params success:^(id result) {
             NSLog(@"%@",result);
-            if ([[result objectForKey:@"success"] isEqualToString:@"1"]) {
+            if ([result objectForKey:@"success"]) {
                 NSDictionary *appUser = [result objectForKey:@"appUser"];
                 TSUserModel *userModel = [[TSUserModel alloc] init];
                 userModel.classFrom = appUser[@"class"];

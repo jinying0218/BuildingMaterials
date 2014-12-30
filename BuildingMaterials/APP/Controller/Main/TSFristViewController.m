@@ -36,10 +36,19 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     [super viewDidLoad];
 
     [self setupUI];
+    [self loadData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+#pragma mark - load date
+- (void)loadData{
+    [TSHttpTool getWithUrl:Frist_ADLoad_URL params:nil withCache:NO success:^(id result) {
+        NSLog(@"%@",result);
+    } failure:^(NSError *error) {
+        NSLog(@"%@",error);
+    }];
 }
 
 #pragma mark - set UI

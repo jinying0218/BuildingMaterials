@@ -8,6 +8,8 @@
 
 #import "TSAppDelegate.h"
 #import "TSLoginViewController.h"
+#import "TSMainTabBarViewController.h"
+#import "TSUserModel.h"
 
 @implementation TSAppDelegate
 
@@ -21,6 +23,17 @@
     TSLoginViewController *loginVC = [[TSLoginViewController alloc] init];
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:loginVC];
     self.window.rootViewController = nc;
+    
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+
+    if([fileManager fileExistsAtPath:KaccountDataPath]){
+        
+        TSUserModel *currUser = [NSKeyedUnarchiver unarchiveObjectWithFile:KaccountDataPath];
+        TSMainTabBarViewController *tabbarController = [[TSMainTabBarViewController alloc] init];
+        [loginVC presentViewController:tabbarController animated:YES completion:^{
+            loginVC.userNameTextfield.text = currUser.telephone;
+        }];
+    }
     
     return YES;
 }

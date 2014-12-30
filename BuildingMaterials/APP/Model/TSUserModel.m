@@ -26,10 +26,8 @@ static TSUserModel *_currUser;
 
 - (void)saveToDisk
 {
-    NSString *filename = [NSHomeDirectory() stringByAppendingString:@"/Library/Caches/CurrUser"];
-    
-    NSLog(@"filename:%@",filename);
-    BOOL success = [NSKeyedArchiver archiveRootObject:self toFile:filename];
+    NSLog(@"filename:%@",KaccountDataPath);
+    BOOL success = [NSKeyedArchiver archiveRootObject:self toFile:KaccountDataPath];
     if (!success) {
         NSLog(@"归档失败");
     }
@@ -37,9 +35,7 @@ static TSUserModel *_currUser;
 
 + (TSUserModel *)readFromDisk
 {
-    NSString *filename = [NSHomeDirectory() stringByAppendingString:@"/Library/Caches/CurrUser"];
-    
-    TSUserModel *currUser = [NSKeyedUnarchiver unarchiveObjectWithFile:filename];
+    TSUserModel *currUser = [NSKeyedUnarchiver unarchiveObjectWithFile:KaccountDataPath];
     
     NSLog(@"user is %@", currUser.telephone);
     return currUser;
