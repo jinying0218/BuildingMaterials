@@ -29,4 +29,6 @@
 //item项图片名的key
 #define IMAGE_NAME_KEY @"IMAGENAME"
 
+#define KaccountDataPath [NSHomeDirectory() stringByAppendingString:@"/Library/Caches/CurrUser"]
+
 #endif

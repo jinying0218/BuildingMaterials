@@ -9,16 +9,24 @@
 #ifndef ProInspection_APIMarco_h
 #define ProInspection_APIMarco_h
 
-//#define Domain @"http://192.168.1.234:8081"
-//#define Domain @"http://192.168.5.57:8080"
-#define Domain @"http://42.96.185.45:8083"
-//#define Domain @"http://122.13.71.189"
+#define Domain @"http://www.d-anshun.com/appInterface"
+//获取验证码
+#define codePost_url Domain"/postCode"
+//注册
+#define Regist_URL Domain"/reg"
+//找回密码
+#define FindPassword_URL Domain"/findPassword"
 //登陆接口
-#define Login_URL Domain"/inspect/app/user/login.do"
-//获取任务列表接口
-#define GetTask_URL Domain"/inspect/app/routine/routineInspectionTask.do"
-//获取任务状态的接口
-#define GetTaskState_URL Domain"/inspect/app/routine/routineInspectionTaskState.do"
+#define Login_URL Domain"/login"
+//首页广告加载
+#define Frist_ADLoad_URL Domain"/appAdLoad"
+//首页秒杀加载
+#define Frist_SecKillLoad_URL Domain"/appSeckillLoad"
+//首页商家加载
+#define First_CompanyLoad_URL Domain"/appCompanyLoad"
+//首页换物加载
+#define First_Exchange_URL Domain"/appExchangeLoad"
+
 //获得维修人员列表和报事类型列表
 #define GetRepairUserList_URL Domain"/inspect/app/routine/routineInspectionUserList.do"
 //获得巡逻点的加密信息，用于二维码

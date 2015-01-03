@@ -48,25 +48,6 @@ static  NSString *const rootCellIdentifier = @"rootCell";
     [tableHeaderView addSubview:imageView];
     
     UILabel *departmentLabel = [[UILabel alloc] init];
-    switch ([TSUserModel getCurrentLoginUser].departmentTypeId) {
-        case 1:
-        {
-                departmentLabel.text = @"管理人员";
-        }
-            break;
-        case 2:
-        {
-                departmentLabel.text = @"工程人员";
-        }
-            break;
-        case 3:
-        {
-                departmentLabel.text = @"安保人员";
-        }
-            break;
-        default:
-            break;
-    }
 
     departmentLabel.textColor = [UIColor colorWithHexString:@"#d74a3d"];
     departmentLabel.font = [UIFont systemFontOfSize:16];
@@ -75,7 +56,6 @@ static  NSString *const rootCellIdentifier = @"rootCell";
     
     UILabel *userNameLabel = [[UILabel alloc] init];
     userNameLabel.font = [UIFont systemFontOfSize:15];
-    userNameLabel.text = [NSString stringWithFormat:@"您好，%@",[TSUserModel getCurrentLoginUser].userName];
     userNameLabel.textColor = [UIColor colorWithHexString:@"#d74a3d"];
     userNameLabel.frame = CGRectMake( 15, CGRectGetMaxY(imageView.frame) + 15, 100, 18);
     [tableHeaderView addSubview:userNameLabel];

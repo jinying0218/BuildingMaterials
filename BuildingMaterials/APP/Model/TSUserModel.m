@@ -26,10 +26,8 @@ static TSUserModel *_currUser;
 
 - (void)saveToDisk
 {
-    NSString *filename = [NSHomeDirectory() stringByAppendingString:@"/Library/Caches/CurrUser"];
-    
-    NSLog(@"filename:%@",filename);
-    BOOL success = [NSKeyedArchiver archiveRootObject:self toFile:filename];
+    NSLog(@"filename:%@",KaccountDataPath);
+    BOOL success = [NSKeyedArchiver archiveRootObject:self toFile:KaccountDataPath];
     if (!success) {
         NSLog(@"归档失败");
     }
@@ -37,11 +35,9 @@ static TSUserModel *_currUser;
 
 + (TSUserModel *)readFromDisk
 {
-    NSString *filename = [NSHomeDirectory() stringByAppendingString:@"/Library/Caches/CurrUser"];
+    TSUserModel *currUser = [NSKeyedUnarchiver unarchiveObjectWithFile:KaccountDataPath];
     
-    TSUserModel *currUser = [NSKeyedUnarchiver unarchiveObjectWithFile:filename];
-    
-    NSLog(@"user is %@", currUser.userName);
+    NSLog(@"user is %@", currUser.telephone);
     return currUser;
 }
 
@@ -62,42 +58,29 @@ static TSUserModel *_currUser;
 
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
-    [aCoder encodeObject:self.accessSecret forKey:@"accessSecret"];
-    [aCoder encodeObject:self.accessToken forKey:@"accessToken"];
-    [aCoder encodeObject:self.cellphone forKey:@"cellphone"];
-    [aCoder encodeInt:self.companyId forKey:@"companyId"];
-    [aCoder encodeObject:self.companyName forKey:@"companyName"];
-    [aCoder encodeObject:self.displayName forKey:@"displayName"];
-    [aCoder encodeObject:self.email forKey:@"email"];
-    [aCoder encodeInt:self.isValid forKey:@"isValid"];
-    [aCoder encodeInt:self.projectId forKey:@"projectId"];
-    [aCoder encodeInt:self.sex forKey:@"sex"];
-    [aCoder encodeInt:self.departmentId forKey:@"departmentId"];
-    [aCoder encodeInt:self.departmentTypeId forKey:@"departmentTypeId"];
-    [aCoder encodeInt:self.subCompanyId forKey:@"subCompanyId"];
-    [aCoder encodeObject:self.subCompanyName forKey:@"subCompanyName"];
-    [aCoder encodeInt:self.userId forKey:@"userId"];
-    [aCoder encodeObject:self.userName forKey:@"userName"];
+    [aCoder encodeObject:self.classFrom forKey:@"classFrom"];
+    [aCoder encodeObject:self.userId forKey:@"userId"];
+    [aCoder encodeBool:self.isLook forKey:@"isLook"];
+    [aCoder encodeBool:self.isUsed forKey:@"isUsed"];
+    [aCoder encodeObject:self.loginTime forKey:@"loginTime"];
+    [aCoder encodeObject:self.password forKey:@"password"];
+    [aCoder encodeObject:self.regFrom forKey:@"regFrom"];
+    [aCoder encodeObject:self.regTime forKey:@"regTime"];
+    [aCoder encodeObject:self.telephone forKey:@"telephone"];
 }
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super init];
     if (self) {
-        self.accessSecret = [aDecoder decodeObjectForKey:@"accessSecret"];
-        self.accessToken = [aDecoder decodeObjectForKey:@"accessToken"];
-        self.cellphone = [aDecoder decodeObjectForKey:@"cellphone"];
-        self.companyId = [aDecoder decodeIntForKey:@"companyId"];
-        self.companyName = [aDecoder decodeObjectForKey:@"companyName"];
-        self.email = [aDecoder decodeObjectForKey:@"email"];
-        self.isValid = [aDecoder decodeIntForKey:@"isValid"];
-        self.projectId = [aDecoder decodeIntForKey:@"projectId"];
-        self.sex = [aDecoder decodeIntForKey:@"sex"];
-        self.departmentId = [aDecoder decodeIntForKey:@"departmentId"];
-        self.departmentTypeId = [aDecoder decodeIntForKey:@"departmentTypeId"];
-        self.subCompanyId = [aDecoder decodeIntForKey:@"subCompanyId"];
-        self.subCompanyName = [aDecoder decodeObjectForKey:@"subCompanyName"];
-        self.userId = [aDecoder decodeIntForKey:@"userId"];
-        self.userName = [aDecoder decodeObjectForKey:@"userName"];
+        self.classFrom = [aDecoder decodeObjectForKey:@"classFrom"];
+        self.userId = [aDecoder decodeObjectForKey:@"userId"];
+        self.isLook = [aDecoder decodeBoolForKey:@"isLook"];
+        self.isUsed = [aDecoder decodeBoolForKey:@"isUsed"];
+        self.loginTime = [aDecoder decodeObjectForKey:@"loginTime"];
+        self.password = [aDecoder decodeObjectForKey:@"password"];
+        self.regFrom = [aDecoder decodeObjectForKey:@"regFrom"];
+        self.regTime = [aDecoder decodeObjectForKey:@"regTime"];
+        self.telephone = [aDecoder decodeObjectForKey:@"telephone"];
 
     }
     return self;

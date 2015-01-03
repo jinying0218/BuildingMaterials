@@ -9,5 +9,7 @@
 #import "TSBaseViewController.h"
 
 @interface TSLoginViewController : TSBaseViewController
+@property (weak, nonatomic) IBOutlet UITextField *userNameTextfield;
+@property (weak, nonatomic) IBOutlet UITextField *pwdTextField;
 
 @end

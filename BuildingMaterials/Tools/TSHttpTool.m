@@ -55,7 +55,9 @@
     //一般上传
     manager.requestSerializer = [AFHTTPRequestSerializer serializer];
     manager.responseSerializer = [AFHTTPResponseSerializer serializer];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"text/html"];
+    [manager.responseSerializer setAcceptableContentTypes:
+     [NSSet setWithObjects:@"application/json", @"text/json",
+      @"text/javascript", @"text/html", nil]];
     
     if ([method isEqualToString:@"POST"]){
         

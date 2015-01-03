@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface TSGoodsExchangeDetailTableViewCell : UITableViewCell
+
+
+
+
 - (void)configureCellWithModel:(id)model indexPath:(NSIndexPath *)indexPath;
 
 @end
