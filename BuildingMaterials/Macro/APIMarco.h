@@ -9,7 +9,7 @@
 #ifndef ProInspection_APIMarco_h
 #define ProInspection_APIMarco_h
 
-#define Domain @"http://120.24.230.212/appInterface"
+#define Domain @"http://www.d-anshun.com/appInterface"
 //获取验证码
 #define codePost_url Domain"/postCode"
 //注册
@@ -22,6 +22,10 @@
 #define Frist_ADLoad_URL Domain"/appAdLoad"
 //首页秒杀加载
 #define Frist_SecKillLoad_URL Domain"/appSeckillLoad"
+//首页商家加载
+#define First_CompanyLoad_URL Domain"/appCompanyLoad"
+//首页换物加载
+#define First_Exchange_URL Domain"/appExchangeLoad"
 
 //获得维修人员列表和报事类型列表
 #define GetRepairUserList_URL Domain"/inspect/app/routine/routineInspectionUserList.do"

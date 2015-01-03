@@ -24,6 +24,10 @@
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:loginVC];
     self.window.rootViewController = nc;
     
+    
+//    NSLog(@"%@",[[TSDateFormatterTool shareInstance] dateFromTimeIntervalString:@"1420022824768"]);
+    
+    
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
     if([fileManager fileExistsAtPath:KaccountDataPath]){

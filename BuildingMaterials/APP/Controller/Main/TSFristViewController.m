@@ -21,6 +21,8 @@
 
 #import <UIImageView+WebCache.h>
 #import "TSSecKillModel.h"
+#import "TSShopModel.h"
+#import "TSExchangeModel.h"
 
 
 static NSString * const goodsRecommendCell = @"goodsRecommendCell";     //商品推荐
@@ -57,17 +59,19 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
 - (void)loadData{
     //广告位
     [TSHttpTool getWithUrl:Frist_ADLoad_URL params:nil withCache:NO success:^(id result) {
-        NSLog(@"Frist_ADLoad_URL:%@",result);
+//        NSLog(@"Frist_ADLoad_URL:%@",result);
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];
-    
+    //秒杀
     [TSHttpTool getWithUrl:Frist_SecKillLoad_URL params:nil withCache:nil success:^(id result) {
-        NSLog(@"Frist_SecKillLoad_URL:%@",result);
+//        NSLog(@"Frist_SecKillLoad_URL:%@",result);
         NSArray *goods_result = result[@"goods_result"];
         for (NSDictionary *oneGoodsResult in goods_result) {
             TSSecKillModel *model = [[TSSecKillModel alloc] init];
             [model setValuesForKeysWithDictionary:oneGoodsResult];
+            model.END_TIME = result[@"result"][@"END_TIME"];
+            model.STATUS = [result[@"STATUS"] intValue];
             [self.viewModel.secKillDataArray addObject:model];
         }
         [self.firstTable reloadData];
@@ -75,7 +79,35 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     } failure:^(NSError *error) {
         NSLog(@"Frist_SecKillLoad_URL:%@",error);
     }];
+    //首页商家加载
+    [TSHttpTool getWithUrl:First_CompanyLoad_URL params:nil withCache:NO success:^(id result) {
+//        NSLog(@"First_CompanyLoad_URL:%@",result);
+        if ([result objectForKey:@"success"]) {
+            for (NSDictionary *oneShopModel in result[@"result"]) {
+                TSShopModel *shopModel = [[TSShopModel alloc] init];
+                [shopModel setValuesForKeysWithDictionary:oneShopModel];
+                [self.viewModel.shopRecommendDataArray addObject:shopModel];
+            }
+            [self.firstTable reloadData];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"商家推荐:%@",error);
+    }];
     
+    //首页换物
+    [TSHttpTool getWithUrl:First_Exchange_URL params:nil withCache:NO success:^(id result) {
+        NSLog(@"First_Exchange_URL:%@",result);
+        if ([result objectForKey:@"success"]) {
+            for (NSDictionary *oneExchangeModel in result[@"result"]) {
+                TSExchangeModel *exchangeModel = [[TSExchangeModel alloc] init];
+                [exchangeModel setValuesForKeysWithDictionary:oneExchangeModel];
+                [self.viewModel.goodsExchangeDataArray addObject:exchangeModel];
+            }
+            [self.firstTable reloadData];
+        }
+    } failure:^(NSError *error) {
+        
+    }];
     
 }
 
@@ -150,6 +182,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
             if (cell == nil) {
                 cell = [[[NSBundle mainBundle] loadNibNamed:@"TSShopReccommendTableViewCell" owner:nil options:nil]lastObject];
             }
+            [(TSShopReccommendTableViewCell *)cell configureCellWithModelArray:self.viewModel.shopRecommendDataArray];
         }
             break;
         case 2:{
@@ -168,6 +201,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
             if (cell == nil) {
                 cell = [[[NSBundle mainBundle] loadNibNamed:@"TSGoodsExchangeTableViewCell" owner:nil options:nil]lastObject];
             }
+            [(TSGoodsExchangeTableViewCell *)cell configureCellWithModelArray:self.viewModel.goodsExchangeDataArray];
 //            [(TSSecondsDealTableViewCell *)cell configureCell];
 
         }

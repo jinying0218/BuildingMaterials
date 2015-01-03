@@ -9,5 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface TSGoodsExchangeTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *firstExchangeGoodsImage;
+@property (weak, nonatomic) IBOutlet UIImageView *secondExchangeGoodsImage;
+@property (weak, nonatomic) IBOutlet UILabel *firstChangeGoodsName;
+@property (weak, nonatomic) IBOutlet UILabel *firstWantGoodsName;
+@property (weak, nonatomic) IBOutlet UILabel *secondChangeGoodsName;
+@property (weak, nonatomic) IBOutlet UILabel *secondWantGoodsName;
+
+
+- (void)configureCellWithModelArray:(NSMutableArray *)models;
 
 @end

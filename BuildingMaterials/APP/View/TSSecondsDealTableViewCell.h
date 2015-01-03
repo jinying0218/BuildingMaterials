@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LPLabel.h"
+#import "MZTimerLabel.h"
 
 @interface TSSecondsDealTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *fristGoodsImage;
@@ -15,9 +17,15 @@
 @property (weak, nonatomic) IBOutlet UILabel *fristGoodsName;
 @property (weak, nonatomic) IBOutlet UILabel *secondGoodsName;
 @property (weak, nonatomic) IBOutlet UILabel *thirdGoodsName;
-@property (weak, nonatomic) IBOutlet UILabel *fristGoodsPrice;
-@property (weak, nonatomic) IBOutlet UILabel *secondGoodsPrice;
-@property (weak, nonatomic) IBOutlet UILabel *thirdGoodsPrice;
+@property (weak, nonatomic) IBOutlet UILabel *fristGoodsNowPrice;
+@property (weak, nonatomic) IBOutlet UILabel *secondGoodsNowPrice;
+@property (weak, nonatomic) IBOutlet UILabel *thirdGoodsNowPrice;
+@property (weak, nonatomic) IBOutlet LPLabel *fristGoodsPrice;
+@property (weak, nonatomic) IBOutlet LPLabel *secondGoodsPrice;
+@property (weak, nonatomic) IBOutlet LPLabel *thirdGoodsPrice;
+@property (weak, nonatomic) IBOutlet UILabel *timerLabel;
+
+@property (strong, nonatomic) MZTimerLabel *mzTimerLabel;
 
 - (void)configureCellWithModelArray:(NSMutableArray *)models;
 @end

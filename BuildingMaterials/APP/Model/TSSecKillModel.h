@@ -13,8 +13,11 @@
 @property (nonatomic, strong) NSString *GOODS_NAME;
 @property (nonatomic, assign) int GOODS_NEW_PRICE;
 @property (nonatomic, assign) int ID;
-@property (nonatomic, assign) int *SECKILL_PRICE;
+@property (nonatomic, assign) int SECKILL_PRICE;
 @property (nonatomic, assign) int SECKILL_NUMBER;
 @property (nonatomic, assign) int SECKILL_NUMBER_NOW;  //秒杀数量
+
+@property (nonatomic, strong) NSString *END_TIME;
+@property (nonatomic, assign) int STATUS;
 
 @end

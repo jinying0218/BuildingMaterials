@@ -101,6 +101,7 @@
 		B05115FC19F9748C00CA6E2E /* my_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = B05115F219F9748C00CA6E2E /* my_icon.png */; };
 		B05115FD19F9748C00CA6E2E /* my_icon_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = B05115F319F9748C00CA6E2E /* my_icon_selected.png */; };
 		B051160119F9785900CA6E2E /* tabbar_bg.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = B051160019F9785900CA6E2E /* tabbar_bg.jpeg */; };
+		B05323771A5406E9004B4430 /* LPLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B05323761A5406E9004B4430 /* LPLabel.m */; };
 		B05B5A021A3FD9EC008E83C9 /* navigaoinbar_shopDetail_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = B05B5A001A3FD9EC008E83C9 /* navigaoinbar_shopDetail_selected.png */; };
 		B05B5A031A3FD9EC008E83C9 /* navigaoinbar_shopDetail.png in Resources */ = {isa = PBXBuildFile; fileRef = B05B5A011A3FD9EC008E83C9 /* navigaoinbar_shopDetail.png */; };
 		B05B5A0D1A3FD9F8008E83C9 /* shop_button_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B05B5A051A3FD9F8008E83C9 /* shop_button_bg.png */; };
@@ -173,7 +174,10 @@
 		B0C686D91A530AEF002053F1 /* TSMineViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0C686D81A530AEF002053F1 /* TSMineViewModel.m */; };
 		B0D2AC0A19F8E4020074D10B /* TSRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D2AC0819F8E4020074D10B /* TSRegisterViewController.m */; };
 		B0D2AC0B19F8E4020074D10B /* TSRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D2AC0919F8E4020074D10B /* TSRegisterViewController.xib */; };
+		B0F63C6D1A5799B300A0C754 /* TSShopModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F63C6C1A5799B300A0C754 /* TSShopModel.m */; };
+		B0F63C711A57C37B00A0C754 /* TSExchangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F63C701A57C37B00A0C754 /* TSExchangeModel.m */; };
 		B0FB4BB21A501B9A002C7ACA /* login_title.png in Resources */ = {isa = PBXBuildFile; fileRef = B0FB4BB11A501B9A002C7ACA /* login_title.png */; };
+		B0FEA9BA1A56465B000860FC /* MZTimerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FEA9B91A56465B000860FC /* MZTimerLabel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -330,6 +334,8 @@
 		B05115F219F9748C00CA6E2E /* my_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = my_icon.png; sourceTree = "<group>"; };
 		B05115F319F9748C00CA6E2E /* my_icon_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = my_icon_selected.png; sourceTree = "<group>"; };
 		B051160019F9785900CA6E2E /* tabbar_bg.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tabbar_bg.jpeg; sourceTree = "<group>"; };
+		B05323751A5406E9004B4430 /* LPLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LPLabel.h; sourceTree = "<group>"; };
+		B05323761A5406E9004B4430 /* LPLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LPLabel.m; sourceTree = "<group>"; };
 		B05B5A001A3FD9EC008E83C9 /* navigaoinbar_shopDetail_selected.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigaoinbar_shopDetail_selected.png; sourceTree = "<group>"; };
 		B05B5A011A3FD9EC008E83C9 /* navigaoinbar_shopDetail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigaoinbar_shopDetail.png; sourceTree = "<group>"; };
 		B05B5A051A3FD9F8008E83C9 /* shop_button_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shop_button_bg.png; sourceTree = "<group>"; };
@@ -418,7 +424,13 @@
 		B0D2AC0719F8E4020074D10B /* TSRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSRegisterViewController.h; sourceTree = "<group>"; };
 		B0D2AC0819F8E4020074D10B /* TSRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSRegisterViewController.m; sourceTree = "<group>"; };
 		B0D2AC0919F8E4020074D10B /* TSRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSRegisterViewController.xib; sourceTree = "<group>"; };
+		B0F63C6B1A5799B300A0C754 /* TSShopModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSShopModel.h; sourceTree = "<group>"; };
+		B0F63C6C1A5799B300A0C754 /* TSShopModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSShopModel.m; sourceTree = "<group>"; };
+		B0F63C6F1A57C37B00A0C754 /* TSExchangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSExchangeModel.h; sourceTree = "<group>"; };
+		B0F63C701A57C37B00A0C754 /* TSExchangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSExchangeModel.m; sourceTree = "<group>"; };
 		B0FB4BB11A501B9A002C7ACA /* login_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_title.png; sourceTree = "<group>"; };
+		B0FEA9B81A56465B000860FC /* MZTimerLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZTimerLabel.h; sourceTree = "<group>"; };
+		B0FEA9B91A56465B000860FC /* MZTimerLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZTimerLabel.m; sourceTree = "<group>"; };
 		CC85AD3F1CAF437A65DAA63C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -630,6 +642,8 @@
 		B018475819F89DCC00938054 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B0F63C6E1A57C35400A0C754 /* 以物换物数据模型 */,
+				B0F63C6A1A57983800A0C754 /* 商家推荐模型 */,
 				B0C686C61A53092B002053F1 /* 秒杀模型 */,
 				B0C686C51A530912002053F1 /* 用户信息 */,
 			);
@@ -657,6 +671,9 @@
 		B018476519F89DCC00938054 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				B0FEA9B71A56465B000860FC /* MZTimerLabel */,
+				B05323751A5406E9004B4430 /* LPLabel.h */,
+				B05323761A5406E9004B4430 /* LPLabel.m */,
 				B018476619F89DCC00938054 /* Categories */,
 			);
 			path = lib;
@@ -1174,6 +1191,33 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
+		B0F63C6A1A57983800A0C754 /* 商家推荐模型 */ = {
+			isa = PBXGroup;
+			children = (
+				B0F63C6B1A5799B300A0C754 /* TSShopModel.h */,
+				B0F63C6C1A5799B300A0C754 /* TSShopModel.m */,
+			);
+			name = "商家推荐模型";
+			sourceTree = "<group>";
+		};
+		B0F63C6E1A57C35400A0C754 /* 以物换物数据模型 */ = {
+			isa = PBXGroup;
+			children = (
+				B0F63C6F1A57C37B00A0C754 /* TSExchangeModel.h */,
+				B0F63C701A57C37B00A0C754 /* TSExchangeModel.m */,
+			);
+			name = "以物换物数据模型";
+			sourceTree = "<group>";
+		};
+		B0FEA9B71A56465B000860FC /* MZTimerLabel */ = {
+			isa = PBXGroup;
+			children = (
+				B0FEA9B81A56465B000860FC /* MZTimerLabel.h */,
+				B0FEA9B91A56465B000860FC /* MZTimerLabel.m */,
+			);
+			path = MZTimerLabel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1417,6 +1461,7 @@
 				B0C686CD1A530995002053F1 /* TSFristViewModel.m in Sources */,
 				B01847E219F89DCC00938054 /* NSString+BSJSONAdditions.m in Sources */,
 				B0C686D91A530AEF002053F1 /* TSMineViewModel.m in Sources */,
+				B0F63C6D1A5799B300A0C754 /* TSShopModel.m in Sources */,
 				B00ED6C61A4193FC001D6737 /* TSShopDetailCollectionViewCell.m in Sources */,
 				B01847E619F89DCC00938054 /* UIImage+Alpha.m in Sources */,
 				B018482519F89DCC00938054 /* TSDateFormatterTool.m in Sources */,
@@ -1433,9 +1478,11 @@
 				B01847E419F89DCC00938054 /* NSString+Helper.m in Sources */,
 				B015C32F1A0F18AE0060FBE2 /* TSGoodsExchangeDetailTableViewCell.m in Sources */,
 				B018473319F898BF00938054 /* TSAppDelegate.m in Sources */,
+				B05323771A5406E9004B4430 /* LPLabel.m in Sources */,
 				B05115DF19F96A8100CA6E2E /* TSInviteViewController.m in Sources */,
 				B018482619F89DCC00938054 /* TSHttpTool.m in Sources */,
 				B00ED6BC1A415FFF001D6737 /* TSShopDetailViewController.m in Sources */,
+				B0F63C711A57C37B00A0C754 /* TSExchangeModel.m in Sources */,
 				B08702CF1A2ACAA0008C8088 /* TSSecondDealDetailViewController.m in Sources */,
 				B01847DA19F89DCC00938054 /* TSBaseView.m in Sources */,
 				B015C3291A0F16F10060FBE2 /* TSGoodsExchangeViewController.m in Sources */,
@@ -1460,6 +1507,7 @@
 				B015C3191A0F0CE70060FBE2 /* TSShopRecommedViewController.m in Sources */,
 				B0C686D31A530AD1002053F1 /* TSForumViewModel.m in Sources */,
 				B05115E819F96DD400CA6E2E /* TSMainTabBarViewController.m in Sources */,
+				B0FEA9BA1A56465B000860FC /* MZTimerLabel.m in Sources */,
 				B05B62E619FE88BC008F76E0 /* TSSecondsDealTableViewCell.m in Sources */,
 				B01847E119F89DCC00938054 /* NSScanner+BSJSONAdditions.m in Sources */,
 				B01847DB19F89DCC00938054 /* TSRootView.m in Sources */,
