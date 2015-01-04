@@ -22,6 +22,7 @@
 #import <UIImageView+WebCache.h>
 #import "TSSecKillModel.h"
 #import "TSShopModel.h"
+#import "TSGoodsRecommandModel.h"
 #import "TSExchangeModel.h"
 
 
@@ -65,7 +66,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     }];
     //秒杀
     [TSHttpTool getWithUrl:Frist_SecKillLoad_URL params:nil withCache:nil success:^(id result) {
-//        NSLog(@"Frist_SecKillLoad_URL:%@",result);
+        NSLog(@"Frist_SecKillLoad_URL:%@",result);
         NSArray *goods_result = result[@"goods_result"];
         for (NSDictionary *oneGoodsResult in goods_result) {
             TSSecKillModel *model = [[TSSecKillModel alloc] init];
@@ -94,9 +95,39 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
         NSLog(@"商家推荐:%@",error);
     }];
     
+    //首页商品推荐
+    [TSHttpTool getWithUrl:First_GoodsLoad_URL params:nil withCache:NO success:^(id result) {
+        NSLog(@"商品推荐：%@",result);
+        if ([result objectForKey:@"success"]) {
+            for (NSDictionary *oneGoodsModel in result[@"result"]) {
+                TSGoodsRecommandModel *goodsModel = [[TSGoodsRecommandModel alloc] init];
+                goodsModel.GOODS_CLASSIFY_ID = [oneGoodsModel[@"GOODS_CLASSIFY_ID"] intValue];
+                goodsModel.GOODS_COMPANY_ID = [oneGoodsModel[@"GOODS_COMPANY_ID"] intValue];
+                goodsModel.GOODS_DES = oneGoodsModel[@"GOODS_DES"];
+                goodsModel.GOODS_DES_SIMPLE = oneGoodsModel[@"GOODS_DES_SIMPLE"];
+                goodsModel.GOODS_HEAD_IMAGE = oneGoodsModel[@"GOODS_HEAD_IMAGE"];
+                goodsModel.GOODS_NAME = oneGoodsModel[@"GOODS_NAME"];
+                goodsModel.GOODS_NEW_PRICE = [oneGoodsModel[@"GOODS_NEW_PRICE"] intValue];
+//                goodsModel.GOODS_OLD_PRICE = oneGoodsModel[@"GOODS_OLD_PRICE"] ? [oneGoodsModel[@"GOODS_OLD_PRICE"] intValue] : @"";
+                goodsModel.GOODS_SELL_NUMBER = [oneGoodsModel[@"GOODS_SELL_NUMBER"] intValue];
+                goodsModel.GOODS_WEIGHT = [oneGoodsModel[@"GOODS_WEIGHT"] intValue];
+                goodsModel.I_D = [oneGoodsModel[@"I_D"] intValue];
+                goodsModel.IS_RECOMMEND = [oneGoodsModel[@"IS_RECOMMEND"] intValue];
+                goodsModel.IS_USED = [oneGoodsModel[@"IS_USED"] intValue];
+                goodsModel.N_O = [oneGoodsModel[@"N_O"] intValue];
+                goodsModel.RECOMMEND_TIME = oneGoodsModel[@"RECOMMEND_TIME"];
+
+                [self.viewModel.goodsRecommendDataArray addObject:goodsModel];
+            }
+            [self.firstTable reloadData];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"商品推荐:%@",error);
+    }];
+    
     //首页换物
     [TSHttpTool getWithUrl:First_Exchange_URL params:nil withCache:NO success:^(id result) {
-        NSLog(@"First_Exchange_URL:%@",result);
+//        NSLog(@"First_Exchange_URL:%@",result);
         if ([result objectForKey:@"success"]) {
             for (NSDictionary *oneExchangeModel in result[@"result"]) {
                 TSExchangeModel *exchangeModel = [[TSExchangeModel alloc] init];
@@ -106,7 +137,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
             [self.firstTable reloadData];
         }
     } failure:^(NSError *error) {
-        
+        NSLog(@"以物换物：%@",error);
     }];
     
 }
@@ -191,7 +222,8 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
             if (cell == nil) {
                 cell = [[[NSBundle mainBundle] loadNibNamed:@"TSGoodsRecommendTableViewCell" owner:nil options:nil]lastObject];
             }
-//            [(TSSecondsDealTableViewCell *)cell configureCell];
+            
+            [(TSGoodsRecommendTableViewCell *)cell configureCellWithModelArray:self.viewModel.goodsRecommendDataArray];
 
         }
             break;

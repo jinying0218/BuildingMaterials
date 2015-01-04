@@ -7,7 +7,9 @@
 //
 
 #import "TSBaseViewController.h"
+#import "TSInviteViewModel.h"
 
 @interface TSInviteViewController : TSBaseViewController
+@property (nonatomic, strong) TSInviteViewModel *viewModel;
 
 @end
