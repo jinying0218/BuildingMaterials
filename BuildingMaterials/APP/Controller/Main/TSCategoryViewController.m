@@ -7,6 +7,11 @@
 //
 
 #import "TSCategoryViewController.h"
+#import <UIImageView+WebCache.h>
+#import "TSCategoryCell.h"
+#import "TSCategoryModel.h"
+
+static NSString * const categoryCellIdentifier = @"categoryCell";     
 
 @interface TSCategoryViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *categrayTable;
@@ -31,6 +36,20 @@
 - (void)initializData{
     self.dataSourceArray = [[NSMutableArray alloc] initWithObjects:@"地板",@"瓷砖",@"整体厨房",@"洁具/卫浴", nil];
     self.detailArray = [[NSMutableArray alloc] initWithObjects:@"百博地板、百博地板、百博地板",@"王者、王者、王者",@"欧派橱柜、欧派橱柜",@"朝阳卫浴、朝阳卫浴、朝阳卫浴", nil];
+    
+    [TSHttpTool getWithUrl:Category_URL params:nil withCache:NO success:^(id result) {
+        NSLog(@"分类:%@",result);
+        if (result[@"success"]) {
+            for (NSDictionary *oneResult in result[@"result"]) {
+                TSCategoryModel *model = [[TSCategoryModel alloc] init];
+                [model setValueForDictionary:oneResult];
+                [self.viewModel.dataArray addObject:model];
+            }
+            [self.categrayTable reloadData];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"分类:%@",error);
+    }];
 
 }
 #pragma mark - set UI
@@ -80,18 +99,16 @@
 
 #pragma mark - tableView delegate & dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.dataSourceArray.count;
+    return self.viewModel.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    TSCategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:categoryCellIdentifier];
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"cell"];
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"TSCategoryCell" owner:nil options:nil]lastObject];
     }
-    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    cell.imageView.image = [UIImage imageNamedString:@"分类2111111111_19"];
-    cell.textLabel.text = self.dataSourceArray[indexPath.row];
-    cell.detailTextLabel.text = self.detailArray[indexPath.row];
+    TSCategoryModel *model = self.viewModel.dataArray[indexPath.row];
+    [cell configureCellWithModel:model];
     return cell;
 }
 
