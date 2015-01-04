@@ -33,6 +33,8 @@
 #define Category_URL Domain"/goodsClassifyLoad"
 //招聘
 #define Invite_URL Domain"/postLoad"
+//招聘类别
+#define Invite_Category_URL Domain "/postClassifyLoad"
 
 
 //获得维修人员列表和报事类型列表

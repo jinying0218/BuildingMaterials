@@ -10,5 +10,6 @@
 
 @interface TSInviteViewModel : NSObject
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *categoryDataArray;
 
 @end

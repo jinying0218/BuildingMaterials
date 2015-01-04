@@ -22,6 +22,10 @@
     // Configure the view for the selected state
 }
 - (void)configureCellWithModel:(TSInviteModel *)model{
+    
+    self.contentView.backgroundColor = [UIColor colorWithHexString:@"f1f2f6"];
+    self.selectionStyle = UITableViewCellSelectionStyleBlue;
+    
     self.inviteName.text = model.POST_NAME;
     self.inviteDes.text = model.POST_DES;
     self.invitePrice.text = [NSString stringWithFormat:@"%d/月",model.POST_PRICE];

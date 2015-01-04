@@ -181,6 +181,15 @@
 		B0F476F21A59087A005C851D /* TSInviteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F476F01A59087A005C851D /* TSInviteCell.m */; };
 		B0F476F31A59087A005C851D /* TSInviteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F476F11A59087A005C851D /* TSInviteCell.xib */; };
 		B0F476F71A590C4C005C851D /* TSInviteModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F476F61A590C4C005C851D /* TSInviteModel.m */; };
+		B0F477091A59231E005C851D /* MJRefresh.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B0F476F91A59231E005C851D /* MJRefresh.bundle */; };
+		B0F4770A1A59231E005C851D /* MJRefreshBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F476FC1A59231E005C851D /* MJRefreshBaseView.m */; };
+		B0F4770B1A59231E005C851D /* MJRefreshConst.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F476FE1A59231E005C851D /* MJRefreshConst.m */; };
+		B0F4770C1A59231E005C851D /* MJRefreshFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F477001A59231E005C851D /* MJRefreshFooterView.m */; };
+		B0F4770D1A59231E005C851D /* MJRefreshHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F477021A59231E005C851D /* MJRefreshHeaderView.m */; };
+		B0F4770E1A59231E005C851D /* UIScrollView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F477041A59231E005C851D /* UIScrollView+MJExtension.m */; };
+		B0F4770F1A59231E005C851D /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F477061A59231E005C851D /* UIScrollView+MJRefresh.m */; };
+		B0F477101A59231E005C851D /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F477081A59231E005C851D /* UIView+MJExtension.m */; };
+		B0F477141A59367E005C851D /* TSInviteCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F477131A59367E005C851D /* TSInviteCategoryModel.m */; };
 		B0F63C6D1A5799B300A0C754 /* TSShopModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F63C6C1A5799B300A0C754 /* TSShopModel.m */; };
 		B0F63C711A57C37B00A0C754 /* TSExchangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F63C701A57C37B00A0C754 /* TSExchangeModel.m */; };
 		B0FB4BB21A501B9A002C7ACA /* login_title.png in Resources */ = {isa = PBXBuildFile; fileRef = B0FB4BB11A501B9A002C7ACA /* login_title.png */; };
@@ -443,6 +452,24 @@
 		B0F476F11A59087A005C851D /* TSInviteCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSInviteCell.xib; sourceTree = "<group>"; };
 		B0F476F51A590C4C005C851D /* TSInviteModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSInviteModel.h; sourceTree = "<group>"; };
 		B0F476F61A590C4C005C851D /* TSInviteModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSInviteModel.m; sourceTree = "<group>"; };
+		B0F476F91A59231E005C851D /* MJRefresh.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MJRefresh.bundle; sourceTree = "<group>"; };
+		B0F476FA1A59231E005C851D /* MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefresh.h; sourceTree = "<group>"; };
+		B0F476FB1A59231E005C851D /* MJRefreshBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshBaseView.h; sourceTree = "<group>"; };
+		B0F476FC1A59231E005C851D /* MJRefreshBaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshBaseView.m; sourceTree = "<group>"; };
+		B0F476FD1A59231E005C851D /* MJRefreshConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshConst.h; sourceTree = "<group>"; };
+		B0F476FE1A59231E005C851D /* MJRefreshConst.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshConst.m; sourceTree = "<group>"; };
+		B0F476FF1A59231E005C851D /* MJRefreshFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshFooterView.h; sourceTree = "<group>"; };
+		B0F477001A59231E005C851D /* MJRefreshFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshFooterView.m; sourceTree = "<group>"; };
+		B0F477011A59231E005C851D /* MJRefreshHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MJRefreshHeaderView.h; sourceTree = "<group>"; };
+		B0F477021A59231E005C851D /* MJRefreshHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MJRefreshHeaderView.m; sourceTree = "<group>"; };
+		B0F477031A59231E005C851D /* UIScrollView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJExtension.h"; sourceTree = "<group>"; };
+		B0F477041A59231E005C851D /* UIScrollView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJExtension.m"; sourceTree = "<group>"; };
+		B0F477051A59231E005C851D /* UIScrollView+MJRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+MJRefresh.h"; sourceTree = "<group>"; };
+		B0F477061A59231E005C851D /* UIScrollView+MJRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+MJRefresh.m"; sourceTree = "<group>"; };
+		B0F477071A59231E005C851D /* UIView+MJExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MJExtension.h"; sourceTree = "<group>"; };
+		B0F477081A59231E005C851D /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
+		B0F477121A59367E005C851D /* TSInviteCategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSInviteCategoryModel.h; sourceTree = "<group>"; };
+		B0F477131A59367E005C851D /* TSInviteCategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSInviteCategoryModel.m; sourceTree = "<group>"; };
 		B0F63C6B1A5799B300A0C754 /* TSShopModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSShopModel.h; sourceTree = "<group>"; };
 		B0F63C6C1A5799B300A0C754 /* TSShopModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSShopModel.m; sourceTree = "<group>"; };
 		B0F63C6F1A57C37B00A0C754 /* TSExchangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSExchangeModel.h; sourceTree = "<group>"; };
@@ -695,6 +722,7 @@
 		B018476519F89DCC00938054 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				B0F476F81A59231E005C851D /* MJRefresh */,
 				B0FEA9B71A56465B000860FC /* MZTimerLabel */,
 				B05323751A5406E9004B4430 /* LPLabel.h */,
 				B05323761A5406E9004B4430 /* LPLabel.m */,
@@ -1258,8 +1286,41 @@
 			children = (
 				B0F476F51A590C4C005C851D /* TSInviteModel.h */,
 				B0F476F61A590C4C005C851D /* TSInviteModel.m */,
+				B0F477111A593668005C851D /* 招聘类别 */,
 			);
 			name = "招聘";
+			sourceTree = "<group>";
+		};
+		B0F476F81A59231E005C851D /* MJRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				B0F476F91A59231E005C851D /* MJRefresh.bundle */,
+				B0F476FA1A59231E005C851D /* MJRefresh.h */,
+				B0F476FB1A59231E005C851D /* MJRefreshBaseView.h */,
+				B0F476FC1A59231E005C851D /* MJRefreshBaseView.m */,
+				B0F476FD1A59231E005C851D /* MJRefreshConst.h */,
+				B0F476FE1A59231E005C851D /* MJRefreshConst.m */,
+				B0F476FF1A59231E005C851D /* MJRefreshFooterView.h */,
+				B0F477001A59231E005C851D /* MJRefreshFooterView.m */,
+				B0F477011A59231E005C851D /* MJRefreshHeaderView.h */,
+				B0F477021A59231E005C851D /* MJRefreshHeaderView.m */,
+				B0F477031A59231E005C851D /* UIScrollView+MJExtension.h */,
+				B0F477041A59231E005C851D /* UIScrollView+MJExtension.m */,
+				B0F477051A59231E005C851D /* UIScrollView+MJRefresh.h */,
+				B0F477061A59231E005C851D /* UIScrollView+MJRefresh.m */,
+				B0F477071A59231E005C851D /* UIView+MJExtension.h */,
+				B0F477081A59231E005C851D /* UIView+MJExtension.m */,
+			);
+			path = MJRefresh;
+			sourceTree = "<group>";
+		};
+		B0F477111A593668005C851D /* 招聘类别 */ = {
+			isa = PBXGroup;
+			children = (
+				B0F477121A59367E005C851D /* TSInviteCategoryModel.h */,
+				B0F477131A59367E005C851D /* TSInviteCategoryModel.m */,
+			);
+			name = "招聘类别";
 			sourceTree = "<group>";
 		};
 		B0F63C6A1A57983800A0C754 /* 商家推荐模型 */ = {
@@ -1416,6 +1477,7 @@
 				B00ED6C71A4193FC001D6737 /* TSShopDetailCollectionViewCell.xib in Resources */,
 				B05B62F119FE88F3008F76E0 /* TSGoodsRecommendTableViewCell.xib in Resources */,
 				B00BB8861A0E8D8A00B94208 /* purchase_progressOver.png in Resources */,
+				B0F477091A59231E005C851D /* MJRefresh.bundle in Resources */,
 				B05115F619F9748C00CA6E2E /* first_icon.png in Resources */,
 				B05B62E719FE88BC008F76E0 /* TSSecondsDealTableViewCell.xib in Resources */,
 				B05115F819F9748C00CA6E2E /* forum_icon.png in Resources */,
@@ -1528,16 +1590,19 @@
 				B05115E419F96A9500CA6E2E /* TSMineViewController.m in Sources */,
 				B01847DD19F89DCC00938054 /* TSTextField.m in Sources */,
 				B01847DF19F89DCC00938054 /* NSArray+BSJSONAdditions.m in Sources */,
+				B0F4770B1A59231E005C851D /* MJRefreshConst.m in Sources */,
 				B015C3241A0F10D60060FBE2 /* TSGoodsRecommadDetailTableViewCell.m in Sources */,
 				B00ED6C11A416694001D6737 /* TSShopDetailViewModel.m in Sources */,
 				B01847E319F89DCC00938054 /* NSFileManager+PathSize.m in Sources */,
 				B0C686CD1A530995002053F1 /* TSFristViewModel.m in Sources */,
+				B0F4770C1A59231E005C851D /* MJRefreshFooterView.m in Sources */,
 				B01847E219F89DCC00938054 /* NSString+BSJSONAdditions.m in Sources */,
 				B0C686D91A530AEF002053F1 /* TSMineViewModel.m in Sources */,
 				B0F63C6D1A5799B300A0C754 /* TSShopModel.m in Sources */,
 				B00ED6C61A4193FC001D6737 /* TSShopDetailCollectionViewCell.m in Sources */,
 				B01847E619F89DCC00938054 /* UIImage+Alpha.m in Sources */,
 				B018482519F89DCC00938054 /* TSDateFormatterTool.m in Sources */,
+				B0F4770D1A59231E005C851D /* MJRefreshHeaderView.m in Sources */,
 				B0D2AC0A19F8E4020074D10B /* TSRegisterViewController.m in Sources */,
 				B015C31F1A0F0EF70060FBE2 /* TSGoodsRecommendViewController.m in Sources */,
 				B07700D81A58DCAB001E3623 /* TSCategoryCell.m in Sources */,
@@ -1558,6 +1623,8 @@
 				B0F1F2501A583994006DFA93 /* TSGoodsRecommandModel.m in Sources */,
 				B00ED6BC1A415FFF001D6737 /* TSShopDetailViewController.m in Sources */,
 				B0F63C711A57C37B00A0C754 /* TSExchangeModel.m in Sources */,
+				B0F477141A59367E005C851D /* TSInviteCategoryModel.m in Sources */,
+				B0F477101A59231E005C851D /* UIView+MJExtension.m in Sources */,
 				B08702CF1A2ACAA0008C8088 /* TSSecondDealDetailViewController.m in Sources */,
 				B07700D31A58D137001E3623 /* TSCategoryModel.m in Sources */,
 				B01847DA19F89DCC00938054 /* TSBaseView.m in Sources */,
@@ -1585,8 +1652,11 @@
 				B015C3191A0F0CE70060FBE2 /* TSShopRecommedViewController.m in Sources */,
 				B0C686D31A530AD1002053F1 /* TSForumViewModel.m in Sources */,
 				B05115E819F96DD400CA6E2E /* TSMainTabBarViewController.m in Sources */,
+				B0F4770A1A59231E005C851D /* MJRefreshBaseView.m in Sources */,
 				B0FEA9BA1A56465B000860FC /* MZTimerLabel.m in Sources */,
 				B05B62E619FE88BC008F76E0 /* TSSecondsDealTableViewCell.m in Sources */,
+				B0F4770E1A59231E005C851D /* UIScrollView+MJExtension.m in Sources */,
+				B0F4770F1A59231E005C851D /* UIScrollView+MJRefresh.m in Sources */,
 				B01847E119F89DCC00938054 /* NSScanner+BSJSONAdditions.m in Sources */,
 				B01847DB19F89DCC00938054 /* TSRootView.m in Sources */,
 				B01847E919F89DCC00938054 /* UILabel+TSLabelEX.m in Sources */,
