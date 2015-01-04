@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="goodsRecommendCell" rowHeight="230" id="VlH-1S-dIO" customClass="TSSecondsDealTableViewCell">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="goodsRecommendCell" rowHeight="230" id="VlH-1S-dIO" customClass="TSGoodsRecommendTableViewCell">
             <rect key="frame" x="0.0" y="0.0" width="321" height="230"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VlH-1S-dIO" id="h0O-zZ-Odn">
@@ -79,7 +79,15 @@
                 </subviews>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="593.5" y="477"/>
+            <connections>
+                <outlet property="firstGoodsImage" destination="fHk-0U-eoz" id="GGm-k4-wkX"/>
+                <outlet property="firstGoodsName" destination="hBu-BH-Vvd" id="Cey-Mq-dxw"/>
+                <outlet property="firstGoodsPrice" destination="9FJ-W0-Pdr" id="hgc-A1-YaV"/>
+                <outlet property="secondGoddsName" destination="iyr-Pm-WNE" id="HEX-qW-lSa"/>
+                <outlet property="secondGoodsImage" destination="fAp-WI-zhL" id="bCY-O5-2iS"/>
+                <outlet property="secondGoodsPrice" destination="oss-k9-yMr" id="rYx-NB-g41"/>
+            </connections>
+            <point key="canvasLocation" x="494.5" y="262"/>
         </tableViewCell>
     </objects>
     <resources>

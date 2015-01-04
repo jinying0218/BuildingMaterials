@@ -24,8 +24,18 @@
 #define Frist_SecKillLoad_URL Domain"/appSeckillLoad"
 //首页商家加载
 #define First_CompanyLoad_URL Domain"/appCompanyLoad"
+//首页商品加载
+#define First_GoodsLoad_URL Domain"/appGoodsLoad"
 //首页换物加载
 #define First_Exchange_URL Domain"/appExchangeLoad"
+
+//分类
+#define Category_URL Domain"/goodsClassifyLoad"
+//招聘
+#define Invite_URL Domain"/postLoad"
+//招聘类别
+#define Invite_Category_URL Domain "/postClassifyLoad"
+
 
 //获得维修人员列表和报事类型列表
 #define GetRepairUserList_URL Domain"/inspect/app/routine/routineInspectionUserList.do"

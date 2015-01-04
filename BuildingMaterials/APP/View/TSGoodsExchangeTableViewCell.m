@@ -31,11 +31,6 @@
                 [self.firstExchangeGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.THINGS_HEAD_IMAGE]];
                 self.firstChangeGoodsName.text = model.THINGS_NAME;
                 self.firstWantGoodsName.text = model.THINGS_WANTS;
-                //                self.fristGoodsNowPrice.text = [NSString stringWithFormat:@"%d",model.SECKILL_PRICE];
-                //                self.fristGoodsPrice.text = [NSString stringWithFormat:@"%d",model.GOODS_NEW_PRICE];
-                //                self.fristGoodsPrice.strikeThroughEnabled = YES;
-                
-                
             }
                 break;
                 
@@ -43,8 +38,6 @@
                 [self.secondExchangeGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.THINGS_HEAD_IMAGE]];
                 self.secondChangeGoodsName.text = model.THINGS_NAME;
                 self.secondWantGoodsName.text = model.THINGS_WANTS;
-                //                self.secondGoodsPrice.text = [NSString stringWithFormat:@"%d",model.GOODS_NEW_PRICE];
-                //                self.secondGoodsPrice.strikeThroughEnabled = YES;
                 
             }
                 break;

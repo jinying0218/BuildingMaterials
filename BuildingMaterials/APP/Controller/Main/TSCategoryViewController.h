@@ -7,7 +7,9 @@
 //
 
 #import "TSBaseViewController.h"
+#import "TSCategoryViewModel.h"
 
 @interface TSCategoryViewController : TSBaseViewController
+@property (nonatomic, strong) TSCategoryViewModel *viewModel;
 
 @end

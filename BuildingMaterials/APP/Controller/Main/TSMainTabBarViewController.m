@@ -37,6 +37,8 @@
 
 -(void)createTabbarController
 {
+    self.tabBar.barTintColor = [UIColor colorWithHexString:@"1ca6df"];
+    self.tabBar.tintColor = [UIColor whiteColor];
     //获得Data.plist文件全路径
     NSString *path = [[NSBundle mainBundle] pathForResource:@"TabBarControllers.plist" ofType:nil];
     NSArray *array = [[NSArray alloc] initWithContentsOfFile:path];
