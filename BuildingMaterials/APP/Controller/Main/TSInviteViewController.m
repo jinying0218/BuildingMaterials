@@ -13,6 +13,8 @@
 #import "TSInviteCategoryModel.h"
 #import "TSInviteCategoryCell.h"
 
+#import "TSInviteDetailViewController.h"
+#import "TSInviteDetailViewModel.h"
 
 static NSString * const inviteCellIdentifier = @"inviteCell";
 static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
@@ -29,6 +31,7 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
 @property (nonatomic, strong) UIButton *naviRightBtn;
 @property (nonatomic, strong) UIView *coverTop;
 @property (nonatomic, strong) UIView *coverBottom;
+@property (nonatomic, strong) UIImageView *selectView;
 
 @end
 
@@ -122,9 +125,13 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
     self.categoryButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.categoryButton setTitle:@"类别" forState:UIControlStateNormal];
     [self.categoryButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    [self.categoryButton setImage:[UIImage imageNamedString:@"select_icon"] forState:UIControlStateNormal];
     self.categoryButton.frame = CGRectMake( 0, 0, KscreenW, 34);
     [headerView addSubview:self.categoryButton];
     
+    self.selectView = [[UIImageView alloc] initWithImage:[UIImage imageNamedString:@"select_icon"]];
+    self.selectView.frame = CGRectMake( headerView.frame.size.width - 30, headerView.frame.size.height/2 - 5, 12, 8);
+    [headerView addSubview:self.selectView];
     
     self.inviteTableView = [[UITableView alloc] initWithFrame:CGRectMake( 0, 79, KscreenW, KscreenH - 49 - 84) style:UITableViewStylePlain];
     self.inviteTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -283,7 +290,11 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
         } failure:^(NSError *error) {
             NSLog(@"分类:%@",error);
         }];
-
+    }else if (tableView.tag == inviteTableViewTag){
+        TSInviteDetailViewModel *viewModel = [[TSInviteDetailViewModel alloc] init];
+        TSInviteDetailViewController *inviteDetailVC = [[TSInviteDetailViewController alloc] init];
+        inviteDetailVC.viewModel = viewModel;
+        [self.navigationController pushViewController:inviteDetailVC animated:YES];
     }
 }
 @end

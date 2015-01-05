@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class TSGoodsRecommandModel;
+
 @interface TSGoodsRecommadDetailTableViewCell : UITableViewCell
-- (void)configureCellWithModel:(id)model indexPath:(NSIndexPath *)indexPath;
+
+@property (weak, nonatomic) IBOutlet UIImageView *goodsImage;
+@property (weak, nonatomic) IBOutlet UILabel *goodsName;
+@property (weak, nonatomic) IBOutlet UILabel *goodsDes;
+@property (weak, nonatomic) IBOutlet UILabel *goodsPrice;
+@property (weak, nonatomic) IBOutlet UILabel *goodsSellNumber;
+
+
+- (void)configureCellWithModel:(TSGoodsRecommandModel *)model indexPath:(NSIndexPath *)indexPath;
 @end

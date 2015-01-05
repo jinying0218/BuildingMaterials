@@ -8,7 +8,7 @@
 
 #import "TSGoodsExchangeDetailTableViewCell.h"
 #import <UIImageView+WebCache.h>
-#import "TSExchangeModel.h"
+#import "TSExchangeListModel.h"
 
 @implementation TSGoodsExchangeDetailTableViewCell
 
@@ -21,12 +21,13 @@
 
     // Configure the view for the selected state
 }
-- (void)configureCellWithModel:(TSExchangeModel *)model indexPath:(NSIndexPath *)indexPath{
-    [self.goodsImage sd_setImageWithURL:[NSURL URLWithString:model.THINGS_HEAD_IMAGE]];
+- (void)configureCellWithModel:(TSExchangeListModel *)model indexPath:(NSIndexPath *)indexPath{
+    if (![model.THINGS_HEAD_IMAGE isEqual:[NSNull null]]) {
+        [self.goodsImage sd_setImageWithURL:[NSURL URLWithString:model.THINGS_HEAD_IMAGE]];
+    }
     self.goodsName.text = model.THINGS_NAME;
     self.goodsDes.text = model.THINGS_DES;
     self.wantsGoodsName.text = model.THINGS_WANTS;
-    self.wantsNumber.text = [NSString stringWithFormat:@"%@人已申请",model.N_O];
 }
 
 @end

@@ -9,7 +9,8 @@
 #import "TSGoodsExchangeViewController.h"
 #import "TSGoodsExchangeDetailTableViewCell.h"
 #import <UIImageView+WebCache.h>
-
+#import "TSExchangeListModel.h"
+#import "MJRefresh.h"
 #import "TSExchangeModel.h"
 
 static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailTableViewCell";
@@ -17,6 +18,7 @@ static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailT
 @interface TSGoodsExchangeViewController ()<UITableViewDelegate>
 @property (nonatomic, strong) TSArrayDataSource *dataSource;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, assign) int page;
 @end
 
 @implementation TSGoodsExchangeViewController
@@ -24,6 +26,8 @@ static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailT
 #pragma mark - controller methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.page = 1;
     [self initializeData];
     [self setupUI];
     
@@ -32,13 +36,15 @@ static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailT
     [super didReceiveMemoryWarning];
 }
 - (void)initializeData{
-    //首页换物
-    [TSHttpTool getWithUrl:First_Exchange_URL params:nil withCache:NO success:^(id result) {
-        //        NSLog(@"First_Exchange_URL:%@",result);
+    
+    NSDictionary *params = @{@"page":[NSString stringWithFormat:@"%d",self.page]};
+    
+    [TSHttpTool getWithUrl:Exchange_URL params:params withCache:NO success:^(id result) {
+        NSLog(@"Exchange_URL:%@",result);
         if ([result objectForKey:@"success"]) {
-            for (NSDictionary *oneExchangeModel in result[@"result"]) {
-                TSExchangeModel *exchangeModel = [[TSExchangeModel alloc] init];
-                [exchangeModel setValuesForKeysWithDictionary:oneExchangeModel];
+            for (NSDictionary *oneExchangeDict in result[@"result"]) {
+                TSExchangeListModel *exchangeModel = [[TSExchangeListModel alloc] init];
+                [exchangeModel setValueForDictionary:oneExchangeDict];
                 [self.viewModel.dataArray addObject:exchangeModel];
             }
             [self.tableView reloadData];
@@ -60,7 +66,7 @@ static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailT
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"F0F0F0"];
-    CellConfigureBlock configureBlock = ^(TSGoodsExchangeDetailTableViewCell *cell,TSExchangeModel *model,NSIndexPath *indexPath){
+    CellConfigureBlock configureBlock = ^(TSGoodsExchangeDetailTableViewCell *cell,TSExchangeListModel *model,NSIndexPath *indexPath){
         [cell configureCellWithModel:model indexPath:indexPath];
     };
     
@@ -69,6 +75,34 @@ static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailT
     self.tableView.dataSource = self.dataSource;
     self.tableView.delegate = self;
     [self.rootView addSubview:self.tableView];
+    
+    //集成上拉加载更多
+    [self.tableView addFooterWithTarget:self action:@selector(footerRereshing)];
+    self.tableView.footerPullToRefreshText = @"上拉加载更多";
+    self.tableView.footerReleaseToRefreshText = @"松开马上加载更多数据";
+    self.tableView.footerRefreshingText = @"加载中……";
+
+}
+#pragma mark - 上拉加载更多
+- (void)footerRereshing{
+    self.page += 1;
+    NSDictionary *params = @{@"page":[NSString stringWithFormat:@"%d",self.page],
+                             @"goodsOrderType":@"1"};
+
+    [TSHttpTool getWithUrl:Exchange_URL params:params withCache:NO success:^(id result) {
+        NSLog(@"Exchange_URL:%@",result);
+        if ([result objectForKey:@"success"]) {
+            for (NSDictionary *oneExchangeDict in result[@"result"]) {
+                TSExchangeListModel *exchangeModel = [[TSExchangeListModel alloc] init];
+                [exchangeModel setValueForDictionary:oneExchangeDict];
+                [self.viewModel.dataArray addObject:exchangeModel];
+            }
+            [self.tableView reloadData];
+            [self.tableView footerEndRefreshing];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"以物换物：%@",error);
+    }];
     
 }
 

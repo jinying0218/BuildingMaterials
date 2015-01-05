@@ -8,13 +8,15 @@
 
 #import "TSGoodsRecommendViewController.h"
 #import "TSGoodsRecommadDetailTableViewCell.h"
+#import "TSGoodsRecommandModel.h"
+#import "MJRefresh.h"
 
 static NSString *const GoodsRecommadDetailTableViewCell = @"GoodsRecommadDetailTableViewCell";
 
 @interface TSGoodsRecommendViewController ()<UITableViewDelegate>
 @property (nonatomic, strong) TSArrayDataSource *dataSource;
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *tableDataArray;
+@property (nonatomic, assign) int page;
 
 @end
 
@@ -23,6 +25,7 @@ static NSString *const GoodsRecommadDetailTableViewCell = @"GoodsRecommadDetailT
 #pragma mark - controller methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.page = 1;
     [self initializeData];
     [self setupUI];
     
@@ -31,7 +34,32 @@ static NSString *const GoodsRecommadDetailTableViewCell = @"GoodsRecommadDetailT
     [super didReceiveMemoryWarning];
 }
 - (void)initializeData{
-    self.tableDataArray = [[NSMutableArray alloc] initWithObjects:@"莫非瓷砖商家",@"莫非瓷砖商家",@"莫非瓷砖商家",@"莫非瓷砖",@"莫非瓷砖商家",@"莫非瓷砖商家", nil];
+ ///////////
+/*
+
+    page  页数
+    goodsSearchName  搜索名称
+    goodsClassifyId  商品分类
+    goodsOrderType  商品排列方式 1为默认  2为安人气  3为按价格
+*/
+    
+    NSDictionary *params = @{@"page":[NSString stringWithFormat:@"%d",self.page],
+                             @"goodsOrderType":@"1"};
+    
+    [TSHttpTool getWithUrl:GoodsLoad_URL params:params withCache:NO success:^(id result) {
+//        NSLog(@"GoodsLoad_URL:%@",result);
+        if ([result objectForKey:@"success"]) {
+            for (NSDictionary *oneRecommendGoodsDict in result[@"result"]) {
+                TSGoodsRecommandModel *goodsModel = [[TSGoodsRecommandModel alloc] init];
+                [goodsModel setValueForDictionary:oneRecommendGoodsDict];
+                [self.viewModel.dataArray addObject:goodsModel];
+            }
+            [self.tableView reloadData];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"商品推荐：%@",error);
+    }];
+
 }
 #pragma mark - set up UI
 - (void)setupUI{
@@ -46,15 +74,43 @@ static NSString *const GoodsRecommadDetailTableViewCell = @"GoodsRecommadDetailT
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"F0F0F0"];
-    CellConfigureBlock configureBlock = ^(TSGoodsRecommadDetailTableViewCell *cell,id taskModel,NSIndexPath *indexPath){
+    CellConfigureBlock configureBlock = ^(TSGoodsRecommadDetailTableViewCell *cell,TSGoodsRecommandModel *taskModel,NSIndexPath *indexPath){
         [cell configureCellWithModel:taskModel indexPath:indexPath];
     };
     
     
-    self.dataSource = [[TSArrayDataSource alloc] initWithNibName:@"TSGoodsRecommadDetailTableViewCell" items:self.tableDataArray cellIdentifier:GoodsRecommadDetailTableViewCell configureCellBlock:configureBlock];
+    self.dataSource = [[TSArrayDataSource alloc] initWithNibName:@"TSGoodsRecommadDetailTableViewCell" items:self.viewModel.dataArray cellIdentifier:GoodsRecommadDetailTableViewCell configureCellBlock:configureBlock];
     self.tableView.dataSource = self.dataSource;
     self.tableView.delegate = self;
     [self.rootView addSubview:self.tableView];
+    
+    //集成上拉加载更多
+    [self.tableView addFooterWithTarget:self action:@selector(footerRereshing)];
+    self.tableView.footerPullToRefreshText = @"上拉加载更多";
+    self.tableView.footerReleaseToRefreshText = @"松开马上加载更多数据";
+    self.tableView.footerRefreshingText = @"加载中……";
+
+}
+#pragma mark - 上拉加载更多
+- (void)footerRereshing{
+    self.page += 1;
+    NSDictionary *params = @{@"page":[NSString stringWithFormat:@"%d",self.page],
+                             @"goodsOrderType":@"1"};
+    
+    [TSHttpTool getWithUrl:GoodsLoad_URL params:params withCache:NO success:^(id result) {
+        //        NSLog(@"GoodsLoad_URL:%@",result);
+        if ([result objectForKey:@"success"]) {
+            for (NSDictionary *oneRecommendGoodsDict in result[@"result"]) {
+                TSGoodsRecommandModel *goodsModel = [[TSGoodsRecommandModel alloc] init];
+                [goodsModel setValueForDictionary:oneRecommendGoodsDict];
+                [self.viewModel.dataArray addObject:goodsModel];
+            }
+            [self.tableView reloadData];
+            [self.tableView footerEndRefreshing];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"商品推荐：%@",error);
+    }];
     
 }
 
