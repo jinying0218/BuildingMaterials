@@ -7,7 +7,9 @@
 //
 
 #import "TSBaseViewController.h"
+#import "TSGoodsExchangeViewModel.h"
 
 @interface TSGoodsExchangeViewController : TSBaseViewController
+@property (nonatomic, strong) TSGoodsExchangeViewModel *viewModel;
 
 @end

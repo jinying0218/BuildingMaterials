@@ -190,6 +190,9 @@
 		B0F4770F1A59231E005C851D /* UIScrollView+MJRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F477061A59231E005C851D /* UIScrollView+MJRefresh.m */; };
 		B0F477101A59231E005C851D /* UIView+MJExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F477081A59231E005C851D /* UIView+MJExtension.m */; };
 		B0F477141A59367E005C851D /* TSInviteCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F477131A59367E005C851D /* TSInviteCategoryModel.m */; };
+		B0F477191A598C26005C851D /* TSInviteCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F477171A598C26005C851D /* TSInviteCategoryCell.m */; };
+		B0F4771A1A598C26005C851D /* TSInviteCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F477181A598C26005C851D /* TSInviteCategoryCell.xib */; };
+		B0F477211A59A45F005C851D /* TSGoodsExchangeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F477201A59A45F005C851D /* TSGoodsExchangeViewModel.m */; };
 		B0F63C6D1A5799B300A0C754 /* TSShopModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F63C6C1A5799B300A0C754 /* TSShopModel.m */; };
 		B0F63C711A57C37B00A0C754 /* TSExchangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F63C701A57C37B00A0C754 /* TSExchangeModel.m */; };
 		B0FB4BB21A501B9A002C7ACA /* login_title.png in Resources */ = {isa = PBXBuildFile; fileRef = B0FB4BB11A501B9A002C7ACA /* login_title.png */; };
@@ -470,6 +473,11 @@
 		B0F477081A59231E005C851D /* UIView+MJExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MJExtension.m"; sourceTree = "<group>"; };
 		B0F477121A59367E005C851D /* TSInviteCategoryModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSInviteCategoryModel.h; sourceTree = "<group>"; };
 		B0F477131A59367E005C851D /* TSInviteCategoryModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSInviteCategoryModel.m; sourceTree = "<group>"; };
+		B0F477161A598C26005C851D /* TSInviteCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSInviteCategoryCell.h; sourceTree = "<group>"; };
+		B0F477171A598C26005C851D /* TSInviteCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSInviteCategoryCell.m; sourceTree = "<group>"; };
+		B0F477181A598C26005C851D /* TSInviteCategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSInviteCategoryCell.xib; sourceTree = "<group>"; };
+		B0F4771F1A59A45F005C851D /* TSGoodsExchangeViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSGoodsExchangeViewModel.h; sourceTree = "<group>"; };
+		B0F477201A59A45F005C851D /* TSGoodsExchangeViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSGoodsExchangeViewModel.m; sourceTree = "<group>"; };
 		B0F63C6B1A5799B300A0C754 /* TSShopModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSShopModel.h; sourceTree = "<group>"; };
 		B0F63C6C1A5799B300A0C754 /* TSShopModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSShopModel.m; sourceTree = "<group>"; };
 		B0F63C6F1A57C37B00A0C754 /* TSExchangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSExchangeModel.h; sourceTree = "<group>"; };
@@ -1197,6 +1205,7 @@
 				B0C686D51A530AE2002053F1 /* TSInviteViewModel.m */,
 				B0C686D71A530AEF002053F1 /* TSMineViewModel.h */,
 				B0C686D81A530AEF002053F1 /* TSMineViewModel.m */,
+				B0F4771B1A59A3D6005C851D /* 以物换物 */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1274,6 +1283,7 @@
 		B0F476EE1A590861005C851D /* 招聘cell */ = {
 			isa = PBXGroup;
 			children = (
+				B0F477151A59889A005C851D /* 招聘类别 */,
 				B0F476EF1A59087A005C851D /* TSInviteCell.h */,
 				B0F476F01A59087A005C851D /* TSInviteCell.m */,
 				B0F476F11A59087A005C851D /* TSInviteCell.xib */,
@@ -1321,6 +1331,25 @@
 				B0F477131A59367E005C851D /* TSInviteCategoryModel.m */,
 			);
 			name = "招聘类别";
+			sourceTree = "<group>";
+		};
+		B0F477151A59889A005C851D /* 招聘类别 */ = {
+			isa = PBXGroup;
+			children = (
+				B0F477161A598C26005C851D /* TSInviteCategoryCell.h */,
+				B0F477171A598C26005C851D /* TSInviteCategoryCell.m */,
+				B0F477181A598C26005C851D /* TSInviteCategoryCell.xib */,
+			);
+			name = "招聘类别";
+			sourceTree = "<group>";
+		};
+		B0F4771B1A59A3D6005C851D /* 以物换物 */ = {
+			isa = PBXGroup;
+			children = (
+				B0F4771F1A59A45F005C851D /* TSGoodsExchangeViewModel.h */,
+				B0F477201A59A45F005C851D /* TSGoodsExchangeViewModel.m */,
+			);
+			name = "以物换物";
 			sourceTree = "<group>";
 		};
 		B0F63C6A1A57983800A0C754 /* 商家推荐模型 */ = {
@@ -1468,6 +1497,7 @@
 				B05E6E9D1A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.xib in Resources */,
 				B076AB591A18A5B5007CF312 /* secondsDealGoodsDetail.png in Resources */,
 				B05B5A0E1A3FD9F8008E83C9 /* shop_connect.png in Resources */,
+				B0F4771A1A598C26005C851D /* TSInviteCategoryCell.xib in Resources */,
 				B015C3151A0F0A490060FBE2 /* TSShopRecommedDetailTableViewCell.xib in Resources */,
 				B015C32A1A0F16F10060FBE2 /* TSGoodsExchangeViewController.xib in Resources */,
 				B076AB581A18A5B5007CF312 /* goodsDetail.png in Resources */,
@@ -1603,6 +1633,7 @@
 				B01847E619F89DCC00938054 /* UIImage+Alpha.m in Sources */,
 				B018482519F89DCC00938054 /* TSDateFormatterTool.m in Sources */,
 				B0F4770D1A59231E005C851D /* MJRefreshHeaderView.m in Sources */,
+				B0F477191A598C26005C851D /* TSInviteCategoryCell.m in Sources */,
 				B0D2AC0A19F8E4020074D10B /* TSRegisterViewController.m in Sources */,
 				B015C31F1A0F0EF70060FBE2 /* TSGoodsRecommendViewController.m in Sources */,
 				B07700D81A58DCAB001E3623 /* TSCategoryCell.m in Sources */,
@@ -1624,6 +1655,7 @@
 				B00ED6BC1A415FFF001D6737 /* TSShopDetailViewController.m in Sources */,
 				B0F63C711A57C37B00A0C754 /* TSExchangeModel.m in Sources */,
 				B0F477141A59367E005C851D /* TSInviteCategoryModel.m in Sources */,
+				B0F477211A59A45F005C851D /* TSGoodsExchangeViewModel.m in Sources */,
 				B0F477101A59231E005C851D /* UIView+MJExtension.m in Sources */,
 				B08702CF1A2ACAA0008C8088 /* TSSecondDealDetailViewController.m in Sources */,
 				B07700D31A58D137001E3623 /* TSCategoryModel.m in Sources */,

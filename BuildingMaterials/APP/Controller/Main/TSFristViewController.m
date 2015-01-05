@@ -11,6 +11,7 @@
 #import "TSShopRecommedViewController.h"
 #import "TSGoodsRecommendViewController.h"
 #import "TSGoodsExchangeViewController.h"
+#import "TSGoodsExchangeViewModel.h"
 
 
 #import "TSSecondsDealTableViewCell.h"
@@ -264,7 +265,9 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
         }
             break;
         case 3:{
+            TSGoodsExchangeViewModel *viewModel = [[TSGoodsExchangeViewModel alloc] init];
             TSGoodsExchangeViewController *goodsExchangeVC = [[TSGoodsExchangeViewController alloc] init];
+            goodsExchangeVC.viewModel = viewModel;
             [self.navigationController pushViewController:goodsExchangeVC animated:YES];
         }
             break;

@@ -8,13 +8,15 @@
 
 #import "TSGoodsExchangeViewController.h"
 #import "TSGoodsExchangeDetailTableViewCell.h"
+#import <UIImageView+WebCache.h>
+
+#import "TSExchangeModel.h"
 
 static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailTableViewCell";
 
 @interface TSGoodsExchangeViewController ()<UITableViewDelegate>
 @property (nonatomic, strong) TSArrayDataSource *dataSource;
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, strong) NSMutableArray *tableDataArray;
 @end
 
 @implementation TSGoodsExchangeViewController
@@ -30,7 +32,20 @@ static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailT
     [super didReceiveMemoryWarning];
 }
 - (void)initializeData{
-    self.tableDataArray = [[NSMutableArray alloc] initWithObjects:@"莫非瓷砖商家",@"莫非瓷砖商家",@"莫非瓷砖商家",@"莫非瓷砖",@"莫非瓷砖商家",@"莫非瓷砖商家", nil];
+    //首页换物
+    [TSHttpTool getWithUrl:First_Exchange_URL params:nil withCache:NO success:^(id result) {
+        //        NSLog(@"First_Exchange_URL:%@",result);
+        if ([result objectForKey:@"success"]) {
+            for (NSDictionary *oneExchangeModel in result[@"result"]) {
+                TSExchangeModel *exchangeModel = [[TSExchangeModel alloc] init];
+                [exchangeModel setValuesForKeysWithDictionary:oneExchangeModel];
+                [self.viewModel.dataArray addObject:exchangeModel];
+            }
+            [self.tableView reloadData];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"以物换物：%@",error);
+    }];
 }
 #pragma mark - set up UI
 - (void)setupUI{
@@ -45,12 +60,12 @@ static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailT
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"F0F0F0"];
-    CellConfigureBlock configureBlock = ^(TSGoodsExchangeDetailTableViewCell *cell,id taskModel,NSIndexPath *indexPath){
-        [cell configureCellWithModel:taskModel indexPath:indexPath];
+    CellConfigureBlock configureBlock = ^(TSGoodsExchangeDetailTableViewCell *cell,TSExchangeModel *model,NSIndexPath *indexPath){
+        [cell configureCellWithModel:model indexPath:indexPath];
     };
     
     
-    self.dataSource = [[TSArrayDataSource alloc] initWithNibName:@"TSGoodsExchangeDetailTableViewCell" items:self.tableDataArray cellIdentifier:GoodsExchangeDetailTableViewCell configureCellBlock:configureBlock];
+    self.dataSource = [[TSArrayDataSource alloc] initWithNibName:@"TSGoodsExchangeDetailTableViewCell" items:self.viewModel.dataArray cellIdentifier:GoodsExchangeDetailTableViewCell configureCellBlock:configureBlock];
     self.tableView.dataSource = self.dataSource;
     self.tableView.delegate = self;
     [self.rootView addSubview:self.tableView];

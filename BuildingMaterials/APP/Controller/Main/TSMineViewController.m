@@ -27,15 +27,15 @@
 }
 #pragma mark - initialize Data
 - (void)initializData{
-    NSArray *imageArray1 = @[@"mine_forum",@"mine_invite"];
-    NSArray *imageArray2 = @[@"mine_waitForpay",@"mine_payed",@"mine_addressManager"];
-    NSArray *imageArray3 = @[@"mine_changePassword",@"mine_checknew"];
+//    NSArray *imageArray1 = @[@"mine_forum",@"mine_invite"];
+    NSArray *imageArray = @[@"mine_waitForpay",@"mine_payed",@"mine_addressManager",@"mine_changePassword",@"mine_checknew"];
+//    NSArray *imageArray3 = @[];
 
-    NSArray *titleArray1 = @[@"我的论坛",@"我的招聘"];
-    NSArray *titleArray2 = @[@"待付款",@"已付款",@"收货地址管理"];
-    NSArray *titleArray3 = @[@"修改密码",@"检测版本"];
-    self.iConArray = [NSMutableArray arrayWithObjects:imageArray1,imageArray2,imageArray3, nil];
-    self.titleArray = [NSMutableArray arrayWithObjects:titleArray1,titleArray2,titleArray3, nil];
+//    NSArray *titleArray1 = @[@"我的论坛",@"我的招聘"];
+    NSArray *titleArray2 = @[@"待付款",@"已付款",@"收货地址管理",@"修改密码",@"检测版本"];
+//    NSArray *titleArray3 = @[];
+    self.iConArray = [NSMutableArray arrayWithObjects:@"mine_waitForpay",@"mine_payed",@"mine_addressManager",@"mine_changePassword",@"mine_checknew", nil];
+    self.titleArray = [NSMutableArray arrayWithObjects:@"待付款",@"已付款",@"收货地址管理",@"修改密码",@"检测版本", nil];
 
 }
 #pragma mark - set UI
@@ -117,15 +117,17 @@
     return 10;
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
-    NSArray *array = @[@"0",@"0",@"10"];
-    return [array[section] intValue];
+//    NSArray *array = @[@"0",@"0",@"10"];
+    return 10;
+    //[array[section] intValue];
 }
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 1;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    NSArray *array = @[@"2",@"3",@"2"];
-    return [array[section] intValue];
+//    NSArray *array = @[@"2",@"3",@"2"];
+    return self.titleArray.count;
+    //[array[section] intValue];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
@@ -133,23 +135,30 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cell"];
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    if (indexPath.section == 1 && indexPath.row == 0) {
-        UILabel *accessLabel = [[UILabel alloc] init];
-        accessLabel.frame = CGRectMake( KscreenW - 20, 8, 15, 28);
-        accessLabel.text = @"2";
-        accessLabel.textColor = [UIColor colorWithHexString:@"00A8E0"];
-        cell.accessoryView = accessLabel;
-    }
-    if (indexPath.section == 1 && indexPath.row == 1) {
-        UILabel *accessLabel = [[UILabel alloc] init];
-        accessLabel.frame = CGRectMake( KscreenW - 20, 8, 15, 28);
-        accessLabel.text = @"0";
-        accessLabel.textColor = [UIColor colorWithHexString:@"00A8E0"];
-        cell.accessoryView = accessLabel;
-    }
-    cell.textLabel.text = self.titleArray[indexPath.section][indexPath.row];
+//    if (indexPath.section == 1 && indexPath.row == 0) {
+//        UILabel *accessLabel = [[UILabel alloc] init];
+//        accessLabel.frame = CGRectMake( KscreenW - 20, 8, 15, 28);
+//        accessLabel.text = @"2";
+//        accessLabel.textColor = [UIColor colorWithHexString:@"00A8E0"];
+//        cell.accessoryView = accessLabel;
+//    }
+//    if (indexPath.section == 1 && indexPath.row == 1) {
+//        UILabel *accessLabel = [[UILabel alloc] init];
+//        accessLabel.frame = CGRectMake( KscreenW - 20, 8, 15, 28);
+//        accessLabel.text = @"0";
+//        accessLabel.textColor = [UIColor colorWithHexString:@"00A8E0"];
+//        cell.accessoryView = accessLabel;
+//    }
+//    UILabel *accessLabel = [[UILabel alloc] init];
+//    accessLabel.frame = CGRectMake( KscreenW - 20, 8, 15, 28);
+//    accessLabel.text = @"0";
+//    accessLabel.textColor = [UIColor colorWithHexString:@"00A8E0"];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+
+    cell.textLabel.text = self.titleArray[indexPath.row];
+//    cell.textLabel.text = self.titleArray[indexPath.section][indexPath.row];
     cell.textLabel.font = [UIFont systemFontOfSize:15];
-    cell.imageView.image = [UIImage imageNamedString:self.iConArray[indexPath.section][indexPath.row]];
+    cell.imageView.image = [UIImage imageNamedString:self.iConArray[indexPath.row]];
     return cell;
 }
 @end
