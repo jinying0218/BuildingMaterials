@@ -7,12 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+@class TSExchangeListModel;
 
 @interface TSGoodsExchangeDetailTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UIImageView *goodsImage;
+@property (weak, nonatomic) IBOutlet UILabel *goodsName;
+@property (weak, nonatomic) IBOutlet UILabel *goodsDes;
+@property (weak, nonatomic) IBOutlet UILabel *wantsGoodsName;
 
 
 
-
-- (void)configureCellWithModel:(id)model indexPath:(NSIndexPath *)indexPath;
+- (void)configureCellWithModel:(TSExchangeListModel *)model indexPath:(NSIndexPath *)indexPath;
 
 @end

@@ -11,16 +11,16 @@
 #import "TSInviteCell.h"
 #import "MJRefresh.h"
 #import "TSInviteCategoryModel.h"
+#import "TSInviteCategoryCell.h"
+
+#import "TSInviteDetailViewController.h"
+#import "TSInviteDetailViewModel.h"
 
 static NSString * const inviteCellIdentifier = @"inviteCell";
 static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
 
 #define inviteTableViewTag 1000
 #define categoryTableViewTag 1001
-
-//static int const inviteTableViewTag = 1000;
-//static int const categoryTableViewTag = 1001;
-
 
 @interface TSInviteViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (strong, nonatomic) UITableView *inviteTableView;
@@ -31,6 +31,7 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
 @property (nonatomic, strong) UIButton *naviRightBtn;
 @property (nonatomic, strong) UIView *coverTop;
 @property (nonatomic, strong) UIView *coverBottom;
+@property (nonatomic, strong) UIImageView *selectView;
 
 @end
 
@@ -74,6 +75,9 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
                 [model setValueForDictionary:oneCategory];
                 [self.viewModel.categoryDataArray addObject:model];
             }
+            TSInviteCategoryModel *model = [[TSInviteCategoryModel alloc] init];
+            model.postClassifyName = @"全部";
+            [self.viewModel.categoryDataArray insertObject:model atIndex:0];
             [self.categoryTableView reloadData];
         }
     } failure:^(NSError *error) {
@@ -121,9 +125,13 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
     self.categoryButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.categoryButton setTitle:@"类别" forState:UIControlStateNormal];
     [self.categoryButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    [self.categoryButton setImage:[UIImage imageNamedString:@"select_icon"] forState:UIControlStateNormal];
     self.categoryButton.frame = CGRectMake( 0, 0, KscreenW, 34);
     [headerView addSubview:self.categoryButton];
     
+    self.selectView = [[UIImageView alloc] initWithImage:[UIImage imageNamedString:@"select_icon"]];
+    self.selectView.frame = CGRectMake( headerView.frame.size.width - 30, headerView.frame.size.height/2 - 5, 12, 8);
+    [headerView addSubview:self.selectView];
     
     self.inviteTableView = [[UITableView alloc] initWithFrame:CGRectMake( 0, 79, KscreenW, KscreenH - 49 - 84) style:UITableViewStylePlain];
     self.inviteTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -154,7 +162,7 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
     self.coverBottom.hidden = YES;
     [self.rootView addSubview:self.coverBottom];
     
-    self.categoryTableView = [[UITableView alloc] initWithFrame:CGRectMake( 60, 99, KscreenW/2, 200) style:UITableViewStylePlain];
+    self.categoryTableView = [[UITableView alloc] initWithFrame:CGRectMake( 0, 99, KscreenW, 44 * 5) style:UITableViewStylePlain];
     self.categoryTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.categoryTableView.rowHeight = 44;
     self.categoryTableView.tag = categoryTableViewTag;
@@ -172,6 +180,24 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
     [self.naviRightBtn bk_addEventHandler:^(id sender) {
         @strongify(self);
         
+        NSDictionary *params = @{@"page":[NSString stringWithFormat:@"%d",self.page],
+                       @"postSearchName":self.searchTextField.text};
+        
+        [TSHttpTool getWithUrl:Invite_URL params:params withCache:NO success:^(id result) {
+            //            NSLog(@"招聘类别:%@",result);
+            if (result[@"success"]) {
+                [self.viewModel.dataArray removeAllObjects];
+                for (NSDictionary *oneResult in result[@"result"]) {
+                    TSInviteModel *model = [[TSInviteModel alloc] init];
+                    [model setValueForDictionary:oneResult];
+                    [self.viewModel.dataArray addObject:model];
+                }
+                [self.inviteTableView reloadData];
+            }
+        } failure:^(NSError *error) {
+            NSLog(@"分类:%@",error);
+        }];
+
     } forControlEvents:UIControlEventTouchUpInside];
     
 
@@ -225,25 +251,33 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
         return cell;
 
     }else {
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:inviteCategoryCellIdentifier];
-        if (!cell) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:inviteCategoryCellIdentifier];
+        TSInviteCategoryCell *cell = [tableView dequeueReusableCellWithIdentifier:inviteCategoryCellIdentifier];
+        if (cell == nil) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"TSInviteCategoryCell" owner:nil options:nil]lastObject];
         }
+
         TSInviteCategoryModel *model = self.viewModel.categoryDataArray[indexPath.row];
-        cell.textLabel.text = model.postClassifyName;
+        cell.categoryDes.text = model.postClassifyName;
         return cell;
     }
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView.tag == categoryTableViewTag) {
         self.categoryTableView.hidden = YES;
+        self.coverBottom.hidden = YES;
+        self.coverTop.hidden = YES;
         self.page = 1;
         TSInviteCategoryModel *categoryModel = self.viewModel.categoryDataArray[indexPath.row];
-        
-        NSDictionary *params = @{@"page":[NSString stringWithFormat:@"%d",self.page],
-                                 @"postClassifyId":[NSString stringWithFormat:@"%d",categoryModel.categoryID]};
+        NSDictionary *params;
+        if (indexPath.row == 0) {
+            params = @{@"page":[NSString stringWithFormat:@"%d",self.page]};
+        }else {
+            params = @{@"page":[NSString stringWithFormat:@"%d",self.page],
+                       @"postClassifyId":[NSString stringWithFormat:@"%d",categoryModel.categoryID]};
+        }
+
         [TSHttpTool getWithUrl:Invite_URL params:params withCache:NO success:^(id result) {
-            NSLog(@"招聘类别:%@",result);
+//            NSLog(@"招聘类别:%@",result);
             if (result[@"success"]) {
                 [self.viewModel.dataArray removeAllObjects];
                 for (NSDictionary *oneResult in result[@"result"]) {
@@ -256,7 +290,11 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
         } failure:^(NSError *error) {
             NSLog(@"分类:%@",error);
         }];
-
+    }else if (tableView.tag == inviteTableViewTag){
+        TSInviteDetailViewModel *viewModel = [[TSInviteDetailViewModel alloc] init];
+        TSInviteDetailViewController *inviteDetailVC = [[TSInviteDetailViewController alloc] init];
+        inviteDetailVC.viewModel = viewModel;
+        [self.navigationController pushViewController:inviteDetailVC animated:YES];
     }
 }
 @end

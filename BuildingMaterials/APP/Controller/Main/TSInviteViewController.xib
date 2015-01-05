@@ -24,9 +24,6 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
-                <rect key="frame" x="0.0" y="67" width="600" height="682"/>
-            </variation>
             <point key="canvasLocation" x="763" y="524"/>
         </tableView>
     </objects>

@@ -26,4 +26,6 @@
 @property (nonatomic, assign) int N_O;
 @property (nonatomic, strong) NSString *RECOMMEND_TIME;
 
+- (void)setValueForDictionary:(NSDictionary *)dict;
+
 @end

@@ -7,8 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+@class TSShopModel;
 
 @interface TSShopRecommedDetailTableViewCell : UITableViewCell
-- (void)configureCellWithModel:(id)model indexPath:(NSIndexPath *)indexPath;
+
+@property (weak, nonatomic) IBOutlet UIImageView *shopImage;
+@property (weak, nonatomic) IBOutlet UILabel *shopName;
+@property (weak, nonatomic) IBOutlet UILabel *shopDes;
+@property (weak, nonatomic) IBOutlet UILabel *shopGoodsNumber;
+
+@property (weak, nonatomic) IBOutlet UIButton *recommendBtn;
+
+- (void)configureCellWithModel:(TSShopModel *)model indexPath:(NSIndexPath *)indexPath;
 
 @end

@@ -16,8 +16,9 @@
 @property (nonatomic, strong) NSString *COMPANY_NAME;
 @property (nonatomic, strong) NSString *COMPANY_TEL_PHONE;
 @property (nonatomic, strong) NSString *RECOMMEND_TIME;
-@property (nonatomic, assign) int ID;
+@property (nonatomic, assign) int I_D;
 @property (nonatomic, assign) int IS_RECOMMEND;
 @property (nonatomic, assign) int N_O;
 
+- (void)setValueForDictionary:(NSDictionary *)dict;
 @end

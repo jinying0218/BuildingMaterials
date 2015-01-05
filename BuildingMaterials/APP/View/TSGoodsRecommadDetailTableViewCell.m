@@ -7,6 +7,8 @@
 //
 
 #import "TSGoodsRecommadDetailTableViewCell.h"
+#import "TSGoodsRecommandModel.h"
+#import <UIImageView+WebCache.h>
 
 @implementation TSGoodsRecommadDetailTableViewCell
 
@@ -19,7 +21,12 @@
 
     // Configure the view for the selected state
 }
-- (void)configureCellWithModel:(id)model indexPath:(NSIndexPath *)indexPath{
-    
+- (void)configureCellWithModel:(TSGoodsRecommandModel *)model indexPath:(NSIndexPath *)indexPath{
+    if (![model.GOODS_HEAD_IMAGE isEqual:[NSNull null]]) {
+        [self.goodsImage sd_setImageWithURL:[NSURL URLWithString:model.GOODS_HEAD_IMAGE]];
+    }
+    self.goodsName.text = model.GOODS_NAME;
+    self.goodsDes.text = model.GOODS_DES_SIMPLE;
+    self.goodsPrice.text = [NSString stringWithFormat:@"%d",model.GOODS_NEW_PRICE];
 }
 @end

@@ -7,7 +7,8 @@
 //
 
 #import "TSBaseViewController.h"
+#import "TSGoodsRecommandViewModel.h"
 
 @interface TSGoodsRecommendViewController : TSBaseViewController
-
+@property (nonatomic, strong) TSGoodsRecommandViewModel *viewModel;
 @end

@@ -24,10 +24,18 @@
 #define Frist_SecKillLoad_URL Domain"/appSeckillLoad"
 //首页商家加载
 #define First_CompanyLoad_URL Domain"/appCompanyLoad"
+//商家列表
+#define CompanyLoad_URL Domain"/companyLoad"
+
 //首页商品加载
 #define First_GoodsLoad_URL Domain"/appGoodsLoad"
+//商品列表
+#define GoodsLoad_URL Domain"/goodsLoad"
+
 //首页换物加载
 #define First_Exchange_URL Domain"/appExchangeLoad"
+//以物换物列表
+#define Exchange_URL Domain"/exchangeLoad"
 
 //分类
 #define Category_URL Domain"/goodsClassifyLoad"

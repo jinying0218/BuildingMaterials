@@ -28,7 +28,9 @@
         TSGoodsRecommandModel *model = models[i];
         switch (i) {
             case 0:{
-                [self.firstGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.GOODS_HEAD_IMAGE]];
+                if (![model.GOODS_HEAD_IMAGE isEqual:[NSNull null]]) {
+                    [self.firstGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.GOODS_HEAD_IMAGE]];
+                }
                 self.firstGoodsName.text = model.GOODS_NAME;
                 self.firstGoodsPrice.text = [NSString stringWithFormat:@"%d",model.GOODS_NEW_PRICE];
                 //                self.fristGoodsNowPrice.text = [NSString stringWithFormat:@"%d",model.SECKILL_PRICE];

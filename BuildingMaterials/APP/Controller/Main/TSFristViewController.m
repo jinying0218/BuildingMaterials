@@ -9,8 +9,13 @@
 #import "TSFristViewController.h"
 #import "TSSecondsDealViewController.h"
 #import "TSShopRecommedViewController.h"
+#import "TSShopRecommandViewModel.h"
+
 #import "TSGoodsRecommendViewController.h"
+#import "TSGoodsRecommandViewModel.h"
+
 #import "TSGoodsExchangeViewController.h"
+#import "TSGoodsExchangeViewModel.h"
 
 
 #import "TSSecondsDealTableViewCell.h"
@@ -111,10 +116,10 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
 //                goodsModel.GOODS_OLD_PRICE = oneGoodsModel[@"GOODS_OLD_PRICE"] ? [oneGoodsModel[@"GOODS_OLD_PRICE"] intValue] : @"";
                 goodsModel.GOODS_SELL_NUMBER = [oneGoodsModel[@"GOODS_SELL_NUMBER"] intValue];
                 goodsModel.GOODS_WEIGHT = [oneGoodsModel[@"GOODS_WEIGHT"] intValue];
-                goodsModel.I_D = [oneGoodsModel[@"I_D"] intValue];
+                goodsModel.I_D = [oneGoodsModel[@"ID"] intValue];
                 goodsModel.IS_RECOMMEND = [oneGoodsModel[@"IS_RECOMMEND"] intValue];
                 goodsModel.IS_USED = [oneGoodsModel[@"IS_USED"] intValue];
-                goodsModel.N_O = [oneGoodsModel[@"N_O"] intValue];
+                goodsModel.N_O = [oneGoodsModel[@"NO"] intValue];
                 goodsModel.RECOMMEND_TIME = oneGoodsModel[@"RECOMMEND_TIME"];
 
                 [self.viewModel.goodsRecommendDataArray addObject:goodsModel];
@@ -127,7 +132,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     
     //首页换物
     [TSHttpTool getWithUrl:First_Exchange_URL params:nil withCache:NO success:^(id result) {
-//        NSLog(@"First_Exchange_URL:%@",result);
+        NSLog(@"First_Exchange_URL:%@",result);
         if ([result objectForKey:@"success"]) {
             for (NSDictionary *oneExchangeModel in result[@"result"]) {
                 TSExchangeModel *exchangeModel = [[TSExchangeModel alloc] init];
@@ -254,17 +259,24 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
         }
             break;
         case 1:{
+            TSShopRecommandViewModel *viewModel = [[TSShopRecommandViewModel alloc] init];
             TSShopRecommedViewController *shopRecommedVC = [[TSShopRecommedViewController alloc] init];
+            shopRecommedVC.viewModel = viewModel;
             [self.navigationController pushViewController:shopRecommedVC animated:YES];
         }
             break;
         case 2:{
+            TSGoodsRecommandViewModel *viewModel = [[TSGoodsRecommandViewModel alloc] init];
+            
             TSGoodsRecommendViewController *goodsRecommedVC = [[TSGoodsRecommendViewController alloc] init];
+            goodsRecommedVC.viewModel = viewModel;
             [self.navigationController pushViewController:goodsRecommedVC animated:YES];
         }
             break;
         case 3:{
+            TSGoodsExchangeViewModel *viewModel = [[TSGoodsExchangeViewModel alloc] init];
             TSGoodsExchangeViewController *goodsExchangeVC = [[TSGoodsExchangeViewController alloc] init];
+            goodsExchangeVC.viewModel = viewModel;
             [self.navigationController pushViewController:goodsExchangeVC animated:YES];
         }
             break;
