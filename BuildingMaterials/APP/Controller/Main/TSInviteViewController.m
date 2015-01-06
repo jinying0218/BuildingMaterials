@@ -291,7 +291,10 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
             NSLog(@"分类:%@",error);
         }];
     }else if (tableView.tag == inviteTableViewTag){
+        [self.tabBarController hidesBottomBarWhenPushed];
+        TSInviteModel *model = self.viewModel.dataArray[indexPath.row];
         TSInviteDetailViewModel *viewModel = [[TSInviteDetailViewModel alloc] init];
+        viewModel.postID = model.I_D;
         TSInviteDetailViewController *inviteDetailVC = [[TSInviteDetailViewController alloc] init];
         inviteDetailVC.viewModel = viewModel;
         [self.navigationController pushViewController:inviteDetailVC animated:YES];

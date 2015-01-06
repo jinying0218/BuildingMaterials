@@ -22,6 +22,10 @@ static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailT
 @end
 
 @implementation TSGoodsExchangeViewController
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:YES];
+    self.tabBarController.tabBar.hidden = NO;
+}
 
 #pragma mark - controller methods
 - (void)viewDidLoad {
@@ -29,6 +33,7 @@ static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailT
     
     self.page = 1;
     [self initializeData];
+    self.tabBarController.tabBar.hidden =  YES;
     [self setupUI];
     
 }
@@ -61,7 +66,7 @@ static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailT
     [self.rootView addSubview:self.navigationBar];
     
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT - KbottomBarHeight) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT) style:UITableViewStylePlain];
     self.tableView.rowHeight = 125;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

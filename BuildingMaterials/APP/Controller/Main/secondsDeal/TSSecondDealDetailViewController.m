@@ -31,7 +31,8 @@ static NSString *const SecondDealDetailCellIdentifier = @"SecondDealDetailCellId
     [super viewDidLoad];
     [self initializeData];
     [self setupUI];
-    
+    self.tabBarController.tabBar.hidden =  YES;
+
     [self bindHandler];
 }
 - (void)didReceiveMemoryWarning {

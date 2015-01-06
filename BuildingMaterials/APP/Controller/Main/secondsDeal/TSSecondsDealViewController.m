@@ -33,12 +33,15 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
     }
     return self;
 }
-
-
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:YES];
+    self.tabBarController.tabBar.hidden = NO;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initializeData];
     [self setupUI];
+    self.tabBarController.tabBar.hidden =  YES;
     
 }
 - (void)didReceiveMemoryWarning {
@@ -55,7 +58,7 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
     [self.rootView addSubview:self.navigationBar];
     
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT - KbottomBarHeight) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT) style:UITableViewStylePlain];
     self.tableView.rowHeight = 125;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

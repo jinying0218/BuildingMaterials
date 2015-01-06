@@ -62,7 +62,7 @@
             }
 
         } failure:^(NSError *error) {
-            
+            NSLog(@"login:%@",error);
         }];
 
     } forControlEvents:UIControlEventTouchUpInside];

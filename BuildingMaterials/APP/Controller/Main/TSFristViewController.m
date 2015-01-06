@@ -253,7 +253,6 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     switch (indexPath.row) {
         case 0:{
             TSSecondsDealViewModel *viewModel = [[TSSecondsDealViewModel alloc] init];
-            
             TSSecondsDealViewController *secondsDealVC = [[TSSecondsDealViewController alloc] initWithViewModel:viewModel];
             [self.navigationController pushViewController:secondsDealVC animated:YES];
         }
