@@ -75,6 +75,12 @@
 		B03AC4D319F904AB002FC299 /* register_btn_test.png in Resources */ = {isa = PBXBuildFile; fileRef = B03AC4D019F904AB002FC299 /* register_btn_test.png */; };
 		B03AC4D419F904AB002FC299 /* register_textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = B03AC4D119F904AB002FC299 /* register_textfield.png */; };
 		B03AC4D919F90F0C002FC299 /* navigationBar_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B03AC4D819F90F0C002FC299 /* navigationBar_bg.png */; };
+		B04411C21A5C3DF3005ED736 /* TSInvitePostModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B04411C11A5C3DF3005ED736 /* TSInvitePostModel.m */; };
+		B04411C51A5C3E0C005ED736 /* TSInviteComanyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B04411C41A5C3E0C005ED736 /* TSInviteComanyModel.m */; };
+		B04411C71A5C42EE005ED736 /* invite_lookNumber.png in Resources */ = {isa = PBXBuildFile; fileRef = B04411C61A5C42EE005ED736 /* invite_lookNumber.png */; };
+		B04411C91A5C45D1005ED736 /* invite_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = B04411C81A5C45D1005ED736 /* invite_circle.png */; };
+		B04411CC1A5C5475005ED736 /* invite_applyButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B04411CA1A5C5475005ED736 /* invite_applyButton.png */; };
+		B04411CD1A5C5475005ED736 /* invite_telButton.png in Resources */ = {isa = PBXBuildFile; fileRef = B04411CB1A5C5475005ED736 /* invite_telButton.png */; };
 		B05115BE19F956B200CA6E2E /* navi_back_new.png in Resources */ = {isa = PBXBuildFile; fileRef = B05115BD19F956B200CA6E2E /* navi_back_new.png */; };
 		B05115C419F957CA00CA6E2E /* TSRegisterTwoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B05115C219F957CA00CA6E2E /* TSRegisterTwoViewController.m */; };
 		B05115C519F957CA00CA6E2E /* TSRegisterTwoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B05115C319F957CA00CA6E2E /* TSRegisterTwoViewController.xib */; };
@@ -327,6 +333,14 @@
 		B03AC4D019F904AB002FC299 /* register_btn_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register_btn_test.png; sourceTree = "<group>"; };
 		B03AC4D119F904AB002FC299 /* register_textfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register_textfield.png; sourceTree = "<group>"; };
 		B03AC4D819F90F0C002FC299 /* navigationBar_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navigationBar_bg.png; sourceTree = "<group>"; };
+		B04411C01A5C3DF3005ED736 /* TSInvitePostModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSInvitePostModel.h; sourceTree = "<group>"; };
+		B04411C11A5C3DF3005ED736 /* TSInvitePostModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSInvitePostModel.m; sourceTree = "<group>"; };
+		B04411C31A5C3E0C005ED736 /* TSInviteComanyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSInviteComanyModel.h; sourceTree = "<group>"; };
+		B04411C41A5C3E0C005ED736 /* TSInviteComanyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSInviteComanyModel.m; sourceTree = "<group>"; };
+		B04411C61A5C42EE005ED736 /* invite_lookNumber.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = invite_lookNumber.png; sourceTree = "<group>"; };
+		B04411C81A5C45D1005ED736 /* invite_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = invite_circle.png; sourceTree = "<group>"; };
+		B04411CA1A5C5475005ED736 /* invite_applyButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = invite_applyButton.png; sourceTree = "<group>"; };
+		B04411CB1A5C5475005ED736 /* invite_telButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = invite_telButton.png; sourceTree = "<group>"; };
 		B05115BD19F956B200CA6E2E /* navi_back_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navi_back_new.png; sourceTree = "<group>"; };
 		B05115C119F957CA00CA6E2E /* TSRegisterTwoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSRegisterTwoViewController.h; sourceTree = "<group>"; };
 		B05115C219F957CA00CA6E2E /* TSRegisterTwoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSRegisterTwoViewController.m; sourceTree = "<group>"; };
@@ -1111,6 +1125,10 @@
 		B05B632019FEB15F008F76E0 /* invite */ = {
 			isa = PBXGroup;
 			children = (
+				B04411CA1A5C5475005ED736 /* invite_applyButton.png */,
+				B04411CB1A5C5475005ED736 /* invite_telButton.png */,
+				B04411C81A5C45D1005ED736 /* invite_circle.png */,
+				B04411C61A5C42EE005ED736 /* invite_lookNumber.png */,
 				B08455B71A5ACBA200F8164E /* select_icon.png */,
 			);
 			path = invite;
@@ -1367,6 +1385,10 @@
 				B0F476F51A590C4C005C851D /* TSInviteModel.h */,
 				B0F476F61A590C4C005C851D /* TSInviteModel.m */,
 				B0F477111A593668005C851D /* 招聘类别 */,
+				B04411C01A5C3DF3005ED736 /* TSInvitePostModel.h */,
+				B04411C11A5C3DF3005ED736 /* TSInvitePostModel.m */,
+				B04411C31A5C3E0C005ED736 /* TSInviteComanyModel.h */,
+				B04411C41A5C3E0C005ED736 /* TSInviteComanyModel.m */,
 			);
 			name = "招聘";
 			sourceTree = "<group>";
@@ -1541,6 +1563,7 @@
 				B05B5A141A3FD9F8008E83C9 /* ss_06.png in Resources */,
 				B00BB8841A0E8D8A00B94208 /* discount.png in Resources */,
 				B05B5A0F1A3FD9F8008E83C9 /* shop_connect_selected.png in Resources */,
+				B04411CD1A5C5475005ED736 /* invite_telButton.png in Resources */,
 				B05B5A0D1A3FD9F8008E83C9 /* shop_button_bg.png in Resources */,
 				B05115F519F9748C00CA6E2E /* category_icon_selected.png in Resources */,
 				B08455B81A5ACBA200F8164E /* select_icon.png in Resources */,
@@ -1560,6 +1583,7 @@
 				B08702D01A2ACAA0008C8088 /* TSSecondDealDetailViewController.xib in Resources */,
 				B05B632319FEB15F008F76E0 /* bannerBottom.png in Resources */,
 				B05B62F619FE8905008F76E0 /* TSGoodsExchangeTableViewCell.xib in Resources */,
+				B04411C91A5C45D1005ED736 /* invite_circle.png in Resources */,
 				B05115BE19F956B200CA6E2E /* navi_back_new.png in Resources */,
 				B05115F419F9748C00CA6E2E /* category_icon.png in Resources */,
 				B0F476F31A59087A005C851D /* TSInviteCell.xib in Resources */,
@@ -1585,12 +1609,14 @@
 				B05115F819F9748C00CA6E2E /* forum_icon.png in Resources */,
 				B0C4992F19FFE7550092EE09 /* mine_headImage.png in Resources */,
 				B00ED6C91A4194C2001D6737 /* 商品图片_05.jpg in Resources */,
+				B04411CC1A5C5475005ED736 /* invite_applyButton.png in Resources */,
 				B0C4992919FFE7550092EE09 /* mine_checknew.png in Resources */,
 				B05B632619FEB15F008F76E0 /* cell_goodsRecommend_bg.jpg in Resources */,
 				B05B632F19FEB5CD008F76E0 /* separetLine.png in Resources */,
 				B0C4993419FFE7550092EE09 /* mine_waitForpay.png in Resources */,
 				B0C4992719FFE7550092EE09 /* mine_addressManager.png in Resources */,
 				B031218719F8B7B0008721C4 /* login_btn.png in Resources */,
+				B04411C71A5C42EE005ED736 /* invite_lookNumber.png in Resources */,
 				B07700D91A58DCAB001E3623 /* TSCategoryCell.xib in Resources */,
 				B0D2AC0B19F8E4020074D10B /* TSRegisterViewController.xib in Resources */,
 				B05115C519F957CA00CA6E2E /* TSRegisterTwoViewController.xib in Resources */,
@@ -1728,6 +1754,7 @@
 				B0F1F2501A583994006DFA93 /* TSGoodsRecommandModel.m in Sources */,
 				B00ED6BC1A415FFF001D6737 /* TSShopDetailViewController.m in Sources */,
 				B0F63C711A57C37B00A0C754 /* TSExchangeModel.m in Sources */,
+				B04411C21A5C3DF3005ED736 /* TSInvitePostModel.m in Sources */,
 				B0F477141A59367E005C851D /* TSInviteCategoryModel.m in Sources */,
 				B0F477211A59A45F005C851D /* TSGoodsExchangeViewModel.m in Sources */,
 				B0F477101A59231E005C851D /* UIView+MJExtension.m in Sources */,
@@ -1743,6 +1770,7 @@
 				B0F476F21A59087A005C851D /* TSInviteCell.m in Sources */,
 				B05B62F019FE88F3008F76E0 /* TSGoodsRecommendTableViewCell.m in Sources */,
 				B05E6E9C1A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.m in Sources */,
+				B04411C51A5C3E0C005ED736 /* TSInviteComanyModel.m in Sources */,
 				B08702D41A2ACADD008C8088 /* TSSecondDealDetailViewModel.m in Sources */,
 				B05B62EB19FE88DE008F76E0 /* TSShopReccommendTableViewCell.m in Sources */,
 				B01847E519F89DCC00938054 /* UIColor+TSUIColorEX.m in Sources */,

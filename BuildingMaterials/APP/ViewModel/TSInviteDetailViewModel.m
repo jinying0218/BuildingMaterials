@@ -9,5 +9,13 @@
 #import "TSInviteDetailViewModel.h"
 
 @implementation TSInviteDetailViewModel
-
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.comanyModel = [[TSInviteComanyModel alloc] init];
+        self.postModel = [[TSInvitePostModel alloc] init];
+    }
+    return self;
+}
 @end

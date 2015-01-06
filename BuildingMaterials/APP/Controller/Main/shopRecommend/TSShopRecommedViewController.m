@@ -25,13 +25,18 @@ static NSString *const ShopRecommedDetailTableViewCell = @"ShopRecommedDetailTab
 @end
 
 @implementation TSShopRecommedViewController
-
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:YES];
+    self.tabBarController.tabBar.hidden = NO;
+}
 #pragma mark - controller methods
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.page = 1;
     [self initializeData];
     [self setupUI];
+    
+    self.tabBarController.tabBar.hidden =  YES;
     
 }
 - (void)didReceiveMemoryWarning {
@@ -65,7 +70,7 @@ static NSString *const ShopRecommedDetailTableViewCell = @"ShopRecommedDetailTab
     [self createNavigationBarTitle:@"商家推荐" leftButtonImageName:@"Previous" rightButtonImageName:nil];
     [self.rootView addSubview:self.navigationBar];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT - KbottomBarHeight) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT) style:UITableViewStylePlain];
     self.tableView.rowHeight = 125;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;

@@ -43,6 +43,13 @@
 #define Invite_URL Domain"/postLoad"
 //招聘类别
 #define Invite_Category_URL Domain "/postClassifyLoad"
+//招聘详情
+#define Invite_Detail_URL Domain"/postMainLoad"
+//岗位举报
+#define Invite_PostRepor_URL Domain"/reportSave"
+//岗位申请
+#define Invite_PostApply_URL Domain"/postAskSave"
+
 
 
 //获得维修人员列表和报事类型列表

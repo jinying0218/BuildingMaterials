@@ -11,4 +11,5 @@
 
 @interface TSInviteDetailViewController : TSBaseViewController
 @property (nonatomic, strong) TSInviteDetailViewModel *viewModel;
+
 @end

@@ -27,10 +27,16 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
     }
     return self;
 }
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:YES];
+    self.tabBarController.tabBar.hidden = NO;
+}
+
 #pragma mark - controller methods
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initializeData];
+    self.tabBarController.tabBar.hidden =  YES;
     [self setupUI];
     
 }

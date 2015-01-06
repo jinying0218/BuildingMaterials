@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "TSInviteComanyModel.h"
+#import "TSInvitePostModel.h"
 @interface TSInviteDetailViewModel : NSObject
+@property (nonatomic, assign) int postID;
+@property (nonatomic, strong) TSInviteComanyModel *comanyModel;
+@property (nonatomic, strong) TSInvitePostModel *postModel;
 
 @end
