@@ -14,7 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *checkNumberTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *secureTextfield;
-
+@property (nonatomic, strong) NSString *uuid;
 @end
 
 @implementation TSRegisterViewController
@@ -51,24 +51,23 @@
 - (IBAction)getTestButtonClick:(UIButton *)sender {
     
     NSString *telPhone = self.phoneNumberTextfield.text;
-    NSString *uuid = [NSString UUIDCode];
-    NSDictionary *params = @{ @"telPhone" : telPhone, @"uuid" : [[TSDateFormatterTool shareInstance] dateIntervalString]};
+//    NSString *uuid = [NSString UUIDCode];
+    self.uuid = [[TSDateFormatterTool shareInstance] dateIntervalString];
+    NSDictionary *params = @{ @"telPhone" : telPhone,
+                              @"uuid" : self.uuid};
     [TSHttpTool postWithUrl:codePost_url params:params success:^(id result) {
-        NSLog(@"%@",result);
+        NSLog(@"获取验证码:%@",result);
+        if ([result[@"success"] intValue] == 1) {
+            [self showProgressHUD:@"获取验证码成功" delay:1];
+        }
     } failure:^(NSError *error) {
-        NSLog(@"%@",error);
+        NSLog(@"获取验证码:%@",error);
     }];
 
-//    NSLog(@"url:%@",[NSString stringWithFormat:@"%@?telPhone=%@&&uuid=%@",codePost_url,self.phoneNumberTextfield.text,@"234"]);
-//    [TSHttpTool getWithUrl:[NSString stringWithFormat:@"%@?telPhone=%@&&uuid=%@",codePost_url,self.phoneNumberTextfield.text,@"234"] params:nil withCache:NO success:^(id result) {
-//         NSLog(@"%@",result);
-//    } failure:^(NSError *error) {
-//        NSLog(@"%@",error);
-//    }];
 }
 - (IBAction)registerButtonClick:(UIButton *)sender {
     NSString *telPhone = self.phoneNumberTextfield.text;
-    NSString *uuid = [NSString UUIDCode];
+    NSString *uuid = self.uuid;
     NSString *messageCode = self.checkNumberTextfield.text;
     NSString *password = self.secureTextfield.text;
     NSString *regFrom = @"ios";
@@ -78,16 +77,27 @@
                              @"password":password,
                              @"regFrom":regFrom};
     [TSHttpTool postWithUrl:Regist_URL params:params success:^(id result) {
-        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-        hud.mode = MBProgressHUDModeText;
-        hud.labelText = @"注册成功";
-        dispatch_time_t poptime =
-        dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
-        dispatch_after(poptime, dispatch_get_main_queue(), ^{
-            [hud hide:YES];
-            [self.navigationController popViewControllerAnimated:YES];
+        NSLog(@"注册:%@",result);
+        if ([result[@"success"] intValue] == 1) {
+            MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            hud.mode = MBProgressHUDModeText;
+            hud.labelText = @"注册成功";
+            dispatch_time_t poptime =
+            dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
+            dispatch_after(poptime, dispatch_get_main_queue(), ^{
+                [hud hide:YES];
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            });
+        }else if ([result[@"success"] intValue] == 0 && [result[@"errorMsg"] isEqualToString:@"have_reg"]){
+            [self showProgressHUD:@"该手机号码已注册" delay:1];
+        }else if ([result[@"success"] intValue] == 0 && [result[@"errorMsg"] isEqualToString:@"code_error"]){
+            [self showProgressHUD:@"验证码错误" delay:1];
+        }
+        else{
+            [self showProgressHUD:@"注册失败" delay:1];
 
-        });
+        }
     } failure:^(NSError *error) {
         
     }];

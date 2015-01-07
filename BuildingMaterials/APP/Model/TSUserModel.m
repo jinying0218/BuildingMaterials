@@ -59,7 +59,7 @@ static TSUserModel *_currUser;
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.classFrom forKey:@"classFrom"];
-    [aCoder encodeObject:self.userId forKey:@"userId"];
+    [aCoder encodeInt:self.userId forKey:@"userId"];
     [aCoder encodeBool:self.isLook forKey:@"isLook"];
     [aCoder encodeBool:self.isUsed forKey:@"isUsed"];
     [aCoder encodeObject:self.loginTime forKey:@"loginTime"];
@@ -73,7 +73,7 @@ static TSUserModel *_currUser;
     self = [super init];
     if (self) {
         self.classFrom = [aDecoder decodeObjectForKey:@"classFrom"];
-        self.userId = [aDecoder decodeObjectForKey:@"userId"];
+        self.userId = [aDecoder decodeIntForKey:@"userId"];
         self.isLook = [aDecoder decodeBoolForKey:@"isLook"];
         self.isUsed = [aDecoder decodeBoolForKey:@"isUsed"];
         self.loginTime = [aDecoder decodeObjectForKey:@"loginTime"];

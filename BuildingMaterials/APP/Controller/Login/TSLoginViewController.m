@@ -42,8 +42,8 @@
         NSString *password = self.pwdTextField.text;
         NSDictionary *params = @{@"telPhone":telPhone,@"password":password};
         [TSHttpTool postWithUrl:Login_URL params:params success:^(id result) {
-            NSLog(@"%@",result);
-            if ([result objectForKey:@"success"]) {
+            NSLog(@"登陆:%@",result);
+            if ([result[@"success"] intValue] == 1) {
                 NSDictionary *appUser = [result objectForKey:@"appUser"];
                 TSUserModel *userModel = [[TSUserModel alloc] init];
                 userModel.classFrom = appUser[@"class"];
@@ -59,6 +59,8 @@
                 [userModel saveToDisk];
                 TSMainTabBarViewController *tabbarController = [[TSMainTabBarViewController alloc] init];
                 [self presentViewController:tabbarController animated:YES completion:nil];
+            }else if ([result[@"success"] intValue] == 0){
+                [self showProgressHUD:@"登陆失败" delay:1];
             }
 
         } failure:^(NSError *error) {

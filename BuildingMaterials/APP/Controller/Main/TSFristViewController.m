@@ -72,23 +72,24 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     //秒杀
     [TSHttpTool getWithUrl:Frist_SecKillLoad_URL params:nil withCache:nil success:^(id result) {
         NSLog(@"Frist_SecKillLoad_URL:%@",result);
-        NSArray *goods_result = result[@"goods_result"];
-        for (NSDictionary *oneGoodsResult in goods_result) {
-            TSSecKillModel *model = [[TSSecKillModel alloc] init];
-            [model setValuesForKeysWithDictionary:oneGoodsResult];
-            model.END_TIME = result[@"result"][@"END_TIME"];
-            model.STATUS = [result[@"STATUS"] intValue];
-            [self.viewModel.secKillDataArray addObject:model];
+        if ([result[@"success"] intValue] == 1) {
+            NSArray *goods_result = result[@"goods_result"];
+            for (NSDictionary *oneGoodsResult in goods_result) {
+                TSSecKillModel *model = [[TSSecKillModel alloc] init];
+                [model setValuesForKeysWithDictionary:oneGoodsResult];
+                model.END_TIME = result[@"result"][@"END_TIME"];
+                model.STATUS = [result[@"STATUS"] intValue];
+                [self.viewModel.secKillDataArray addObject:model];
+            }
+            [self.firstTable reloadData];
         }
-        [self.firstTable reloadData];
-        
     } failure:^(NSError *error) {
         NSLog(@"Frist_SecKillLoad_URL:%@",error);
     }];
     //首页商家加载
     [TSHttpTool getWithUrl:First_CompanyLoad_URL params:nil withCache:NO success:^(id result) {
 //        NSLog(@"First_CompanyLoad_URL:%@",result);
-        if ([result objectForKey:@"success"]) {
+        if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneShopModel in result[@"result"]) {
                 TSShopModel *shopModel = [[TSShopModel alloc] init];
                 [shopModel setValuesForKeysWithDictionary:oneShopModel];
@@ -103,7 +104,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     //首页商品推荐
     [TSHttpTool getWithUrl:First_GoodsLoad_URL params:nil withCache:NO success:^(id result) {
         NSLog(@"商品推荐：%@",result);
-        if ([result objectForKey:@"success"]) {
+        if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneGoodsModel in result[@"result"]) {
                 TSGoodsRecommandModel *goodsModel = [[TSGoodsRecommandModel alloc] init];
                 goodsModel.GOODS_CLASSIFY_ID = [oneGoodsModel[@"GOODS_CLASSIFY_ID"] intValue];
@@ -133,7 +134,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     //首页换物
     [TSHttpTool getWithUrl:First_Exchange_URL params:nil withCache:NO success:^(id result) {
         NSLog(@"First_Exchange_URL:%@",result);
-        if ([result objectForKey:@"success"]) {
+        if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneExchangeModel in result[@"result"]) {
                 TSExchangeModel *exchangeModel = [[TSExchangeModel alloc] init];
                 [exchangeModel setValuesForKeysWithDictionary:oneExchangeModel];

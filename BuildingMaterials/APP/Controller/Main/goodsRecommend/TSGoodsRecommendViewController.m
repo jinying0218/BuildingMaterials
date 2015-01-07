@@ -53,7 +53,7 @@ static NSString *const GoodsRecommadDetailTableViewCell = @"GoodsRecommadDetailT
     
     [TSHttpTool getWithUrl:GoodsLoad_URL params:params withCache:NO success:^(id result) {
 //        NSLog(@"GoodsLoad_URL:%@",result);
-        if ([result objectForKey:@"success"]) {
+        if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneRecommendGoodsDict in result[@"result"]) {
                 TSGoodsRecommandModel *goodsModel = [[TSGoodsRecommandModel alloc] init];
                 [goodsModel setValueForDictionary:oneRecommendGoodsDict];
@@ -104,7 +104,7 @@ static NSString *const GoodsRecommadDetailTableViewCell = @"GoodsRecommadDetailT
     
     [TSHttpTool getWithUrl:GoodsLoad_URL params:params withCache:NO success:^(id result) {
         //        NSLog(@"GoodsLoad_URL:%@",result);
-        if ([result objectForKey:@"success"]) {
+        if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneRecommendGoodsDict in result[@"result"]) {
                 TSGoodsRecommandModel *goodsModel = [[TSGoodsRecommandModel alloc] init];
                 [goodsModel setValueForDictionary:oneRecommendGoodsDict];

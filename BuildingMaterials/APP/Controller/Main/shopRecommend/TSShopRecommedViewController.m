@@ -49,7 +49,7 @@ static NSString *const ShopRecommedDetailTableViewCell = @"ShopRecommedDetailTab
     
     [TSHttpTool getWithUrl:CompanyLoad_URL params:params withCache:NO success:^(id result) {
         NSLog(@"商家列表:%@",result);
-        if ([result objectForKey:@"success"]) {
+        if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneExchangeDict in result[@"result"]) {
                 TSShopModel *shopModel = [[TSShopModel alloc] init];
                 [shopModel setValueForDictionary:oneExchangeDict];
@@ -100,7 +100,7 @@ static NSString *const ShopRecommedDetailTableViewCell = @"ShopRecommedDetailTab
     
     [TSHttpTool getWithUrl:CompanyLoad_URL params:params withCache:NO success:^(id result) {
         NSLog(@"商家列表:%@",result);
-        if ([result objectForKey:@"success"]) {
+        if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneExchangeDict in result[@"result"]) {
                 TSShopModel *shopModel = [[TSShopModel alloc] init];
                 [shopModel setValueForDictionary:oneExchangeDict];

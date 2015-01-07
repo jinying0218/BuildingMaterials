@@ -14,4 +14,8 @@
 @property (nonatomic, strong) TSInviteComanyModel *comanyModel;
 @property (nonatomic, strong) TSInvitePostModel *postModel;
 
+@property (nonatomic, strong) NSString *userName;
+@property (nonatomic, strong) NSString *userTel;
+@property (nonatomic, strong) NSString *userDes;
+
 @end

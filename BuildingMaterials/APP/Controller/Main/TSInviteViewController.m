@@ -55,7 +55,7 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
     NSDictionary *params = @{@"page":[NSString stringWithFormat:@"%d",self.page]};
     [TSHttpTool getWithUrl:Invite_URL params:params withCache:NO success:^(id result) {
 //        NSLog(@"招聘:%@",result);
-        if (result[@"success"]) {
+        if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneResult in result[@"result"]) {
                 TSInviteModel *model = [[TSInviteModel alloc] init];
                 [model setValueForDictionary:oneResult];
@@ -69,7 +69,7 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
     
     [TSHttpTool getWithUrl:Invite_Category_URL params:nil withCache:NO success:^(id result) {
         NSLog(@"招聘类别:%@",result);
-        if (result[@"success"]) {
+        if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneCategory in result[@"result"]) {
                 TSInviteCategoryModel *model = [[TSInviteCategoryModel alloc] init];
                 [model setValueForDictionary:oneCategory];
@@ -185,7 +185,7 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
         
         [TSHttpTool getWithUrl:Invite_URL params:params withCache:NO success:^(id result) {
             //            NSLog(@"招聘类别:%@",result);
-            if (result[@"success"]) {
+            if ([result[@"success"] intValue] == 1) {
                 [self.viewModel.dataArray removeAllObjects];
                 for (NSDictionary *oneResult in result[@"result"]) {
                     TSInviteModel *model = [[TSInviteModel alloc] init];
@@ -214,7 +214,7 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
     NSDictionary *params = @{@"page":[NSString stringWithFormat:@"%d",self.page]};
     [TSHttpTool getWithUrl:Invite_URL params:params withCache:NO success:^(id result) {
 //                NSLog(@"招聘:%d--%@",self.page,result);
-        if (result[@"success"]) {
+        if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneResult in result[@"result"]) {
                 TSInviteModel *model = [[TSInviteModel alloc] init];
                 [model setValueForDictionary:oneResult];
@@ -278,7 +278,7 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
 
         [TSHttpTool getWithUrl:Invite_URL params:params withCache:NO success:^(id result) {
 //            NSLog(@"招聘类别:%@",result);
-            if (result[@"success"]) {
+            if ([result[@"success"] intValue] == 1) {
                 [self.viewModel.dataArray removeAllObjects];
                 for (NSDictionary *oneResult in result[@"result"]) {
                     TSInviteModel *model = [[TSInviteModel alloc] init];
