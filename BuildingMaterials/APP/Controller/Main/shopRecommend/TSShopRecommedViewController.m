@@ -25,10 +25,7 @@ static NSString *const ShopRecommedDetailTableViewCell = @"ShopRecommedDetailTab
 @end
 
 @implementation TSShopRecommedViewController
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:YES];
-    self.tabBarController.tabBar.hidden = NO;
-}
+
 #pragma mark - controller methods
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -118,7 +115,9 @@ static NSString *const ShopRecommedDetailTableViewCell = @"ShopRecommedDetailTab
 #pragma mark - tableview delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    TSShopModel *shopModel = self.viewModel.dataArray[indexPath.row];
     TSShopDetailViewModel *viewModel = [[TSShopDetailViewModel alloc] init];
+    viewModel.companyID = shopModel.I_D;
     TSShopDetailViewController *shopDetailVC = [[TSShopDetailViewController alloc] initWithViewModel:viewModel];
     [self.navigationController pushViewController:shopDetailVC animated:YES];
 }

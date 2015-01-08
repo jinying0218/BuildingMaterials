@@ -1,23 +1,21 @@
 //
-//  TSGoodsRecommandViewModel.m
+//  TSShopGoodsViewModel.m
 //  BuildingMaterials
 //
-//  Created by Ariel on 15/1/5.
+//  Created by Ariel on 15/1/9.
 //  Copyright (c) 2015年 Ariel. All rights reserved.
 //
 
-#import "TSGoodsRecommandViewModel.h"
+#import "TSShopGoodsViewModel.h"
 
-@implementation TSGoodsRecommandViewModel
+@implementation TSShopGoodsViewModel
 - (instancetype)init
 {
     self = [super init];
     if (self) {
         self.dataArray = [[NSMutableArray alloc] initWithCapacity:0];
-        self.popDataArray = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }
-
 
 @end

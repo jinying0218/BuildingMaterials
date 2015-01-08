@@ -51,6 +51,10 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     return self;
 }
 #pragma mark - controller method
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:YES];
+    self.tabBarController.tabBar.hidden = NO;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
 

@@ -290,15 +290,6 @@
         } failure:^(NSError *error) {
             NSLog(@"投递简历:%@",error);
         }];
-/*
-         userId 用户Id
-         postId 岗位id
-         des自我描述
-         telPhone  申请人电话
-         name 申请人姓名
-         如果result.success为true 申请成功
-         如果为false  如果result.errorMsg='have_ask' 已经申请过了
-*/
     } forControlEvents:UIControlEventTouchUpInside];
     
     //收起弹框

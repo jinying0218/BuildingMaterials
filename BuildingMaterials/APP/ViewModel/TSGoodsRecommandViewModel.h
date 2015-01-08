@@ -10,5 +10,6 @@
 
 @interface TSGoodsRecommandViewModel : NSObject
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *popDataArray;
 
 @end
