@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TSInviteDetailViewController">
             <connections>
                 <outlet property="applyButton" destination="zsT-zK-a8d" id="3CT-5T-g5i"/>
+                <outlet property="applyView" destination="ibR-yJ-F07" id="Xss-bY-7mW"/>
                 <outlet property="bottomView" destination="qVX-ff-tHg" id="BS4-CO-7Vh"/>
                 <outlet property="companyAddress" destination="MBI-fP-P1g" id="MB1-cV-OLU"/>
                 <outlet property="companyDes" destination="86S-a7-VjC" id="bta-ap-NtQ"/>
@@ -18,6 +19,7 @@
                 <outlet property="companyViewName" destination="ybc-Ih-QHs" id="Ha3-KJ-mbY"/>
                 <outlet property="contactPerson" destination="LM2-Ci-2nn" id="R3i-HL-lVY"/>
                 <outlet property="headerView" destination="n1Y-Zh-kGR" id="Jsx-kk-AHd"/>
+                <outlet property="postApplyButton" destination="MWk-F8-tTa" id="weJ-gs-nZQ"/>
                 <outlet property="postAskNumber" destination="Z4q-0U-12k" id="VvZ-fO-A41"/>
                 <outlet property="postDes" destination="mZB-pj-FMZ" id="Hvg-5Z-Wnt"/>
                 <outlet property="postHeart" destination="Oxk-Qt-0Kd" id="Oqi-Ov-eFv"/>
@@ -28,9 +30,12 @@
                 <outlet property="postTime" destination="bps-Ln-K1V" id="OGr-uV-yuR"/>
                 <outlet property="postView" destination="1ND-l9-fAV" id="phK-hs-Cdx"/>
                 <outlet property="reportButton" destination="SYd-Nr-WZ9" id="fha-mH-jBV"/>
+                <outlet property="resumeInput" destination="Of8-D1-Qv9" id="NLi-VY-DeW"/>
                 <outlet property="selectedLabel" destination="VQe-ys-5Kc" id="uQ0-KA-Izm"/>
                 <outlet property="telButton" destination="zBa-wt-eR3" id="Hsa-gO-Iue"/>
+                <outlet property="telInput" destination="L8F-kj-qCc" id="RsI-Jj-ymt"/>
                 <outlet property="telNumber" destination="Fsu-3i-DO8" id="lZJ-a9-c8z"/>
+                <outlet property="userNameInput" destination="o85-sF-Zrk" id="n4L-I8-kBg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -39,7 +44,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="-340" y="-241"/>
+            <point key="canvasLocation" x="-350" y="-281"/>
         </view>
         <view contentMode="scaleToFill" id="n1Y-Zh-kGR">
             <rect key="frame" x="0.0" y="0.0" width="320" height="30"/>
@@ -252,7 +257,7 @@
             <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-160.5" y="-886"/>
+            <point key="canvasLocation" x="-323.5" y="-912"/>
         </view>
         <view contentMode="scaleToFill" id="5yU-Cq-FST">
             <rect key="frame" x="0.0" y="1" width="320" height="418"/>
@@ -304,7 +309,7 @@
             <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="231" y="-883"/>
+            <point key="canvasLocation" x="62" y="-974"/>
         </view>
         <view contentMode="scaleToFill" id="qVX-ff-tHg">
             <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
@@ -354,7 +359,72 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="390" y="-495"/>
+            <point key="canvasLocation" x="-350" y="-632"/>
+        </view>
+        <view contentMode="scaleToFill" id="ibR-yJ-F07">
+            <rect key="frame" x="0.0" y="1" width="320" height="315"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="姓名：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mma-B0-Bnk">
+                    <rect key="frame" x="8" y="13" width="51" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="电话：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6hW-nL-iaV">
+                    <rect key="frame" x="8" y="48" width="51" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="个人简历：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e6P-kG-a4y">
+                    <rect key="frame" x="8" y="82" width="85" height="21"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="15" id="o85-sF-Zrk">
+                    <rect key="frame" x="105" y="9" width="207" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" clearsOnBeginEditing="YES" minimumFontSize="15" id="L8F-kj-qCc">
+                    <rect key="frame" x="105" y="44" width="207" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Of8-D1-Qv9">
+                    <rect key="frame" x="105" y="90" width="207" height="167"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="MWk-F8-tTa">
+                    <rect key="frame" x="120" y="274" width="80" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="投递简历" backgroundImage="invite_telButton.png">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" id="aw2-4q-wC4">
+                    <rect key="frame" x="291" y="-5" width="22" height="22"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="140" y="-570.5"/>
         </view>
     </objects>
     <resources>

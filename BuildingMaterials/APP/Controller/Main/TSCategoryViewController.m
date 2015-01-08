@@ -39,7 +39,7 @@ static NSString * const categoryCellIdentifier = @"categoryCell";
     
     [TSHttpTool getWithUrl:Category_URL params:nil withCache:NO success:^(id result) {
         NSLog(@"分类:%@",result);
-        if (result[@"success"]) {
+        if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneResult in result[@"result"]) {
                 TSCategoryModel *model = [[TSCategoryModel alloc] init];
                 [model setValueForDictionary:oneResult];

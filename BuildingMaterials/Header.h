@@ -22,6 +22,7 @@
 #import "UIImage+Alpha.h"
 #import "BlocksKit+UIKit.h"
 #import "EXTScope.h"
+#import "EXTKeyPathCoding.h"
 #import <FBKVOController.h>
 #import "TSHttpTool.h"
 #import <MBProgressHUD.h>

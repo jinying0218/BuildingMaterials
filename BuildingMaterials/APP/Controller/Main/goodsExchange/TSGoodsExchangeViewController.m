@@ -46,7 +46,7 @@ static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailT
     
     [TSHttpTool getWithUrl:Exchange_URL params:params withCache:NO success:^(id result) {
         NSLog(@"Exchange_URL:%@",result);
-        if ([result objectForKey:@"success"]) {
+        if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneExchangeDict in result[@"result"]) {
                 TSExchangeListModel *exchangeModel = [[TSExchangeListModel alloc] init];
                 [exchangeModel setValueForDictionary:oneExchangeDict];
@@ -96,7 +96,7 @@ static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailT
 
     [TSHttpTool getWithUrl:Exchange_URL params:params withCache:NO success:^(id result) {
         NSLog(@"Exchange_URL:%@",result);
-        if ([result objectForKey:@"success"]) {
+        if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneExchangeDict in result[@"result"]) {
                 TSExchangeListModel *exchangeModel = [[TSExchangeListModel alloc] init];
                 [exchangeModel setValueForDictionary:oneExchangeDict];

@@ -25,10 +25,7 @@ static NSString *const ShopRecommedDetailTableViewCell = @"ShopRecommedDetailTab
 @end
 
 @implementation TSShopRecommedViewController
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:YES];
-    self.tabBarController.tabBar.hidden = NO;
-}
+
 #pragma mark - controller methods
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -49,7 +46,7 @@ static NSString *const ShopRecommedDetailTableViewCell = @"ShopRecommedDetailTab
     
     [TSHttpTool getWithUrl:CompanyLoad_URL params:params withCache:NO success:^(id result) {
         NSLog(@"商家列表:%@",result);
-        if ([result objectForKey:@"success"]) {
+        if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneExchangeDict in result[@"result"]) {
                 TSShopModel *shopModel = [[TSShopModel alloc] init];
                 [shopModel setValueForDictionary:oneExchangeDict];
@@ -100,7 +97,7 @@ static NSString *const ShopRecommedDetailTableViewCell = @"ShopRecommedDetailTab
     
     [TSHttpTool getWithUrl:CompanyLoad_URL params:params withCache:NO success:^(id result) {
         NSLog(@"商家列表:%@",result);
-        if ([result objectForKey:@"success"]) {
+        if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneExchangeDict in result[@"result"]) {
                 TSShopModel *shopModel = [[TSShopModel alloc] init];
                 [shopModel setValueForDictionary:oneExchangeDict];
@@ -118,7 +115,9 @@ static NSString *const ShopRecommedDetailTableViewCell = @"ShopRecommedDetailTab
 #pragma mark - tableview delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    TSShopModel *shopModel = self.viewModel.dataArray[indexPath.row];
     TSShopDetailViewModel *viewModel = [[TSShopDetailViewModel alloc] init];
+    viewModel.companyID = shopModel.I_D;
     TSShopDetailViewController *shopDetailVC = [[TSShopDetailViewController alloc] initWithViewModel:viewModel];
     [self.navigationController pushViewController:shopDetailVC animated:YES];
 }

@@ -9,5 +9,13 @@
 #import "TSShopDetailViewModel.h"
 
 @implementation TSShopDetailViewModel
-
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.shopModel = [[TSShopModel alloc] init];
+        self.dataArray = [[NSMutableArray alloc] initWithCapacity:0];
+    }
+    return self;
+}
 @end

@@ -9,6 +9,11 @@
 #import "TSShopDetailViewController.h"
 #import "TSShopDetailViewModel.h"
 #import "TSShopDetailCollectionViewCell.h"
+#import "TSGoodsRecommandModel.h"
+#import <UIImageView+WebCache.h>
+
+#import "TSShopGoodsViewModel.h"
+#import "TSShopGoodsViewController.h"
 
 static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailCollectionHeaderIdentifier";
 
@@ -16,6 +21,10 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
 @property (nonatomic, strong) UICollectionView *collectionView;
 @property (nonatomic, strong) NSMutableArray *collectViewDataArray;
 @property (nonatomic, strong) TSShopDetailViewModel *viewModel;
+@property (nonatomic, assign) int page;
+
+@property (nonatomic, strong) UIButton *checkGoodsBtn;
+
 @end
 
 @implementation TSShopDetailViewController
@@ -27,24 +36,56 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
     }
     return self;
 }
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:YES];
-    self.tabBarController.tabBar.hidden = NO;
-}
 
 #pragma mark - controller methods
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.page = 1;
     [self initializeData];
-    self.tabBarController.tabBar.hidden =  YES;
     [self setupUI];
-    
+    self.tabBarController.tabBar.hidden = YES;
+    [self blindActionHandler];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
+
+#pragma  mark - blind methods
+- (void)blindActionHandler{
+
+}
+
 - (void)initializeData{
 //    self.tableDataArray = [[NSMutableArray alloc] initWithObjects:@"莫非瓷砖商家",@"莫非瓷砖商家",@"莫非瓷砖商家",@"莫非瓷砖",@"莫非瓷砖商家",@"莫非瓷砖商家", nil];
+    
+    NSDictionary *params = @{@"companyId" : [NSString stringWithFormat:@"%d",self.viewModel.companyID]};
+    [TSHttpTool getWithUrl:CompanyDetail_URL params:params withCache:NO success:^(id result) {
+//        NSLog(@"商家详情：%@",result);
+        if ([result[@"success"] intValue] == 1) {
+            [self.viewModel.shopModel setShopModelValueForDictionary:result[@"result"]];
+            [self.collectionView reloadData];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"商家详情：%@",error);
+    }];
+    
+    NSDictionary *shopGoodsParams = @{@"page" : [NSString stringWithFormat:@"%d",self.page],
+                                      @"goodsOrderType" : @"1",
+                                      @"companyId" : [NSString stringWithFormat:@"%d",self.viewModel.companyID]};
+    [TSHttpTool getWithUrl:CompanyGoodsLoad_URL params:shopGoodsParams withCache:NO success:^(id result) {
+//        NSLog(@"商家物品：%@",result);
+        if ([result[@"success"] intValue] == 1) {
+            for (NSDictionary *oneDict in result[@"result"]) {
+                TSGoodsRecommandModel *goodsModel = [[TSGoodsRecommandModel alloc] init];
+                [goodsModel setValueForDictionary:oneDict];
+                [self.viewModel.dataArray addObject:goodsModel];
+            }
+            [self.collectionView reloadData];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"商家物品：%@",error);
+
+    }];
 }
 #pragma mark - set up UI
 - (void)setupUI{
@@ -62,7 +103,7 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
     // 4.设置间距
     layout.sectionInset = UIEdgeInsetsMake( 5, 5, 0, 5);
 
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT - KbottomBarHeight) collectionViewLayout:layout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT) collectionViewLayout:layout];
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.backgroundColor = [UIColor colorWithHexString:@"F0F0F0"];
     self.collectionView.delegate = self;
@@ -86,7 +127,7 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
 #pragma mark - UICollectionView方法
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 5;
+    return self.viewModel.dataArray.count;
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
@@ -123,11 +164,12 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
     [headerView addSubview:shopSymbolback];
 
     UIImageView *shopSymbol = [[UIImageView alloc] initWithFrame:CGRectMake( 5, 5, 60, 60)];
-    shopSymbol.image = [UIImage imageNamedString:@"ss_09"];
+    [shopSymbol sd_setImageWithURL:[NSURL URLWithString:self.viewModel.shopModel.COMPANY_IMAGE_URL]];
     [shopSymbolback addSubview:shopSymbol];
     
     UILabel *shopName = [[UILabel alloc] initWithFrame:CGRectMake( CGRectGetMaxX(shopSymbolback.frame) + 10, CGRectGetMaxY(bannerScrollView.frame) + 10, 100, 25)];
-    shopName.text = @"大自然地板";
+    shopName.text = self.viewModel.shopModel.COMPANY_NAME;
+    shopName.adjustsFontSizeToFitWidth = YES;
     shopName.textColor = [UIColor colorWithHexString:@"226e8a"];
     shopName.font = [UIFont systemFontOfSize:17];
 //    shopName.backgroundColor = [UIColor redColor];
@@ -140,21 +182,31 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
 //    goodsKinds.backgroundColor = [UIColor blueColor];
     [headerView addSubview:goodsKinds];
 
-    UIButton *checkGoodsBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [checkGoodsBtn setBackgroundImage:[UIImage imageNamedString:@"shop_button_bg"] forState:UIControlStateNormal];
-    [checkGoodsBtn setTitle:@"查看全部商品" forState:UIControlStateNormal];
-    checkGoodsBtn.titleLabel.font = [UIFont systemFontOfSize:13];
-    checkGoodsBtn.frame = CGRectMake( KscreenW - 20 - 80, CGRectGetMaxY(bannerScrollView.frame) + 10, 80, 35);
-    [checkGoodsBtn bk_addEventHandler:^(id sender) {
-        NSLog(@"查看全部商品");
+    self.checkGoodsBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.checkGoodsBtn setBackgroundImage:[UIImage imageNamedString:@"shop_button_bg"] forState:UIControlStateNormal];
+    [self.checkGoodsBtn setTitle:@"查看全部商品" forState:UIControlStateNormal];
+    self.checkGoodsBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+    self.checkGoodsBtn.frame = CGRectMake( KscreenW - 20 - 80, CGRectGetMaxY(bannerScrollView.frame) + 10, 80, 35);
+    @weakify(self);
+    [self.checkGoodsBtn bk_addEventHandler:^(id sender) {
+        @strongify(self);
+        TSShopGoodsViewModel *viewModel = [[TSShopGoodsViewModel alloc] init];
+        viewModel.companyID = self.viewModel.companyID;
+        viewModel.companyName = self.viewModel.shopModel.COMPANY_NAME;
+        TSShopGoodsViewController *shopGoodsVC = [[TSShopGoodsViewController alloc] init];
+        shopGoodsVC.viewModel = viewModel;
+        [self.navigationController pushViewController:shopGoodsVC animated:YES];
     } forControlEvents:UIControlEventTouchUpInside];
-    [headerView addSubview:checkGoodsBtn];
+
+    [headerView addSubview:self.checkGoodsBtn];
     return headerView;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     TSShopDetailCollectionViewCell *cell = [TSShopDetailCollectionViewCell cellWithCollectionView:collectionView indexPath:indexPath];
+    TSGoodsRecommandModel *goodsModel = self.viewModel.dataArray[indexPath.row];
+    [cell configureCellWithModel:goodsModel];
     return cell;
 }
 

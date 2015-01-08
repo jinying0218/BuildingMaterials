@@ -21,4 +21,6 @@
 @property (nonatomic, assign) int N_O;
 
 - (void)setValueForDictionary:(NSDictionary *)dict;
+- (void)setShopModelValueForDictionary:(NSDictionary *)dict;
+
 @end

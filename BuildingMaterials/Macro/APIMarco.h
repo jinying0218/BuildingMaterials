@@ -18,19 +18,29 @@
 #define FindPassword_URL Domain"/findPassword"
 //登陆接口
 #define Login_URL Domain"/login"
+
+
 //首页广告加载
 #define Frist_ADLoad_URL Domain"/appAdLoad"
 //首页秒杀加载
 #define Frist_SecKillLoad_URL Domain"/appSeckillLoad"
+
+
 //首页商家加载
 #define First_CompanyLoad_URL Domain"/appCompanyLoad"
 //商家列表
 #define CompanyLoad_URL Domain"/companyLoad"
+//商家详情
+#define CompanyDetail_URL Domain"/companyLoadById"
+//商家商品加载
+#define CompanyGoodsLoad_URL Domain"/goodsLoadByCompanyId"
+
 
 //首页商品加载
 #define First_GoodsLoad_URL Domain"/appGoodsLoad"
 //商品列表
 #define GoodsLoad_URL Domain"/goodsLoad"
+
 
 //首页换物加载
 #define First_Exchange_URL Domain"/appExchangeLoad"
@@ -39,6 +49,8 @@
 
 //分类
 #define Category_URL Domain"/goodsClassifyLoad"
+
+
 //招聘
 #define Invite_URL Domain"/postLoad"
 //招聘类别
@@ -49,29 +61,6 @@
 #define Invite_PostRepor_URL Domain"/reportSave"
 //岗位申请
 #define Invite_PostApply_URL Domain"/postAskSave"
-
-
-
-//获得维修人员列表和报事类型列表
-#define GetRepairUserList_URL Domain"/inspect/app/routine/routineInspectionUserList.do"
-//获得巡逻点的加密信息，用于二维码
-#define GetQRCode_URL Domain"/inspect/app/routine/routineQRCode.do"
-
-//巡检检查记录上传
-#define UploadRecord_URL Domain"/inspect/app/routine/routineInspectionRecord.do"
-//提交维修结果接口
-#define UploadMaintain_URL Domain"/inspect/app/routine/routineInspectionMaintain.do"
-//上传报事接口
-#define UploadNotice_URL Domain"/inspect/app/routine/routineInspectionDefect.do"
-//上传派工单
-#define UploadDispatch_URL Domain"/inspect/app/routine/routineInspectionTaskAdd.do"
-//签到接口
-#define UploadPointSignIn_URL Domain"/inspect/app/routine/routinePointSignIn.do"
-
-
-//获取照片，录音地址
-#define ImageAndRecord_URL Domain"/inspect"
-
 
 
 

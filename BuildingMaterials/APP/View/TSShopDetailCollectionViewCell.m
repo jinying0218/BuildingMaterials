@@ -7,6 +7,9 @@
 //
 
 #import "TSShopDetailCollectionViewCell.h"
+#import "TSGoodsRecommandModel.h"
+#import <UIImageView+WebCache.h>
+
 static NSString *const cellIdentifier = @"TSShopDetailCollectionViewCell";
 @implementation TSShopDetailCollectionViewCell
 
@@ -27,5 +30,12 @@ static NSString *const cellIdentifier = @"TSShopDetailCollectionViewCell";
     // 2.从缓存池中取出cell
     return [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
 }
-
+- (void)configureCellWithModel:(TSGoodsRecommandModel *)goodsModel{
+    if (![goodsModel.GOODS_HEAD_IMAGE isEqual:[NSNull null]]) {
+        [self.goodsImage sd_setImageWithURL:[NSURL URLWithString:goodsModel.GOODS_HEAD_IMAGE]];
+    }
+    self.goodsPrice.text = [NSString stringWithFormat:@"%d",goodsModel.GOODS_NEW_PRICE];
+    self.goodsName.text = goodsModel.GOODS_NAME;
+    
+}
 @end
