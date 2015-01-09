@@ -133,7 +133,7 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
     self.selectView.frame = CGRectMake( headerView.frame.size.width - 30, headerView.frame.size.height/2 - 5, 12, 8);
     [headerView addSubview:self.selectView];
     
-    self.inviteTableView = [[UITableView alloc] initWithFrame:CGRectMake( 0, 79, KscreenW, KscreenH - 49 - 84) style:UITableViewStylePlain];
+    self.inviteTableView = [[UITableView alloc] initWithFrame:CGRectMake( 0, 79, KscreenW, KscreenH - KbottomBarHeight - 64 - 35) style:UITableViewStylePlain];
     self.inviteTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.inviteTableView.rowHeight = 80;
 //    self.inviteTableView.backgroundColor = [UIColor yellowColor];

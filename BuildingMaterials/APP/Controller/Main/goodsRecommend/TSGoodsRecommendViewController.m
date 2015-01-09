@@ -13,6 +13,9 @@
 #import "TSInviteCategoryCell.h"
 #import "TSCategoryModel.h"
 
+#import "TSGoodsDetailViewController.h"
+#import "TSGoodsDetailViewModel.h"
+
 #define TableViewTag 2000
 #define PopTableViewTag 2001
 
@@ -38,10 +41,6 @@ static NSString *const popTableViewCell = @"popTableViewCell";
 @end
 
 @implementation TSGoodsRecommendViewController
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:YES];
-    self.tabBarController.tabBar.hidden = NO;
-}
 
 #pragma mark - controller methods
 - (void)viewDidLoad {
@@ -306,6 +305,13 @@ static NSString *const popTableViewCell = @"popTableViewCell";
         self.page = 1;
        
         [self getCategoryDataWithIndexPath:indexPath];
+    }else{
+        TSGoodsRecommandModel *goodsModel = self.viewModel.dataArray[indexPath.row];
+        TSGoodsDetailViewModel *viewModel = [[TSGoodsDetailViewModel alloc] init];
+        viewModel.goodsID = goodsModel.I_D;
+        TSGoodsDetailViewController *goodsDetailVC = [[TSGoodsDetailViewController alloc] init];
+        goodsDetailVC.viewModel = viewModel;
+        [self.navigationController pushViewController:goodsDetailVC animated:YES];
     }
 //    }else if (tableView.tag == inviteTableViewTag){
 //        [self.tabBarController hidesBottomBarWhenPushed];

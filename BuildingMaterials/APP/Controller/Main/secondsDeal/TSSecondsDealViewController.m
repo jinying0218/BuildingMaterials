@@ -33,10 +33,7 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
     }
     return self;
 }
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:YES];
-    self.tabBarController.tabBar.hidden = NO;
-}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initializeData];
