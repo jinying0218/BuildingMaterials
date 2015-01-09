@@ -13,6 +13,6 @@
     self.classifyDes = dict[@"classifyDes"];
     self.classifyImageUrl = dict[@"classifyImageUrl"];
     self.classifyName = dict[@"classifyName"];
-    self.classifyID = [dict[@"classifyID"] intValue];
+    self.classifyID = [dict[@"id"] intValue];
 }
 @end

@@ -16,8 +16,6 @@ static NSString * const categoryCellIdentifier = @"categoryCell";
 @interface TSCategoryViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) UITableView *categrayTable;
 @property (nonatomic, strong) UITextField *searchTextField;
-@property (nonatomic, strong) NSMutableArray *dataSourceArray;
-@property (nonatomic, strong) NSMutableArray *detailArray;
 
 @end
 
@@ -34,8 +32,6 @@ static NSString * const categoryCellIdentifier = @"categoryCell";
 }
 #pragma mark - initializData
 - (void)initializData{
-    self.dataSourceArray = [[NSMutableArray alloc] initWithObjects:@"地板",@"瓷砖",@"整体厨房",@"洁具/卫浴", nil];
-    self.detailArray = [[NSMutableArray alloc] initWithObjects:@"百博地板、百博地板、百博地板",@"王者、王者、王者",@"欧派橱柜、欧派橱柜",@"朝阳卫浴、朝阳卫浴、朝阳卫浴", nil];
     
     [TSHttpTool getWithUrl:Category_URL params:nil withCache:NO success:^(id result) {
         NSLog(@"分类:%@",result);

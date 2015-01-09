@@ -11,6 +11,7 @@
 #import "TSGoodsRecommandModel.h"
 #import "MJRefresh.h"
 #import "TSInviteCategoryCell.h"
+#import "TSCategoryModel.h"
 
 #define TableViewTag 2000
 #define PopTableViewTag 2001
@@ -22,6 +23,10 @@ static NSString *const popTableViewCell = @"popTableViewCell";
 @property (nonatomic, strong) TSArrayDataSource *dataSource;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, assign) int page;
+@property (nonatomic, assign) int classifyID;
+@property (nonatomic, strong) NSString *goodsOrderType;
+@property (nonatomic, assign) BOOL isSort;
+
 @property (nonatomic, strong) UIButton *naviRightBtn;
 @property (nonatomic, strong) UITextField *searchTextField;
 @property (nonatomic, strong) IBOutlet UIButton *categoryButton;
@@ -42,6 +47,10 @@ static NSString *const popTableViewCell = @"popTableViewCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.page = 1;
+    self.classifyID = 0;
+    self.goodsOrderType = @"1";
+    self.isSort = NO;
+    
     [self initializeData];
     [self setupUI];
     self.tabBarController.tabBar.hidden =  YES;
@@ -63,10 +72,10 @@ static NSString *const popTableViewCell = @"popTableViewCell";
 */
     
     NSDictionary *params = @{@"page":[NSString stringWithFormat:@"%d",self.page],
-                             @"goodsOrderType":@"1"};
+                             @"goodsOrderType": self.goodsOrderType};
     
     [TSHttpTool getWithUrl:GoodsLoad_URL params:params withCache:NO success:^(id result) {
-//        NSLog(@"GoodsLoad_URL:%@",result);
+        NSLog(@"GoodsLoad_URL:%@",result);
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneRecommendGoodsDict in result[@"result"]) {
                 TSGoodsRecommandModel *goodsModel = [[TSGoodsRecommandModel alloc] init];
@@ -78,6 +87,33 @@ static NSString *const popTableViewCell = @"popTableViewCell";
     } failure:^(NSError *error) {
         NSLog(@"商品推荐：%@",error);
     }];
+    
+    [TSHttpTool getWithUrl:GoodsClassify_URL params:nil withCache:NO success:^(id result) {
+        NSLog(@"商品分类:%@",result);
+        if ([result[@"success"] intValue] == 1) {
+            for (NSDictionary *oneResult in result[@"result"]) {
+                TSCategoryModel *model = [[TSCategoryModel alloc] init];
+                [model setValueForDictionary:oneResult];
+                [self.viewModel.categoryDataArray addObject:model];
+            }
+            TSCategoryModel *model = [[TSCategoryModel alloc] init];
+            model.classifyName = @"全部";
+            [self.viewModel.categoryDataArray insertObject:model atIndex:0];
+        }
+
+    } failure:^(NSError *error) {
+        NSLog(@"商品分类:%@",error);
+    }];
+    
+    NSArray *sortArray = @[@"默认",@"人气",@"价格"];
+    int i = 1;
+    for (NSString *string in sortArray) {
+        TSCategoryModel *model = [[TSCategoryModel alloc] init];
+        model.classifyName = string;
+        model.classifyID = i;   //排序id   1.2.3
+        i ++;
+        [self.viewModel.sortDataArray addObject:model];
+    }
 
 }
 #pragma mark - set up UI
@@ -149,7 +185,7 @@ static NSString *const popTableViewCell = @"popTableViewCell";
     [self.rootView addSubview:self.coverBottom];
 
 
-    self.popTableView = [[UITableView alloc] initWithFrame:CGRectMake( 0, 99, KscreenW, 44 * 5) style:UITableViewStylePlain];
+    self.popTableView = [[UITableView alloc] initWithFrame:CGRectMake( 0, 79, KscreenW, 44 * 5) style:UITableViewStylePlain];
     self.popTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     self.popTableView.rowHeight = 44;
     self.popTableView.tag = PopTableViewTag;
@@ -164,11 +200,12 @@ static NSString *const popTableViewCell = @"popTableViewCell";
 
 - (void)blindActionHandler{
     @weakify(self);
+    //搜索按钮
     [self.naviRightBtn bk_addEventHandler:^(id sender) {
         @strongify(self);
         self.page = 1;
         NSDictionary *params = @{@"page" : [NSString stringWithFormat:@"%d",self.page],
-                                 @"goodsOrderType" : @"1",
+                                 @"goodsOrderType" : self.goodsOrderType,
                                  @"goodsSearchName" : self.searchTextField.text};
         
         [TSHttpTool getWithUrl:GoodsLoad_URL params:params withCache:NO success:^(id result) {
@@ -190,18 +227,38 @@ static NSString *const popTableViewCell = @"popTableViewCell";
     //类别
     [self.categoryButton bk_addEventHandler:^(id sender) {
         @strongify(self);
+        self.viewModel.popDataArray = self.viewModel.categoryDataArray;
+        self.popTableView.hidden = !self.popTableView.hidden;
+        self.coverBottom.hidden = !self.coverBottom.hidden;
+        self.coverTop.hidden = !self.coverTop.hidden;
+        self.isSort = NO;
+        [self.popTableView reloadData];
     } forControlEvents:UIControlEventTouchUpInside];
     //排序
     [self.sortButton bk_addEventHandler:^(id sender) {
         @strongify(self);
+        self.viewModel.popDataArray = self.viewModel.sortDataArray;
+        self.popTableView.hidden = !self.popTableView.hidden;
+        self.coverBottom.hidden = !self.coverBottom.hidden;
+        self.coverTop.hidden = !self.coverTop.hidden;
+        self.isSort = YES;
+        [self.popTableView reloadData];
     } forControlEvents:UIControlEventTouchUpInside];
     
 }
 #pragma mark - 上拉加载更多
 - (void)footerRereshing{
     self.page += 1;
-    NSDictionary *params = @{@"page":[NSString stringWithFormat:@"%d",self.page],
-                             @"goodsOrderType":@"1"};
+    NSDictionary *params;
+    if (self.classifyID == 0) {
+        params = @{@"page":[NSString stringWithFormat:@"%d",self.page],
+                   @"goodsOrderType" : self.goodsOrderType};
+    }else {
+        params = @{@"page":[NSString stringWithFormat:@"%d",self.page],
+                   @"goodsOrderType" : self.goodsOrderType,
+                   @"goodsClassifyId" : [NSString stringWithFormat:@"%d",self.classifyID]};
+    }
+    
     
     [TSHttpTool getWithUrl:GoodsLoad_URL params:params withCache:NO success:^(id result) {
                 NSLog(@"商品列表:%@",result);
@@ -222,11 +279,8 @@ static NSString *const popTableViewCell = @"popTableViewCell";
 #pragma mark - tableView delegate & dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     
-    if (tableView.tag == TableViewTag) {
-        return self.viewModel.dataArray.count;
-    }else {
-        return self.viewModel.popDataArray.count;
-    }
+    return self.viewModel.popDataArray.count;
+
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -236,51 +290,78 @@ static NSString *const popTableViewCell = @"popTableViewCell";
         cell = [[[NSBundle mainBundle] loadNibNamed:@"TSInviteCategoryCell" owner:nil options:nil]lastObject];
     }
     
-//        TSInviteCategoryModel *model = self.viewModel.popDataArray[indexPath.row];
-//        cell.categoryDes.text = model.postClassifyName;
+    TSCategoryModel *model = self.viewModel.popDataArray[indexPath.row];
+    cell.categoryDes.text = model.classifyName;
+    
     return cell;
 }
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+   
+    //选择类别
     if (tableView.tag == PopTableViewTag) {
         self.popTableView.hidden = YES;
         self.coverBottom.hidden = YES;
         self.coverTop.hidden = YES;
         self.page = 1;
-        /*
-//        TSInviteCategoryModel *categoryModel = self.viewModel.categoryDataArray[indexPath.row];
-        NSDictionary *params;
-        if (indexPath.row == 0) {
-//            params = @{@"page":[NSString stringWithFormat:@"%d",self.page]};
+       
+        [self getCategoryDataWithIndexPath:indexPath];
+    }
+//    }else if (tableView.tag == inviteTableViewTag){
+//        [self.tabBarController hidesBottomBarWhenPushed];
+//        TSInviteModel *model = self.viewModel.dataArray[indexPath.row];
+//        TSInviteDetailViewModel *viewModel = [[TSInviteDetailViewModel alloc] init];
+//        viewModel.postID = model.I_D;
+//        TSInviteDetailViewController *inviteDetailVC = [[TSInviteDetailViewController alloc] init];
+//        inviteDetailVC.viewModel = viewModel;
+//        [self.navigationController pushViewController:inviteDetailVC animated:YES];
+//         /* */
+//    }
+    
+}
+- (void)getCategoryDataWithIndexPath:(NSIndexPath *)indexPath {
+    
+    TSCategoryModel *categoryModel = self.viewModel.popDataArray[indexPath.row];
+    NSDictionary *params;
+
+    if (self.isSort) {
+        self.goodsOrderType = [NSString stringWithFormat:@"%d",categoryModel.classifyID];
+        if (self.classifyID == 0) {
+            params = @{@"page" : [NSString stringWithFormat:@"%d",self.page],
+                       @"goodsOrderType" : self.goodsOrderType};
         }else {
-//            params = @{@"page":[NSString stringWithFormat:@"%d",self.page],
-                       @"postClassifyId":[NSString stringWithFormat:@"%d",categoryModel.categoryID]};
+            params = @{@"page":[NSString stringWithFormat:@"%d",self.page],
+                       @"goodsOrderType" : self.goodsOrderType,
+                       @"goodsClassifyId" : [NSString stringWithFormat:@"%d",self.classifyID]};
         }
+    }else {
         
-        [TSHttpTool getWithUrl:Invite_URL params:params withCache:NO success:^(id result) {
-            //            NSLog(@"招聘类别:%@",result);
+        if (indexPath.row == 0) {
+            self.classifyID = 0;
+            params = @{@"page" : [NSString stringWithFormat:@"%d",self.page],
+                       @"goodsOrderType" : self.goodsOrderType};
+        }else {
+            self.classifyID = categoryModel.classifyID;
+            params = @{@"page":[NSString stringWithFormat:@"%d",self.page],
+                       @"goodsOrderType" : self.goodsOrderType,
+                       @"goodsClassifyId" : [NSString stringWithFormat:@"%d",self.classifyID]};
+        }
+    }
+    
+        [TSHttpTool getWithUrl:GoodsLoad_URL params:params withCache:NO success:^(id result) {
+            NSLog(@"选择商品类别:%@",result);
             if ([result[@"success"] intValue] == 1) {
                 [self.viewModel.dataArray removeAllObjects];
-                for (NSDictionary *oneResult in result[@"result"]) {
-                    TSInviteModel *model = [[TSInviteModel alloc] init];
-                    [model setValueForDictionary:oneResult];
-                    [self.viewModel.dataArray addObject:model];
+                for (NSDictionary *oneRecommendGoodsDict in result[@"result"]) {
+                    TSGoodsRecommandModel *goodsModel = [[TSGoodsRecommandModel alloc] init];
+                    [goodsModel setValueForDictionary:oneRecommendGoodsDict];
+                    [self.viewModel.dataArray addObject:goodsModel];
                 }
-                [self.inviteTableView reloadData];
+                [self.tableView reloadData];
             }
         } failure:^(NSError *error) {
             NSLog(@"分类:%@",error);
         }];
-    }else if (tableView.tag == inviteTableViewTag){
-        [self.tabBarController hidesBottomBarWhenPushed];
-        TSInviteModel *model = self.viewModel.dataArray[indexPath.row];
-        TSInviteDetailViewModel *viewModel = [[TSInviteDetailViewModel alloc] init];
-        viewModel.postID = model.I_D;
-        TSInviteDetailViewController *inviteDetailVC = [[TSInviteDetailViewController alloc] init];
-        inviteDetailVC.viewModel = viewModel;
-        [self.navigationController pushViewController:inviteDetailVC animated:YES];
-         */
-    }
-         
 }
 
 @end
