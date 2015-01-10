@@ -148,7 +148,7 @@ static NSString *const popTableViewCell = @"popTableViewCell";
     [self.rootView addSubview:self.headerView];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight + 35, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT - 35) style:UITableViewStylePlain];
-    self.tableView.rowHeight = 125;
+    self.tableView.rowHeight = 115;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"F0F0F0"];

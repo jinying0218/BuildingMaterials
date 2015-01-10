@@ -13,6 +13,9 @@
 #import "MJRefresh.h"
 #import "TSExchangeModel.h"
 
+#import "TSExchangeDetailViewModel.h"
+#import "TSExchangeDetailViewController.h"
+
 static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailTableViewCell";
 
 @interface TSGoodsExchangeViewController ()<UITableViewDelegate>
@@ -22,11 +25,6 @@ static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailT
 @end
 
 @implementation TSGoodsExchangeViewController
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:YES];
-    self.tabBarController.tabBar.hidden = NO;
-}
-
 #pragma mark - controller methods
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -111,4 +109,12 @@ static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailT
     
 }
 
+#pragma mark - tableView delegate Method
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    TSExchangeListModel *model = self.viewModel.dataArray[indexPath.row];
+    TSExchangeDetailViewModel *viewModel = [[TSExchangeDetailViewModel alloc] init];
+    viewModel.exchangeGoodsModel = model;
+    TSExchangeDetailViewController *exchangeDetailVC = [[TSExchangeDetailViewController alloc] init];
+    [self.navigationController pushViewController:exchangeDetailVC animated:YES];
+}
 @end
