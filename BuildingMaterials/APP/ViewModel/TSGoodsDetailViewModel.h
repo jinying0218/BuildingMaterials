@@ -16,6 +16,7 @@
 @property (nonatomic, strong) TSShopModel *shopModel;
 @property (nonatomic, strong) TSGoodsInfoModel *goodsInfoModel;
 @property (nonatomic, strong) TSGoodsParamsModel *goodsParamsModel;
+@property (nonatomic, assign) int count;
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @end

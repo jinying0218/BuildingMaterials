@@ -54,7 +54,6 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
     [self createNavigationBarTitle:@"掌上秒杀" leftButtonImageName:@"Previous" rightButtonImageName:nil];
     [self.rootView addSubview:self.navigationBar];
     
-    
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT) style:UITableViewStylePlain];
     self.tableView.rowHeight = 125;
     self.tableView.showsVerticalScrollIndicator = NO;

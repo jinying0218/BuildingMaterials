@@ -66,6 +66,8 @@ static NSString *const SecondDealDetailCellIdentifier = @"SecondDealDetailCellId
             cell.textLabel.text = @"商品属性";
             if (indexPath.row == 2) {
                 
+                cell.textLabel.text = @"数量";
+                
                 UIImageView *countImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamedString:@"secondDeal_countBg"]];
                 countImageView.userInteractionEnabled = YES;
                 countImageView.frame = CGRectMake( cell.frame.size.width - 20 - 69, 9, 69, 30);

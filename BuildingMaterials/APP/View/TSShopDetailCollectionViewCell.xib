@@ -43,6 +43,7 @@
                 <outlet property="goodsName" destination="by1-gr-q83" id="hw8-qz-7tI"/>
                 <outlet property="goodsPrice" destination="HZt-tB-nNB" id="5jw-Ex-Ga0"/>
             </connections>
+            <point key="canvasLocation" x="15" y="341"/>
         </collectionViewCell>
     </objects>
 </document>

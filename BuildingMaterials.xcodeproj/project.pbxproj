@@ -598,14 +598,14 @@
 			name = "商家详情";
 			sourceTree = "<group>";
 		};
-		B015C3101A0F0A180060FBE2 /* 商家推荐详情cell */ = {
+		B015C3101A0F0A180060FBE2 /* 商家列表cell */ = {
 			isa = PBXGroup;
 			children = (
 				B015C3111A0F0A490060FBE2 /* TSShopRecommedDetailTableViewCell.h */,
 				B015C3121A0F0A490060FBE2 /* TSShopRecommedDetailTableViewCell.m */,
 				B015C3131A0F0A490060FBE2 /* TSShopRecommedDetailTableViewCell.xib */,
 			);
-			name = "商家推荐详情cell";
+			name = "商家列表cell";
 			sourceTree = "<group>";
 		};
 		B015C31B1A0F0E9F0060FBE2 /* 商品推荐详情cell */ = {
@@ -772,8 +772,8 @@
 				B00ED6C21A4193DC001D6737 /* 商家详情 */,
 				B05B62DF19FE86CC008F76E0 /* 掌上秒杀cell */,
 				B05E6E961A045572009C92CC /* 掌上秒杀详情cell */,
-				B05B62E019FE86F0008F76E0 /* 商家推荐cell */,
-				B015C3101A0F0A180060FBE2 /* 商家推荐详情cell */,
+				B05B62E019FE86F0008F76E0 /* 首页商家推荐cell */,
+				B015C3101A0F0A180060FBE2 /* 商家列表cell */,
 				B05B62E119FE86FA008F76E0 /* 商品推荐cell */,
 				B015C31B1A0F0E9F0060FBE2 /* 商品推荐详情cell */,
 				B05B62E219FE8711008F76E0 /* 以物换物cell */,
@@ -1085,14 +1085,14 @@
 			name = "掌上秒杀cell";
 			sourceTree = "<group>";
 		};
-		B05B62E019FE86F0008F76E0 /* 商家推荐cell */ = {
+		B05B62E019FE86F0008F76E0 /* 首页商家推荐cell */ = {
 			isa = PBXGroup;
 			children = (
 				B05B62E819FE88DE008F76E0 /* TSShopReccommendTableViewCell.h */,
 				B05B62E919FE88DE008F76E0 /* TSShopReccommendTableViewCell.m */,
 				B05B62EA19FE88DE008F76E0 /* TSShopReccommendTableViewCell.xib */,
 			);
-			name = "商家推荐cell";
+			name = "首页商家推荐cell";
 			sourceTree = "<group>";
 		};
 		B05B62E119FE86FA008F76E0 /* 商品推荐cell */ = {
