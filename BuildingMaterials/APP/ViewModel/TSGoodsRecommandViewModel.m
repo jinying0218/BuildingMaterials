@@ -15,6 +15,8 @@
     if (self) {
         self.dataArray = [[NSMutableArray alloc] initWithCapacity:0];
         self.popDataArray = [[NSMutableArray alloc] initWithCapacity:0];
+        self.categoryDataArray = [[NSMutableArray alloc] initWithCapacity:0];
+        self.sortDataArray = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }

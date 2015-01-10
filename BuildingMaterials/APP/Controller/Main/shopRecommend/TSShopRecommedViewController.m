@@ -68,7 +68,7 @@ static NSString *const ShopRecommedDetailTableViewCell = @"ShopRecommedDetailTab
     [self.rootView addSubview:self.navigationBar];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT) style:UITableViewStylePlain];
-    self.tableView.rowHeight = 125;
+    self.tableView.rowHeight = 100;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"F0F0F0"];

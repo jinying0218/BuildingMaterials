@@ -33,7 +33,7 @@ static NSString *const SecondDealDetailCellIdentifier = @"SecondDealDetailCellId
     [self setupUI];
     self.tabBarController.tabBar.hidden =  YES;
 
-    [self bindHandler];
+    [self bindActionHandler];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -49,7 +49,7 @@ static NSString *const SecondDealDetailCellIdentifier = @"SecondDealDetailCellId
     [self.rootView addSubview:self.navigationBar];
     
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT - KbottomBarHeight) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT) style:UITableViewStylePlain];
     self.tableView.rowHeight = 45;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
@@ -65,6 +65,8 @@ static NSString *const SecondDealDetailCellIdentifier = @"SecondDealDetailCellId
         }else {
             cell.textLabel.text = @"商品属性";
             if (indexPath.row == 2) {
+                
+                cell.textLabel.text = @"数量";
                 
                 UIImageView *countImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamedString:@"secondDeal_countBg"]];
                 countImageView.userInteractionEnabled = YES;
@@ -168,7 +170,7 @@ static NSString *const SecondDealDetailCellIdentifier = @"SecondDealDetailCellId
     self.buyBtn.layer.cornerRadius = 5;
     [tableHeaderView addSubview:self.buyBtn];
 }
-- (void)bindHandler{
+- (void)bindActionHandler{
     [self.buyBtn bk_addEventHandler:^(id sender) {
         NSLog(@"抢购");
     } forControlEvents:UIControlEventTouchUpInside];

@@ -40,7 +40,12 @@
 #define First_GoodsLoad_URL Domain"/appGoodsLoad"
 //商品列表
 #define GoodsLoad_URL Domain"/goodsLoad"
-
+//商品类别
+#define GoodsClassify_URL Domain"/goodsClassifyLoad"
+//商品信息
+#define GoodsInfo_URL Domain"/goodsLoadById"
+//商品规格参数
+#define GoodsParameters_URL Domain"/goodsParametersLoadById"
 
 //首页换物加载
 #define First_Exchange_URL Domain"/appExchangeLoad"
