@@ -15,6 +15,9 @@
 #import "TSShopGoodsViewModel.h"
 #import "TSShopGoodsViewController.h"
 
+#import "TSGoodsDetailViewController.h"
+#import "TSGoodsDetailViewModel.h"
+
 static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailCollectionHeaderIdentifier";
 
 @interface TSShopDetailViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
@@ -210,15 +213,13 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
     return cell;
 }
 
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
+    TSGoodsRecommandModel *goodsModel = self.viewModel.dataArray[indexPath.row];
+    TSGoodsDetailViewModel *viewModel = [[TSGoodsDetailViewModel alloc] init];
+    viewModel.goodsID = goodsModel.I_D;
+    TSGoodsDetailViewController *goodsDetailVC = [[TSGoodsDetailViewController alloc] init];
+    goodsDetailVC.viewModel = viewModel;
+    [self.navigationController pushViewController:goodsDetailVC animated:YES];
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
-*/
-
 @end

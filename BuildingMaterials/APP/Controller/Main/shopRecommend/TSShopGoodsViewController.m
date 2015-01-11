@@ -11,6 +11,9 @@
 #import "TSGoodsRecommandModel.h"
 #import "MJRefresh.h"
 
+#import "TSGoodsDetailViewController.h"
+#import "TSGoodsDetailViewModel.h"
+
 static NSString *const GoodsRecommadDetailTableViewCell = @"GoodsRecommadDetailTableViewCell";
 
 @interface TSShopGoodsViewController ()<UITableViewDelegate>
@@ -108,5 +111,13 @@ static NSString *const GoodsRecommadDetailTableViewCell = @"GoodsRecommadDetailT
     }];
     
 }
-
+#pragma mark - tableview delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    TSGoodsRecommandModel *goodsModel = self.viewModel.dataArray[indexPath.row];
+    TSGoodsDetailViewModel *viewModel = [[TSGoodsDetailViewModel alloc] init];
+    viewModel.goodsID = goodsModel.I_D;
+    TSGoodsDetailViewController *goodsDetailVC = [[TSGoodsDetailViewController alloc] init];
+    goodsDetailVC.viewModel = viewModel;
+    [self.navigationController pushViewController:goodsDetailVC animated:YES];
+}
 @end
