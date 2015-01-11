@@ -13,5 +13,7 @@
 @property (nonatomic, strong) NSMutableArray *popDataArray;
 @property (nonatomic, strong) NSMutableArray *categoryDataArray;
 @property (nonatomic, strong) NSMutableArray *sortDataArray;
-
+@property (nonatomic, assign) int page;
+@property (nonatomic, assign) int classifyID;
+@property (nonatomic, strong) NSString *goodsOrderType;
 @end

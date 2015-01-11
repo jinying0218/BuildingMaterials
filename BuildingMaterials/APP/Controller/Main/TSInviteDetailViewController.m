@@ -258,9 +258,12 @@
             }else if ([result[@"success"] intValue] == 0 && [result[@"errorMsg"] isEqualToString:@"have_report"]){
                 [self showProgressHUD:@"已经举报过" delay:1];
             };
-
         } failure:^(NSError *error) {
             NSLog(@"举报：%@",error);
+        }];
+        [TSHttpTool postWithUrl:Invite_PostRepor_URL params:params success:^(id result) {
+            NSLog(@"举报:%@",result);
+        } failure:^(NSError *error) {
         }];
     } forControlEvents:UIControlEventTouchUpInside];
     

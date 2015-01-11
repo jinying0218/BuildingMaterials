@@ -43,7 +43,7 @@ static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailT
     NSDictionary *params = @{@"page":[NSString stringWithFormat:@"%d",self.page]};
     
     [TSHttpTool getWithUrl:Exchange_URL params:params withCache:NO success:^(id result) {
-        NSLog(@"Exchange_URL:%@",result);
+        NSLog(@"换物列表:%@",result);
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneExchangeDict in result[@"result"]) {
                 TSExchangeListModel *exchangeModel = [[TSExchangeListModel alloc] init];
@@ -115,6 +115,7 @@ static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailT
     TSExchangeDetailViewModel *viewModel = [[TSExchangeDetailViewModel alloc] init];
     viewModel.exchangeGoodsModel = model;
     TSExchangeDetailViewController *exchangeDetailVC = [[TSExchangeDetailViewController alloc] init];
+    exchangeDetailVC.viewModel = viewModel;
     [self.navigationController pushViewController:exchangeDetailVC animated:YES];
 }
 @end

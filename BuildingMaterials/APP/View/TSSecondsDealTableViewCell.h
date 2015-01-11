@@ -10,6 +10,12 @@
 #import "LPLabel.h"
 #import "MZTimerLabel.h"
 
+@protocol SecondsDealTableViewCellDelegate <NSObject>
+
+- (void)touchCellImageView:(UIButton *)button;
+
+@end
+
 @interface TSSecondsDealTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *fristGoodsImage;
 @property (weak, nonatomic) IBOutlet UIImageView *secondGoodsImage;
@@ -24,8 +30,12 @@
 @property (weak, nonatomic) IBOutlet LPLabel *secondGoodsPrice;
 @property (weak, nonatomic) IBOutlet LPLabel *thirdGoodsPrice;
 @property (weak, nonatomic) IBOutlet UILabel *timerLabel;
+@property (weak, nonatomic) IBOutlet UIButton *firstImageButton;
+@property (weak, nonatomic) IBOutlet UIButton *secondImageButton;
+@property (weak, nonatomic) IBOutlet UIButton *thirdImageButton;
 
 @property (strong, nonatomic) MZTimerLabel *mzTimerLabel;
+@property (nonatomic, weak) id<SecondsDealTableViewCellDelegate> delegate ;
 
 - (void)configureCellWithModelArray:(NSMutableArray *)models;
 @end

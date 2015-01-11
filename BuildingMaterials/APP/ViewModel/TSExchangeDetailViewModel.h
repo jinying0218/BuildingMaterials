@@ -11,4 +11,6 @@
 
 @interface TSExchangeDetailViewModel : NSObject
 @property (nonatomic, strong) TSExchangeListModel *exchangeGoodsModel;
+@property (nonatomic, strong) NSMutableArray *imageArray;
+
 @end

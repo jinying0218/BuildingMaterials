@@ -28,6 +28,8 @@
 - (void)configureCellWithModelArray:(NSMutableArray *)models{
     self.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamedString:@"cell_goodsExchange_bg"]];
     self.backgroundView.frame = CGRectMake( 0, 0, KscreenW, self.frame.size.height - 50);
+    @weakify(self);
+
     for (int i = 0; i < models.count; i++) {
         TSSecKillModel *model = models[i];
         switch (i) {
@@ -37,6 +39,7 @@
                 self.fristGoodsNowPrice.text = [NSString stringWithFormat:@"%d",model.SECKILL_PRICE];
                 self.fristGoodsPrice.text = [NSString stringWithFormat:@"%d",model.GOODS_NEW_PRICE];
                 self.fristGoodsPrice.strikeThroughEnabled = YES;
+                
                 
                 [[TSDateFormatterTool shareInstance] setDateStyle:NSDateFormatterMediumStyle];
                 [[TSDateFormatterTool shareInstance] setTimeStyle:NSDateFormatterShortStyle];
@@ -53,13 +56,11 @@
                 
                 long miniTineInterval = currentTimeInterval - endTimeInterval;
                 
-                NSString *timeIn = [[TSDateFormatterTool shareInstance] IntervalStringFromDate:date];
+//                NSString *timeIn = [[TSDateFormatterTool shareInstance] IntervalStringFromDate:date];
                 
                 self.mzTimerLabel = [[MZTimerLabel alloc] initWithLabel:self.timerLabel andTimerType:MZTimerLabelTypeTimer];
                 [self.mzTimerLabel setCountDownTime:miniTineInterval];
                 [self.mzTimerLabel start];
-
-                
             }
                 break;
                 
@@ -86,6 +87,12 @@
         }
     }
 }
+
+- (IBAction)touchCellImageView:(UIButton *)button{
+    if ([self.delegate respondsToSelector:@selector(touchCellImageView:)]) {
+        [self.delegate touchCellImageView:button];
+    }
+}
 - (NSString *) compareCurrentTime:(NSDate*) compareDate
 //
 {
@@ -97,7 +104,7 @@
         result = [NSString stringWithFormat:@"刚刚"];
     }
     else if((temp = timeInterval/60) <60){
-        result = [NSString stringWithFormat:@"%d分前",temp];
+        result = [NSString stringWithFormat:@"%ld分前",temp];
     }
     
     else if((temp = temp/60) <24){

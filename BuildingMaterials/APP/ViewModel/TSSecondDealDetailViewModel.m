@@ -19,6 +19,7 @@
     self = [super init];
     if (self) {
         self.tableDataArray = [[NSMutableArray alloc] initWithObjects:@"莫非瓷砖",@"莫非瓷砖",@"莫非瓷砖",@"莫非瓷砖",@"莫非瓷砖",@"莫非瓷砖", nil];
+//        self.secKillModel = [[TSSecKillModel alloc] init];
     }
     return self;
 }

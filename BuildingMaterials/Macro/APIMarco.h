@@ -55,6 +55,10 @@
 #define ExchangeDetail_URL Domain"/exchangeLoadById"
 //换物详情图片
 #define ExchangeImage_URL Domain"/exchangeImageLoadById"
+//换物发布
+#define ExchangeAdd_URL Domain"/exchangeAdd"
+//换物上传照片
+#define ImageUpload_URL Domain"/ImageUpload"
 
 //分类
 #define Category_URL Domain"/goodsClassifyLoad"

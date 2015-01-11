@@ -36,6 +36,10 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
 @end
 
 @implementation TSInviteViewController
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    self.tabBarController.tabBar.hidden = NO;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
