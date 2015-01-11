@@ -89,38 +89,40 @@
 #pragma mark - set up UI
 - (void)setupUI{
     
-    [self creatRootView];
+    [self createRootScrollView];
     [self createNavigationBarTitle:@"招聘详情" leftButtonImageName:@"Previous" rightButtonImageName:nil];
-    [self.rootView addSubview:self.navigationBar];
-    self.rootView.backgroundColor = [UIColor colorWithHexString:@"f4f4f4"];
+    self.navigationBar.frame = CGRectMake( 0, STATUS_BAR_HEGHT, KscreenW, 44);
+    [self.view addSubview:self.navigationBar];
+    self.rootScrollView.backgroundColor = [UIColor colorWithHexString:@"f4f4f4"];
+    self.rootScrollView.frame = CGRectMake(0, 64 + 30, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT - 30 - 60);
     
-    
-    self.headerView.frame = CGRectMake( 0, 44, KscreenW, 30);
-    [self.rootView addSubview:self.headerView];
+    self.headerView.frame = CGRectMake( 0, CGRectGetMaxY(self.navigationBar.frame), KscreenW, 30);
+    [self.view addSubview:self.headerView];
     
     self.headerView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.headerView.layer.borderWidth = 1;
     
-    self.companyView.frame = CGRectMake( 0, CGRectGetMaxY(self.headerView.frame), KscreenW, KscreenH - 64 - 30 - 60);
-    [self.rootView addSubview:self.companyView];
+    self.companyView.frame = CGRectMake( 0, 0, KscreenW, KscreenH - 64 - 30 - 60);
+    [self.rootScrollView addSubview:self.companyView];
     
-    self.postView.frame = CGRectMake( 0, CGRectGetMaxY(self.headerView.frame), KscreenW, KscreenH - 64 - 30 - 60);
-    [self.rootView addSubview:self.postView];
+    self.postView.frame = CGRectMake( 0, 0, KscreenW, 395);
+    [self.rootScrollView addSubview:self.postView];
     
     self.postHeart.text = @"凡是扣押证件原件，未标明收费却收取各种费用，要求购买购物卡或者各种商品的，都有诈骗嫌疑";
     
-    self.bottomView.frame = CGRectMake(0, CGRectGetMaxY(self.postView.frame), KscreenW, 60);
-    [self.rootView addSubview:self.bottomView];
+    //底部视图
+    self.bottomView.frame = CGRectMake(0, KscreenH - 60, KscreenW, 60);
+    [self.view addSubview:self.bottomView];
     
     _coverView = [[UIView alloc] initWithFrame:self.view.bounds];
     _coverView.backgroundColor = [UIColor blackColor];
     _coverView.alpha = 0.5;
     _coverView.hidden = YES;
-    [self.rootView addSubview:_coverView];
+    [self.rootScrollView addSubview:_coverView];
     
     //KscreenH - 315 - 20
-    self.applyView.frame = CGRectMake( 0, KscreenH, KscreenW, 315);
-    [self.rootView addSubview:self.applyView];
+    self.applyView.frame = CGRectMake( 0, self.rootScrollView.contentSize.height + 44, KscreenW, 315);
+    [self.rootScrollView addSubview:self.applyView];
     
     self.userNameInput.layer.borderWidth = 1;
     self.userNameInput.layer.borderColor = [UIColor lightGrayColor].CGColor;
@@ -131,6 +133,7 @@
     self.resumeInput.delegate = self;
     self.resumeInput.layer.borderColor = [UIColor lightGrayColor].CGColor;
     
+    self.rootScrollView.contentSize = CGSizeMake( KscreenW, CGRectGetMaxY(self.postView.frame));
 }
 
 - (void)layoutSubViews{
@@ -153,7 +156,7 @@
 #pragma mark - blind methods
 
 - (void)blindViewModel{
-    @weakify(self);
+//    @weakify(self);
     
     [self.KVOController
      observe:self.viewModel
@@ -209,8 +212,9 @@
         self.selectedLabel.frame = CGRectMake( 0, 27, KscreenW/2, 2);
         self.postInfoButton.backgroundColor = [UIColor colorWithHexString:@"f4f4f4"];
         self.companyInfoButton.backgroundColor = [UIColor whiteColor];
-        
-        [self.rootView bringSubviewToFront:self.postView];
+        self.postView.hidden = NO;
+        self.companyView.hidden = YES;
+        [self.rootScrollView bringSubviewToFront:self.postView];
         
     } forControlEvents:UIControlEventTouchUpInside];
     
@@ -220,8 +224,9 @@
         self.selectedLabel.frame = CGRectMake( KscreenW/2, 27, KscreenW/2, 2);
         self.companyInfoButton.backgroundColor = [UIColor colorWithHexString:@"f4f4f4"];
         self.postInfoButton.backgroundColor = [UIColor whiteColor];
-        
-        [self.rootView bringSubviewToFront:self.companyView];
+        self.postView.hidden = YES;
+        self.companyView.hidden = NO;
+        [self.rootScrollView bringSubviewToFront:self.companyView];
 
     } forControlEvents:UIControlEventTouchUpInside];
     
@@ -283,7 +288,7 @@
                 [self showProgressHUD:@"投递简历成功" delay:1];
                 [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionLayoutSubviews animations:^{
                     CGRect frame = self.applyView.frame;
-                    frame.origin.y = KscreenH;
+                    frame.origin.y = self.rootScrollView.contentSize.height + 44;
                     self.applyView.frame = frame;
                     self.coverView.hidden = YES;
                 } completion:nil];
@@ -300,7 +305,7 @@
 
         [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionLayoutSubviews animations:^{
             CGRect frame = self.applyView.frame;
-            frame.origin.y = KscreenH;
+            frame.origin.y = self.rootScrollView.contentSize.height + 44;
             self.applyView.frame = frame;
             self.coverView.hidden = YES;
 
@@ -346,9 +351,9 @@
 - (void)moveInputBarWithKeyboardHeight:(CGFloat)height withDuration:(CGFloat)animationDuration{
     
     [UIView animateWithDuration:animationDuration animations:^{
-        CGRect frame = self.rootView.frame;
+        CGRect frame = self.rootScrollView.frame;
         frame.origin.y += height;
-        self.rootView.frame = frame;
+        self.rootScrollView.frame = frame;
     }];
 }
 
