@@ -138,7 +138,7 @@ static NSString *const SecondDealDetailCellIdentifier = @"SecondDealDetailCellId
     [bannerScrollView addSubview:imageView3];
     
     self.goodName = [[UILabel alloc] init];
-    self.goodName.text = @"2014世纪末非瓷砖";
+    self.goodName.text = self.viewModel.secKillModel.GOODS_NAME;
 //    CGRect strSize = [self.goodName.text boundingRectWithSize:CGSizeMake( CGFLOAT_MAX, 20) options:NSStringDrawingTruncatesLastVisibleLine attributes:nil context:nil];
     CGSize strSize = [self.goodName sizeThatFits:CGSizeMake(CGFLOAT_MAX, 20)];
 

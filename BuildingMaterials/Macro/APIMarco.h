@@ -51,6 +51,14 @@
 #define First_Exchange_URL Domain"/appExchangeLoad"
 //以物换物列表
 #define Exchange_URL Domain"/exchangeLoad"
+//换物详情
+#define ExchangeDetail_URL Domain"/exchangeLoadById"
+//换物详情图片
+#define ExchangeImage_URL Domain"/exchangeImageLoadById"
+//换物发布
+#define ExchangeAdd_URL Domain"/exchangeAdd"
+//换物上传照片
+#define ImageUpload_URL Domain"/ImageUpload"
 
 //分类
 #define Category_URL Domain"/goodsClassifyLoad"

@@ -88,10 +88,10 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="335" y="270"/>
+            <point key="canvasLocation" x="62" y="-270"/>
         </view>
         <view contentMode="scaleToFill" id="1ND-l9-fAV">
-            <rect key="frame" x="0.0" y="0.0" width="373" height="412"/>
+            <rect key="frame" x="0.0" y="0.0" width="373" height="395"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" id="obS-av-P3m">
@@ -246,7 +246,7 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="SYd-Nr-WZ9">
-                    <rect key="frame" x="28" y="355" width="316" height="30"/>
+                    <rect key="frame" x="36" y="355" width="300" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="举报" backgroundImage="invite_telButton.png">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -257,7 +257,7 @@
             <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-323.5" y="-912"/>
+            <point key="canvasLocation" x="454.5" y="-1019"/>
         </view>
         <view contentMode="scaleToFill" id="5yU-Cq-FST">
             <rect key="frame" x="0.0" y="1" width="320" height="418"/>

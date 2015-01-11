@@ -47,9 +47,9 @@
                 NSDictionary *appUser = [result objectForKey:@"appUser"];
                 TSUserModel *userModel = [[TSUserModel alloc] init];
                 userModel.classFrom = appUser[@"class"];
-                userModel.userId = appUser[@"id"];
-                userModel.isLook = appUser[@"isLook"];
-                userModel.isUsed = appUser[@"isUsed"];
+                userModel.userId = [appUser[@"id"] intValue];
+                userModel.isLook = [appUser[@"isLook"] boolValue];
+                userModel.isUsed = [appUser[@"isUsed"] boolValue];
                 userModel.loginTime = appUser[@"loginTime"];
                 userModel.password = appUser[@"password"];
                 userModel.regFrom = appUser[@"regFrom"];
@@ -57,6 +57,7 @@
                 userModel.telephone = appUser[@"telephone"];
                 
                 [userModel saveToDisk];
+//                NSLog(@"%d---%d",userModel.userId,userModel.isLook);
                 TSMainTabBarViewController *tabbarController = [[TSMainTabBarViewController alloc] init];
                 [self presentViewController:tabbarController animated:YES completion:nil];
             }else if ([result[@"success"] intValue] == 0){

@@ -13,6 +13,9 @@
 #import "MJRefresh.h"
 #import "TSExchangeModel.h"
 
+#import "TSExchangeDetailViewModel.h"
+#import "TSExchangeDetailViewController.h"
+
 static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailTableViewCell";
 
 @interface TSGoodsExchangeViewController ()<UITableViewDelegate>
@@ -22,11 +25,6 @@ static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailT
 @end
 
 @implementation TSGoodsExchangeViewController
-- (void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:YES];
-    self.tabBarController.tabBar.hidden = NO;
-}
-
 #pragma mark - controller methods
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -45,7 +43,7 @@ static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailT
     NSDictionary *params = @{@"page":[NSString stringWithFormat:@"%d",self.page]};
     
     [TSHttpTool getWithUrl:Exchange_URL params:params withCache:NO success:^(id result) {
-        NSLog(@"Exchange_URL:%@",result);
+        NSLog(@"换物列表:%@",result);
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneExchangeDict in result[@"result"]) {
                 TSExchangeListModel *exchangeModel = [[TSExchangeListModel alloc] init];
@@ -111,4 +109,13 @@ static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailT
     
 }
 
+#pragma mark - tableView delegate Method
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    TSExchangeListModel *model = self.viewModel.dataArray[indexPath.row];
+    TSExchangeDetailViewModel *viewModel = [[TSExchangeDetailViewModel alloc] init];
+    viewModel.exchangeGoodsModel = model;
+    TSExchangeDetailViewController *exchangeDetailVC = [[TSExchangeDetailViewController alloc] init];
+    exchangeDetailVC.viewModel = viewModel;
+    [self.navigationController pushViewController:exchangeDetailVC animated:YES];
+}
 @end

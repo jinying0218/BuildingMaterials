@@ -8,6 +8,6 @@
 
 #import "TSBaseViewController.h"
 @class TSSecondsDealViewModel;
-@interface TSSecondsDealViewController : TSBaseViewController
+@interface TSSecondsListViewController : TSBaseViewController
 - (instancetype)initWithViewModel:(TSSecondsDealViewModel *)viewModel;
 @end

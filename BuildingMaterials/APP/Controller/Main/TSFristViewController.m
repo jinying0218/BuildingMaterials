@@ -7,21 +7,30 @@
 //
 
 #import "TSFristViewController.h"
-#import "TSSecondsDealViewController.h"
+#import "TSSecondsListViewController.h"
 #import "TSShopRecommedViewController.h"
 #import "TSShopRecommandViewModel.h"
 
+#import "TSSecondsDealTableViewCell.h"
+#import "TSSecondsDealViewModel.h"
+#import "TSSecondDealDetailViewController.h"
+#import "TSSecondDealDetailViewModel.h"
+
+#import "TSShopReccommendTableViewCell.h"
+#import "TSShopDetailViewController.h"
+#import "TSShopDetailViewModel.h"
+
+#import "TSGoodsRecommendTableViewCell.h"
 #import "TSGoodsRecommendViewController.h"
 #import "TSGoodsRecommandViewModel.h"
+#import "TSGoodsDetailViewController.h"
+#import "TSGoodsDetailViewModel.h"
+
 
 #import "TSGoodsExchangeViewController.h"
 #import "TSGoodsExchangeViewModel.h"
-
-
-#import "TSSecondsDealTableViewCell.h"
-#import "TSSecondsDealViewModel.h"
-#import "TSShopReccommendTableViewCell.h"
-#import "TSGoodsRecommendTableViewCell.h"
+#import "TSExchangeDetailViewModel.h"
+#import "TSExchangeDetailViewController.h"
 #import "TSGoodsExchangeTableViewCell.h"
 
 #import <UIImageView+WebCache.h>
@@ -36,7 +45,7 @@ static NSString * const goodsExchangeCell = @"goodsExchangeCell";     //以物�
 static NSString * const shopRecommendCell = @"shopRecommendCell";     //商家推荐
 static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
 
-@interface TSFristViewController ()<UITableViewDelegate,UITableViewDataSource>
+@interface TSFristViewController ()<UITableViewDelegate,UITableViewDataSource,SecondsDealTableViewCellDelegate>
 @property (nonatomic, strong) UITableView *firstTable;
 
 @end
@@ -75,7 +84,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     }];
     //秒杀
     [TSHttpTool getWithUrl:Frist_SecKillLoad_URL params:nil withCache:nil success:^(id result) {
-        NSLog(@"Frist_SecKillLoad_URL:%@",result);
+//        NSLog(@"首页秒杀:%@",result);
         if ([result[@"success"] intValue] == 1) {
             NSArray *goods_result = result[@"goods_result"];
             for (NSDictionary *oneGoodsResult in goods_result) {
@@ -96,7 +105,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneShopModel in result[@"result"]) {
                 TSShopModel *shopModel = [[TSShopModel alloc] init];
-                [shopModel setValuesForKeysWithDictionary:oneShopModel];
+                [shopModel setValueForDictionary:oneShopModel];
                 [self.viewModel.shopRecommendDataArray addObject:shopModel];
             }
             [self.firstTable reloadData];
@@ -107,7 +116,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     
     //首页商品推荐
     [TSHttpTool getWithUrl:First_GoodsLoad_URL params:nil withCache:NO success:^(id result) {
-        NSLog(@"商品推荐：%@",result);
+//        NSLog(@"商品推荐：%@",result);
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneGoodsModel in result[@"result"]) {
                 TSGoodsRecommandModel *goodsModel = [[TSGoodsRecommandModel alloc] init];
@@ -137,11 +146,11 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     
     //首页换物
     [TSHttpTool getWithUrl:First_Exchange_URL params:nil withCache:NO success:^(id result) {
-        NSLog(@"First_Exchange_URL:%@",result);
+//        NSLog(@"First_Exchange_URL:%@",result);
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneExchangeModel in result[@"result"]) {
                 TSExchangeModel *exchangeModel = [[TSExchangeModel alloc] init];
-                [exchangeModel setValuesForKeysWithDictionary:oneExchangeModel];
+                [exchangeModel setValueWithDict:oneExchangeModel];
                 [self.viewModel.goodsExchangeDataArray addObject:exchangeModel];
             }
             [self.firstTable reloadData];
@@ -192,6 +201,17 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     [bannerScrollView addSubview:imageView3];
 
 }
+
+#pragma  mark - secondDealTableView delegate
+- (void)touchCellImageView:(UIButton *)button{
+    int index = (int)button.tag - 10000;
+    TSSecKillModel *model = self.viewModel.secKillDataArray[index];
+    TSSecondDealDetailViewModel *viewModel = [[TSSecondDealDetailViewModel alloc] init];
+    viewModel.secKillModel = model;
+    TSSecondDealDetailViewController *secondDealDetailVC = [[TSSecondDealDetailViewController alloc] initWithViewModel:viewModel];
+    [self.navigationController pushViewController:secondDealDetailVC animated:YES];
+
+}
 #pragma mark - tableView delegate & dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSArray *array = @[@"185",@"185",@"230",@"245"];
@@ -203,62 +223,126 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    UITableViewCell *cell;
-    switch (indexPath.row) {
-        case 0:{
-            //掌上秒杀
-//            TSSecondsDealTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:secondsDealCell];
-            cell = [tableView dequeueReusableCellWithIdentifier:secondsDealCell];
-            if (cell == nil) {
-                cell = [[[NSBundle mainBundle] loadNibNamed:@"TSSecondsDealTableViewCell" owner:nil options:nil]lastObject];
-            }
-            [(TSSecondsDealTableViewCell *)cell configureCellWithModelArray:self.viewModel.secKillDataArray];
-//            cell.textLabel.text = @"商品";
-            
+    @weakify(self);
+
+    if (indexPath.row == 0) {
+        TSSecondsDealTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:secondsDealCell];
+        if (cell == nil) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"TSSecondsDealTableViewCell" owner:nil options:nil]lastObject];
+            cell.delegate = self;
         }
-            break;
-        case 1:{
-            //商家推荐
-            cell = [tableView dequeueReusableCellWithIdentifier:shopRecommendCell];
-            if (cell == nil) {
-                cell = [[[NSBundle mainBundle] loadNibNamed:@"TSShopReccommendTableViewCell" owner:nil options:nil]lastObject];
-            }
-            [(TSShopReccommendTableViewCell *)cell configureCellWithModelArray:self.viewModel.shopRecommendDataArray];
-        }
-            break;
-        case 2:{
-            //商品推荐
-            cell = [tableView dequeueReusableCellWithIdentifier:goodsRecommendCell];
-            if (cell == nil) {
-                cell = [[[NSBundle mainBundle] loadNibNamed:@"TSGoodsRecommendTableViewCell" owner:nil options:nil]lastObject];
-            }
-            
-            [(TSGoodsRecommendTableViewCell *)cell configureCellWithModelArray:self.viewModel.goodsRecommendDataArray];
+        [cell configureCellWithModelArray:self.viewModel.secKillDataArray];
+        return cell;
+
+    }else if (indexPath.row == 1) {
+        //商家推荐
+        TSShopReccommendTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:shopRecommendCell];
+        if (cell == nil) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"TSShopReccommendTableViewCell" owner:nil options:nil]lastObject];
+            [cell.fristShopImage bk_whenTapped:^{
+                @strongify(self);
+                int index = (int)cell.fristShopImage.tag - 20000;
+                TSShopModel *shopModel = self.viewModel.shopRecommendDataArray[index];
+                TSShopDetailViewModel *viewModel = [[TSShopDetailViewModel alloc] init];
+                viewModel.companyID = shopModel.I_D;
+                TSShopDetailViewController *shopDetailVC = [[TSShopDetailViewController alloc] initWithViewModel:viewModel];
+                [self.navigationController pushViewController:shopDetailVC animated:YES];
+
+            }];
+            [cell.secondShopImage bk_whenTapped:^{
+                @strongify(self);
+                int index = (int)cell.secondShopImage.tag - 20000;
+                TSShopModel *shopModel = self.viewModel.shopRecommendDataArray[index];
+                TSShopDetailViewModel *viewModel = [[TSShopDetailViewModel alloc] init];
+                viewModel.companyID = shopModel.I_D;
+                TSShopDetailViewController *shopDetailVC = [[TSShopDetailViewController alloc] initWithViewModel:viewModel];
+                [self.navigationController pushViewController:shopDetailVC animated:YES];
+                
+            }];
+            [cell.thirdShopImage bk_whenTapped:^{
+                @strongify(self);
+                int index = (int)cell.thirdShopImage.tag - 20000;
+                TSShopModel *shopModel = self.viewModel.shopRecommendDataArray[index];
+                TSShopDetailViewModel *viewModel = [[TSShopDetailViewModel alloc] init];
+                viewModel.companyID = shopModel.I_D;
+                TSShopDetailViewController *shopDetailVC = [[TSShopDetailViewController alloc] initWithViewModel:viewModel];
+                [self.navigationController pushViewController:shopDetailVC animated:YES];
+                
+            }];
 
         }
-            break;
-        case 3:{
-            //以物换物
-            cell = [tableView dequeueReusableCellWithIdentifier:goodsExchangeCell];
-            if (cell == nil) {
-                cell = [[[NSBundle mainBundle] loadNibNamed:@"TSGoodsExchangeTableViewCell" owner:nil options:nil]lastObject];
-            }
-            [(TSGoodsExchangeTableViewCell *)cell configureCellWithModelArray:self.viewModel.goodsExchangeDataArray];
-//            [(TSSecondsDealTableViewCell *)cell configureCell];
+        [cell configureCellWithModelArray:self.viewModel.shopRecommendDataArray];
+        return cell;
+
+    }else if (indexPath.row == 2) {
+        //商品推荐
+        TSGoodsRecommendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:goodsRecommendCell];
+        if (cell == nil) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"TSGoodsRecommendTableViewCell" owner:nil options:nil]lastObject];
+            [cell.firstGoodsImage bk_whenTapped:^{
+                @strongify(self);
+                TSGoodsRecommandModel *goodsModel = self.viewModel.goodsRecommendDataArray[cell.firstGoodsImage.tag - 21000];
+                TSGoodsDetailViewModel *viewModel = [[TSGoodsDetailViewModel alloc] init];
+                viewModel.goodsID = goodsModel.I_D;
+                TSGoodsDetailViewController *goodsDetailVC = [[TSGoodsDetailViewController alloc] init];
+                goodsDetailVC.viewModel = viewModel;
+                [self.navigationController pushViewController:goodsDetailVC animated:YES];
+            }];
+            [cell.secondGoodsImage bk_whenTapped:^{
+                @strongify(self);
+                TSGoodsRecommandModel *goodsModel = self.viewModel.goodsRecommendDataArray[cell.secondGoodsImage.tag - 21000];
+                TSGoodsDetailViewModel *viewModel = [[TSGoodsDetailViewModel alloc] init];
+                viewModel.goodsID = goodsModel.I_D;
+                TSGoodsDetailViewController *goodsDetailVC = [[TSGoodsDetailViewController alloc] init];
+                goodsDetailVC.viewModel = viewModel;
+                [self.navigationController pushViewController:goodsDetailVC animated:YES];
+                
+            }];
 
         }
-            break;
-        default:
-            break;
+
+        [cell configureCellWithModelArray:self.viewModel.goodsRecommendDataArray];
+
+        return cell;
+
+    }else {
+        //以物换物
+        TSGoodsExchangeTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:goodsExchangeCell];
+        if (cell == nil) {
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"TSGoodsExchangeTableViewCell" owner:nil options:nil]lastObject];
+            [cell.firstExchangeGoodsImage bk_whenTapped:^{
+                @strongify(self);
+                TSExchangeListModel *model = self.viewModel.goodsExchangeDataArray[cell.firstExchangeGoodsImage.tag - 22000];
+                TSExchangeDetailViewModel *viewModel = [[TSExchangeDetailViewModel alloc] init];
+                viewModel.exchangeGoodsModel = model;
+                TSExchangeDetailViewController *exchangeDetailVC = [[TSExchangeDetailViewController alloc] init];
+                exchangeDetailVC.viewModel = viewModel;
+                [self.navigationController pushViewController:exchangeDetailVC animated:YES];
+            }];
+            [cell.secondExchangeGoodsImage bk_whenTapped:^{
+                @strongify(self);
+                TSExchangeListModel *model = self.viewModel.goodsExchangeDataArray[cell.secondExchangeGoodsImage.tag - 22000];
+                TSExchangeDetailViewModel *viewModel = [[TSExchangeDetailViewModel alloc] init];
+                viewModel.exchangeGoodsModel = model;
+                TSExchangeDetailViewController *exchangeDetailVC = [[TSExchangeDetailViewController alloc] init];
+                exchangeDetailVC.viewModel = viewModel;
+                [self.navigationController pushViewController:exchangeDetailVC animated:YES];
+                
+            }];
+
+        }
+        [cell configureCellWithModelArray:self.viewModel.goodsExchangeDataArray];
+        return cell;
+
     }
-    return cell;
+    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.row) {
         case 0:{
             TSSecondsDealViewModel *viewModel = [[TSSecondsDealViewModel alloc] init];
-            TSSecondsDealViewController *secondsDealVC = [[TSSecondsDealViewController alloc] initWithViewModel:viewModel];
+            TSSecondsListViewController *secondsDealVC = [[TSSecondsListViewController alloc] initWithViewModel:viewModel];
             [self.navigationController pushViewController:secondsDealVC animated:YES];
         }
             break;
@@ -271,7 +355,9 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
             break;
         case 2:{
             TSGoodsRecommandViewModel *viewModel = [[TSGoodsRecommandViewModel alloc] init];
-            
+            viewModel.page = 1;
+            viewModel.classifyID = 0;
+            viewModel.goodsOrderType = @"1";
             TSGoodsRecommendViewController *goodsRecommedVC = [[TSGoodsRecommendViewController alloc] init];
             goodsRecommedVC.viewModel = viewModel;
             [self.navigationController pushViewController:goodsRecommedVC animated:YES];

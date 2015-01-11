@@ -11,6 +11,9 @@
 #import "TSCategoryCell.h"
 #import "TSCategoryModel.h"
 
+#import "TSGoodsRecommendViewController.h"
+#import "TSGoodsRecommandViewModel.h"
+
 static NSString * const categoryCellIdentifier = @"categoryCell";     
 
 @interface TSCategoryViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -20,6 +23,11 @@ static NSString * const categoryCellIdentifier = @"categoryCell";
 @end
 
 @implementation TSCategoryViewController
+#pragma mark - controller method
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:YES];
+    self.tabBarController.tabBar.hidden = NO;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -108,4 +116,14 @@ static NSString * const categoryCellIdentifier = @"categoryCell";
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    TSCategoryModel *model = self.viewModel.dataArray[indexPath.row];
+    TSGoodsRecommandViewModel *viewModel = [[TSGoodsRecommandViewModel alloc] init];
+    viewModel.page = 1;
+    viewModel.classifyID = model.classifyID;
+    viewModel.goodsOrderType = @"1";
+    TSGoodsRecommendViewController *goodsRecommedVC = [[TSGoodsRecommendViewController alloc] init];
+    goodsRecommedVC.viewModel = viewModel;
+    [self.navigationController pushViewController:goodsRecommedVC animated:YES];
+}
 @end

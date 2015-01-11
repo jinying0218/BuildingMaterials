@@ -19,6 +19,8 @@
 @property (nonatomic, strong) NSString *THINGS_AREA;
 @property (nonatomic, strong) NSString *THINGS_WANTS;
 
-@property (nonatomic, assign) double I_D;
+@property (nonatomic, assign) int I_D;
 @property (nonatomic, strong) NSString *THING_NEWS;
+
+- (void)setValueWithDict:(NSDictionary *)dict;
 @end

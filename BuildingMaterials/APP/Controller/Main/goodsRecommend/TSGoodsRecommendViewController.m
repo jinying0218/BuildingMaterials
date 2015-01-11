@@ -25,9 +25,7 @@ static NSString *const popTableViewCell = @"popTableViewCell";
 @interface TSGoodsRecommendViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) TSArrayDataSource *dataSource;
 @property (nonatomic, strong) UITableView *tableView;
-@property (nonatomic, assign) int page;
-@property (nonatomic, assign) int classifyID;
-@property (nonatomic, strong) NSString *goodsOrderType;
+
 @property (nonatomic, assign) BOOL isSort;
 
 @property (nonatomic, strong) UIButton *naviRightBtn;
@@ -45,9 +43,7 @@ static NSString *const popTableViewCell = @"popTableViewCell";
 #pragma mark - controller methods
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.page = 1;
-    self.classifyID = 0;
-    self.goodsOrderType = @"1";
+
     self.isSort = NO;
     
     [self initializeData];
@@ -63,15 +59,20 @@ static NSString *const popTableViewCell = @"popTableViewCell";
 - (void)initializeData{
  ///////////
 /*
-
     page  页数
     goodsSearchName  搜索名称
     goodsClassifyId  商品分类
     goodsOrderType  商品排列方式 1为默认  2为安人气  3为按价格
 */
-    
-    NSDictionary *params = @{@"page":[NSString stringWithFormat:@"%d",self.page],
-                             @"goodsOrderType": self.goodsOrderType};
+    NSDictionary *params;
+    if (self.viewModel.classifyID == 0) {
+        params = @{@"page":[NSString stringWithFormat:@"%d",self.viewModel.page],
+                   @"goodsOrderType" : self.viewModel.goodsOrderType};
+    }else {
+        params = @{@"page":[NSString stringWithFormat:@"%d",self.viewModel.page],
+                   @"goodsOrderType" : self.viewModel.goodsOrderType,
+                   @"goodsClassifyId" : [NSString stringWithFormat:@"%d",self.viewModel.classifyID]};
+    }
     
     [TSHttpTool getWithUrl:GoodsLoad_URL params:params withCache:NO success:^(id result) {
         NSLog(@"GoodsLoad_URL:%@",result);
@@ -148,7 +149,7 @@ static NSString *const popTableViewCell = @"popTableViewCell";
     [self.rootView addSubview:self.headerView];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight + 35, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT - 35) style:UITableViewStylePlain];
-    self.tableView.rowHeight = 125;
+    self.tableView.rowHeight = 115;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"F0F0F0"];
@@ -202,9 +203,9 @@ static NSString *const popTableViewCell = @"popTableViewCell";
     //搜索按钮
     [self.naviRightBtn bk_addEventHandler:^(id sender) {
         @strongify(self);
-        self.page = 1;
-        NSDictionary *params = @{@"page" : [NSString stringWithFormat:@"%d",self.page],
-                                 @"goodsOrderType" : self.goodsOrderType,
+        self.viewModel.page = 1;
+        NSDictionary *params = @{@"page" : [NSString stringWithFormat:@"%d",self.viewModel.page],
+                                 @"goodsOrderType" : self.viewModel.goodsOrderType,
                                  @"goodsSearchName" : self.searchTextField.text};
         
         [TSHttpTool getWithUrl:GoodsLoad_URL params:params withCache:NO success:^(id result) {
@@ -247,15 +248,15 @@ static NSString *const popTableViewCell = @"popTableViewCell";
 }
 #pragma mark - 上拉加载更多
 - (void)footerRereshing{
-    self.page += 1;
+    self.viewModel.page += 1;
     NSDictionary *params;
-    if (self.classifyID == 0) {
-        params = @{@"page":[NSString stringWithFormat:@"%d",self.page],
-                   @"goodsOrderType" : self.goodsOrderType};
+    if (self.viewModel.classifyID == 0) {
+        params = @{@"page":[NSString stringWithFormat:@"%d",self.viewModel.page],
+                   @"goodsOrderType" : self.viewModel.goodsOrderType};
     }else {
-        params = @{@"page":[NSString stringWithFormat:@"%d",self.page],
-                   @"goodsOrderType" : self.goodsOrderType,
-                   @"goodsClassifyId" : [NSString stringWithFormat:@"%d",self.classifyID]};
+        params = @{@"page":[NSString stringWithFormat:@"%d",self.viewModel.page],
+                   @"goodsOrderType" : self.viewModel.goodsOrderType,
+                   @"goodsClassifyId" : [NSString stringWithFormat:@"%d",self.viewModel.classifyID]};
     }
     
     
@@ -302,7 +303,7 @@ static NSString *const popTableViewCell = @"popTableViewCell";
         self.popTableView.hidden = YES;
         self.coverBottom.hidden = YES;
         self.coverTop.hidden = YES;
-        self.page = 1;
+        self.viewModel.page = 1;
        
         [self getCategoryDataWithIndexPath:indexPath];
     }else{
@@ -331,26 +332,26 @@ static NSString *const popTableViewCell = @"popTableViewCell";
     NSDictionary *params;
 
     if (self.isSort) {
-        self.goodsOrderType = [NSString stringWithFormat:@"%d",categoryModel.classifyID];
-        if (self.classifyID == 0) {
-            params = @{@"page" : [NSString stringWithFormat:@"%d",self.page],
-                       @"goodsOrderType" : self.goodsOrderType};
+        self.viewModel.goodsOrderType = [NSString stringWithFormat:@"%d",categoryModel.classifyID];
+        if (self.viewModel.classifyID == 0) {
+            params = @{@"page" : [NSString stringWithFormat:@"%d",self.viewModel.page],
+                       @"goodsOrderType" : self.viewModel.goodsOrderType};
         }else {
-            params = @{@"page":[NSString stringWithFormat:@"%d",self.page],
-                       @"goodsOrderType" : self.goodsOrderType,
-                       @"goodsClassifyId" : [NSString stringWithFormat:@"%d",self.classifyID]};
+            params = @{@"page":[NSString stringWithFormat:@"%d",self.viewModel.page],
+                       @"goodsOrderType" : self.viewModel.goodsOrderType,
+                       @"goodsClassifyId" : [NSString stringWithFormat:@"%d",self.viewModel.classifyID]};
         }
     }else {
         
         if (indexPath.row == 0) {
-            self.classifyID = 0;
-            params = @{@"page" : [NSString stringWithFormat:@"%d",self.page],
-                       @"goodsOrderType" : self.goodsOrderType};
+            self.viewModel.classifyID = 0;
+            params = @{@"page" : [NSString stringWithFormat:@"%d",self.viewModel.page],
+                       @"goodsOrderType" : self.viewModel.goodsOrderType};
         }else {
-            self.classifyID = categoryModel.classifyID;
-            params = @{@"page":[NSString stringWithFormat:@"%d",self.page],
-                       @"goodsOrderType" : self.goodsOrderType,
-                       @"goodsClassifyId" : [NSString stringWithFormat:@"%d",self.classifyID]};
+            self.viewModel.classifyID = categoryModel.classifyID;
+            params = @{@"page":[NSString stringWithFormat:@"%d",self.viewModel.page],
+                       @"goodsOrderType" : self.viewModel.goodsOrderType,
+                       @"goodsClassifyId" : [NSString stringWithFormat:@"%d",self.viewModel.classifyID]};
         }
     }
     

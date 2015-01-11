@@ -6,7 +6,7 @@
 //  Copyright (c) 2014年 Ariel. All rights reserved.
 //
 
-#import "TSSecondsDealViewController.h"
+#import "TSSecondsListViewController.h"
 #import "TSSecondsDealDetailTableViewCell.h"
 #import "TSSecondsDealViewModel.h"
 
@@ -15,7 +15,7 @@
 
 static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTableViewCell";
 
-@interface TSSecondsDealViewController ()<UITableViewDelegate>
+@interface TSSecondsListViewController ()<UITableViewDelegate>
 @property (nonatomic, strong) TSSecondsDealViewModel *viewModel;
 @property (nonatomic, strong) TSArrayDataSource *dataSource;
 @property (nonatomic, strong) UITableView *tableView;
@@ -23,7 +23,7 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
 
 @end
 
-@implementation TSSecondsDealViewController
+@implementation TSSecondsListViewController
 #pragma mark - controller methods
 - (instancetype)initWithViewModel:(TSSecondsDealViewModel *)viewModel
 {

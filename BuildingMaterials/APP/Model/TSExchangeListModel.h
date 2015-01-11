@@ -22,4 +22,6 @@
 @property (nonatomic, strong) NSString *THING_NEWS;
 
 - (void)setValueForDictionary:(NSDictionary *)dict;
+
+- (void)setExchangeDetailValueWithDict:(NSDictionary *)dict;
 @end

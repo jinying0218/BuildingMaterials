@@ -141,8 +141,8 @@
 		B05B632F19FEB5CD008F76E0 /* separetLine.png in Resources */ = {isa = PBXBuildFile; fileRef = B05B632D19FEB5CD008F76E0 /* separetLine.png */; };
 		B05B633019FEB5CD008F76E0 /* shopRecommend_ring.png in Resources */ = {isa = PBXBuildFile; fileRef = B05B632E19FEB5CD008F76E0 /* shopRecommend_ring.png */; };
 		B05B633419FEB639008F76E0 /* search_leftView.png in Resources */ = {isa = PBXBuildFile; fileRef = B05B633219FEB639008F76E0 /* search_leftView.png */; };
-		B05E6E941A04538E009C92CC /* TSSecondsDealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B05E6E921A04538E009C92CC /* TSSecondsDealViewController.m */; };
-		B05E6E951A04538E009C92CC /* TSSecondsDealViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B05E6E931A04538E009C92CC /* TSSecondsDealViewController.xib */; };
+		B05E6E941A04538E009C92CC /* TSSecondsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B05E6E921A04538E009C92CC /* TSSecondsListViewController.m */; };
+		B05E6E951A04538E009C92CC /* TSSecondsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B05E6E931A04538E009C92CC /* TSSecondsListViewController.xib */; };
 		B05E6E981A045B3E009C92CC /* Previous.png in Resources */ = {isa = PBXBuildFile; fileRef = B05E6E971A045B3E009C92CC /* Previous.png */; };
 		B05E6E9C1A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B05E6E9A1A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.m */; };
 		B05E6E9D1A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B05E6E9B1A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.xib */; };
@@ -198,6 +198,13 @@
 		B0CB19EA1A5A3DBA00C6D8B1 /* TSExchangeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CB19E91A5A3DBA00C6D8B1 /* TSExchangeListModel.m */; };
 		B0D2AC0A19F8E4020074D10B /* TSRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D2AC0819F8E4020074D10B /* TSRegisterViewController.m */; };
 		B0D2AC0B19F8E4020074D10B /* TSRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D2AC0919F8E4020074D10B /* TSRegisterViewController.xib */; };
+		B0E2C3871A618EE200FF410B /* TSExchangeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E2C3851A618EE200FF410B /* TSExchangeDetailViewController.m */; };
+		B0E2C3881A618EE200FF410B /* TSExchangeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0E2C3861A618EE200FF410B /* TSExchangeDetailViewController.xib */; };
+		B0E2C38B1A618FBB00FF410B /* TSExchangeDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E2C38A1A618FBB00FF410B /* TSExchangeDetailViewModel.m */; };
+		B0E2C38F1A6194A700FF410B /* exchange_broadcast.png in Resources */ = {isa = PBXBuildFile; fileRef = B0E2C38D1A6194A700FF410B /* exchange_broadcast.png */; };
+		B0E2C3901A6194A700FF410B /* exchange_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = B0E2C38E1A6194A700FF410B /* exchange_circle.png */; };
+		B0E2C3921A61957100FF410B /* exchange_tel.png in Resources */ = {isa = PBXBuildFile; fileRef = B0E2C3911A61957000FF410B /* exchange_tel.png */; };
+		B0E2C3941A6195D600FF410B /* exhcange_location.png in Resources */ = {isa = PBXBuildFile; fileRef = B0E2C3931A6195D600FF410B /* exhcange_location.png */; };
 		B0F1F2501A583994006DFA93 /* TSGoodsRecommandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F1F24F1A583994006DFA93 /* TSGoodsRecommandModel.m */; };
 		B0F476F21A59087A005C851D /* TSInviteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F476F01A59087A005C851D /* TSInviteCell.m */; };
 		B0F476F31A59087A005C851D /* TSInviteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F476F11A59087A005C851D /* TSInviteCell.xib */; };
@@ -216,6 +223,11 @@
 		B0F477211A59A45F005C851D /* TSGoodsExchangeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F477201A59A45F005C851D /* TSGoodsExchangeViewModel.m */; };
 		B0F63C6D1A5799B300A0C754 /* TSShopModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F63C6C1A5799B300A0C754 /* TSShopModel.m */; };
 		B0F63C711A57C37B00A0C754 /* TSExchangeModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F63C701A57C37B00A0C754 /* TSExchangeModel.m */; };
+		B0F7B8781A622C1300D3EC95 /* TSImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F7B8771A622C1300D3EC95 /* TSImageModel.m */; };
+		B0F7B87C1A626F9100D3EC95 /* TSReleaseExchangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F7B87A1A626F9100D3EC95 /* TSReleaseExchangeViewController.m */; };
+		B0F7B87D1A626F9100D3EC95 /* TSReleaseExchangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F7B87B1A626F9100D3EC95 /* TSReleaseExchangeViewController.xib */; };
+		B0F7B8801A626FBA00D3EC95 /* TSReleaseEchangeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F7B87F1A626FBA00D3EC95 /* TSReleaseEchangeViewModel.m */; };
+		B0F7B8821A62B7A200D3EC95 /* take_picture.png in Resources */ = {isa = PBXBuildFile; fileRef = B0F7B8811A62B7A200D3EC95 /* take_picture.png */; };
 		B0FB4BB21A501B9A002C7ACA /* login_title.png in Resources */ = {isa = PBXBuildFile; fileRef = B0FB4BB11A501B9A002C7ACA /* login_title.png */; };
 		B0FEA9BA1A56465B000860FC /* MZTimerLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FEA9B91A56465B000860FC /* MZTimerLabel.m */; };
 /* End PBXBuildFile section */
@@ -423,9 +435,9 @@
 		B05B632D19FEB5CD008F76E0 /* separetLine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = separetLine.png; sourceTree = "<group>"; };
 		B05B632E19FEB5CD008F76E0 /* shopRecommend_ring.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopRecommend_ring.png; sourceTree = "<group>"; };
 		B05B633219FEB639008F76E0 /* search_leftView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = search_leftView.png; sourceTree = "<group>"; };
-		B05E6E911A04538E009C92CC /* TSSecondsDealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSecondsDealViewController.h; sourceTree = "<group>"; };
-		B05E6E921A04538E009C92CC /* TSSecondsDealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSecondsDealViewController.m; sourceTree = "<group>"; };
-		B05E6E931A04538E009C92CC /* TSSecondsDealViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSSecondsDealViewController.xib; sourceTree = "<group>"; };
+		B05E6E911A04538E009C92CC /* TSSecondsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSecondsListViewController.h; sourceTree = "<group>"; };
+		B05E6E921A04538E009C92CC /* TSSecondsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSecondsListViewController.m; sourceTree = "<group>"; };
+		B05E6E931A04538E009C92CC /* TSSecondsListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSSecondsListViewController.xib; sourceTree = "<group>"; };
 		B05E6E971A045B3E009C92CC /* Previous.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Previous.png; sourceTree = "<group>"; };
 		B05E6E991A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSecondsDealDetailTableViewCell.h; sourceTree = "<group>"; };
 		B05E6E9A1A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSecondsDealDetailTableViewCell.m; sourceTree = "<group>"; };
@@ -504,6 +516,15 @@
 		B0D2AC0719F8E4020074D10B /* TSRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSRegisterViewController.h; sourceTree = "<group>"; };
 		B0D2AC0819F8E4020074D10B /* TSRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSRegisterViewController.m; sourceTree = "<group>"; };
 		B0D2AC0919F8E4020074D10B /* TSRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSRegisterViewController.xib; sourceTree = "<group>"; };
+		B0E2C3841A618EE200FF410B /* TSExchangeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSExchangeDetailViewController.h; sourceTree = "<group>"; };
+		B0E2C3851A618EE200FF410B /* TSExchangeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSExchangeDetailViewController.m; sourceTree = "<group>"; };
+		B0E2C3861A618EE200FF410B /* TSExchangeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSExchangeDetailViewController.xib; sourceTree = "<group>"; };
+		B0E2C3891A618FBB00FF410B /* TSExchangeDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSExchangeDetailViewModel.h; sourceTree = "<group>"; };
+		B0E2C38A1A618FBB00FF410B /* TSExchangeDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSExchangeDetailViewModel.m; sourceTree = "<group>"; };
+		B0E2C38D1A6194A700FF410B /* exchange_broadcast.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exchange_broadcast.png; sourceTree = "<group>"; };
+		B0E2C38E1A6194A700FF410B /* exchange_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exchange_circle.png; sourceTree = "<group>"; };
+		B0E2C3911A61957000FF410B /* exchange_tel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exchange_tel.png; sourceTree = "<group>"; };
+		B0E2C3931A6195D600FF410B /* exhcange_location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exhcange_location.png; sourceTree = "<group>"; };
 		B0F1F24E1A583994006DFA93 /* TSGoodsRecommandModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSGoodsRecommandModel.h; sourceTree = "<group>"; };
 		B0F1F24F1A583994006DFA93 /* TSGoodsRecommandModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSGoodsRecommandModel.m; sourceTree = "<group>"; };
 		B0F476EF1A59087A005C851D /* TSInviteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSInviteCell.h; sourceTree = "<group>"; };
@@ -538,6 +559,14 @@
 		B0F63C6C1A5799B300A0C754 /* TSShopModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSShopModel.m; sourceTree = "<group>"; };
 		B0F63C6F1A57C37B00A0C754 /* TSExchangeModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSExchangeModel.h; sourceTree = "<group>"; };
 		B0F63C701A57C37B00A0C754 /* TSExchangeModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSExchangeModel.m; sourceTree = "<group>"; };
+		B0F7B8761A622C1300D3EC95 /* TSImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSImageModel.h; sourceTree = "<group>"; };
+		B0F7B8771A622C1300D3EC95 /* TSImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSImageModel.m; sourceTree = "<group>"; };
+		B0F7B8791A626F9100D3EC95 /* TSReleaseExchangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSReleaseExchangeViewController.h; sourceTree = "<group>"; };
+		B0F7B87A1A626F9100D3EC95 /* TSReleaseExchangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSReleaseExchangeViewController.m; sourceTree = "<group>"; };
+		B0F7B87B1A626F9100D3EC95 /* TSReleaseExchangeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSReleaseExchangeViewController.xib; sourceTree = "<group>"; };
+		B0F7B87E1A626FBA00D3EC95 /* TSReleaseEchangeViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSReleaseEchangeViewModel.h; sourceTree = "<group>"; };
+		B0F7B87F1A626FBA00D3EC95 /* TSReleaseEchangeViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSReleaseEchangeViewModel.m; sourceTree = "<group>"; };
+		B0F7B8811A62B7A200D3EC95 /* take_picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = take_picture.png; sourceTree = "<group>"; };
 		B0FB4BB11A501B9A002C7ACA /* login_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_title.png; sourceTree = "<group>"; };
 		B0FEA9B81A56465B000860FC /* MZTimerLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZTimerLabel.h; sourceTree = "<group>"; };
 		B0FEA9B91A56465B000860FC /* MZTimerLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZTimerLabel.m; sourceTree = "<group>"; };
@@ -608,14 +637,14 @@
 			name = "商家列表cell";
 			sourceTree = "<group>";
 		};
-		B015C31B1A0F0E9F0060FBE2 /* 商品推荐详情cell */ = {
+		B015C31B1A0F0E9F0060FBE2 /* 商品推荐列表cell */ = {
 			isa = PBXGroup;
 			children = (
 				B015C3211A0F10D60060FBE2 /* TSGoodsRecommadDetailTableViewCell.h */,
 				B015C3221A0F10D60060FBE2 /* TSGoodsRecommadDetailTableViewCell.m */,
 				B015C3231A0F10D60060FBE2 /* TSGoodsRecommadDetailTableViewCell.xib */,
 			);
-			name = "商品推荐详情cell";
+			name = "商品推荐列表cell";
 			sourceTree = "<group>";
 		};
 		B015C32B1A0F18490060FBE2 /* 以物换物详情cell */ = {
@@ -774,8 +803,8 @@
 				B05E6E961A045572009C92CC /* 掌上秒杀详情cell */,
 				B05B62E019FE86F0008F76E0 /* 首页商家推荐cell */,
 				B015C3101A0F0A180060FBE2 /* 商家列表cell */,
-				B05B62E119FE86FA008F76E0 /* 商品推荐cell */,
-				B015C31B1A0F0E9F0060FBE2 /* 商品推荐详情cell */,
+				B05B62E119FE86FA008F76E0 /* 首页商品推荐cell */,
+				B015C31B1A0F0E9F0060FBE2 /* 商品推荐列表cell */,
 				B05B62E219FE8711008F76E0 /* 以物换物cell */,
 				B015C32B1A0F18490060FBE2 /* 以物换物详情cell */,
 				B05B62DE19FE86BC008F76E0 /* BaseView */,
@@ -1095,14 +1124,14 @@
 			name = "首页商家推荐cell";
 			sourceTree = "<group>";
 		};
-		B05B62E119FE86FA008F76E0 /* 商品推荐cell */ = {
+		B05B62E119FE86FA008F76E0 /* 首页商品推荐cell */ = {
 			isa = PBXGroup;
 			children = (
 				B05B62ED19FE88F3008F76E0 /* TSGoodsRecommendTableViewCell.h */,
 				B05B62EE19FE88F3008F76E0 /* TSGoodsRecommendTableViewCell.m */,
 				B05B62EF19FE88F3008F76E0 /* TSGoodsRecommendTableViewCell.xib */,
 			);
-			name = "商品推荐cell";
+			name = "首页商品推荐cell";
 			sourceTree = "<group>";
 		};
 		B05B62E219FE8711008F76E0 /* 以物换物cell */ = {
@@ -1166,6 +1195,7 @@
 				B05B631B19FEB15F008F76E0 /* goodExchange_ring.png */,
 				B05B631C19FEB15F008F76E0 /* goodsRecommend_ring.png */,
 				B05B631D19FEB15F008F76E0 /* secondsDeal_ring.png */,
+				B0E2C38C1A61948B00FF410B /* exchange */,
 			);
 			path = first;
 			sourceTree = "<group>";
@@ -1213,9 +1243,8 @@
 		B05E6E8D1A04534B009C92CC /* goodsExchange */ = {
 			isa = PBXGroup;
 			children = (
-				B015C3261A0F16F10060FBE2 /* TSGoodsExchangeViewController.h */,
-				B015C3271A0F16F10060FBE2 /* TSGoodsExchangeViewController.m */,
-				B015C3281A0F16F10060FBE2 /* TSGoodsExchangeViewController.xib */,
+				B0E2C3831A618EB500FF410B /* 以物换物详情 */,
+				B0E2C3821A618EA800FF410B /* 以物换物列表 */,
 			);
 			path = goodsExchange;
 			sourceTree = "<group>";
@@ -1233,9 +1262,9 @@
 		B05E6E8F1A04534B009C92CC /* secondsDeal */ = {
 			isa = PBXGroup;
 			children = (
-				B05E6E911A04538E009C92CC /* TSSecondsDealViewController.h */,
-				B05E6E921A04538E009C92CC /* TSSecondsDealViewController.m */,
-				B05E6E931A04538E009C92CC /* TSSecondsDealViewController.xib */,
+				B05E6E911A04538E009C92CC /* TSSecondsListViewController.h */,
+				B05E6E921A04538E009C92CC /* TSSecondsListViewController.m */,
+				B05E6E931A04538E009C92CC /* TSSecondsListViewController.xib */,
 				B08702CC1A2ACAA0008C8088 /* TSSecondDealDetailViewController.h */,
 				B08702CD1A2ACAA0008C8088 /* TSSecondDealDetailViewController.m */,
 				B08702CE1A2ACAA0008C8088 /* TSSecondDealDetailViewController.xib */,
@@ -1477,6 +1506,41 @@
 			path = Register;
 			sourceTree = "<group>";
 		};
+		B0E2C3821A618EA800FF410B /* 以物换物列表 */ = {
+			isa = PBXGroup;
+			children = (
+				B015C3261A0F16F10060FBE2 /* TSGoodsExchangeViewController.h */,
+				B015C3271A0F16F10060FBE2 /* TSGoodsExchangeViewController.m */,
+				B015C3281A0F16F10060FBE2 /* TSGoodsExchangeViewController.xib */,
+			);
+			name = "以物换物列表";
+			sourceTree = "<group>";
+		};
+		B0E2C3831A618EB500FF410B /* 以物换物详情 */ = {
+			isa = PBXGroup;
+			children = (
+				B0E2C3841A618EE200FF410B /* TSExchangeDetailViewController.h */,
+				B0E2C3851A618EE200FF410B /* TSExchangeDetailViewController.m */,
+				B0E2C3861A618EE200FF410B /* TSExchangeDetailViewController.xib */,
+				B0F7B8791A626F9100D3EC95 /* TSReleaseExchangeViewController.h */,
+				B0F7B87A1A626F9100D3EC95 /* TSReleaseExchangeViewController.m */,
+				B0F7B87B1A626F9100D3EC95 /* TSReleaseExchangeViewController.xib */,
+			);
+			name = "以物换物详情";
+			sourceTree = "<group>";
+		};
+		B0E2C38C1A61948B00FF410B /* exchange */ = {
+			isa = PBXGroup;
+			children = (
+				B0F7B8811A62B7A200D3EC95 /* take_picture.png */,
+				B0E2C3911A61957000FF410B /* exchange_tel.png */,
+				B0E2C38D1A6194A700FF410B /* exchange_broadcast.png */,
+				B0E2C38E1A6194A700FF410B /* exchange_circle.png */,
+				B0E2C3931A6195D600FF410B /* exhcange_location.png */,
+			);
+			name = exchange;
+			sourceTree = "<group>";
+		};
 		B0F1F24D1A5838A2006DFA93 /* 物品推荐模型 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1558,6 +1622,10 @@
 			children = (
 				B0F4771F1A59A45F005C851D /* TSGoodsExchangeViewModel.h */,
 				B0F477201A59A45F005C851D /* TSGoodsExchangeViewModel.m */,
+				B0E2C3891A618FBB00FF410B /* TSExchangeDetailViewModel.h */,
+				B0E2C38A1A618FBB00FF410B /* TSExchangeDetailViewModel.m */,
+				B0F7B87E1A626FBA00D3EC95 /* TSReleaseEchangeViewModel.h */,
+				B0F7B87F1A626FBA00D3EC95 /* TSReleaseEchangeViewModel.m */,
 			);
 			name = "以物换物";
 			sourceTree = "<group>";
@@ -1577,6 +1645,8 @@
 				B0CB19E71A5A3D9E00C6D8B1 /* 以物换物列表 */,
 				B0F63C6F1A57C37B00A0C754 /* TSExchangeModel.h */,
 				B0F63C701A57C37B00A0C754 /* TSExchangeModel.m */,
+				B0F7B8761A622C1300D3EC95 /* TSImageModel.h */,
+				B0F7B8771A622C1300D3EC95 /* TSImageModel.m */,
 			);
 			name = "以物换物数据模型";
 			sourceTree = "<group>";
@@ -1679,10 +1749,12 @@
 				B08702DC1A2B7DD0008C8088 /* secondDeal_miner.png in Resources */,
 				B031218619F8B7B0008721C4 /* login_bg.jpg in Resources */,
 				B05B5A141A3FD9F8008E83C9 /* ss_06.png in Resources */,
+				B0F7B8821A62B7A200D3EC95 /* take_picture.png in Resources */,
 				B00BB8841A0E8D8A00B94208 /* discount.png in Resources */,
 				B05B5A0F1A3FD9F8008E83C9 /* shop_connect_selected.png in Resources */,
 				B04411CD1A5C5475005ED736 /* invite_telButton.png in Resources */,
 				B05B5A0D1A3FD9F8008E83C9 /* shop_button_bg.png in Resources */,
+				B0E2C38F1A6194A700FF410B /* exchange_broadcast.png in Resources */,
 				B05115F519F9748C00CA6E2E /* category_icon_selected.png in Resources */,
 				B08455B81A5ACBA200F8164E /* select_icon.png in Resources */,
 				B05B632819FEB15F008F76E0 /* cell_shopRecommend_bg.jpg in Resources */,
@@ -1690,6 +1762,7 @@
 				B05E6E981A045B3E009C92CC /* Previous.png in Resources */,
 				B05115DB19F96A6D00CA6E2E /* TSForumViewController.xib in Resources */,
 				B05B632919FEB15F008F76E0 /* goodExchange_ring.png in Resources */,
+				B0E2C3901A6194A700FF410B /* exchange_circle.png in Resources */,
 				B015C31A1A0F0CE70060FBE2 /* TSShopRecommedViewController.xib in Resources */,
 				B05B632A19FEB15F008F76E0 /* goodsRecommend_ring.png in Resources */,
 				B08702DA1A2B7DD0008C8088 /* secondDeal_count.png in Resources */,
@@ -1735,11 +1808,13 @@
 				B031218719F8B7B0008721C4 /* login_btn.png in Resources */,
 				B04411C71A5C42EE005ED736 /* invite_lookNumber.png in Resources */,
 				B07700D91A58DCAB001E3623 /* TSCategoryCell.xib in Resources */,
+				B0F7B87D1A626F9100D3EC95 /* TSReleaseExchangeViewController.xib in Resources */,
 				B0D2AC0B19F8E4020074D10B /* TSRegisterViewController.xib in Resources */,
 				B05115C519F957CA00CA6E2E /* TSRegisterTwoViewController.xib in Resources */,
 				B0C4993619FFEDEE0092EE09 /* mine_headerBg.png in Resources */,
 				B05115C719F9669E00CA6E2E /* TabBarControllers.plist in Resources */,
 				B0C4993019FFE7550092EE09 /* mine_invite.png in Resources */,
+				B0E2C3881A618EE200FF410B /* TSExchangeDetailViewController.xib in Resources */,
 				B08DBEC41A601708007A301F /* TSGoodsDetailViewController.xib in Resources */,
 				B0C4992B19FFE7550092EE09 /* mine_collection.png in Resources */,
 				B00ED6BD1A415FFF001D6737 /* TSShopDetailViewController.xib in Resources */,
@@ -1751,9 +1826,11 @@
 				B018473519F898BF00938054 /* Images.xcassets in Resources */,
 				B05115E019F96A8100CA6E2E /* TSInviteViewController.xib in Resources */,
 				B08702DE1A2B7DD0008C8088 /* secondDeal_plus.png in Resources */,
+				B0E2C3941A6195D600FF410B /* exhcange_location.png in Resources */,
 				B08455B61A5AC1FD00F8164E /* recommend.png in Resources */,
 				B031218819F8B7B0008721C4 /* login_header.png in Resources */,
 				B08702DD1A2B7DD0008C8088 /* secondDeal_plus_bg.png in Resources */,
+				B0E2C3921A61957100FF410B /* exchange_tel.png in Resources */,
 				B051160119F9785900CA6E2E /* tabbar_bg.jpeg in Resources */,
 				B0C4993319FFE7550092EE09 /* mine_shopBag.png in Resources */,
 				B015C3201A0F0EF70060FBE2 /* TSGoodsRecommendViewController.xib in Resources */,
@@ -1776,7 +1853,7 @@
 				B05115CC19F969C600CA6E2E /* TSFristViewController.xib in Resources */,
 				B08702DB1A2B7DD0008C8088 /* secondDeal_miner_bg.png in Resources */,
 				B0C4992819FFE7550092EE09 /* mine_changePassword.png in Resources */,
-				B05E6E951A04538E009C92CC /* TSSecondsDealViewController.xib in Resources */,
+				B05E6E951A04538E009C92CC /* TSSecondsListViewController.xib in Resources */,
 				B0C4993119FFE7550092EE09 /* mine_payed.png in Resources */,
 				B05B632419FEB15F008F76E0 /* cell_accessView.png in Resources */,
 				B05115FB19F9748C00CA6E2E /* invite_icon_selected.png in Resources */,
@@ -1852,6 +1929,8 @@
 				B01847E619F89DCC00938054 /* UIImage+Alpha.m in Sources */,
 				B018482519F89DCC00938054 /* TSDateFormatterTool.m in Sources */,
 				B0F4770D1A59231E005C851D /* MJRefreshHeaderView.m in Sources */,
+				B0E2C3871A618EE200FF410B /* TSExchangeDetailViewController.m in Sources */,
+				B0F7B8781A622C1300D3EC95 /* TSImageModel.m in Sources */,
 				B0F477191A598C26005C851D /* TSInviteCategoryCell.m in Sources */,
 				B0D2AC0A19F8E4020074D10B /* TSRegisterViewController.m in Sources */,
 				B015C31F1A0F0EF70060FBE2 /* TSGoodsRecommendViewController.m in Sources */,
@@ -1889,7 +1968,7 @@
 				B08455B01A5AAFA900F8164E /* TSGoodsRecommandViewModel.m in Sources */,
 				B05115CB19F969C600CA6E2E /* TSFristViewController.m in Sources */,
 				B08DBEBF1A6015EA007A301F /* TSGoodsDetailViewModel.m in Sources */,
-				B05E6E941A04538E009C92CC /* TSSecondsDealViewController.m in Sources */,
+				B05E6E941A04538E009C92CC /* TSSecondsListViewController.m in Sources */,
 				B01847DC19F89DCC00938054 /* TSScrollView.m in Sources */,
 				B0CB19EA1A5A3DBA00C6D8B1 /* TSExchangeListModel.m in Sources */,
 				B0F476F21A59087A005C851D /* TSInviteCell.m in Sources */,
@@ -1914,12 +1993,15 @@
 				B01847DE19F89DCC00938054 /* BSJSONEncoder.m in Sources */,
 				B015C3191A0F0CE70060FBE2 /* TSShopRecommedViewController.m in Sources */,
 				B0C686D31A530AD1002053F1 /* TSForumViewModel.m in Sources */,
+				B0F7B87C1A626F9100D3EC95 /* TSReleaseExchangeViewController.m in Sources */,
 				B05115E819F96DD400CA6E2E /* TSMainTabBarViewController.m in Sources */,
 				B0F4770A1A59231E005C851D /* MJRefreshBaseView.m in Sources */,
 				B0FEA9BA1A56465B000860FC /* MZTimerLabel.m in Sources */,
 				B05B62E619FE88BC008F76E0 /* TSSecondsDealTableViewCell.m in Sources */,
+				B0F7B8801A626FBA00D3EC95 /* TSReleaseEchangeViewModel.m in Sources */,
 				B08455C21A5AD2FC00F8164E /* TSInviteDetailViewModel.m in Sources */,
 				B0F4770E1A59231E005C851D /* UIScrollView+MJExtension.m in Sources */,
+				B0E2C38B1A618FBB00FF410B /* TSExchangeDetailViewModel.m in Sources */,
 				B0F4770F1A59231E005C851D /* UIScrollView+MJRefresh.m in Sources */,
 				B01847E119F89DCC00938054 /* NSScanner+BSJSONAdditions.m in Sources */,
 				B01847DB19F89DCC00938054 /* TSRootView.m in Sources */,
@@ -2000,7 +2082,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "290feaf2-553e-43c2-8f30-953ba215aa62";
+				PROVISIONING_PROFILE = "5d706aea-37aa-413e-a30f-2c570be4f8a9";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2033,7 +2115,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
-				PROVISIONING_PROFILE = "290feaf2-553e-43c2-8f30-953ba215aa62";
+				PROVISIONING_PROFILE = "5d706aea-37aa-413e-a30f-2c570be4f8a9";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2046,12 +2128,13 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BuildingMaterials/BuildingMaterials-Prefix.pch";
 				INFOPLIST_FILE = "BuildingMaterials/BuildingMaterials-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "290feaf2-553e-43c2-8f30-953ba215aa62";
+				PROVISIONING_PROFILE = "5d706aea-37aa-413e-a30f-2c570be4f8a9";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2069,7 +2152,7 @@
 				INFOPLIST_FILE = "BuildingMaterials/BuildingMaterials-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "290feaf2-553e-43c2-8f30-953ba215aa62";
+				PROVISIONING_PROFILE = "5d706aea-37aa-413e-a30f-2c570be4f8a9";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

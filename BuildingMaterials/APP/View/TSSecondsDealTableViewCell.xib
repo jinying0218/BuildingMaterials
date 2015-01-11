@@ -50,6 +50,17 @@
                         <rect key="frame" x="115" y="41" width="90" height="90"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
+                    <button opaque="NO" tag="10001" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="i7R-7y-DXB">
+                        <rect key="frame" x="115" y="41" width="90" height="90"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="touchCellImageView:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="MFp-gA-BIx"/>
+                        </connections>
+                    </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="kdv-P9-cIT">
                         <rect key="frame" x="217" y="41" width="90" height="90"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -179,10 +190,33 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" tag="10000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9Ne-dc-Z8c">
+                        <rect key="frame" x="15" y="41" width="90" height="90"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="touchCellImageView:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Gl5-Dg-hMA"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" tag="10002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qiS-qf-9Bp">
+                        <rect key="frame" x="217" y="41" width="90" height="90"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="touchCellImageView:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Azj-qe-w6J"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <connections>
+                <outlet property="firstImageButton" destination="9Ne-dc-Z8c" id="7PN-DS-ahQ"/>
                 <outlet property="fristGoodsImage" destination="0ES-Bo-S1o" id="BT1-XD-mqX"/>
                 <outlet property="fristGoodsName" destination="0Wt-RJ-7J1" id="qbj-Xx-e0c"/>
                 <outlet property="fristGoodsNowPrice" destination="jtb-Hp-uRt" id="fsw-4F-7zJ"/>
@@ -192,10 +226,12 @@
                 <outlet property="secondGoodsName" destination="h2j-SQ-N35" id="gcG-wz-6e0"/>
                 <outlet property="secondGoodsNowPrice" destination="w99-UU-ZKL" id="S7b-E4-9rY"/>
                 <outlet property="secondGoodsPrice" destination="3um-La-q6s" id="I1o-0u-gXN"/>
+                <outlet property="secondImageButton" destination="i7R-7y-DXB" id="0X7-GS-Sp4"/>
                 <outlet property="thirdGoodsImage" destination="kdv-P9-cIT" id="0AG-Jr-47J"/>
                 <outlet property="thirdGoodsName" destination="wR8-Oo-Yyq" id="xWX-Q3-Mx6"/>
                 <outlet property="thirdGoodsNowPrice" destination="GsL-1U-uPz" id="Kjq-ak-6my"/>
                 <outlet property="thirdGoodsPrice" destination="gtk-34-4fk" id="jEc-mJ-FNP"/>
+                <outlet property="thirdImageButton" destination="qiS-qf-9Bp" id="mMD-vc-nkj"/>
                 <outlet property="timerLabel" destination="FLX-1f-457" id="6vf-lM-lhT"/>
             </connections>
             <point key="canvasLocation" x="618" y="260.5"/>
