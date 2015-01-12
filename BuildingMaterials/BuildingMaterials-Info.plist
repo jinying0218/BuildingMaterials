@@ -22,6 +22,19 @@
 	<string>????</string>
 	<key>CFBundleSpokenName</key>
 	<string></string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>Daanshun</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>Daanshun</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
