@@ -26,6 +26,14 @@
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>Partner</key>
+	<string>2088011539235988</string>
+	<key>RSA private key</key>
+	<string>MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBANkMTTiA9TosjPM2bj8BhTTh+ECJGdtgqmeTMdvw3QjvH/jcVJDcdGnEF2zVEGODjTAgL/dP1AmbYkEi+QgcxMpHnvV9LDeltYNulFyAJILLSQhht6NfFIlxCSUJcTm1equNH0N1N8Rd9/htg26JX3tUDjIQZSlxPOLVr3hYKWvVAgMBAAECgYAxt6OoocGKhdHzlDBEtnBw4KIhBkap/caK2yi8nLvE5CGKu82TMSxpXcWP5G5QnT2mHHlgSSTk3nbvPLeWqCBbWW8U+DexDR5h9CIaOP+OKj61G3OWVsGM8TvhSugpFU3NZ98aNL417T763DDjniToMZHQhZ8BmRJvZXuDWh0ssQJBAPFmQ0CTX3g2JPRg8HinlwwfpOg8Vud+LF63dcOiLycXsHIneX7zvwHvdKDRtotdbPaQ6byljdEYv/TlvpihPVMCQQDmLP2w9KLj6AWwxQO/j+XrAdYro8lBXFH5RW597CsADAhPWJ1amT2TVnq91Ahc0Fubdb5X/FR6n7qD1WAobuU3AkEAznkwdrBWzSRKkXfE1v5JVMZQL49EqbYiz1TN9mnnOOGrOsiGw85KBqbAs7kMEMH1LCQguAlGdp1bumUzk6r+HwJAb9D5aOZe3zJO2WHMAVpJShH5VffaA+tyUxLcq0V4Wix+OPWGc4Wv+Qxw0hjX+yao6euYDSwiafOAaxzT+rBsnwJBAJ+6y609sYGL/0MIF2yFu9qyeUlF4qsn5W+wf7KHvFwaOnAYcdJJZ3A7AWSOTQqh4RzxL6nMUrGD9s/8SKWZU64=</string>
+	<key>RSA public key</key>
+	<string>MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDTF9oXY1C6PI9DCT3dY6GmclqV6ObaxivR9Ex0 N8/EocVhW/4hG4TlT0dSG0G4PrrPtapyOR97pA6EVOSyKCshwO/PvFN50mumHyZ/RvnY14f+gzRI HUIzRfSi555mFUdCYb2aRNAEmMqV0sZubSeMQWG1qoB2ymTI2cVcH0IVzQIDAQAB</string>
+	<key>Seller</key>
+	<string>2088011539235988</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

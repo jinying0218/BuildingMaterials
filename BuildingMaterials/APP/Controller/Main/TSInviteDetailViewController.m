@@ -75,7 +75,7 @@
 - (void)initializeData{
     NSDictionary *params = @{@"postId":[NSString stringWithFormat:@"%d",self.viewModel.postID]};
     [TSHttpTool getWithUrl:Invite_Detail_URL params:params withCache:NO success:^(id result) {
-        NSLog(@"招聘详情：%@",result);
+//        NSLog(@"招聘详情：%@",result);
         if (result[@"success"]) {
             [self.viewModel.postModel setValueForDictionary:result[@"post"]];
             [self.viewModel.comanyModel setValueForDictionary:result[@"company"]];

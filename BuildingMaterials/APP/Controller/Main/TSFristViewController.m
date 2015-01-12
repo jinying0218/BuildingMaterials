@@ -78,7 +78,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
 - (void)loadData{
     //广告位
     [TSHttpTool getWithUrl:Frist_ADLoad_URL params:nil withCache:NO success:^(id result) {
-//        NSLog(@"Frist_ADLoad_URL:%@",result);
+        NSLog(@"Frist_ADLoad_URL:%@",result);
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];
@@ -165,7 +165,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
 - (void)setupUI{
     
     [self creatRootView];
-    [self createNavigationBarTitle:@"贵州建材网" leftButtonImageName:nil rightButtonImageName:nil];
+    [self createNavigationBarTitle:@"大安顺" leftButtonImageName:nil rightButtonImageName:nil];
     [self.rootView addSubview:self.navigationBar];
     
     self.firstTable = [[UITableView alloc] initWithFrame:CGRectMake( 0, KnaviBarHeight, KscreenW, KscreenH - KnaviBarHeight - KbottomBarHeight - STATUS_BAR_HEGHT) style:UITableViewStylePlain];

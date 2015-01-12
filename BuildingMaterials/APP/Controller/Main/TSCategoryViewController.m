@@ -71,7 +71,7 @@ static NSString * const categoryCellIdentifier = @"categoryCell";
     [self.navigationBar addSubview:searchBg];
     
     UIImageView *leftView = [[UIImageView alloc] initWithImage:[UIImage imageNamedString:@"search_leftView"]];
-    leftView.frame = CGRectMake( 10, 4, 20, 20);
+    leftView.frame = CGRectMake( 10, 6, 15, 15);
     [searchBg addSubview:leftView];
     
     self.searchTextField = [[UITextField alloc] initWithFrame:CGRectMake( CGRectGetMaxX(leftView.frame) + 10, 0, searchBg.frame.size.width - 40, 28)];
