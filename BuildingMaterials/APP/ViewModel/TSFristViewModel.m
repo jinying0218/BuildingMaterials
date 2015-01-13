@@ -17,7 +17,7 @@
         self.shopRecommendDataArray = [[NSMutableArray alloc] initWithCapacity:0];
         self.goodsRecommendDataArray = [[NSMutableArray alloc] initWithCapacity:0];
         self.goodsExchangeDataArray = [[NSMutableArray alloc] initWithCapacity:0];
-
+        self.adArray = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }
