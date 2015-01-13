@@ -21,6 +21,8 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
 @property (nonatomic, strong) TSArrayDataSource *dataSource;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *tableDataArray;
+@property (strong, nonatomic) IBOutlet UIView *headerView;
+@property (weak, nonatomic) IBOutlet UILabel *overLabel;  //即将结束 label，显示秒杀是否结束
 
 @end
 
@@ -71,7 +73,10 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
     [self createNavigationBarTitle:@"掌上秒杀" leftButtonImageName:@"Previous" rightButtonImageName:nil];
     [self.rootView addSubview:self.navigationBar];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT) style:UITableViewStylePlain];
+    self.headerView.frame = CGRectMake( 0, CGRectGetMaxY(self.navigationBar.frame), KscreenW, 40);
+    [self.rootView addSubview:self.headerView];
+    
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight + 40, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT - 40) style:UITableViewStylePlain];
     self.tableView.rowHeight = 125;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
