@@ -231,7 +231,6 @@
 		B0F7B8821A62B7A200D3EC95 /* take_picture.png in Resources */ = {isa = PBXBuildFile; fileRef = B0F7B8811A62B7A200D3EC95 /* take_picture.png */; };
 		B0FA13E31A64321F00C1C377 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B0FA13E11A64321F00C1C377 /* AlipaySDK.bundle */; };
 		B0FA13E41A64321F00C1C377 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0FA13E21A64321F00C1C377 /* AlipaySDK.framework */; };
-		B0FA13E71A64336800C1C377 /* TSAlipayHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FA13E61A64336800C1C377 /* TSAlipayHelper.m */; };
 		B0FA13E91A6436EE00C1C377 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0FA13E81A6436EE00C1C377 /* SystemConfiguration.framework */; };
 		B0FA144A1A643F6200C1C377 /* Order.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FA14371A643F6200C1C377 /* Order.m */; };
 		B0FA144B1A643F6200C1C377 /* base64.m in Sources */ = {isa = PBXBuildFile; fileRef = B0FA143A1A643F6200C1C377 /* base64.m */; };
@@ -587,8 +586,6 @@
 		B0F7B8811A62B7A200D3EC95 /* take_picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = take_picture.png; sourceTree = "<group>"; };
 		B0FA13E11A64321F00C1C377 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		B0FA13E21A64321F00C1C377 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlipaySDK.framework; path = BuildingMaterials/lib/AlipaySDK.framework; sourceTree = "<group>"; };
-		B0FA13E51A64336800C1C377 /* TSAlipayHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSAlipayHelper.h; sourceTree = "<group>"; };
-		B0FA13E61A64336800C1C377 /* TSAlipayHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAlipayHelper.m; sourceTree = "<group>"; };
 		B0FA13E81A6436EE00C1C377 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		B0FA14361A643F6200C1C377 /* Order.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Order.h; sourceTree = "<group>"; };
 		B0FA14371A643F6200C1C377 /* Order.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Order.m; sourceTree = "<group>"; };
@@ -1027,8 +1024,6 @@
 				B01847D319F89DCC00938054 /* TSImageUtil.h */,
 				B01847D419F89DCC00938054 /* TSImageUtil.m */,
 				B01847D519F89DCC00938054 /* TSItemClickDelegate.h */,
-				B0FA13E51A64336800C1C377 /* TSAlipayHelper.h */,
-				B0FA13E61A64336800C1C377 /* TSAlipayHelper.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -2212,7 +2207,6 @@
 				B018482619F89DCC00938054 /* TSHttpTool.m in Sources */,
 				B0F1F2501A583994006DFA93 /* TSGoodsRecommandModel.m in Sources */,
 				B00ED6BC1A415FFF001D6737 /* TSShopDetailViewController.m in Sources */,
-				B0FA13E71A64336800C1C377 /* TSAlipayHelper.m in Sources */,
 				B0F63C711A57C37B00A0C754 /* TSExchangeModel.m in Sources */,
 				B04411C21A5C3DF3005ED736 /* TSInvitePostModel.m in Sources */,
 				B0F477141A59367E005C851D /* TSInviteCategoryModel.m in Sources */,

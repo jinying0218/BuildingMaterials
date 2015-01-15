@@ -86,7 +86,7 @@
                 <outlet property="seckillPrice" destination="sUf-oh-WEY" id="loW-mK-V1S"/>
                 <outlet property="secondsDealNumber" destination="1yL-50-epG" id="mGo-oO-jM5"/>
             </connections>
-            <point key="canvasLocation" x="409" y="185.5"/>
+            <point key="canvasLocation" x="346" y="270.5"/>
         </tableViewCell>
     </objects>
     <resources>
