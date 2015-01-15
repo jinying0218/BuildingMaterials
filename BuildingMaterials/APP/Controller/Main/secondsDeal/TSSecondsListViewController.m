@@ -49,7 +49,7 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
 - (void)initializeData{
     //秒杀
     [TSHttpTool getWithUrl:Frist_SecKillLoad_URL params:nil withCache:nil success:^(id result) {
-        //        NSLog(@"首页秒杀:%@",result);
+                NSLog(@"首页秒杀:%@",result);
         if ([result[@"success"] intValue] == 1) {
             NSArray *goods_result = result[@"goods_result"];
             for (NSDictionary *oneGoodsResult in goods_result) {

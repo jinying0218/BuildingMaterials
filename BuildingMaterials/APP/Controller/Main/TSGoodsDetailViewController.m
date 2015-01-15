@@ -115,7 +115,7 @@
     self.goodsNewPrice.text = [NSString stringWithFormat:@"%d",self.viewModel.goodsInfoModel.goodsNewPrice];
     self.goodsSellNumber.text = [NSString stringWithFormat:@"%d人已购买",self.viewModel.goodsInfoModel.goodsSellNumber];
     
-    [self.shopImage sd_setImageWithURL:[NSURL URLWithString:self.viewModel.shopModel.COMPANY_IMAGE_URL]];
+    [self.shopImage sd_setImageWithURL:[NSURL URLWithString:self.viewModel.shopModel.COMPANY_IMAGE_URL] placeholderImage:[UIImage imageNamed:@"not_load"]];
     self.shopImage.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.shopImage.layer.borderWidth = 1;
     self.shopName.text = self.viewModel.shopModel.COMPANY_NAME;

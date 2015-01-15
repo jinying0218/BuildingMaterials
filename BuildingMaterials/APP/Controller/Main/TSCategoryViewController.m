@@ -85,9 +85,25 @@ static NSString * const categoryCellIdentifier = @"categoryCell";
     [naviRightBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     naviRightBtn.frame = CGRectMake( CGRectGetMaxX(searchBg.frame) + 10, 12, 60, 20);
     [self.navigationBar addSubview:naviRightBtn];
-    
+    @weakify(self);
     [naviRightBtn bk_addEventHandler:^(id sender) {
-        
+        @strongify(self);
+        int classifyID = 0;
+        for (TSCategoryModel *model in self.viewModel.dataArray) {
+            if ([self.searchTextField.text containsString:model.classifyDes] ||
+                [self.searchTextField.text containsString:model.classifyName]) {
+                classifyID = model.classifyID;
+            }
+        }
+//        TSCategoryModel *model = self.viewModel.dataArray[indexPath.row];
+        TSGoodsRecommandViewModel *viewModel = [[TSGoodsRecommandViewModel alloc] init];
+        viewModel.page = 1;
+        viewModel.classifyID = classifyID;
+        viewModel.goodsOrderType = @"1";
+        TSGoodsRecommendViewController *goodsRecommedVC = [[TSGoodsRecommendViewController alloc] init];
+        goodsRecommedVC.viewModel = viewModel;
+        [self.navigationController pushViewController:goodsRecommedVC animated:YES];
+
     } forControlEvents:UIControlEventTouchUpInside];
 
     

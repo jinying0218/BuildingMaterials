@@ -29,7 +29,7 @@
         switch (i) {
             case 0:{
                 if (![model.GOODS_HEAD_IMAGE isEqual:[NSNull null]]) {
-                    [self.firstGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.GOODS_HEAD_IMAGE]];
+                    [self.firstGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.GOODS_HEAD_IMAGE] placeholderImage:[UIImage imageNamed:@"not_load"]];
                 }
                 self.firstGoodsName.text = model.GOODS_NAME;
                 self.firstGoodsPrice.text = [NSString stringWithFormat:@"%d",model.GOODS_NEW_PRICE];
@@ -42,7 +42,7 @@
                 break;
                 
             case 1:{
-                [self.secondGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.GOODS_HEAD_IMAGE]];
+                [self.secondGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.GOODS_HEAD_IMAGE] placeholderImage:[UIImage imageNamed:@"not_load"]];
                 self.secondGoddsName.text = model.GOODS_NAME;
                 self.secondGoodsPrice.text = [NSString stringWithFormat:@"%d",model.GOODS_NEW_PRICE];
 

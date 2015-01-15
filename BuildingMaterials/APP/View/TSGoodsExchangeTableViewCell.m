@@ -28,14 +28,14 @@
         TSExchangeModel *model = models[i];
         switch (i) {
             case 0:{
-                [self.firstExchangeGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.THINGS_HEAD_IMAGE]];
+                [self.firstExchangeGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.THINGS_HEAD_IMAGE] placeholderImage:[UIImage imageNamed:@"not_load"]];
                 self.firstChangeGoodsName.text = model.THINGS_NAME;
                 self.firstWantGoodsName.text = model.THINGS_WANTS;
             }
                 break;
                 
             case 1:{
-                [self.secondExchangeGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.THINGS_HEAD_IMAGE]];
+                [self.secondExchangeGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.THINGS_HEAD_IMAGE] placeholderImage:[UIImage imageNamed:@"not_load"]];
                 self.secondChangeGoodsName.text = model.THINGS_NAME;
                 self.secondWantGoodsName.text = model.THINGS_WANTS;
                 

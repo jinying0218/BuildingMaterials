@@ -34,7 +34,7 @@
         TSSecKillModel *model = models[i];
         switch (i) {
             case 0:{
-                [self.fristGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.GOODS_HEAD_IMAGE]];
+                [self.fristGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.GOODS_HEAD_IMAGE] placeholderImage:[UIImage imageNamed:@"not_load"]];
                 self.fristGoodsName.text = model.GOODS_NAME;
                 self.fristGoodsNowPrice.text = [NSString stringWithFormat:@"%d",model.SECKILL_PRICE];
                 self.fristGoodsPrice.text = [NSString stringWithFormat:@"%d",model.GOODS_NEW_PRICE];
@@ -65,7 +65,7 @@
                 break;
                 
             case 1:{
-                [self.secondGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.GOODS_HEAD_IMAGE]];
+                [self.secondGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.GOODS_HEAD_IMAGE] placeholderImage:[UIImage imageNamed:@"not_load"]];
                 self.secondGoodsName.text = model.GOODS_NAME;
                 self.secondGoodsNowPrice.text = [NSString stringWithFormat:@"%d",model.SECKILL_PRICE];
                 self.secondGoodsPrice.text = [NSString stringWithFormat:@"%d",model.GOODS_NEW_PRICE];
@@ -74,7 +74,7 @@
             }
                 break;
             case 2:{
-                [self.thirdGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.GOODS_HEAD_IMAGE]];
+                [self.thirdGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.GOODS_HEAD_IMAGE] placeholderImage:[UIImage imageNamed:@"not_load"]];
                 self.thirdGoodsName.text = model.GOODS_NAME;
                 self.thirdGoodsNowPrice.text = [NSString stringWithFormat:@"%d",model.SECKILL_PRICE];
                 self.thirdGoodsPrice.text = [NSString stringWithFormat:@"%d",model.GOODS_NEW_PRICE];

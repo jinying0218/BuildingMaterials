@@ -201,9 +201,15 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     for (TSAdModel *oneAdModel in self.viewModel.adArray) {
         UIImageView *imageView1 = [[UIImageView alloc] init];
         imageView1.frame = CGRectMake( KscreenW * i, 0, KscreenW, 120);
-        [imageView1 sd_setImageWithURL:[NSURL URLWithString:oneAdModel.ad_url]];
+        [imageView1 sd_setImageWithURL:[NSURL URLWithString:oneAdModel.ad_url]placeholderImage:[UIImage imageNamed:@"not_load_ad"]];
         [self.bannerScrollView addSubview:imageView1];
         i ++;
+    }
+    if (self.viewModel.adArray.count == 0) {
+        UIImageView *imageView1 = [[UIImageView alloc] init];
+        imageView1.frame = CGRectMake( KscreenW * i, 0, KscreenW, 120);
+        [imageView1 setImage:[UIImage imageNamed:@"not_load_ad"]];
+        [self.bannerScrollView addSubview:imageView1];
     }
     self.bannerScrollView.contentSize = CGSizeMake( self.viewModel.adArray.count * KscreenW, 120);
 }

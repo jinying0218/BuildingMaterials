@@ -76,6 +76,4 @@
 #define Invite_PostApply_URL Domain"/postAskSave"
 
 
-
-
 #endif
