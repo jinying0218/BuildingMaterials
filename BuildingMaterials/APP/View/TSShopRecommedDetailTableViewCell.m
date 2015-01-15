@@ -23,7 +23,7 @@
 }
 - (void)configureCellWithModel:(TSShopModel *)model indexPath:(NSIndexPath *)indexPath{
     if (![model.COMPANY_IMAGE_URL isEqual:[NSNull null]]) {
-        [self.shopImage sd_setImageWithURL:[NSURL URLWithString:model.COMPANY_IMAGE_URL]];
+        [self.shopImage sd_setImageWithURL:[NSURL URLWithString:model.COMPANY_IMAGE_URL] placeholderImage:[UIImage imageNamed:@"not_load"]];
     }
     self.shopName.text = model.COMPANY_NAME;
     self.shopDes.text = model.COMPANY_DES;

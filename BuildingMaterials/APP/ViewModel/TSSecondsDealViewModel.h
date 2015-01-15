@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface TSSecondsDealViewModel : NSObject
-
+@property (nonatomic, strong) NSMutableArray *dataArray;
 @end

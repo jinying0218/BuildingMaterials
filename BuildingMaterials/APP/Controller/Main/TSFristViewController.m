@@ -38,7 +38,7 @@
 #import "TSShopModel.h"
 #import "TSGoodsRecommandModel.h"
 #import "TSExchangeModel.h"
-
+#import "TSAdModel.h"
 
 static NSString * const goodsRecommendCell = @"goodsRecommendCell";     //商品推荐
 static NSString * const goodsExchangeCell = @"goodsExchangeCell";     //以物换物
@@ -47,7 +47,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
 
 @interface TSFristViewController ()<UITableViewDelegate,UITableViewDataSource,SecondsDealTableViewCellDelegate>
 @property (nonatomic, strong) UITableView *firstTable;
-
+@property (nonatomic, strong) UIScrollView *bannerScrollView;
 @end
 
 @implementation TSFristViewController
@@ -79,6 +79,14 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     //广告位
     [TSHttpTool getWithUrl:Frist_ADLoad_URL params:nil withCache:NO success:^(id result) {
 //        NSLog(@"Frist_ADLoad_URL:%@",result);
+        if ([result[@"success"] intValue] == 1) {
+            for (NSDictionary *dict in result[@"result"]) {
+                TSAdModel *adModel = [[TSAdModel alloc] init];
+                [adModel setValueWithDict:dict];
+                [self.viewModel.adArray addObject:adModel];
+            }
+            [self layoutSubViews];
+        }
     } failure:^(NSError *error) {
         NSLog(@"%@",error);
     }];
@@ -94,7 +102,6 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
                 model.STATUS = [result[@"STATUS"] intValue];
                 [self.viewModel.secKillDataArray addObject:model];
             }
-            [self.firstTable reloadData];
         }
     } failure:^(NSError *error) {
         NSLog(@"Frist_SecKillLoad_URL:%@",error);
@@ -165,7 +172,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
 - (void)setupUI{
     
     [self creatRootView];
-    [self createNavigationBarTitle:@"贵州建材网" leftButtonImageName:nil rightButtonImageName:nil];
+    [self createNavigationBarTitle:@"大安顺" leftButtonImageName:nil rightButtonImageName:nil];
     [self.rootView addSubview:self.navigationBar];
     
     self.firstTable = [[UITableView alloc] initWithFrame:CGRectMake( 0, KnaviBarHeight, KscreenW, KscreenH - KnaviBarHeight - KbottomBarHeight - STATUS_BAR_HEGHT) style:UITableViewStylePlain];
@@ -179,27 +186,32 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     UIView *banner = [[UIView alloc] initWithFrame:CGRectMake( 0, 0, KscreenW, 130)];
     self.firstTable.tableHeaderView = banner;
 
-    UIScrollView *bannerScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake( 0, 0, KscreenW, 120)];
+    self.bannerScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake( 0, 0, KscreenW, 120)];
 //    banner.showsVerticalScrollIndicator = NO;
 //    banner.showsHorizontalScrollIndicator = NO;
-    bannerScrollView.contentSize = CGSizeMake( 3 * KscreenW, 120);
-    bannerScrollView.delegate = self;
-    bannerScrollView.pagingEnabled = YES;
-    bannerScrollView.backgroundColor = [UIColor darkGrayColor];
-    [banner addSubview:bannerScrollView];
+    self.bannerScrollView.delegate = self;
+    self.bannerScrollView.pagingEnabled = YES;
+    self.bannerScrollView.backgroundColor = [UIColor darkGrayColor];
+    [banner addSubview:self.bannerScrollView];
     
-    UIImageView *imageView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamedString:@"banner1"]];
-    imageView1.frame = CGRectMake( 0, 0, KscreenW, 120);
-    [bannerScrollView addSubview:imageView1];
-    
-    UIImageView *imageView2 = [[UIImageView alloc] initWithImage:[UIImage imageNamedString:@"banner1"]];
-    imageView2.frame = CGRectMake( KscreenW, 0, KscreenW, 120);
-    [bannerScrollView addSubview:imageView2];
+}
 
-    UIImageView *imageView3 = [[UIImageView alloc] initWithImage:[UIImage imageNamedString:@"banner1"]];
-    imageView3.frame = CGRectMake( KscreenW * 2, 0, KscreenW, 120);
-    [bannerScrollView addSubview:imageView3];
-
+- (void)layoutSubViews{
+    int i = 0;
+    for (TSAdModel *oneAdModel in self.viewModel.adArray) {
+        UIImageView *imageView1 = [[UIImageView alloc] init];
+        imageView1.frame = CGRectMake( KscreenW * i, 0, KscreenW, 120);
+        [imageView1 sd_setImageWithURL:[NSURL URLWithString:oneAdModel.ad_url]placeholderImage:[UIImage imageNamed:@"not_load_ad"]];
+        [self.bannerScrollView addSubview:imageView1];
+        i ++;
+    }
+    if (self.viewModel.adArray.count == 0) {
+        UIImageView *imageView1 = [[UIImageView alloc] init];
+        imageView1.frame = CGRectMake( KscreenW * i, 0, KscreenW, 120);
+        [imageView1 setImage:[UIImage imageNamed:@"not_load_ad"]];
+        [self.bannerScrollView addSubview:imageView1];
+    }
+    self.bannerScrollView.contentSize = CGSizeMake( self.viewModel.adArray.count * KscreenW, 120);
 }
 
 #pragma  mark - secondDealTableView delegate

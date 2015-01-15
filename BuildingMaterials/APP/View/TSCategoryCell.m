@@ -22,7 +22,7 @@
     // Configure the view for the selected state
 }
 - (void)configureCellWithModel:(TSCategoryModel *)model{
-    [self.goodsImage sd_setImageWithURL:[NSURL URLWithString:model.classifyImageUrl]];
+    [self.goodsImage sd_setImageWithURL:[NSURL URLWithString:model.classifyImageUrl] placeholderImage:[UIImage imageNamed:@"not_load"]];
     self.categoryName.text = model.classifyName;
     self.categoryDetail.text = model.classifyDes;
 }

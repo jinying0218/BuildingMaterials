@@ -23,7 +23,7 @@
 }
 - (void)configureCellWithModel:(TSGoodsRecommandModel *)model indexPath:(NSIndexPath *)indexPath{
     if (![model.GOODS_HEAD_IMAGE isEqual:[NSNull null]]) {
-        [self.goodsImage sd_setImageWithURL:[NSURL URLWithString:model.GOODS_HEAD_IMAGE]];
+        [self.goodsImage sd_setImageWithURL:[NSURL URLWithString:model.GOODS_HEAD_IMAGE] placeholderImage:[UIImage imageNamed:@"not_load"]];
     }
     self.goodsName.text = model.GOODS_NAME;
     self.goodsDes.text = model.GOODS_DES_SIMPLE;

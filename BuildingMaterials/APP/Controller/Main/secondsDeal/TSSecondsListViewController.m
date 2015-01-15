@@ -12,6 +12,7 @@
 
 #import "TSSecondDealDetailViewController.h"
 #import "TSSecondDealDetailViewModel.h"
+#import "TSSecKillModel.h"
 
 static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTableViewCell";
 
@@ -20,13 +21,14 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
 @property (nonatomic, strong) TSArrayDataSource *dataSource;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *tableDataArray;
+@property (strong, nonatomic) IBOutlet UIView *headerView;
+@property (weak, nonatomic) IBOutlet UILabel *overLabel;  //即将结束 label，显示秒杀是否结束
 
 @end
 
 @implementation TSSecondsListViewController
 #pragma mark - controller methods
-- (instancetype)initWithViewModel:(TSSecondsDealViewModel *)viewModel
-{
+- (instancetype)initWithViewModel:(TSSecondsDealViewModel *)viewModel{
     self = [super init];
     if (self) {
         self.viewModel = viewModel;
@@ -45,7 +47,24 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
     [super didReceiveMemoryWarning];
 }
 - (void)initializeData{
-    self.tableDataArray = [[NSMutableArray alloc] initWithObjects:@"莫非瓷砖",@"莫非瓷砖",@"莫非瓷砖",@"莫非瓷砖",@"莫非瓷砖",@"莫非瓷砖", nil];
+    //秒杀
+    [TSHttpTool getWithUrl:Frist_SecKillLoad_URL params:nil withCache:nil success:^(id result) {
+                NSLog(@"首页秒杀:%@",result);
+        if ([result[@"success"] intValue] == 1) {
+            NSArray *goods_result = result[@"goods_result"];
+            for (NSDictionary *oneGoodsResult in goods_result) {
+                TSSecKillModel *model = [[TSSecKillModel alloc] init];
+                [model setValuesForKeysWithDictionary:oneGoodsResult];
+                model.END_TIME = result[@"result"][@"END_TIME"];
+                model.STATUS = [result[@"STATUS"] intValue];
+                [self.viewModel.dataArray addObject:model];
+            }
+            [self.tableView reloadData];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"Frist_SecKillLoad_URL:%@",error);
+    }];
+
 }
 #pragma mark - set up UI
 - (void)setupUI{
@@ -54,17 +73,19 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
     [self createNavigationBarTitle:@"掌上秒杀" leftButtonImageName:@"Previous" rightButtonImageName:nil];
     [self.rootView addSubview:self.navigationBar];
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT) style:UITableViewStylePlain];
+    self.headerView.frame = CGRectMake( 0, CGRectGetMaxY(self.navigationBar.frame), KscreenW, 40);
+    [self.rootView addSubview:self.headerView];
+    
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight + 40, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT - 40) style:UITableViewStylePlain];
     self.tableView.rowHeight = 125;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"F0F0F0"];
-    CellConfigureBlock configureBlock = ^(TSSecondsDealDetailTableViewCell *cell,id taskModel,NSIndexPath *indexPath){
+    CellConfigureBlock configureBlock = ^(TSSecondsDealDetailTableViewCell *cell,TSSecKillModel *taskModel,NSIndexPath *indexPath){
         [cell configureCellWithModel:taskModel indexPath:indexPath];
     };
     
-    
-    self.dataSource = [[TSArrayDataSource alloc] initWithNibName:@"TSSecondsDealDetailTableViewCell" items:self.tableDataArray cellIdentifier:SecondsDealDetailTableViewCell configureCellBlock:configureBlock];
+    self.dataSource = [[TSArrayDataSource alloc] initWithNibName:@"TSSecondsDealDetailTableViewCell" items:self.viewModel.dataArray cellIdentifier:SecondsDealDetailTableViewCell configureCellBlock:configureBlock];
     self.tableView.dataSource = self.dataSource;
     self.tableView.delegate = self;
     [self.rootView addSubview:self.tableView];
@@ -73,7 +94,9 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
 
 #pragma mark - tableView delegateMethod
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    TSSecKillModel *secKillModel = self.viewModel.dataArray[indexPath.row];
     TSSecondDealDetailViewModel *viewModel = [[TSSecondDealDetailViewModel alloc] init];
+    viewModel.secKillModel = secKillModel;
     TSSecondDealDetailViewController *secondDealDetailVC = [[TSSecondDealDetailViewController alloc] initWithViewModel:viewModel];
     [self.navigationController pushViewController:secondDealDetailVC animated:YES];
 }

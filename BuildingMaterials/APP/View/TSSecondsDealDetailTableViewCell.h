@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LPLabel.h"
+@class TSSecKillModel;
 
 @interface TSSecondsDealDetailTableViewCell : UITableViewCell
-- (void)configureCellWithModel:(id)model indexPath:(NSIndexPath *)indexPath;
+@property (weak, nonatomic) IBOutlet UILabel *goodsName;
+@property (weak, nonatomic) IBOutlet UILabel *seckillPrice;
+@property (weak, nonatomic) IBOutlet LPLabel *oldPrice;
+
+@property (weak, nonatomic) IBOutlet UIButton *discountPercent;
+@property (weak, nonatomic) IBOutlet UIImageView *secondsDealNumber;
+@property (weak, nonatomic) IBOutlet UILabel *seckillNumber;
+
+- (void)configureCellWithModel:(TSSecKillModel *)model indexPath:(NSIndexPath *)indexPath;
 @end

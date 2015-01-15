@@ -9,5 +9,12 @@
 #import "TSSecondsDealViewModel.h"
 
 @implementation TSSecondsDealViewModel
-
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.dataArray = [[NSMutableArray alloc] initWithCapacity:0];
+    }
+    return self;
+}
 @end

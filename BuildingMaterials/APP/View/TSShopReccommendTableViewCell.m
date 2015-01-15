@@ -28,7 +28,7 @@
         TSShopModel *model = models[i];
         switch (i) {
             case 0:{
-                [self.fristShopImage sd_setImageWithURL:[NSURL URLWithString:model.COMPANY_IMAGE_URL]];
+                [self.fristShopImage sd_setImageWithURL:[NSURL URLWithString:model.COMPANY_IMAGE_URL] placeholderImage:[UIImage imageNamed:@""]];
                 self.firstShopName.text = model.COMPANY_NAME;
 //                self.fristGoodsNowPrice.text = [NSString stringWithFormat:@"%d",model.SECKILL_PRICE];
 //                self.fristGoodsPrice.text = [NSString stringWithFormat:@"%d",model.GOODS_NEW_PRICE];

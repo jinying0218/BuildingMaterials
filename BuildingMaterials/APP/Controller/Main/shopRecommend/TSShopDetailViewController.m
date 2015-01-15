@@ -25,8 +25,12 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
 @property (nonatomic, strong) NSMutableArray *collectViewDataArray;
 @property (nonatomic, strong) TSShopDetailViewModel *viewModel;
 @property (nonatomic, assign) int page;
-
-@property (nonatomic, strong) UIButton *checkGoodsBtn;
+@property (nonatomic, strong) UIScrollView *bannerScrollView;
+@property (strong, nonatomic) IBOutlet UIView *bottomView;
+@property (weak, nonatomic) IBOutlet UIButton *telButton;
+@property (weak, nonatomic) IBOutlet UIButton *allGoodsButton;
+@property (weak, nonatomic) IBOutlet UILabel *contactName;
+@property (weak, nonatomic) IBOutlet UILabel *contactTelNumber;
 
 @end
 
@@ -55,7 +59,22 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
 
 #pragma  mark - blind methods
 - (void)blindActionHandler{
+    @weakify(self);
+    [self.telButton bk_addEventHandler:^(id sender) {
+        @strongify(self);
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",self.viewModel.shopModel.COMPANY_TEL_PHONE]]];
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.allGoodsButton bk_addEventHandler:^(id sender) {
+        @strongify(self);
+        TSShopGoodsViewModel *viewModel = [[TSShopGoodsViewModel alloc] init];
+        viewModel.companyID = self.viewModel.companyID;
+        viewModel.companyName = self.viewModel.shopModel.COMPANY_NAME;
+        TSShopGoodsViewController *shopGoodsVC = [[TSShopGoodsViewController alloc] init];
+        shopGoodsVC.viewModel = viewModel;
+        [self.navigationController pushViewController:shopGoodsVC animated:YES];
 
+    } forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)initializeData{
@@ -67,6 +86,7 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
         if ([result[@"success"] intValue] == 1) {
             [self.viewModel.shopModel setShopModelValueForDictionary:result[@"result"]];
             [self.collectionView reloadData];
+            [self layoutSubViews];
         }
     } failure:^(NSError *error) {
         NSLog(@"商家详情：%@",error);
@@ -81,7 +101,10 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
             for (NSDictionary *oneDict in result[@"result"]) {
                 TSGoodsRecommandModel *goodsModel = [[TSGoodsRecommandModel alloc] init];
                 [goodsModel setValueForDictionary:oneDict];
-                [self.viewModel.dataArray addObject:goodsModel];
+                //只展示4个商品
+                if (self.viewModel.dataArray.count <= 4) {
+                    [self.viewModel.dataArray addObject:goodsModel];
+                }
             }
             [self.collectionView reloadData];
         }
@@ -106,7 +129,7 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
     // 4.设置间距
     layout.sectionInset = UIEdgeInsetsMake( 5, 5, 0, 5);
 
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT) collectionViewLayout:layout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT - 49) collectionViewLayout:layout];
     self.collectionView.showsVerticalScrollIndicator = NO;
     self.collectionView.backgroundColor = [UIColor colorWithHexString:@"F0F0F0"];
     self.collectionView.delegate = self;
@@ -115,6 +138,8 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
 
     [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ShopDetailCollectionHeaderIdentifier];
 
+    self.bottomView.frame = CGRectMake( 0, KscreenH - 49 - STATUS_BAR_HEGHT, KscreenW, 49);
+    [self.rootView addSubview:self.bottomView];
     /*
     CellConfigureBlock configureBlock = ^(TSShopRecommedDetailTableViewCell *cell,id taskModel,NSIndexPath *indexPath){
         [cell configureCellWithModel:taskModel indexPath:indexPath];
@@ -127,40 +152,42 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
     */
 }
 
+- (void)layoutSubViews{
+    self.contactName.text = self.viewModel.shopModel.COMPANY_CONTACT;
+    self.contactTelNumber.text = self.viewModel.shopModel.COMPANY_TEL_PHONE;
+}
+
 #pragma mark - UICollectionView方法
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     return self.viewModel.dataArray.count;
 }
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
 }
-- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
-{
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
     return CGSizeMake( KscreenW, 180);
 }
 
 //段头
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
     UICollectionReusableView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:ShopDetailCollectionHeaderIdentifier forIndexPath:indexPath];
     for (UIView *subView in headerView.subviews) {
         [subView removeFromSuperview];
     }
     headerView.backgroundColor = [UIColor whiteColor];
     
-    UIScrollView *bannerScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake( 0, 0, KscreenW, 120)];
+    self.bannerScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake( 0, 0, KscreenW, 120)];
     //    banner.showsVerticalScrollIndicator = NO;
     //    banner.showsHorizontalScrollIndicator = NO;
-    bannerScrollView.contentSize = CGSizeMake( 3 * KscreenW, 120);
-    bannerScrollView.delegate = self;
-    bannerScrollView.pagingEnabled = YES;
-    bannerScrollView.backgroundColor = [UIColor yellowColor];
-    [headerView addSubview:bannerScrollView];
+    self.bannerScrollView.contentSize = CGSizeMake( 3 * KscreenW, 120);
+    self.bannerScrollView.delegate = self;
+    self.bannerScrollView.pagingEnabled = YES;
+    self.bannerScrollView.backgroundColor = [UIColor yellowColor];
+    [headerView addSubview:self.bannerScrollView];
     
     UIImageView *imageView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamedString:@"banner1"]];
     imageView1.frame = CGRectMake( 0, 0, KscreenW, 120);
-    [bannerScrollView addSubview:imageView1];
+    [self.bannerScrollView addSubview:imageView1];
     
     UIImageView *shopSymbolback = [[UIImageView alloc] initWithFrame:CGRectMake( 20, headerView.frame.size.height - 74, 70, 70)];
     shopSymbolback.image = [UIImage imageNamedString:@"ss_06"];
@@ -170,7 +197,7 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
     [shopSymbol sd_setImageWithURL:[NSURL URLWithString:self.viewModel.shopModel.COMPANY_IMAGE_URL]];
     [shopSymbolback addSubview:shopSymbol];
     
-    UILabel *shopName = [[UILabel alloc] initWithFrame:CGRectMake( CGRectGetMaxX(shopSymbolback.frame) + 10, CGRectGetMaxY(bannerScrollView.frame) + 10, 100, 25)];
+    UILabel *shopName = [[UILabel alloc] initWithFrame:CGRectMake( CGRectGetMaxX(shopSymbolback.frame) + 10, CGRectGetMaxY(self.bannerScrollView.frame) + 10, 100, 25)];
     shopName.text = self.viewModel.shopModel.COMPANY_NAME;
     shopName.adjustsFontSizeToFitWidth = YES;
     shopName.textColor = [UIColor colorWithHexString:@"226e8a"];
@@ -178,30 +205,14 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
 //    shopName.backgroundColor = [UIColor redColor];
     [headerView addSubview:shopName];
     
-    UILabel *goodsKinds = [[UILabel alloc] initWithFrame:CGRectMake( CGRectGetMaxX(shopSymbolback.frame) + 10, CGRectGetMaxY(shopName.frame), 100, 20)];
-    goodsKinds.text = @"355种商品";
-//    goodsKinds.textColor = [UIColor colorWithHexString:@"226e8a"];
-    goodsKinds.font = [UIFont systemFontOfSize:14];
+    UILabel *goodsKinds = [[UILabel alloc] initWithFrame:CGRectMake( CGRectGetMaxX(shopSymbolback.frame) + 10, CGRectGetMaxY(shopName.frame) - 3, 150, 20)];
+    goodsKinds.adjustsFontSizeToFitWidth = YES;
+    goodsKinds.text = self.viewModel.shopModel.COMPANY_DES;
+    goodsKinds.textColor = [UIColor lightGrayColor];
+    goodsKinds.font = [UIFont systemFontOfSize:13];
 //    goodsKinds.backgroundColor = [UIColor blueColor];
     [headerView addSubview:goodsKinds];
 
-    self.checkGoodsBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    [self.checkGoodsBtn setBackgroundImage:[UIImage imageNamedString:@"shop_button_bg"] forState:UIControlStateNormal];
-    [self.checkGoodsBtn setTitle:@"查看全部商品" forState:UIControlStateNormal];
-    self.checkGoodsBtn.titleLabel.font = [UIFont systemFontOfSize:13];
-    self.checkGoodsBtn.frame = CGRectMake( KscreenW - 20 - 80, CGRectGetMaxY(bannerScrollView.frame) + 10, 80, 35);
-    @weakify(self);
-    [self.checkGoodsBtn bk_addEventHandler:^(id sender) {
-        @strongify(self);
-        TSShopGoodsViewModel *viewModel = [[TSShopGoodsViewModel alloc] init];
-        viewModel.companyID = self.viewModel.companyID;
-        viewModel.companyName = self.viewModel.shopModel.COMPANY_NAME;
-        TSShopGoodsViewController *shopGoodsVC = [[TSShopGoodsViewController alloc] init];
-        shopGoodsVC.viewModel = viewModel;
-        [self.navigationController pushViewController:shopGoodsVC animated:YES];
-    } forControlEvents:UIControlEventTouchUpInside];
-
-    [headerView addSubview:self.checkGoodsBtn];
     return headerView;
 }
 

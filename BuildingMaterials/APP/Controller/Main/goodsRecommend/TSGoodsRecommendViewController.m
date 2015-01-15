@@ -57,13 +57,7 @@ static NSString *const popTableViewCell = @"popTableViewCell";
     [super didReceiveMemoryWarning];
 }
 - (void)initializeData{
- ///////////
-/*
-    page  页数
-    goodsSearchName  搜索名称
-    goodsClassifyId  商品分类
-    goodsOrderType  商品排列方式 1为默认  2为安人气  3为按价格
-*/
+
     NSDictionary *params;
     if (self.viewModel.classifyID == 0) {
         params = @{@"page":[NSString stringWithFormat:@"%d",self.viewModel.page],
@@ -75,7 +69,7 @@ static NSString *const popTableViewCell = @"popTableViewCell";
     }
     
     [TSHttpTool getWithUrl:GoodsLoad_URL params:params withCache:NO success:^(id result) {
-        NSLog(@"GoodsLoad_URL:%@",result);
+//        NSLog(@"商品推荐列表:%@",result);
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneRecommendGoodsDict in result[@"result"]) {
                 TSGoodsRecommandModel *goodsModel = [[TSGoodsRecommandModel alloc] init];
@@ -89,7 +83,7 @@ static NSString *const popTableViewCell = @"popTableViewCell";
     }];
     
     [TSHttpTool getWithUrl:GoodsClassify_URL params:nil withCache:NO success:^(id result) {
-        NSLog(@"商品分类:%@",result);
+//        NSLog(@"商品分类:%@",result);
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneResult in result[@"result"]) {
                 TSCategoryModel *model = [[TSCategoryModel alloc] init];
@@ -105,7 +99,7 @@ static NSString *const popTableViewCell = @"popTableViewCell";
         NSLog(@"商品分类:%@",error);
     }];
     
-    NSArray *sortArray = @[@"默认",@"人气",@"价格"];
+    NSArray *sortArray = @[@"默认",@"价格",@"人气"];
     int i = 1;
     for (NSString *string in sortArray) {
         TSCategoryModel *model = [[TSCategoryModel alloc] init];
@@ -331,6 +325,7 @@ static NSString *const popTableViewCell = @"popTableViewCell";
     TSCategoryModel *categoryModel = self.viewModel.popDataArray[indexPath.row];
     NSDictionary *params;
 
+    //如果按照当前排序
     if (self.isSort) {
         self.viewModel.goodsOrderType = [NSString stringWithFormat:@"%d",categoryModel.classifyID];
         if (self.viewModel.classifyID == 0) {
@@ -342,7 +337,7 @@ static NSString *const popTableViewCell = @"popTableViewCell";
                        @"goodsClassifyId" : [NSString stringWithFormat:@"%d",self.viewModel.classifyID]};
         }
     }else {
-        
+        //按照默认排序
         if (indexPath.row == 0) {
             self.viewModel.classifyID = 0;
             params = @{@"page" : [NSString stringWithFormat:@"%d",self.viewModel.page],

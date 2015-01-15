@@ -75,8 +75,8 @@
 - (void)initializeData{
     NSDictionary *params = @{@"postId":[NSString stringWithFormat:@"%d",self.viewModel.postID]};
     [TSHttpTool getWithUrl:Invite_Detail_URL params:params withCache:NO success:^(id result) {
-        NSLog(@"招聘详情：%@",result);
-        if (result[@"success"]) {
+//        NSLog(@"招聘详情：%@",result);
+        if ([result[@"success"] intValue] == 1) {
             [self.viewModel.postModel setValueForDictionary:result[@"post"]];
             [self.viewModel.comanyModel setValueForDictionary:result[@"company"]];
         }
@@ -84,7 +84,6 @@
     } failure:^(NSError *error) {
         NSLog(@"招聘详情：%@",error);
     }];
-    
 }
 #pragma mark - set up UI
 - (void)setupUI{
@@ -144,7 +143,8 @@
     self.postPrice.text = [NSString stringWithFormat:@"%d",self.viewModel.postModel.postPrice];
     self.postNumber.text = [NSString stringWithFormat:@"%d",self.viewModel.postModel.postNumber];
     self.companyAddress.text = self.viewModel.comanyModel.companyAddress;
-
+    self.companyName.text = self.viewModel.comanyModel.companyName;
+    
     self.companyViewName.text = self.viewModel.comanyModel.companyName;
     self.companyViewAddress.text = self.viewModel.comanyModel.companyAddress;
     self.companyDes.text = self.viewModel.comanyModel.companyDes;

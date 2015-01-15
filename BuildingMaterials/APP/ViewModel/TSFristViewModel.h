@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface TSFristViewModel : NSObject
+@property (nonatomic, strong) NSMutableArray *adArray;
 @property (nonatomic, strong) NSMutableArray *secKillDataArray;
 @property (nonatomic, strong) NSMutableArray *shopRecommendDataArray;
 @property (nonatomic, strong) NSMutableArray *goodsRecommendDataArray;
