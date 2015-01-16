@@ -65,6 +65,11 @@
 		B018482519F89DCC00938054 /* TSDateFormatterTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B01847D019F89DCC00938054 /* TSDateFormatterTool.m */; };
 		B018482619F89DCC00938054 /* TSHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = B01847D219F89DCC00938054 /* TSHttpTool.m */; };
 		B018482719F89DCC00938054 /* TSImageUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B01847D419F89DCC00938054 /* TSImageUtil.m */; };
+		B026585D1A6956B3001261B0 /* TSCommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B026585B1A6956B3001261B0 /* TSCommentViewController.m */; };
+		B026585E1A6956B3001261B0 /* TSCommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B026585C1A6956B3001261B0 /* TSCommentViewController.xib */; };
+		B02658621A69611D001261B0 /* TSCommentViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B02658611A69611D001261B0 /* TSCommentViewModel.m */; };
+		B02658661A6968C7001261B0 /* TSCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B02658641A6968C6001261B0 /* TSCommentTableViewCell.m */; };
+		B02658671A6968C7001261B0 /* TSCommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B02658651A6968C6001261B0 /* TSCommentTableViewCell.xib */; };
 		B031217E19F8AFA9008721C4 /* TSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B031217C19F8AFA9008721C4 /* TSLoginViewController.m */; };
 		B031217F19F8AFA9008721C4 /* TSLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B031217D19F8AFA9008721C4 /* TSLoginViewController.xib */; };
 		B031218619F8B7B0008721C4 /* login_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B031218319F8B7B0008721C4 /* login_bg.jpg */; };
@@ -357,6 +362,14 @@
 		B01847D319F89DCC00938054 /* TSImageUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSImageUtil.h; sourceTree = "<group>"; };
 		B01847D419F89DCC00938054 /* TSImageUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSImageUtil.m; sourceTree = "<group>"; };
 		B01847D519F89DCC00938054 /* TSItemClickDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSItemClickDelegate.h; sourceTree = "<group>"; };
+		B026585A1A6956B3001261B0 /* TSCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCommentViewController.h; sourceTree = "<group>"; };
+		B026585B1A6956B3001261B0 /* TSCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCommentViewController.m; sourceTree = "<group>"; };
+		B026585C1A6956B3001261B0 /* TSCommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSCommentViewController.xib; sourceTree = "<group>"; };
+		B02658601A69611D001261B0 /* TSCommentViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCommentViewModel.h; sourceTree = "<group>"; };
+		B02658611A69611D001261B0 /* TSCommentViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCommentViewModel.m; sourceTree = "<group>"; };
+		B02658631A6968C6001261B0 /* TSCommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCommentTableViewCell.h; sourceTree = "<group>"; };
+		B02658641A6968C6001261B0 /* TSCommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCommentTableViewCell.m; sourceTree = "<group>"; };
+		B02658651A6968C6001261B0 /* TSCommentTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSCommentTableViewCell.xib; sourceTree = "<group>"; };
 		B031217B19F8AFA9008721C4 /* TSLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSLoginViewController.h; sourceTree = "<group>"; };
 		B031217C19F8AFA9008721C4 /* TSLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSLoginViewController.m; sourceTree = "<group>"; };
 		B031217D19F8AFA9008721C4 /* TSLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSLoginViewController.xib; sourceTree = "<group>"; };
@@ -932,6 +945,7 @@
 				B015C32B1A0F18490060FBE2 /* 以物换物详情cell */,
 				B05B62DE19FE86BC008F76E0 /* BaseView */,
 				B05B62DD19FE86A6008F76E0 /* CustomView */,
+				B02658681A6968CC001261B0 /* 评论页cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1026,6 +1040,35 @@
 				B01847D519F89DCC00938054 /* TSItemClickDelegate.h */,
 			);
 			path = Tools;
+			sourceTree = "<group>";
+		};
+		B026585F1A6956B8001261B0 /* 评论页 */ = {
+			isa = PBXGroup;
+			children = (
+				B026585A1A6956B3001261B0 /* TSCommentViewController.h */,
+				B026585B1A6956B3001261B0 /* TSCommentViewController.m */,
+				B026585C1A6956B3001261B0 /* TSCommentViewController.xib */,
+			);
+			name = "评论页";
+			sourceTree = "<group>";
+		};
+		B02658681A6968CC001261B0 /* 评论页cell */ = {
+			isa = PBXGroup;
+			children = (
+				B02658631A6968C6001261B0 /* TSCommentTableViewCell.h */,
+				B02658641A6968C6001261B0 /* TSCommentTableViewCell.m */,
+				B02658651A6968C6001261B0 /* TSCommentTableViewCell.xib */,
+			);
+			name = "评论页cell";
+			sourceTree = "<group>";
+		};
+		B02658691A696AFF001261B0 /* 商品评价 */ = {
+			isa = PBXGroup;
+			children = (
+				B02658601A69611D001261B0 /* TSCommentViewModel.h */,
+				B02658611A69611D001261B0 /* TSCommentViewModel.m */,
+			);
+			name = "商品评价";
 			sourceTree = "<group>";
 		};
 		B031218119F8B7B0008721C4 /* images */ = {
@@ -1130,6 +1173,7 @@
 				B05115C919F969C600CA6E2E /* TSFristViewController.m */,
 				B05115CA19F969C600CA6E2E /* TSFristViewController.xib */,
 				B08DBEBB1A6015C2007A301F /* 商品详情 */,
+				B026585F1A6956B8001261B0 /* 评论页 */,
 				B05E6E8F1A04534B009C92CC /* secondsDeal */,
 				B05E6E901A04534B009C92CC /* shopRecommend */,
 				B05E6E8E1A04534B009C92CC /* goodsRecommend */,
@@ -1603,6 +1647,7 @@
 			children = (
 				B0C686CB1A530995002053F1 /* TSFristViewModel.h */,
 				B0C686CC1A530995002053F1 /* TSFristViewModel.m */,
+				B02658691A696AFF001261B0 /* 商品评价 */,
 				B08DBEBC1A6015D0007A301F /* 商品详情 */,
 				B00ED6BE1A416676001D6737 /* 商家详情 */,
 				B08702D11A2ACAB3008C8088 /* 掌上秒杀 */,
@@ -2012,6 +2057,7 @@
 				B05B632A19FEB15F008F76E0 /* goodsRecommend_ring.png in Resources */,
 				B08702DA1A2B7DD0008C8088 /* secondDeal_count.png in Resources */,
 				B0FB4BB21A501B9A002C7ACA /* login_title.png in Resources */,
+				B026585E1A6956B3001261B0 /* TSCommentViewController.xib in Resources */,
 				B00BB8891A0E8D8A00B94208 /* time_bg.png in Resources */,
 				B05B632719FEB15F008F76E0 /* cell_secondsDeal_bg.jpg in Resources */,
 				B05B5A131A3FD9F8008E83C9 /* shop_map_selected.png in Resources */,
@@ -2081,6 +2127,7 @@
 				B0C4993319FFE7550092EE09 /* mine_shopBag.png in Resources */,
 				B015C3201A0F0EF70060FBE2 /* TSGoodsRecommendViewController.xib in Resources */,
 				B0C4993219FFE7550092EE09 /* mine_seperateLineH.png in Resources */,
+				B02658671A6968C7001261B0 /* TSCommentTableViewCell.xib in Resources */,
 				B03AC4D319F904AB002FC299 /* register_btn_test.png in Resources */,
 				B05115F719F9748C00CA6E2E /* first_icon_selected.png in Resources */,
 				B0C4992C19FFE7550092EE09 /* mine_exit.png in Resources */,
@@ -2165,6 +2212,7 @@
 				B0FA144F1A643F6200C1C377 /* NSDataEx.m in Sources */,
 				B0F4770B1A59231E005C851D /* MJRefreshConst.m in Sources */,
 				B015C3241A0F10D60060FBE2 /* TSGoodsRecommadDetailTableViewCell.m in Sources */,
+				B02658621A69611D001261B0 /* TSCommentViewModel.m in Sources */,
 				B00ED6C11A416694001D6737 /* TSShopDetailViewModel.m in Sources */,
 				B01847E319F89DCC00938054 /* NSFileManager+PathSize.m in Sources */,
 				B0FA14521A643F6200C1C377 /* RSADataVerifier.m in Sources */,
@@ -2208,6 +2256,7 @@
 				B0F1F2501A583994006DFA93 /* TSGoodsRecommandModel.m in Sources */,
 				B00ED6BC1A415FFF001D6737 /* TSShopDetailViewController.m in Sources */,
 				B0F63C711A57C37B00A0C754 /* TSExchangeModel.m in Sources */,
+				B02658661A6968C7001261B0 /* TSCommentTableViewCell.m in Sources */,
 				B04411C21A5C3DF3005ED736 /* TSInvitePostModel.m in Sources */,
 				B0F477141A59367E005C851D /* TSInviteCategoryModel.m in Sources */,
 				B0F477211A59A45F005C851D /* TSGoodsExchangeViewModel.m in Sources */,
@@ -2262,6 +2311,7 @@
 				B01847E119F89DCC00938054 /* NSScanner+BSJSONAdditions.m in Sources */,
 				B01847DB19F89DCC00938054 /* TSRootView.m in Sources */,
 				B01847E919F89DCC00938054 /* UILabel+TSLabelEX.m in Sources */,
+				B026585D1A6956B3001261B0 /* TSCommentViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

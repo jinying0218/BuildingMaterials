@@ -13,6 +13,9 @@
 
 #import <UIImageView+WebCache.h>
 
+#import "TSCommentViewController.h"
+#import "TSCommentViewModel.h"
+
 @interface TSGoodsDetailViewController ()
 @property (strong, nonatomic) IBOutlet UIScrollView *banner;//商品图片展示
 @property (nonatomic, strong) IBOutlet UIScrollView *baseView;
@@ -21,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *goodsDes;
 @property (weak, nonatomic) IBOutlet UILabel *goodsNewPrice;
 @property (weak, nonatomic) IBOutlet UILabel *goodsSellNumber;
-@property (weak, nonatomic) IBOutlet UIButton *collectButton;
+@property (weak, nonatomic) IBOutlet UIButton *collectButton;   //收藏
 
 @property (weak, nonatomic) IBOutlet UIButton *addShopCarButton;//加入购物车
 @property (weak, nonatomic) IBOutlet UIButton *buyButton;//立即购买
@@ -50,12 +53,13 @@
     [self setupUI];
     self.tabBarController.tabBar.hidden =  YES;
     
-    [self bindActionHandler];
+    [self blindViewModel];
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 - (void)initializeData{
+    //goodsDes	NSString *	@"<p><img src=\"http://www.d-anshun.com:80/upload/8c6be1b8086f4ce08b4640244cf76ecc.jpg\" title=\"333\"/></p><p>这个是商品介绍</p><br/>"	0x00007f8c7973f4f0
     
     NSDictionary *params = @{@"id" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID]};
     [TSHttpTool getWithUrl:GoodsInfo_URL params:params withCache:NO success:^(id result) {
@@ -91,7 +95,6 @@
 #pragma mark - set up UI
 - (void)setupUI{
     
-//    [self creatRootView];
     [self createNavigationBarTitle:@"商品详情" leftButtonImageName:@"Previous" rightButtonImageName:nil];
     self.navigationBar.frame = CGRectMake( 0, STATUS_BAR_HEGHT, KscreenW, 44);
     [self.view addSubview:self.navigationBar];
@@ -160,19 +163,50 @@
     }
     
     self.goodsStandardView.bounds = CGRectMake( 0, 0, KscreenW, CGRectGetMaxY(self.countImageView.frame) + 8);
+    [self bindActionHandler];
+
 }
+#pragma mark - blind methods
 - (void)bindActionHandler{
     @weakify(self);
     [self.minerBtn bk_addEventHandler:^(id sender) {
         @strongify(self);
-        NSLog(@"减少");
+        if (self.viewModel.count > 1) {
+            int buyCount = self.viewModel.count - 1;
+            [self.viewModel setCount:buyCount];
+        }
     } forControlEvents:UIControlEventTouchUpInside];
     
     [self.plusBtn bk_addEventHandler:^(id sender) {
         @strongify(self);
-        NSLog(@"增加");
+        NSLog(@"asdfadf");
+        if (self.viewModel.count < 20) {
+            int buyCount = self.viewModel.count + 1;
+            [self.viewModel setCount:buyCount];
+        }
     } forControlEvents:UIControlEventTouchUpInside];
-
+    
+    [self.goodsComment bk_whenTapped:^{
+       @strongify(self);
+        TSCommentViewModel *viewModel = [[TSCommentViewModel alloc] init];
+        viewModel.goodsInfoModel = self.viewModel.goodsInfoModel;
+        TSCommentViewController *commentVC = [[TSCommentViewController alloc] initWithViewModel:viewModel];
+        [self.navigationController pushViewController:commentVC animated:YES];
+    }];
+    
+}
+- (void)blindViewModel{
+//    @weakify(self);
+    [self.KVOController
+     observe:self.viewModel
+     keyPath:@keypath(self.viewModel,count)
+     options:NSKeyValueObservingOptionNew
+     block:^(TSGoodsDetailViewController *observer, TSGoodsDetailViewModel *object, NSDictionary *change) {
+//       @strongify(self);
+         if (![[change objectForKey:NSKeyValueChangeNewKey] isEqual:[NSNull null]]) {
+             observer.count.text = [NSString stringWithFormat:@"%d",[[change objectForKey:NSKeyValueChangeNewKey] intValue]];
+         }
+    }];
 }
 
 - (void)setCountViewBelowSeperatorLine:(UILabel *)seperatorLine{
