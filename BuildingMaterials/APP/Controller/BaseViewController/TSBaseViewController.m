@@ -107,7 +107,8 @@
     titleLabel.contentMode = UIViewContentModeCenter;
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.textColor = [UIColor colorWithHexString:@"#ffffff"];
-    titleLabel.font = [UIFont systemFontOfSize:20];
+    titleLabel.font = [UIFont systemFontOfSize:18];
+    titleLabel.adjustsFontSizeToFitWidth = YES;
     titleLabel.backgroundColor = [UIColor clearColor];
     [self.navigationBar addSubview:titleLabel];
     

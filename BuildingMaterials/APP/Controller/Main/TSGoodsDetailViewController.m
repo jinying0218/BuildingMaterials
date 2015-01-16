@@ -16,6 +16,8 @@
 #import "TSCommentViewController.h"
 #import "TSCommentViewModel.h"
 
+#import "TSGoodsDesViewController.h"
+
 @interface TSGoodsDetailViewController ()
 @property (strong, nonatomic) IBOutlet UIScrollView *banner;//商品图片展示
 @property (nonatomic, strong) IBOutlet UIScrollView *baseView;
@@ -59,7 +61,6 @@
     [super didReceiveMemoryWarning];
 }
 - (void)initializeData{
-    //goodsDes	NSString *	@"<p><img src=\"http://www.d-anshun.com:80/upload/8c6be1b8086f4ce08b4640244cf76ecc.jpg\" title=\"333\"/></p><p>这个是商品介绍</p><br/>"	0x00007f8c7973f4f0
     
     NSDictionary *params = @{@"id" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID]};
     [TSHttpTool getWithUrl:GoodsInfo_URL params:params withCache:NO success:^(id result) {
@@ -114,6 +115,7 @@
     [self.goodsImageView sd_setImageWithURL:[NSURL URLWithString:self.viewModel.goodsInfoModel.goodsHeadImage]];
     
     self.goodsName.text = self.viewModel.goodsInfoModel.goodsName;
+    self.goodsName.adjustsFontSizeToFitWidth = YES;
     self.goodsDes.text = self.viewModel.goodsInfoModel.goodsDesSimple;
     self.goodsNewPrice.text = [NSString stringWithFormat:@"%d",self.viewModel.goodsInfoModel.goodsNewPrice];
     self.goodsSellNumber.text = [NSString stringWithFormat:@"%d人已购买",self.viewModel.goodsInfoModel.goodsSellNumber];
@@ -192,6 +194,13 @@
         viewModel.goodsInfoModel = self.viewModel.goodsInfoModel;
         TSCommentViewController *commentVC = [[TSCommentViewController alloc] initWithViewModel:viewModel];
         [self.navigationController pushViewController:commentVC animated:YES];
+    }];
+    
+    [self.goodsDetailView bk_whenTapped:^{
+       @strongify(self);
+        TSGoodsDesViewController *goodsDesVC = [[TSGoodsDesViewController alloc] init];
+        goodsDesVC.goodsInfoModel = self.viewModel.goodsInfoModel;
+        [self.navigationController pushViewController:goodsDesVC animated:YES];
     }];
     
 }
