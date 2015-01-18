@@ -167,8 +167,6 @@
 		B08455BE1A5AD2DA00F8164E /* TSInviteDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B08455BC1A5AD2DA00F8164E /* TSInviteDetailViewController.xib */; };
 		B08455C21A5AD2FC00F8164E /* TSInviteDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B08455C11A5AD2FC00F8164E /* TSInviteDetailViewModel.m */; };
 		B08702C71A2ABCFB008C8088 /* TSSecondsDealViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B08702C61A2ABCFB008C8088 /* TSSecondsDealViewModel.m */; };
-		B08702CF1A2ACAA0008C8088 /* TSSecondDealDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B08702CD1A2ACAA0008C8088 /* TSSecondDealDetailViewController.m */; };
-		B08702D01A2ACAA0008C8088 /* TSSecondDealDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B08702CE1A2ACAA0008C8088 /* TSSecondDealDetailViewController.xib */; };
 		B08702D41A2ACADD008C8088 /* TSSecondDealDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B08702D31A2ACADD008C8088 /* TSSecondDealDetailViewModel.m */; };
 		B08702DA1A2B7DD0008C8088 /* secondDeal_count.png in Resources */ = {isa = PBXBuildFile; fileRef = B08702D51A2B7DD0008C8088 /* secondDeal_count.png */; };
 		B08702DB1A2B7DD0008C8088 /* secondDeal_miner_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B08702D61A2B7DD0008C8088 /* secondDeal_miner_bg.png */; };
@@ -498,9 +496,6 @@
 		B08455C11A5AD2FC00F8164E /* TSInviteDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSInviteDetailViewModel.m; sourceTree = "<group>"; };
 		B08702C51A2ABCFB008C8088 /* TSSecondsDealViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSecondsDealViewModel.h; sourceTree = "<group>"; };
 		B08702C61A2ABCFB008C8088 /* TSSecondsDealViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSecondsDealViewModel.m; sourceTree = "<group>"; };
-		B08702CC1A2ACAA0008C8088 /* TSSecondDealDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSecondDealDetailViewController.h; sourceTree = "<group>"; };
-		B08702CD1A2ACAA0008C8088 /* TSSecondDealDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSecondDealDetailViewController.m; sourceTree = "<group>"; };
-		B08702CE1A2ACAA0008C8088 /* TSSecondDealDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSSecondDealDetailViewController.xib; sourceTree = "<group>"; };
 		B08702D21A2ACADD008C8088 /* TSSecondDealDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSecondDealDetailViewModel.h; sourceTree = "<group>"; };
 		B08702D31A2ACADD008C8088 /* TSSecondDealDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSecondDealDetailViewModel.m; sourceTree = "<group>"; };
 		B08702D51A2B7DD0008C8088 /* secondDeal_count.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = secondDeal_count.png; sourceTree = "<group>"; };
@@ -1458,9 +1453,6 @@
 				B05E6E911A04538E009C92CC /* TSSecondsListViewController.h */,
 				B05E6E921A04538E009C92CC /* TSSecondsListViewController.m */,
 				B05E6E931A04538E009C92CC /* TSSecondsListViewController.xib */,
-				B08702CC1A2ACAA0008C8088 /* TSSecondDealDetailViewController.h */,
-				B08702CD1A2ACAA0008C8088 /* TSSecondDealDetailViewController.m */,
-				B08702CE1A2ACAA0008C8088 /* TSSecondDealDetailViewController.xib */,
 			);
 			path = secondsDeal;
 			sourceTree = "<group>";
@@ -2083,7 +2075,6 @@
 				B05B632719FEB15F008F76E0 /* cell_secondsDeal_bg.jpg in Resources */,
 				B05B5A131A3FD9F8008E83C9 /* shop_map_selected.png in Resources */,
 				B05B5A111A3FD9F8008E83C9 /* shop_introduction_selected.png in Resources */,
-				B08702D01A2ACAA0008C8088 /* TSSecondDealDetailViewController.xib in Resources */,
 				B05B632319FEB15F008F76E0 /* bannerBottom.png in Resources */,
 				B05B62F619FE8905008F76E0 /* TSGoodsExchangeTableViewCell.xib in Resources */,
 				B04411C91A5C45D1005ED736 /* invite_circle.png in Resources */,
@@ -2285,7 +2276,6 @@
 				B0F477211A59A45F005C851D /* TSGoodsExchangeViewModel.m in Sources */,
 				B0F477101A59231E005C851D /* UIView+MJExtension.m in Sources */,
 				B03B30CE1A5EE90900E77FB9 /* TSShopGoodsViewModel.m in Sources */,
-				B08702CF1A2ACAA0008C8088 /* TSSecondDealDetailViewController.m in Sources */,
 				B07700D31A58D137001E3623 /* TSCategoryModel.m in Sources */,
 				B01847DA19F89DCC00938054 /* TSBaseView.m in Sources */,
 				B015C3291A0F16F10060FBE2 /* TSGoodsExchangeViewController.m in Sources */,
@@ -2416,9 +2406,10 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/BuildingMaterials/lib";
-				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "5d706aea-37aa-413e-a30f-2c570be4f8a9";
+				ONLY_ACTIVE_ARCH = NO;
+				PROVISIONING_PROFILE = "0005ffb5-96e9-40e8-8c65-53d2d5ec2afd";
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -2455,9 +2446,10 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/BuildingMaterials/lib";
-				PROVISIONING_PROFILE = "5d706aea-37aa-413e-a30f-2c570be4f8a9";
+				PROVISIONING_PROFILE = "0005ffb5-96e9-40e8-8c65-53d2d5ec2afd";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -2494,8 +2486,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BuildingMaterials/lib",
 				);
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5d706aea-37aa-413e-a30f-2c570be4f8a9";
+				PROVISIONING_PROFILE = "0005ffb5-96e9-40e8-8c65-53d2d5ec2afd";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2534,7 +2528,8 @@
 					"$(PROJECT_DIR)/BuildingMaterials/lib",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "5d706aea-37aa-413e-a30f-2c570be4f8a9";
+				PROVISIONING_PROFILE = "0005ffb5-96e9-40e8-8c65-53d2d5ec2afd";
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
