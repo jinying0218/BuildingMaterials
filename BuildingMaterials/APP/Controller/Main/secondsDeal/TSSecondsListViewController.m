@@ -10,8 +10,8 @@
 #import "TSSecondsDealDetailTableViewCell.h"
 #import "TSSecondsDealViewModel.h"
 
-#import "TSSecondDealDetailViewController.h"
-#import "TSSecondDealDetailViewModel.h"
+//#import "TSSecondDealDetailViewController.h"
+//#import "TSSecondDealDetailViewModel.h"
 #import "TSSecKillModel.h"
 
 #import "TSGoodsDetailViewModel.h"

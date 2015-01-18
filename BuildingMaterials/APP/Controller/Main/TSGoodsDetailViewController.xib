@@ -12,7 +12,7 @@
                 <outlet property="baseView" destination="VnE-zH-vwh" id="1Hw-Xw-E3Q"/>
                 <outlet property="buyButton" destination="Y7S-VW-XyY" id="SpP-UY-60a"/>
                 <outlet property="collectButton" destination="7Fj-Cd-wAE" id="aCH-FO-3q3"/>
-                <outlet property="enterShopButton" destination="kGc-lR-wGn" id="5lW-1C-Hha"/>
+                <outlet property="enterShop" destination="kGc-lR-wGn" id="6lR-he-cO5"/>
                 <outlet property="goodsComment" destination="IDH-y8-4fN" id="kai-Rq-YSD"/>
                 <outlet property="goodsCommentCount" destination="XE1-o4-fXf" id="gWj-zK-Els"/>
                 <outlet property="goodsDes" destination="qip-Zt-KIf" id="kNz-19-nUe"/>

@@ -48,7 +48,8 @@
 #define GoodsParameters_URL Domain"/goodsParametersLoadById"
 //商品评论
 #define GoodsComment_URL Domain"/goodsCommentLoadById"
-
+//商品收藏
+#define GoodsCollection_URL Domain"/collection"
 
 //首页换物加载
 #define First_Exchange_URL Domain"/appExchangeLoad"

@@ -13,8 +13,8 @@
 
 #import "TSSecondsDealTableViewCell.h"
 #import "TSSecondsDealViewModel.h"
-#import "TSSecondDealDetailViewController.h"
-#import "TSSecondDealDetailViewModel.h"
+//#import "TSSecondDealDetailViewController.h"
+//#import "TSSecondDealDetailViewModel.h"
 
 #import "TSShopReccommendTableViewCell.h"
 #import "TSShopDetailViewController.h"
@@ -91,7 +91,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
         NSLog(@"%@",error);
     }];
     //秒杀
-    [TSHttpTool getWithUrl:Frist_SecKillLoad_URL params:nil withCache:nil success:^(id result) {
+    [TSHttpTool getWithUrl:Frist_SecKillLoad_URL params:nil withCache:NO success:^(id result) {
 //        NSLog(@"首页秒杀:%@",result);
         if ([result[@"success"] intValue] == 1) {
             NSArray *goods_result = result[@"goods_result"];

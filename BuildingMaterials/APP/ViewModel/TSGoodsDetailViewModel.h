@@ -18,6 +18,8 @@
 @property (nonatomic, strong) TSGoodsParamsModel *goodsParamsModel;
 @property (nonatomic, assign) int count;
 @property (nonatomic, assign) BOOL isSecondsDeal;
+@property (nonatomic, assign) BOOL loadGoodsInfo;
+@property (nonatomic, assign) BOOL loadGoodsParams;
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @end
