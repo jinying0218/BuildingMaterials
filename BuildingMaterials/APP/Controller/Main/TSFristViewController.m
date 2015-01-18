@@ -218,10 +218,19 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
 - (void)touchCellImageView:(UIButton *)button{
     int index = (int)button.tag - 10000;
     TSSecKillModel *model = self.viewModel.secKillDataArray[index];
-    TSSecondDealDetailViewModel *viewModel = [[TSSecondDealDetailViewModel alloc] init];
-    viewModel.secKillModel = model;
-    TSSecondDealDetailViewController *secondDealDetailVC = [[TSSecondDealDetailViewController alloc] initWithViewModel:viewModel];
-    [self.navigationController pushViewController:secondDealDetailVC animated:YES];
+//秒杀
+    
+    TSGoodsDetailViewModel *viewModel = [[TSGoodsDetailViewModel alloc] init];
+    viewModel.goodsID = model.ID;
+    viewModel.isSecondsDeal = YES;
+    TSGoodsDetailViewController *goodsDetailVC = [[TSGoodsDetailViewController alloc] init];
+    goodsDetailVC.viewModel = viewModel;
+    [self.navigationController pushViewController:goodsDetailVC animated:YES];
+
+//    TSSecondDealDetailViewModel *viewModel = [[TSSecondDealDetailViewModel alloc] init];
+//    viewModel.secKillModel = model;
+//    TSSecondDealDetailViewController *secondDealDetailVC = [[TSSecondDealDetailViewController alloc] initWithViewModel:viewModel];
+//    [self.navigationController pushViewController:secondDealDetailVC animated:YES];
 
 }
 #pragma mark - tableView delegate & dataSource
@@ -293,12 +302,15 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
             cell = [[[NSBundle mainBundle] loadNibNamed:@"TSGoodsRecommendTableViewCell" owner:nil options:nil]lastObject];
             [cell.firstGoodsImage bk_whenTapped:^{
                 @strongify(self);
-                TSGoodsRecommandModel *goodsModel = self.viewModel.goodsRecommendDataArray[cell.firstGoodsImage.tag - 21000];
-                TSGoodsDetailViewModel *viewModel = [[TSGoodsDetailViewModel alloc] init];
-                viewModel.goodsID = goodsModel.I_D;
-                TSGoodsDetailViewController *goodsDetailVC = [[TSGoodsDetailViewController alloc] init];
-                goodsDetailVC.viewModel = viewModel;
-                [self.navigationController pushViewController:goodsDetailVC animated:YES];
+                if (self.viewModel.goodsRecommendDataArray.count != 0) {
+                    TSGoodsRecommandModel *goodsModel = self.viewModel.goodsRecommendDataArray[cell.firstGoodsImage.tag - 21000];
+                    TSGoodsDetailViewModel *viewModel = [[TSGoodsDetailViewModel alloc] init];
+                    viewModel.isSecondsDeal = NO;
+                    viewModel.goodsID = goodsModel.I_D;
+                    TSGoodsDetailViewController *goodsDetailVC = [[TSGoodsDetailViewController alloc] init];
+                    goodsDetailVC.viewModel = viewModel;
+                    [self.navigationController pushViewController:goodsDetailVC animated:YES];
+                }
             }];
             [cell.secondGoodsImage bk_whenTapped:^{
                 @strongify(self);

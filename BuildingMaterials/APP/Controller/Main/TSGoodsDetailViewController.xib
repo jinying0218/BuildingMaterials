@@ -19,6 +19,7 @@
                 <outlet property="goodsDetailView" destination="E6t-J7-EQs" id="WzF-rs-acc"/>
                 <outlet property="goodsName" destination="96g-AN-cgN" id="WPw-rt-xua"/>
                 <outlet property="goodsNewPrice" destination="Po5-EA-EP0" id="UNx-3H-8Cx"/>
+                <outlet property="goodsOldPrice" destination="Gfa-L1-yEa" id="3EY-ue-J5Z"/>
                 <outlet property="goodsSellNumber" destination="WbY-YJ-vBI" id="3ll-Uh-xBP"/>
                 <outlet property="goodsStandardView" destination="QK0-qK-3MW" id="Nwu-M7-BCB"/>
                 <outlet property="shopImage" destination="g7Y-aD-CQA" id="pjq-AL-97d"/>
@@ -91,7 +92,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Po5-EA-EP0">
-                                    <rect key="frame" x="8" y="77" width="42" height="21"/>
+                                    <rect key="frame" x="8" y="77" width="50" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" red="0.35686274509999999" green="0.69411764710000001" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -129,6 +130,13 @@
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gfa-L1-yEa" customClass="LPLabel">
+                                    <rect key="frame" x="70" y="77" width="42" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.78823529410000004" green="0.79607843140000001" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>

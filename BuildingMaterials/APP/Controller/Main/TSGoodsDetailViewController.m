@@ -10,6 +10,7 @@
 #import "TSGoodsInfoModel.h"
 #import "TSShopModel.h"
 #import "TSGoodsParamsModel.h"
+#import "LPLabel.h"
 
 #import <UIImageView+WebCache.h>
 
@@ -25,6 +26,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *goodsName;
 @property (weak, nonatomic) IBOutlet UILabel *goodsDes;
 @property (weak, nonatomic) IBOutlet UILabel *goodsNewPrice;
+@property (weak, nonatomic) IBOutlet LPLabel *goodsOldPrice;
+
 @property (weak, nonatomic) IBOutlet UILabel *goodsSellNumber;
 @property (weak, nonatomic) IBOutlet UIButton *collectButton;   //收藏
 
@@ -96,7 +99,13 @@
 #pragma mark - set up UI
 - (void)setupUI{
     
-    [self createNavigationBarTitle:@"商品详情" leftButtonImageName:@"Previous" rightButtonImageName:nil];
+    if (self.viewModel.isSecondsDeal) {
+        [self createNavigationBarTitle:@"秒杀详情" leftButtonImageName:@"Previous" rightButtonImageName:nil];
+        self.goodsOldPrice.hidden = NO;
+        self.goodsOldPrice.strikeThroughEnabled = YES;
+    } else {
+        [self createNavigationBarTitle:@"商品详情" leftButtonImageName:@"Previous" rightButtonImageName:nil];
+    }
     self.navigationBar.frame = CGRectMake( 0, STATUS_BAR_HEGHT, KscreenW, 44);
     [self.view addSubview:self.navigationBar];
     
@@ -112,12 +121,15 @@
 
 - (void)layoutSubviews{
     
-    [self.goodsImageView sd_setImageWithURL:[NSURL URLWithString:self.viewModel.goodsInfoModel.goodsHeadImage]];
+    [self.goodsImageView sd_setImageWithURL:[NSURL URLWithString:self.viewModel.goodsInfoModel.goodsHeadImage] placeholderImage:[UIImage imageNamed:@"not_load_ad"]];
     
     self.goodsName.text = self.viewModel.goodsInfoModel.goodsName;
     self.goodsName.adjustsFontSizeToFitWidth = YES;
     self.goodsDes.text = self.viewModel.goodsInfoModel.goodsDesSimple;
     self.goodsNewPrice.text = [NSString stringWithFormat:@"%d",self.viewModel.goodsInfoModel.goodsNewPrice];
+    if (self.viewModel.isSecondsDeal) {
+        self.goodsOldPrice.text = [NSString stringWithFormat:@"%d",self.viewModel.goodsInfoModel.goodsOldPrice];
+    }
     self.goodsSellNumber.text = [NSString stringWithFormat:@"%d人已购买",self.viewModel.goodsInfoModel.goodsSellNumber];
     
     [self.shopImage sd_setImageWithURL:[NSURL URLWithString:self.viewModel.shopModel.COMPANY_IMAGE_URL] placeholderImage:[UIImage imageNamed:@"not_load"]];

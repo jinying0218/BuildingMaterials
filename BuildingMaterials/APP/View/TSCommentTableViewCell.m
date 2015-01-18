@@ -7,6 +7,7 @@
 //
 
 #import "TSCommentTableViewCell.h"
+#import "TSCommentModel.h"
 
 @implementation TSCommentTableViewCell
 
@@ -20,6 +21,8 @@
     // Configure the view for the selected state
 }
 - (void)configureCellWithModel:(TSCommentModel *)model indexPath:(NSIndexPath *)indexPath{
-    self.contactName.text = @"234";
+    self.contactName.text = model.userName;
+    self.comment.text = model.comment_content;
+    self.commentDate.text = model.comment_time;
 }
 @end

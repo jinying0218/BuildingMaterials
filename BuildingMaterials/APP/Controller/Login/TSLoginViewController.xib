@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TSLoginViewController">
             <connections>
+                <outlet property="forgetPasswordButton" destination="2hl-yl-HzQ" id="qfm-81-Dfu"/>
                 <outlet property="loginButton" destination="6Lq-r9-qdt" id="NqT-Td-HXX"/>
                 <outlet property="pwdTextField" destination="Ywh-qI-8N2" id="WPB-Rh-8O4"/>
                 <outlet property="userNameTextfield" destination="ZjK-Jb-EvH" id="VXJ-e9-XTJ"/>
@@ -114,7 +115,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="227" y="159"/>
+            <point key="canvasLocation" x="422" y="116"/>
         </view>
     </objects>
     <resources>

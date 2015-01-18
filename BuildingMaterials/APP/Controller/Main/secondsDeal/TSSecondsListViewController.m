@@ -14,6 +14,9 @@
 #import "TSSecondDealDetailViewModel.h"
 #import "TSSecKillModel.h"
 
+#import "TSGoodsDetailViewModel.h"
+#import "TSGoodsDetailViewController.h"
+
 static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTableViewCell";
 
 @interface TSSecondsListViewController ()<UITableViewDelegate>
@@ -95,9 +98,16 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
 #pragma mark - tableView delegateMethod
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     TSSecKillModel *secKillModel = self.viewModel.dataArray[indexPath.row];
-    TSSecondDealDetailViewModel *viewModel = [[TSSecondDealDetailViewModel alloc] init];
-    viewModel.secKillModel = secKillModel;
-    TSSecondDealDetailViewController *secondDealDetailVC = [[TSSecondDealDetailViewController alloc] initWithViewModel:viewModel];
-    [self.navigationController pushViewController:secondDealDetailVC animated:YES];
+    //秒杀
+    TSGoodsDetailViewModel *viewModel = [[TSGoodsDetailViewModel alloc] init];
+    viewModel.goodsID = secKillModel.ID;
+    viewModel.isSecondsDeal = YES;
+    TSGoodsDetailViewController *goodsDetailVC = [[TSGoodsDetailViewController alloc] init];
+    goodsDetailVC.viewModel = viewModel;
+    [self.navigationController pushViewController:goodsDetailVC animated:YES];
+//    TSSecondDealDetailViewModel *viewModel = [[TSSecondDealDetailViewModel alloc] init];
+//    viewModel.secKillModel = secKillModel;
+//    TSSecondDealDetailViewController *secondDealDetailVC = [[TSSecondDealDetailViewController alloc] initWithViewModel:viewModel];
+//    [self.navigationController pushViewController:secondDealDetailVC animated:YES];
 }
 @end

@@ -13,6 +13,7 @@
 
 @interface TSLoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
+@property (weak, nonatomic) IBOutlet UIButton *forgetPasswordButton;
 
 
 @end
@@ -38,11 +39,13 @@
     @weakify(self);
     [self.loginButton bk_addEventHandler:^(id sender) {
         @strongify(self);
+        [self showProgressHUD];
         NSString *telPhone = self.userNameTextfield.text;
         NSString *password = self.pwdTextField.text;
         NSDictionary *params = @{@"telPhone":telPhone,@"password":password};
         [TSHttpTool postWithUrl:Login_URL params:params success:^(id result) {
             NSLog(@"登陆:%@",result);
+            [self hideProgressHUD];
             if ([result[@"success"] intValue] == 1) {
                 NSDictionary *appUser = [result objectForKey:@"appUser"];
                 TSUserModel *userModel = [[TSUserModel alloc] init];
@@ -67,12 +70,15 @@
         } failure:^(NSError *error) {
             NSLog(@"login:%@",error);
         }];
-
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.forgetPasswordButton bk_addEventHandler:^(id sender) {
+        @strongify(self);
+        
     } forControlEvents:UIControlEventTouchUpInside];
 }
 #pragma mark - button actions
 - (IBAction)registerButtonClick:(UIButton *)sender {
-    
     TSRegisterViewController *registerVC = [[TSRegisterViewController alloc] init];
     [self.navigationController pushViewController:registerVC animated:YES];
 }

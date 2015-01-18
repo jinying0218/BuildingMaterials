@@ -9,6 +9,8 @@
 #import "TSCommentViewController.h"
 #import "TSCommentViewModel.h"
 #import "TSCommentTableViewCell.h"
+#import "MJRefresh.h"
+#import "TSCommentModel.h"
 
 static NSString *const CommentTableViewCellIdentifier = @"CommentTableViewCell";
 
@@ -40,11 +42,17 @@ static NSString *const CommentTableViewCellIdentifier = @"CommentTableViewCell";
 }
 - (void)initializeData{
     NSDictionary *params = @{@"page" : [NSString stringWithFormat:@"%d",self.viewModel.page],
-                             @"goodsId" : [NSString stringWithFormat:@"%d",self.viewModel.goodsInfoModel.goodsID]};
+                             @"id" : [NSString stringWithFormat:@"%d",self.viewModel.goodsInfoModel.goodsID]};
     [TSHttpTool getWithUrl:GoodsComment_URL params:params withCache:NO success:^(id result) {
         NSLog(@"商品评价：%@",result);
         if ([result[@"success"] intValue] == 1) {
-            
+            for (NSDictionary *dict in result[@"result"]) {
+                TSCommentModel *commentModel = [[TSCommentModel alloc] init];
+                [commentModel setValueWithDict:dict];
+                [self.viewModel.allComments addObject:commentModel];
+            }
+            [self.tableView reloadData];
+
         }
     } failure:^(NSError *error) {
         NSLog(@"商品评价：%@",error);
@@ -60,13 +68,9 @@ static NSString *const CommentTableViewCellIdentifier = @"CommentTableViewCell";
     CellConfigureBlock configureBlock = ^(TSCommentTableViewCell *cell,TSCommentModel *taskModel,NSIndexPath *indexPath){
         [cell configureCellWithModel:taskModel indexPath:indexPath];
     };
-    [self.viewModel.allComments addObject:@"23"];
-    [self.viewModel.allComments addObject:@"43"];
-    [self.viewModel.allComments addObject:@"43"];
-    [self.viewModel.allComments addObject:@"43"];
-    [self.viewModel.allComments addObject:@"43"];
 
-    self.tableView.frame = CGRectMake( 0, CGRectGetMaxY(self.navigationBar.frame), KscreenW, KscreenH - KnaviBarHeight);
+
+    self.tableView.frame = CGRectMake( 0, CGRectGetMaxY(self.navigationBar.frame), KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT);
     self.dataSource = [[TSArrayDataSource alloc] initWithNibName:@"TSCommentTableViewCell" items:self.viewModel.allComments cellIdentifier:CommentTableViewCellIdentifier configureCellBlock:configureBlock];
     self.tableView.dataSource = self.dataSource;
     self.tableView.delegate = self;
