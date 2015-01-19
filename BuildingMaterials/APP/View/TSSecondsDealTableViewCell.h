@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LPLabel.h"
 #import "MZTimerLabel.h"
+#import "ClockView.h"
 
 @protocol SecondsDealTableViewCellDelegate <NSObject>
 
@@ -33,6 +34,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *firstImageButton;
 @property (weak, nonatomic) IBOutlet UIButton *secondImageButton;
 @property (weak, nonatomic) IBOutlet UIButton *thirdImageButton;
+@property (weak, nonatomic) IBOutlet UILabel *secondsDealLabel;
+
+@property (strong, nonatomic) ClockView *endTimeView;
 
 @property (strong, nonatomic) MZTimerLabel *mzTimerLabel;
 @property (nonatomic, weak) id<SecondsDealTableViewCellDelegate> delegate ;

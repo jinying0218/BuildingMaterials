@@ -18,22 +18,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="175"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time_bg.png" id="mMo-JX-qw1">
-                        <rect key="frame" x="148" y="11" width="12" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time_bg.png" id="yd1-PH-oYZ">
-                        <rect key="frame" x="161" y="11" width="12" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time_bg.png" id="bha-Uy-Fuq">
-                        <rect key="frame" x="182" y="11" width="12" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time_bg.png" id="qLS-UM-fv9">
-                        <rect key="frame" x="195" y="11" width="12" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="secondsDeal_ring.png" id="BZD-Zg-tQ5">
                         <rect key="frame" x="15" y="8" width="20" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -140,56 +124,6 @@
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time_bg.png" id="AFB-cC-r7f">
-                        <rect key="frame" x="115" y="11" width="12" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time_bg.png" id="kLB-Sq-c2H">
-                        <rect key="frame" x="128" y="11" width="12" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="By1-3D-XyQ">
-                        <rect key="frame" x="128" y="11" width="12" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8DZ-iS-pWl">
-                        <rect key="frame" x="148" y="10" width="12" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="K9w-MC-Y6N">
-                        <rect key="frame" x="162" y="11" width="12" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LHw-LC-I60">
-                        <rect key="frame" x="182" y="11" width="12" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FLX-1f-457">
-                        <rect key="frame" x="115" y="11" width="12" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gle-bE-dEn">
-                        <rect key="frame" x="195" y="11" width="12" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <button opaque="NO" tag="10000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="9Ne-dc-Z8c">
                         <rect key="frame" x="15" y="41" width="90" height="90"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -221,20 +155,19 @@
                 <outlet property="fristGoodsName" destination="0Wt-RJ-7J1" id="qbj-Xx-e0c"/>
                 <outlet property="fristGoodsNowPrice" destination="jtb-Hp-uRt" id="fsw-4F-7zJ"/>
                 <outlet property="fristGoodsPrice" destination="BVq-FV-UfJ" id="flV-43-VLF"/>
-                <outlet property="secLabel" destination="Gle-bE-dEn" id="42i-Qc-lyC"/>
                 <outlet property="secondGoodsImage" destination="0xS-RK-YeZ" id="Vk5-6p-CA2"/>
                 <outlet property="secondGoodsName" destination="h2j-SQ-N35" id="gcG-wz-6e0"/>
                 <outlet property="secondGoodsNowPrice" destination="w99-UU-ZKL" id="S7b-E4-9rY"/>
                 <outlet property="secondGoodsPrice" destination="3um-La-q6s" id="I1o-0u-gXN"/>
                 <outlet property="secondImageButton" destination="i7R-7y-DXB" id="0X7-GS-Sp4"/>
+                <outlet property="secondsDealLabel" destination="OcN-J6-rcP" id="Fxc-wu-38f"/>
                 <outlet property="thirdGoodsImage" destination="kdv-P9-cIT" id="0AG-Jr-47J"/>
                 <outlet property="thirdGoodsName" destination="wR8-Oo-Yyq" id="xWX-Q3-Mx6"/>
                 <outlet property="thirdGoodsNowPrice" destination="GsL-1U-uPz" id="Kjq-ak-6my"/>
                 <outlet property="thirdGoodsPrice" destination="gtk-34-4fk" id="jEc-mJ-FNP"/>
                 <outlet property="thirdImageButton" destination="qiS-qf-9Bp" id="mMD-vc-nkj"/>
-                <outlet property="timerLabel" destination="FLX-1f-457" id="6vf-lM-lhT"/>
             </connections>
-            <point key="canvasLocation" x="618" y="260.5"/>
+            <point key="canvasLocation" x="524" y="245.5"/>
         </tableViewCell>
     </objects>
     <resources>
@@ -242,7 +175,6 @@
         <image name="cell_goodsExchange_bg.jpg" width="480" height="320"/>
         <image name="secondsDeal_ring.png" width="20" height="22"/>
         <image name="separetLine.png" width="478" height="1"/>
-        <image name="time_bg.png" width="19" height="28"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

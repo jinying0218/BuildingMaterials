@@ -48,6 +48,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
 @interface TSFristViewController ()<UITableViewDelegate,UITableViewDataSource,SecondsDealTableViewCellDelegate>
 @property (nonatomic, strong) UITableView *firstTable;
 @property (nonatomic, strong) UIScrollView *bannerScrollView;
+
 @end
 
 @implementation TSFristViewController
@@ -97,9 +98,10 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
             NSArray *goods_result = result[@"goods_result"];
             for (NSDictionary *oneGoodsResult in goods_result) {
                 TSSecKillModel *model = [[TSSecKillModel alloc] init];
-                [model setValuesForKeysWithDictionary:oneGoodsResult];
+                [model setValueForDictionary:oneGoodsResult];
                 model.END_TIME = result[@"result"][@"END_TIME"];
-                model.STATUS = [result[@"STATUS"] intValue];
+                model.SecondsDeal_EventID = [[result[@"result"] objectForKey:@"ID"] intValue] ;
+                model.STATUS = [[result[@"result"] objectForKey:@"STATUS"] intValue];
                 [self.viewModel.secKillDataArray addObject:model];
             }
         }

@@ -9,6 +9,7 @@
 #import "TSSecondsListViewController.h"
 #import "TSSecondsDealDetailTableViewCell.h"
 #import "TSSecondsDealViewModel.h"
+#import "ClockView.h"
 
 //#import "TSSecondDealDetailViewController.h"
 //#import "TSSecondDealDetailViewModel.h"
@@ -16,6 +17,7 @@
 
 #import "TSGoodsDetailViewModel.h"
 #import "TSGoodsDetailViewController.h"
+#import "ClockView.h"
 
 static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTableViewCell";
 
@@ -24,8 +26,11 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
 @property (nonatomic, strong) TSArrayDataSource *dataSource;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *tableDataArray;
+
 @property (strong, nonatomic) IBOutlet UIView *headerView;
 @property (weak, nonatomic) IBOutlet UILabel *overLabel;  //即将结束 label，显示秒杀是否结束
+@property (weak, nonatomic) IBOutlet UILabel *secondsDealLabel;
+@property (nonatomic, strong) ClockView *endDateView;
 
 @end
 
@@ -51,18 +56,22 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
 }
 - (void)initializeData{
     //秒杀
-    [TSHttpTool getWithUrl:Frist_SecKillLoad_URL params:nil withCache:nil success:^(id result) {
-//                NSLog(@"首页秒杀:%@",result);
+    [TSHttpTool getWithUrl:Frist_SecKillLoad_URL params:nil withCache:NO success:^(id result) {
+//                NSLog(@"秒杀列表:%@",result);
         if ([result[@"success"] intValue] == 1) {
             NSArray *goods_result = result[@"goods_result"];
             for (NSDictionary *oneGoodsResult in goods_result) {
                 TSSecKillModel *model = [[TSSecKillModel alloc] init];
-                [model setValuesForKeysWithDictionary:oneGoodsResult];
+                [model setValueForDictionary:oneGoodsResult];
                 model.END_TIME = result[@"result"][@"END_TIME"];
-                model.STATUS = [result[@"STATUS"] intValue];
+                model.SecondsDeal_EventID = [[result[@"result"] objectForKey:@"ID"] intValue];
+                model.STATUS = [[result[@"result"] objectForKey:@"STATUS"] intValue];
                 [self.viewModel.dataArray addObject:model];
+                
+                self.viewModel.endDate = model.END_TIME;
             }
             [self.tableView reloadData];
+            [self layoutSubviews];
         }
     } failure:^(NSError *error) {
         NSLog(@"Frist_SecKillLoad_URL:%@",error);
@@ -78,6 +87,9 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
     
     self.headerView.frame = CGRectMake( 0, CGRectGetMaxY(self.navigationBar.frame), KscreenW, 40);
     [self.rootView addSubview:self.headerView];
+   
+    self.endDateView = [[ClockView alloc] initWithFrame:CGRectMake( CGRectGetMaxX(self.secondsDealLabel.frame) + 10, 10, 110, 20) style:ClockStyleDefault];
+    [self.headerView addSubview:self.endDateView];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight + 40, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT - 40) style:UITableViewStylePlain];
     self.tableView.rowHeight = 125;
@@ -92,11 +104,27 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
     self.tableView.dataSource = self.dataSource;
     self.tableView.delegate = self;
     [self.rootView addSubview:self.tableView];
+    self.overLabel.text = @"秒杀结束";
     
 }
 
+- (void)layoutSubviews{
+    @weakify(self);
+    [self.endDateView setWithEndTime:self.viewModel.endDate];
+    self.endDateView.Activate = ^(){
+        @strongify(self);
+        self.overLabel.text = @"秒杀结束";
+//        self.tableView.allowsSelection = NO;
+    };
+
+
+}
 #pragma mark - tableView delegateMethod
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if ([self.overLabel.text isEqualToString:@"秒杀结束"]) {
+        [self showProgressHUD:@"秒杀已结束" delay:1];
+        return;
+    }
     TSSecKillModel *secKillModel = self.viewModel.dataArray[indexPath.row];
     //秒杀
     TSGoodsDetailViewModel *viewModel = [[TSGoodsDetailViewModel alloc] init];

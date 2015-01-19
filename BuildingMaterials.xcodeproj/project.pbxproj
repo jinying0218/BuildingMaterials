@@ -166,6 +166,7 @@
 		B08455BD1A5AD2DA00F8164E /* TSInviteDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B08455BB1A5AD2DA00F8164E /* TSInviteDetailViewController.m */; };
 		B08455BE1A5AD2DA00F8164E /* TSInviteDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B08455BC1A5AD2DA00F8164E /* TSInviteDetailViewController.xib */; };
 		B08455C21A5AD2FC00F8164E /* TSInviteDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B08455C11A5AD2FC00F8164E /* TSInviteDetailViewModel.m */; };
+		B08571481A6D51DA00EFB589 /* ClockView.m in Sources */ = {isa = PBXBuildFile; fileRef = B08571471A6D51DA00EFB589 /* ClockView.m */; };
 		B08702C71A2ABCFB008C8088 /* TSSecondsDealViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B08702C61A2ABCFB008C8088 /* TSSecondsDealViewModel.m */; };
 		B08702D41A2ACADD008C8088 /* TSSecondDealDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B08702D31A2ACADD008C8088 /* TSSecondDealDetailViewModel.m */; };
 		B08702DA1A2B7DD0008C8088 /* secondDeal_count.png in Resources */ = {isa = PBXBuildFile; fileRef = B08702D51A2B7DD0008C8088 /* secondDeal_count.png */; };
@@ -494,6 +495,8 @@
 		B08455BC1A5AD2DA00F8164E /* TSInviteDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSInviteDetailViewController.xib; sourceTree = "<group>"; };
 		B08455C01A5AD2FC00F8164E /* TSInviteDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSInviteDetailViewModel.h; sourceTree = "<group>"; };
 		B08455C11A5AD2FC00F8164E /* TSInviteDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSInviteDetailViewModel.m; sourceTree = "<group>"; };
+		B08571461A6D51DA00EFB589 /* ClockView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockView.h; sourceTree = "<group>"; };
+		B08571471A6D51DA00EFB589 /* ClockView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockView.m; sourceTree = "<group>"; };
 		B08702C51A2ABCFB008C8088 /* TSSecondsDealViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSecondsDealViewModel.h; sourceTree = "<group>"; };
 		B08702C61A2ABCFB008C8088 /* TSSecondsDealViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSecondsDealViewModel.m; sourceTree = "<group>"; };
 		B08702D21A2ACADD008C8088 /* TSSecondDealDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSecondDealDetailViewModel.h; sourceTree = "<group>"; };
@@ -937,6 +940,8 @@
 		B018475B19F89DCC00938054 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B08571461A6D51DA00EFB589 /* ClockView.h */,
+				B08571471A6D51DA00EFB589 /* ClockView.m */,
 				B0F476EE1A590861005C851D /* 招聘cell */,
 				B07700D41A58DC7C001E3623 /* 分类cell */,
 				B00ED6C21A4193DC001D6737 /* 商家详情 */,
@@ -2278,6 +2283,7 @@
 				B03B30CE1A5EE90900E77FB9 /* TSShopGoodsViewModel.m in Sources */,
 				B07700D31A58D137001E3623 /* TSCategoryModel.m in Sources */,
 				B01847DA19F89DCC00938054 /* TSBaseView.m in Sources */,
+				B08571481A6D51DA00EFB589 /* ClockView.m in Sources */,
 				B015C3291A0F16F10060FBE2 /* TSGoodsExchangeViewController.m in Sources */,
 				B08455B01A5AAFA900F8164E /* TSGoodsRecommandViewModel.m in Sources */,
 				B05115CB19F969C600CA6E2E /* TSFristViewController.m in Sources */,

@@ -110,7 +110,7 @@
     [self.rootScrollView addSubview:self.companyView];
     
     self.postView.frame = CGRectMake( 0, 0, KscreenW, KscreenH - STATUS_BAR_HEGHT - KnaviBarHeight - 60 - 30);
-    self.postView.backgroundColor = [UIColor yellowColor];
+    self.postView.backgroundColor = [UIColor clearColor];
     [self.rootScrollView addSubview:self.postView];
     
     //设置岗位信息页面 UI排布
