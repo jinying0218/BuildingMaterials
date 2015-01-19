@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface TSSecKillModel : NSObject
+@property (nonatomic, strong) NSString *GOODS_DES;
 @property (nonatomic, strong) NSString *GOODS_HEAD_IMAGE;
 @property (nonatomic, strong) NSString *GOODS_NAME;
 @property (nonatomic, assign) int GOODS_NEW_PRICE;
@@ -18,6 +19,9 @@
 @property (nonatomic, assign) int SECKILL_NUMBER_NOW;  //秒杀数量
 
 @property (nonatomic, strong) NSString *END_TIME;
+@property (nonatomic, assign) int SecondsDeal_EventID;
 @property (nonatomic, assign) int STATUS;
 
+
+- (void)setValueForDictionary:(NSDictionary *)dict;
 @end

@@ -28,11 +28,11 @@
 #pragma mark - initialize Data
 - (void)initializData{
 //    NSArray *imageArray1 = @[@"mine_forum",@"mine_invite"];
-    NSArray *imageArray = @[@"mine_waitForpay",@"mine_payed",@"mine_addressManager",@"mine_changePassword",@"mine_checknew"];
+//    NSArray *imageArray = @[@"mine_waitForpay",@"mine_payed",@"mine_addressManager",@"mine_changePassword",@"mine_checknew"];
 //    NSArray *imageArray3 = @[];
 
 //    NSArray *titleArray1 = @[@"我的论坛",@"我的招聘"];
-    NSArray *titleArray2 = @[@"待付款",@"已付款",@"收货地址管理",@"修改密码",@"检测版本"];
+//    NSArray *titleArray2 = @[@"待付款",@"已付款",@"收货地址管理",@"修改密码",@"检测版本"];
 //    NSArray *titleArray3 = @[];
     self.iConArray = [NSMutableArray arrayWithObjects:@"mine_waitForpay",@"mine_payed",@"mine_addressManager",@"mine_changePassword",@"mine_checknew", nil];
     self.titleArray = [NSMutableArray arrayWithObjects:@"待付款",@"已付款",@"收货地址管理",@"修改密码",@"检测版本", nil];
@@ -65,8 +65,11 @@
     [quiteBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [quiteBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
     [quiteBtn bk_addEventHandler:^(id sender) {
+        NSFileManager *fileManager = [NSFileManager defaultManager];
+        if ([fileManager fileExistsAtPath:KaccountDataPath]) {
+            [fileManager removeItemAtPath:KaccountDataPath error:nil];
+        }
         [self.tabBarController dismissViewControllerAnimated:YES completion:nil];
-        NSLog(@"退出登录");
     } forControlEvents:UIControlEventTouchUpInside];
     [footerView addSubview:quiteBtn];
     

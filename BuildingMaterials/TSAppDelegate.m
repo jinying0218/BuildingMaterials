@@ -32,7 +32,6 @@
     NSFileManager *fileManager = [NSFileManager defaultManager];
 
     if([fileManager fileExistsAtPath:KaccountDataPath]){
-        
         TSUserModel *currUser = [NSKeyedUnarchiver unarchiveObjectWithFile:KaccountDataPath];
         TSMainTabBarViewController *tabbarController = [[TSMainTabBarViewController alloc] init];
         [loginVC presentViewController:tabbarController animated:YES completion:^{

@@ -32,24 +32,15 @@
                     [self.firstGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.GOODS_HEAD_IMAGE] placeholderImage:[UIImage imageNamed:@"not_load"]];
                 }
                 self.firstGoodsName.text = model.GOODS_NAME;
+                self.firstGoodsName.adjustsFontSizeToFitWidth = YES;
                 self.firstGoodsPrice.text = [NSString stringWithFormat:@"%d",model.GOODS_NEW_PRICE];
-                //                self.fristGoodsNowPrice.text = [NSString stringWithFormat:@"%d",model.SECKILL_PRICE];
-                //                self.fristGoodsPrice.text = [NSString stringWithFormat:@"%d",model.GOODS_NEW_PRICE];
-                //                self.fristGoodsPrice.strikeThroughEnabled = YES;
-                
-                
             }
                 break;
-                
             case 1:{
                 [self.secondGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.GOODS_HEAD_IMAGE] placeholderImage:[UIImage imageNamed:@"not_load"]];
                 self.secondGoddsName.text = model.GOODS_NAME;
+                self.secondGoddsName.adjustsFontSizeToFitWidth = YES;
                 self.secondGoodsPrice.text = [NSString stringWithFormat:@"%d",model.GOODS_NEW_PRICE];
-
-                //                self.secondGoodsNowPrice.text = [NSString stringWithFormat:@"%d",model.SECKILL_PRICE];
-                //                self.secondGoodsPrice.text = [NSString stringWithFormat:@"%d",model.GOODS_NEW_PRICE];
-                //                self.secondGoodsPrice.strikeThroughEnabled = YES;
-                
             }
                 break;
             default:

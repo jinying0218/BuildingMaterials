@@ -10,4 +10,5 @@
 
 @interface TSSecondsDealViewModel : NSObject
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) NSString *endDate;
 @end

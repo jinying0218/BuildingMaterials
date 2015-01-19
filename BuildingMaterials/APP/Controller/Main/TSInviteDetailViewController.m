@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *postInfoButton;
 @property (weak, nonatomic) IBOutlet UIButton *companyInfoButton;
 @property (weak, nonatomic) IBOutlet UILabel *selectedLabel;
-@property (strong, nonatomic) IBOutlet UIView *postView;
+@property (strong, nonatomic) IBOutlet UIScrollView *postView;
 
 @property (weak, nonatomic) IBOutlet UILabel *postName;
 @property (weak, nonatomic) IBOutlet UILabel *postTime;
@@ -26,7 +26,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *companyAddress;
 @property (weak, nonatomic) IBOutlet UILabel *postDes;
 @property (weak, nonatomic) IBOutlet UILabel *postHeart;
+@property (weak, nonatomic) IBOutlet UIView *postNameView;      //岗位信息，包括岗位名称
 
+@property (weak, nonatomic) IBOutlet UIView *postDesView;   //岗位描述的view
+@property (weak, nonatomic) IBOutlet UIView *companyInfoView;   //岗位公司信息
+@property (weak, nonatomic) IBOutlet UIView *tipView;
+//小贴士
 @property (strong, nonatomic) IBOutlet UIView *companyView;
 @property (weak, nonatomic) IBOutlet UILabel *companyViewName;
 @property (weak, nonatomic) IBOutlet UILabel *companyViewAddress;
@@ -104,8 +109,13 @@
     self.companyView.frame = CGRectMake( 0, 0, KscreenW, KscreenH - 64 - 30 - 60);
     [self.rootScrollView addSubview:self.companyView];
     
-    self.postView.frame = CGRectMake( 0, 0, KscreenW, 395);
+    self.postView.frame = CGRectMake( 0, 0, KscreenW, KscreenH - STATUS_BAR_HEGHT - KnaviBarHeight - 60 - 30);
+    self.postView.backgroundColor = [UIColor clearColor];
     [self.rootScrollView addSubview:self.postView];
+    
+    //设置岗位信息页面 UI排布
+    self.postNameView.frame = CGRectMake( 0, 0, KscreenW, 70);
+    self.companyInfoView.frame = CGRectMake( 0, CGRectGetMaxY(self.postNameView.frame) + 10, KscreenW, 95);
     
     self.postHeart.text = @"凡是扣押证件原件，未标明收费却收取各种费用，要求购买购物卡或者各种商品的，都有诈骗嫌疑";
     
@@ -140,7 +150,27 @@
     self.postTime.text = self.viewModel.postModel.postTime;
     self.postAskNumber.text = [NSString stringWithFormat:@"%d",self.viewModel.postModel.postAskNumber];
     self.postDes.text = self.viewModel.postModel.postDes;
-    self.postPrice.text = [NSString stringWithFormat:@"%d",self.viewModel.postModel.postPrice];
+
+    //自适应高度
+    CGRect txtFrame = self.postDes.frame;
+    
+    self.postDes.frame = CGRectMake( 8, 26, KscreenW - 16,
+                             txtFrame.size.height =[self.postDes.text boundingRectWithSize:
+                                                    CGSizeMake(txtFrame.size.width, CGFLOAT_MAX)
+                                                                            options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                                                         attributes:[NSDictionary dictionaryWithObjectsAndKeys:self.postDes.font,NSFontAttributeName, nil] context:nil].size.height);
+    
+    self.postDes.frame = CGRectMake( 8, 26, KscreenW - 16, txtFrame.size.height);
+    self.postDesView.frame = CGRectMake( 0, CGRectGetMaxY(self.companyInfoView.frame) + 10, KscreenW, CGRectGetMaxY(self.postDes.frame) + 5);
+    self.tipView.frame = CGRectMake( 0, CGRectGetMaxY(self.postDesView.frame) + 10, KscreenW, 84);
+    
+    self.reportButton.frame = CGRectMake( 20, CGRectGetMaxY(self.tipView.frame) + 20, KscreenW - 40, 30);
+    
+    if (CGRectGetMaxY(self.reportButton.frame) + 10 >= self.postView.frame.size.height) {
+        self.postView.contentSize = CGSizeMake( KscreenW, CGRectGetMaxY(self.reportButton.frame) + 10);
+    }
+    
+    self.postPrice.text = [NSString stringWithFormat:@"%d 元/月",self.viewModel.postModel.postPrice];
     self.postNumber.text = [NSString stringWithFormat:@"%d",self.viewModel.postModel.postNumber];
     self.companyAddress.text = self.viewModel.comanyModel.companyAddress;
     self.companyName.text = self.viewModel.comanyModel.companyName;

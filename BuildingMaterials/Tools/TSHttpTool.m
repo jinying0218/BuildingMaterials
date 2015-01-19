@@ -58,6 +58,7 @@
     [manager.responseSerializer setAcceptableContentTypes:
      [NSSet setWithObjects:@"application/json", @"text/json",
       @"text/javascript", @"text/html", nil]];
+    manager.requestSerializer.timeoutInterval = 90;
     
     if ([method isEqualToString:@"POST"]){
         

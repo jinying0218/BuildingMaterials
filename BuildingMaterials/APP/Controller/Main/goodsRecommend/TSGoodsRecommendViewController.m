@@ -272,9 +272,7 @@ static NSString *const popTableViewCell = @"popTableViewCell";
 
 #pragma mark - tableView delegate & dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
     return self.viewModel.popDataArray.count;
-
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -304,6 +302,7 @@ static NSString *const popTableViewCell = @"popTableViewCell";
         TSGoodsRecommandModel *goodsModel = self.viewModel.dataArray[indexPath.row];
         TSGoodsDetailViewModel *viewModel = [[TSGoodsDetailViewModel alloc] init];
         viewModel.goodsID = goodsModel.I_D;
+        viewModel.isSecondsDeal = NO;
         TSGoodsDetailViewController *goodsDetailVC = [[TSGoodsDetailViewController alloc] init];
         goodsDetailVC.viewModel = viewModel;
         [self.navigationController pushViewController:goodsDetailVC animated:YES];
@@ -320,6 +319,7 @@ static NSString *const popTableViewCell = @"popTableViewCell";
 //    }
     
 }
+#pragma mark - helper
 - (void)getCategoryDataWithIndexPath:(NSIndexPath *)indexPath {
     
     TSCategoryModel *categoryModel = self.viewModel.popDataArray[indexPath.row];

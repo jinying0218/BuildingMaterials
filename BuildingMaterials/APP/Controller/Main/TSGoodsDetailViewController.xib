@@ -12,13 +12,14 @@
                 <outlet property="baseView" destination="VnE-zH-vwh" id="1Hw-Xw-E3Q"/>
                 <outlet property="buyButton" destination="Y7S-VW-XyY" id="SpP-UY-60a"/>
                 <outlet property="collectButton" destination="7Fj-Cd-wAE" id="aCH-FO-3q3"/>
-                <outlet property="enterShopButton" destination="kGc-lR-wGn" id="5lW-1C-Hha"/>
+                <outlet property="enterShop" destination="kGc-lR-wGn" id="6lR-he-cO5"/>
                 <outlet property="goodsComment" destination="IDH-y8-4fN" id="kai-Rq-YSD"/>
                 <outlet property="goodsCommentCount" destination="XE1-o4-fXf" id="gWj-zK-Els"/>
                 <outlet property="goodsDes" destination="qip-Zt-KIf" id="kNz-19-nUe"/>
                 <outlet property="goodsDetailView" destination="E6t-J7-EQs" id="WzF-rs-acc"/>
                 <outlet property="goodsName" destination="96g-AN-cgN" id="WPw-rt-xua"/>
                 <outlet property="goodsNewPrice" destination="Po5-EA-EP0" id="UNx-3H-8Cx"/>
+                <outlet property="goodsOldPrice" destination="Gfa-L1-yEa" id="3EY-ue-J5Z"/>
                 <outlet property="goodsSellNumber" destination="WbY-YJ-vBI" id="3ll-Uh-xBP"/>
                 <outlet property="goodsStandardView" destination="QK0-qK-3MW" id="Nwu-M7-BCB"/>
                 <outlet property="shopImage" destination="g7Y-aD-CQA" id="pjq-AL-97d"/>
@@ -46,9 +47,9 @@
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="96g-AN-cgN">
-                                    <rect key="frame" x="8" y="8" width="120" height="26"/>
+                                    <rect key="frame" x="8" y="8" width="163" height="26"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -91,7 +92,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Po5-EA-EP0">
-                                    <rect key="frame" x="8" y="77" width="42" height="21"/>
+                                    <rect key="frame" x="8" y="77" width="50" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" red="0.35686274509999999" green="0.69411764710000001" blue="0.90196078430000004" alpha="1" colorSpace="calibratedRGB"/>
@@ -129,6 +130,13 @@
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gfa-L1-yEa" customClass="LPLabel">
+                                    <rect key="frame" x="70" y="77" width="42" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" red="0.78823529410000004" green="0.79607843140000001" blue="0.79607843140000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>

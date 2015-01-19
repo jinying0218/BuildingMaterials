@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="headerView" destination="aS9-zL-aIk" id="kuL-mp-fT3"/>
                 <outlet property="overLabel" destination="ACD-Xt-AB7" id="nQC-JE-kwb"/>
+                <outlet property="secondsDealLabel" destination="s8w-n7-2XY" id="7Ba-2I-NwP"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
