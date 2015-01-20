@@ -213,6 +213,12 @@
 		B0E2C3901A6194A700FF410B /* exchange_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = B0E2C38E1A6194A700FF410B /* exchange_circle.png */; };
 		B0E2C3921A61957100FF410B /* exchange_tel.png in Resources */ = {isa = PBXBuildFile; fileRef = B0E2C3911A61957000FF410B /* exchange_tel.png */; };
 		B0E2C3941A6195D600FF410B /* exhcange_location.png in Resources */ = {isa = PBXBuildFile; fileRef = B0E2C3931A6195D600FF410B /* exhcange_location.png */; };
+		B0ED9FB71A6E86A4009EF241 /* TSFindPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0ED9FB51A6E86A4009EF241 /* TSFindPWDViewController.m */; };
+		B0ED9FB81A6E86A4009EF241 /* TSFindPWDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0ED9FB61A6E86A4009EF241 /* TSFindPWDViewController.xib */; };
+		B0ED9FBC1A6E8B04009EF241 /* TSFindPWDViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0ED9FBB1A6E8B04009EF241 /* TSFindPWDViewModel.m */; };
+		B0ED9FC01A6ECDC8009EF241 /* TSAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0ED9FBE1A6ECDC8009EF241 /* TSAddressViewController.m */; };
+		B0ED9FC11A6ECDC8009EF241 /* TSAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0ED9FBF1A6ECDC8009EF241 /* TSAddressViewController.xib */; };
+		B0ED9FC51A6ECDE4009EF241 /* TSAddressViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0ED9FC41A6ECDE4009EF241 /* TSAddressViewModel.m */; };
 		B0F1F2501A583994006DFA93 /* TSGoodsRecommandModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F1F24F1A583994006DFA93 /* TSGoodsRecommandModel.m */; };
 		B0F476F21A59087A005C851D /* TSInviteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F476F01A59087A005C851D /* TSInviteCell.m */; };
 		B0F476F31A59087A005C851D /* TSInviteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F476F11A59087A005C851D /* TSInviteCell.xib */; };
@@ -561,6 +567,16 @@
 		B0E2C38E1A6194A700FF410B /* exchange_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exchange_circle.png; sourceTree = "<group>"; };
 		B0E2C3911A61957000FF410B /* exchange_tel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exchange_tel.png; sourceTree = "<group>"; };
 		B0E2C3931A6195D600FF410B /* exhcange_location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exhcange_location.png; sourceTree = "<group>"; };
+		B0ED9FB41A6E86A4009EF241 /* TSFindPWDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSFindPWDViewController.h; sourceTree = "<group>"; };
+		B0ED9FB51A6E86A4009EF241 /* TSFindPWDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSFindPWDViewController.m; sourceTree = "<group>"; };
+		B0ED9FB61A6E86A4009EF241 /* TSFindPWDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSFindPWDViewController.xib; sourceTree = "<group>"; };
+		B0ED9FBA1A6E8B04009EF241 /* TSFindPWDViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSFindPWDViewModel.h; sourceTree = "<group>"; };
+		B0ED9FBB1A6E8B04009EF241 /* TSFindPWDViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSFindPWDViewModel.m; sourceTree = "<group>"; };
+		B0ED9FBD1A6ECDC8009EF241 /* TSAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSAddressViewController.h; sourceTree = "<group>"; };
+		B0ED9FBE1A6ECDC8009EF241 /* TSAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAddressViewController.m; sourceTree = "<group>"; };
+		B0ED9FBF1A6ECDC8009EF241 /* TSAddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSAddressViewController.xib; sourceTree = "<group>"; };
+		B0ED9FC31A6ECDE4009EF241 /* TSAddressViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSAddressViewModel.h; sourceTree = "<group>"; };
+		B0ED9FC41A6ECDE4009EF241 /* TSAddressViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAddressViewModel.m; sourceTree = "<group>"; };
 		B0F1F24E1A583994006DFA93 /* TSGoodsRecommandModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSGoodsRecommandModel.h; sourceTree = "<group>"; };
 		B0F1F24F1A583994006DFA93 /* TSGoodsRecommandModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSGoodsRecommandModel.m; sourceTree = "<group>"; };
 		B0F476EF1A59087A005C851D /* TSInviteCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSInviteCell.h; sourceTree = "<group>"; };
@@ -911,9 +927,8 @@
 		B018475619F89DCC00938054 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				B031217B19F8AFA9008721C4 /* TSLoginViewController.h */,
-				B031217C19F8AFA9008721C4 /* TSLoginViewController.m */,
-				B031217D19F8AFA9008721C4 /* TSLoginViewController.xib */,
+				B0ED9FB31A6E8687009EF241 /* 登陆 */,
+				B0ED9FB91A6E86AA009EF241 /* 忘记密码、修改密码 */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1238,6 +1253,7 @@
 				B05115E119F96A9500CA6E2E /* TSMineViewController.h */,
 				B05115E219F96A9500CA6E2E /* TSMineViewController.m */,
 				B05115E319F96A9500CA6E2E /* TSMineViewController.xib */,
+				B0ED9FC21A6ECDCC009EF241 /* 管理收货地址 */,
 			);
 			name = "我的信息";
 			sourceTree = "<group>";
@@ -1505,6 +1521,8 @@
 			children = (
 				B0C686D71A530AEF002053F1 /* TSMineViewModel.h */,
 				B0C686D81A530AEF002053F1 /* TSMineViewModel.m */,
+				B0ED9FC31A6ECDE4009EF241 /* TSAddressViewModel.h */,
+				B0ED9FC41A6ECDE4009EF241 /* TSAddressViewModel.m */,
 			);
 			name = "我的";
 			sourceTree = "<group>";
@@ -1586,6 +1604,8 @@
 				B05E82D11A5D758500DC33D8 /* 论坛 */,
 				B08455BF1A5AD2E400F8164E /* 招聘 */,
 				B05E82D21A5D758F00DC33D8 /* 我的 */,
+				B0ED9FBA1A6E8B04009EF241 /* TSFindPWDViewModel.h */,
+				B0ED9FBB1A6E8B04009EF241 /* TSFindPWDViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1741,6 +1761,36 @@
 				B0E2C3931A6195D600FF410B /* exhcange_location.png */,
 			);
 			name = exchange;
+			sourceTree = "<group>";
+		};
+		B0ED9FB31A6E8687009EF241 /* 登陆 */ = {
+			isa = PBXGroup;
+			children = (
+				B031217B19F8AFA9008721C4 /* TSLoginViewController.h */,
+				B031217C19F8AFA9008721C4 /* TSLoginViewController.m */,
+				B031217D19F8AFA9008721C4 /* TSLoginViewController.xib */,
+			);
+			name = "登陆";
+			sourceTree = "<group>";
+		};
+		B0ED9FB91A6E86AA009EF241 /* 忘记密码、修改密码 */ = {
+			isa = PBXGroup;
+			children = (
+				B0ED9FB41A6E86A4009EF241 /* TSFindPWDViewController.h */,
+				B0ED9FB51A6E86A4009EF241 /* TSFindPWDViewController.m */,
+				B0ED9FB61A6E86A4009EF241 /* TSFindPWDViewController.xib */,
+			);
+			name = "忘记密码、修改密码";
+			sourceTree = "<group>";
+		};
+		B0ED9FC21A6ECDCC009EF241 /* 管理收货地址 */ = {
+			isa = PBXGroup;
+			children = (
+				B0ED9FBD1A6ECDC8009EF241 /* TSAddressViewController.h */,
+				B0ED9FBE1A6ECDC8009EF241 /* TSAddressViewController.m */,
+				B0ED9FBF1A6ECDC8009EF241 /* TSAddressViewController.xib */,
+			);
+			name = "管理收货地址";
 			sourceTree = "<group>";
 		};
 		B0F1F24D1A5838A2006DFA93 /* 物品推荐模型 */ = {
@@ -2098,6 +2148,7 @@
 				B076AB581A18A5B5007CF312 /* goodsDetail.png in Resources */,
 				B05B633419FEB639008F76E0 /* search_leftView.png in Resources */,
 				B018472D19F898BF00938054 /* InfoPlist.strings in Resources */,
+				B0ED9FB81A6E86A4009EF241 /* TSFindPWDViewController.xib in Resources */,
 				B05B5A021A3FD9EC008E83C9 /* navigaoinbar_shopDetail_selected.png in Resources */,
 				B00ED6C71A4193FC001D6737 /* TSShopDetailCollectionViewCell.xib in Resources */,
 				B05B62F119FE88F3008F76E0 /* TSGoodsRecommendTableViewCell.xib in Resources */,
@@ -2108,6 +2159,7 @@
 				B05115F819F9748C00CA6E2E /* forum_icon.png in Resources */,
 				B0C4992F19FFE7550092EE09 /* mine_headImage.png in Resources */,
 				B04411CC1A5C5475005ED736 /* invite_applyButton.png in Resources */,
+				B0ED9FC11A6ECDC8009EF241 /* TSAddressViewController.xib in Resources */,
 				B0C4992919FFE7550092EE09 /* mine_checknew.png in Resources */,
 				B05B632619FEB15F008F76E0 /* cell_goodsRecommend_bg.jpg in Resources */,
 				B05B632F19FEB5CD008F76E0 /* separetLine.png in Resources */,
@@ -2222,6 +2274,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0ED9FC51A6ECDE4009EF241 /* TSAddressViewModel.m in Sources */,
 				B0C686D61A530AE2002053F1 /* TSInviteViewModel.m in Sources */,
 				B0FA144E1A643F6200C1C377 /* MD5DataSigner.m in Sources */,
 				B05115E419F96A9500CA6E2E /* TSMineViewController.m in Sources */,
@@ -2230,6 +2283,7 @@
 				B0FA144F1A643F6200C1C377 /* NSDataEx.m in Sources */,
 				B0F4770B1A59231E005C851D /* MJRefreshConst.m in Sources */,
 				B015C3241A0F10D60060FBE2 /* TSGoodsRecommadDetailTableViewCell.m in Sources */,
+				B0ED9FC01A6ECDC8009EF241 /* TSAddressViewController.m in Sources */,
 				B02658621A69611D001261B0 /* TSCommentViewModel.m in Sources */,
 				B00ED6C11A416694001D6737 /* TSShopDetailViewModel.m in Sources */,
 				B01847E319F89DCC00938054 /* NSFileManager+PathSize.m in Sources */,
@@ -2267,6 +2321,7 @@
 				B01847E419F89DCC00938054 /* NSString+Helper.m in Sources */,
 				B015C32F1A0F18AE0060FBE2 /* TSGoodsExchangeDetailTableViewCell.m in Sources */,
 				B018473319F898BF00938054 /* TSAppDelegate.m in Sources */,
+				B0ED9FB71A6E86A4009EF241 /* TSFindPWDViewController.m in Sources */,
 				B05323771A5406E9004B4430 /* LPLabel.m in Sources */,
 				B03B30D21A5EE9A000E77FB9 /* TSShopGoodsViewController.m in Sources */,
 				B08455BD1A5AD2DA00F8164E /* TSInviteDetailViewController.m in Sources */,
@@ -2299,6 +2354,7 @@
 				B08702D41A2ACADD008C8088 /* TSSecondDealDetailViewModel.m in Sources */,
 				B05B62EB19FE88DE008F76E0 /* TSShopReccommendTableViewCell.m in Sources */,
 				B01847E519F89DCC00938054 /* UIColor+TSUIColorEX.m in Sources */,
+				B0ED9FBC1A6E8B04009EF241 /* TSFindPWDViewModel.m in Sources */,
 				B0F476F71A590C4C005C851D /* TSInviteModel.m in Sources */,
 				B08702C71A2ABCFB008C8088 /* TSSecondsDealViewModel.m in Sources */,
 				B0C686C91A530950002053F1 /* TSSecKillModel.m in Sources */,

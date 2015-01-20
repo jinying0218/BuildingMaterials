@@ -79,5 +79,12 @@
 //岗位申请
 #define Invite_PostApply_URL Domain"/postAskSave"
 
+//我的地址
+#define Address_URL Domain"/addressLoad"
+//删除地址
+#define AddressDelete_URL Domain"/addressDelete"
+//保存地址
+#define AddressSave_URL Domain"/addressSave"
+
 
 #endif

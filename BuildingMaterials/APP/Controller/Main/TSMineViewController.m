@@ -7,6 +7,11 @@
 //
 
 #import "TSMineViewController.h"
+#import "TSUserModel.h"
+#import "TSFindPWDViewController.h"
+#import "TSFindPWDViewModel.h"
+#import "TSAddressViewController.h"
+#import "TSAddressViewModel.h"
 
 @interface TSMineViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -15,9 +20,14 @@
 @end
 
 @implementation TSMineViewController
-
+#pragma mark - controller method
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    self.tabBarController.tabBar.hidden = NO;
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self initializData];
     [self setupUI];
 }
@@ -84,8 +94,9 @@
     headImage.frame = CGRectMake( (KscreenW - 44)/2, 10, 44, 44);
     [halfHeaderBg addSubview:headImage];
     
+    TSUserModel *userModel = [TSUserModel getCurrentLoginUser];
     UILabel *phoneLabel = [[UILabel alloc] initWithFrame:CGRectMake( 0, CGRectGetMaxY(headImage.frame) + 5, KscreenW, 21)];
-    phoneLabel.text = @"15840806085";
+    phoneLabel.text = userModel.telephone;
     phoneLabel.textAlignment = NSTextAlignmentCenter;
     phoneLabel.backgroundColor = [UIColor clearColor];
     phoneLabel.textColor = [UIColor whiteColor];
@@ -163,5 +174,39 @@
     cell.textLabel.font = [UIFont systemFontOfSize:15];
     cell.imageView.image = [UIImage imageNamedString:self.iConArray[indexPath.row]];
     return cell;
+}
+
+#pragma mark - tableView delegate
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    switch (indexPath.row) {
+        case 0:{
+            
+        }
+            break;
+        case 1:{
+            
+        }
+            break;
+        case 2:{
+            TSAddressViewModel *viewModel = [[TSAddressViewModel alloc] init];
+            TSAddressViewController *addressVC = [[TSAddressViewController alloc] initWithViewModel:viewModel];
+            [self.navigationController pushViewController:addressVC animated:YES];
+        }
+            break;
+        case 3:{
+            TSFindPWDViewModel *viewModel = [[TSFindPWDViewModel alloc] init];
+            viewModel.isFindPassword = NO;
+            TSFindPWDViewController *findPWDVC = [[TSFindPWDViewController alloc] initWithViewModel:viewModel];
+            [self.navigationController pushViewController:findPWDVC animated:YES];
+
+        }
+            break;
+        case 4:{
+            
+        }
+            break;
+        default:
+            break;
+    }
 }
 @end

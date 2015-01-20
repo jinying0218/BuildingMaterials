@@ -11,6 +11,9 @@
 #import "TSMainTabBarViewController.h"
 #import "TSUserModel.h"
 
+#import "TSFindPWDViewController.h"
+#import "TSFindPWDViewModel.h"
+
 @interface TSLoginViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *loginButton;
 @property (weak, nonatomic) IBOutlet UIButton *forgetPasswordButton;
@@ -74,7 +77,10 @@
     
     [self.forgetPasswordButton bk_addEventHandler:^(id sender) {
         @strongify(self);
-        
+        TSFindPWDViewModel *viewModel = [[TSFindPWDViewModel alloc] init];
+        viewModel.isFindPassword = YES;
+        TSFindPWDViewController *findPWDVC = [[TSFindPWDViewController alloc] initWithViewModel:viewModel];
+        [self.navigationController pushViewController:findPWDVC animated:YES];
     } forControlEvents:UIControlEventTouchUpInside];
 }
 #pragma mark - button actions

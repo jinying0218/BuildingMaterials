@@ -34,7 +34,7 @@
             label.font = [UIFont boldSystemFontOfSize:16];
             label.textAlignment = NSTextAlignmentCenter;
             [self addSubview:label];
-            NSLog(@"倒计时：%d",i);
+//            NSLog(@"倒计时：%d",i);
 
             if (i == 2 || i == 5 || i == 8) {
                 label.text = @":";

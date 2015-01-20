@@ -84,6 +84,7 @@
                 <outlet property="oldPrice" destination="dV6-0B-mrC" id="JP1-6Z-sSE"/>
                 <outlet property="seckillNumber" destination="NXV-YT-r1V" id="6ro-Ag-Bby"/>
                 <outlet property="seckillPrice" destination="sUf-oh-WEY" id="loW-mK-V1S"/>
+                <outlet property="secondsBuyButton" destination="fdd-lb-J64" id="yTn-eI-4Xa"/>
                 <outlet property="secondsDealNumber" destination="1yL-50-epG" id="mGo-oO-jM5"/>
             </connections>
             <point key="canvasLocation" x="346" y="270.5"/>

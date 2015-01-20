@@ -56,7 +56,7 @@
     NSDictionary *params = @{ @"telPhone" : telPhone,
                               @"uuid" : self.uuid};
     [TSHttpTool postWithUrl:codePost_url params:params success:^(id result) {
-        NSLog(@"获取验证码:%@",result);
+        NSLog(@"注册获取验证码:%@",result);
         if ([result[@"success"] intValue] == 1) {
             [self showProgressHUD:@"获取验证码成功" delay:1];
         }
