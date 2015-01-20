@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *discountPercent;
 @property (weak, nonatomic) IBOutlet UIImageView *secondsDealNumber;
 @property (weak, nonatomic) IBOutlet UILabel *seckillNumber;
+@property (weak, nonatomic) IBOutlet UIButton *secondsBuyButton;
 
 - (void)configureCellWithModel:(TSSecKillModel *)model indexPath:(NSIndexPath *)indexPath;
 @end

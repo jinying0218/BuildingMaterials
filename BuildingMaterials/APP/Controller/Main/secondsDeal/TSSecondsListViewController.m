@@ -70,8 +70,8 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
                 
                 self.viewModel.endDate = model.END_TIME;
             }
-            [self.tableView reloadData];
             [self layoutSubviews];
+            [self.tableView reloadData];
         }
     } failure:^(NSError *error) {
         NSLog(@"Frist_SecKillLoad_URL:%@",error);
@@ -98,13 +98,17 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
     self.tableView.backgroundColor = [UIColor colorWithHexString:@"F0F0F0"];
     CellConfigureBlock configureBlock = ^(TSSecondsDealDetailTableViewCell *cell,TSSecKillModel *taskModel,NSIndexPath *indexPath){
         [cell configureCellWithModel:taskModel indexPath:indexPath];
+        if ([self.overLabel.text isEqualToString:@"秒杀结束"]) {
+            cell.secondsBuyButton.enabled = NO;
+        }
+
     };
     
     self.dataSource = [[TSArrayDataSource alloc] initWithNibName:@"TSSecondsDealDetailTableViewCell" items:self.viewModel.dataArray cellIdentifier:SecondsDealDetailTableViewCell configureCellBlock:configureBlock];
     self.tableView.dataSource = self.dataSource;
     self.tableView.delegate = self;
     [self.rootView addSubview:self.tableView];
-    self.overLabel.text = @"秒杀结束";
+//    self.overLabel.text = @"秒杀结束";
     
 }
 

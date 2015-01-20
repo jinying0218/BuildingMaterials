@@ -7,7 +7,8 @@
 //
 
 #import "TSBaseViewController.h"
-
+@class TSAddressViewModel;
 @interface TSAddressViewController : TSBaseViewController
 
+- (instancetype)initWithViewModel:(TSAddressViewModel *)viewModel;
 @end
