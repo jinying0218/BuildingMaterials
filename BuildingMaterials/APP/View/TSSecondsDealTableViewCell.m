@@ -41,30 +41,21 @@
                 
                 self.endTimeView = [[ClockView alloc] initWithFrame:CGRectMake( CGRectGetMaxX(self.secondsDealLabel.frame) + 10, 10, 100, 20) style:ClockStyleDefault];
                 [self addSubview:self.endTimeView];
+                @weakify(self);
+                self.endTimeView.Activate = ^(){
+                    @strongify(self);
+                    self.isOver = YES;
+                };
+
                 [self.endTimeView setWithEndTime:model.END_TIME];
                 
-//                NSLog(@"%@",[self returnUploadTime:model.END_TIME]);
+
                 
-                [[TSDateFormatterTool shareInstance] setDateStyle:NSDateFormatterMediumStyle];
-                [[TSDateFormatterTool shareInstance] setTimeStyle:NSDateFormatterShortStyle];
-                [[TSDateFormatterTool shareInstance] setTimeZone:[NSTimeZone systemTimeZone]];
-                [[TSDateFormatterTool shareInstance] setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+//                [[TSDateFormatterTool shareInstance] setDateStyle:NSDateFormatterMediumStyle];
+//                [[TSDateFormatterTool shareInstance] setTimeStyle:NSDateFormatterShortStyle];
+//                [[TSDateFormatterTool shareInstance] setTimeZone:[NSTimeZone systemTimeZone]];
+//                [[TSDateFormatterTool shareInstance] setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
                 
-//                NSDate *date = [[TSDateFormatterTool shareInstance] dateFromString:model.END_TIME];
-                
-//                NSTimeInterval endTimeInterval = [date timeIntervalSince1970];
-                
-                
-//                NSDate *datenow = [NSDate date];
-//                NSTimeInterval currentTimeInterval = [datenow timeIntervalSince1970];
-                
-//                long miniTineInterval = currentTimeInterval - endTimeInterval;
-                
-//                NSString *timeIn = [[TSDateFormatterTool shareInstance] IntervalStringFromDate:date];
-                
-//                self.mzTimerLabel = [[MZTimerLabel alloc] initWithLabel:self.timerLabel andTimerType:MZTimerLabelTypeTimer];
-//                [self.mzTimerLabel setCountDownTime:miniTineInterval];
-//                [self.mzTimerLabel start];
             }
                 break;
                 
