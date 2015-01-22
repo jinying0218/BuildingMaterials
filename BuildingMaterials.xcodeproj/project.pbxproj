@@ -206,6 +206,7 @@
 		B0CB19EA1A5A3DBA00C6D8B1 /* TSExchangeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CB19E91A5A3DBA00C6D8B1 /* TSExchangeListModel.m */; };
 		B0D2AC0A19F8E4020074D10B /* TSRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D2AC0819F8E4020074D10B /* TSRegisterViewController.m */; };
 		B0D2AC0B19F8E4020074D10B /* TSRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D2AC0919F8E4020074D10B /* TSRegisterViewController.xib */; };
+		B0D899D81A6FF8B000082535 /* TSAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D899D71A6FF8B000082535 /* TSAddressModel.m */; };
 		B0E2C3871A618EE200FF410B /* TSExchangeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E2C3851A618EE200FF410B /* TSExchangeDetailViewController.m */; };
 		B0E2C3881A618EE200FF410B /* TSExchangeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0E2C3861A618EE200FF410B /* TSExchangeDetailViewController.xib */; };
 		B0E2C38B1A618FBB00FF410B /* TSExchangeDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E2C38A1A618FBB00FF410B /* TSExchangeDetailViewModel.m */; };
@@ -558,6 +559,8 @@
 		B0D2AC0719F8E4020074D10B /* TSRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSRegisterViewController.h; sourceTree = "<group>"; };
 		B0D2AC0819F8E4020074D10B /* TSRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSRegisterViewController.m; sourceTree = "<group>"; };
 		B0D2AC0919F8E4020074D10B /* TSRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSRegisterViewController.xib; sourceTree = "<group>"; };
+		B0D899D61A6FF8B000082535 /* TSAddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSAddressModel.h; sourceTree = "<group>"; };
+		B0D899D71A6FF8B000082535 /* TSAddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAddressModel.m; sourceTree = "<group>"; };
 		B0E2C3841A618EE200FF410B /* TSExchangeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSExchangeDetailViewController.h; sourceTree = "<group>"; };
 		B0E2C3851A618EE200FF410B /* TSExchangeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSExchangeDetailViewController.m; sourceTree = "<group>"; };
 		B0E2C3861A618EE200FF410B /* TSExchangeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSExchangeDetailViewController.xib; sourceTree = "<group>"; };
@@ -948,6 +951,8 @@
 				B0C686C51A530912002053F1 /* 用户信息 */,
 				B0C5C8EB1A6B4ACC00BF18EF /* TSCommentModel.h */,
 				B0C5C8EC1A6B4ACC00BF18EF /* TSCommentModel.m */,
+				B0D899D61A6FF8B000082535 /* TSAddressModel.h */,
+				B0D899D71A6FF8B000082535 /* TSAddressModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2284,6 +2289,7 @@
 				B0F4770B1A59231E005C851D /* MJRefreshConst.m in Sources */,
 				B015C3241A0F10D60060FBE2 /* TSGoodsRecommadDetailTableViewCell.m in Sources */,
 				B0ED9FC01A6ECDC8009EF241 /* TSAddressViewController.m in Sources */,
+				B0D899D81A6FF8B000082535 /* TSAddressModel.m in Sources */,
 				B02658621A69611D001261B0 /* TSCommentViewModel.m in Sources */,
 				B00ED6C11A416694001D6737 /* TSShopDetailViewModel.m in Sources */,
 				B01847E319F89DCC00938054 /* NSFileManager+PathSize.m in Sources */,
