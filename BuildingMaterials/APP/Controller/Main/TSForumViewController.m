@@ -10,6 +10,7 @@
 #import <UIImageView+WebCache.h>
 #import "TSForumModel.h"
 #import "TSForumTableViewCell.h"
+#import "TSForumDetailViewController.h"
 
 static NSString *const ForumTableViewCellIdentifier = @"ForumTableViewCellIdentifier";
 
@@ -83,6 +84,10 @@ static NSString *const ForumTableViewCellIdentifier = @"ForumTableViewCellIdenti
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     TSForumModel *model = self.viewModel.dataArray[indexPath.row];
+    TSForumDetailViewController *forumDetailVC = [[TSForumDetailViewController alloc] init];
+    forumDetailVC.forumClassifyName = model.forumClassifyName;
+    forumDetailVC.forumClassifyId = model.forumClassifyID;
+    [self.navigationController pushViewController:forumDetailVC animated:YES];
 }
 
 @end
