@@ -9,5 +9,9 @@
 #import <Foundation/Foundation.h>
 
 @interface TSAddressViewModel : NSObject
+@property (nonatomic, strong) NSString *nameString;
+@property (nonatomic, strong) NSString *telNumber;
+@property (nonatomic, strong) NSString *addressString;
+@property (nonatomic, strong) NSMutableArray *addressArray;
 
 @end

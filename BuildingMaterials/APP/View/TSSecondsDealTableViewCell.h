@@ -35,7 +35,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *secondImageButton;
 @property (weak, nonatomic) IBOutlet UIButton *thirdImageButton;
 @property (weak, nonatomic) IBOutlet UILabel *secondsDealLabel;
-
+@property (nonatomic, assign) BOOL isOver;  //秒杀结束
 @property (strong, nonatomic) ClockView *endTimeView;
 
 @property (strong, nonatomic) MZTimerLabel *mzTimerLabel;

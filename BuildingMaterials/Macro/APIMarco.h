@@ -67,6 +67,9 @@
 //分类
 #define Category_URL Domain"/goodsClassifyLoad"
 
+//论坛
+#define Forum_URL Domain"/forumClassifyLoad"
+
 
 //招聘
 #define Invite_URL Domain"/postLoad"

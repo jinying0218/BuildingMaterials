@@ -89,6 +89,12 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
     [self.rootView addSubview:self.headerView];
    
     self.endDateView = [[ClockView alloc] initWithFrame:CGRectMake( CGRectGetMaxX(self.secondsDealLabel.frame) + 10, 10, 110, 20) style:ClockStyleDefault];
+    @weakify(self);
+    self.endDateView.Activate = ^(){
+        @strongify(self);
+        self.overLabel.text = @"秒杀结束";
+    };
+
     [self.headerView addSubview:self.endDateView];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight + 40, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT - 40) style:UITableViewStylePlain];
@@ -115,13 +121,6 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
 - (void)layoutSubviews{
     @weakify(self);
     [self.endDateView setWithEndTime:self.viewModel.endDate];
-    self.endDateView.Activate = ^(){
-        @strongify(self);
-        self.overLabel.text = @"秒杀结束";
-//        self.tableView.allowsSelection = NO;
-    };
-
-
 }
 #pragma mark - tableView delegateMethod
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{

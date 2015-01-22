@@ -182,6 +182,9 @@
 		B08DBECC1A602EED007A301F /* TSGoodsParamsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B08DBECB1A602EED007A301F /* TSGoodsParamsModel.m */; };
 		B08DBECF1A603F21007A301F /* TSParametersList.m in Sources */ = {isa = PBXBuildFile; fileRef = B08DBECE1A603F21007A301F /* TSParametersList.m */; };
 		B09B417C1A4285D200DDF74A /* ss_09.png in Resources */ = {isa = PBXBuildFile; fileRef = B09B417B1A4285D200DDF74A /* ss_09.png */; };
+		B0C1273A1A7154B300AA7A0A /* TSForumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0C127391A7154B300AA7A0A /* TSForumModel.m */; };
+		B0C1273F1A71560D00AA7A0A /* TSForumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0C1273D1A71560D00AA7A0A /* TSForumTableViewCell.m */; };
+		B0C127401A71560D00AA7A0A /* TSForumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0C1273E1A71560D00AA7A0A /* TSForumTableViewCell.xib */; };
 		B0C4992719FFE7550092EE09 /* mine_addressManager.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4991919FFE7550092EE09 /* mine_addressManager.png */; };
 		B0C4992819FFE7550092EE09 /* mine_changePassword.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4991A19FFE7550092EE09 /* mine_changePassword.png */; };
 		B0C4992919FFE7550092EE09 /* mine_checknew.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C4991B19FFE7550092EE09 /* mine_checknew.png */; };
@@ -206,6 +209,7 @@
 		B0CB19EA1A5A3DBA00C6D8B1 /* TSExchangeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CB19E91A5A3DBA00C6D8B1 /* TSExchangeListModel.m */; };
 		B0D2AC0A19F8E4020074D10B /* TSRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D2AC0819F8E4020074D10B /* TSRegisterViewController.m */; };
 		B0D2AC0B19F8E4020074D10B /* TSRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D2AC0919F8E4020074D10B /* TSRegisterViewController.xib */; };
+		B0D899D81A6FF8B000082535 /* TSAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D899D71A6FF8B000082535 /* TSAddressModel.m */; };
 		B0E2C3871A618EE200FF410B /* TSExchangeDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E2C3851A618EE200FF410B /* TSExchangeDetailViewController.m */; };
 		B0E2C3881A618EE200FF410B /* TSExchangeDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0E2C3861A618EE200FF410B /* TSExchangeDetailViewController.xib */; };
 		B0E2C38B1A618FBB00FF410B /* TSExchangeDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E2C38A1A618FBB00FF410B /* TSExchangeDetailViewModel.m */; };
@@ -525,6 +529,11 @@
 		B08DBECD1A603F21007A301F /* TSParametersList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSParametersList.h; sourceTree = "<group>"; };
 		B08DBECE1A603F21007A301F /* TSParametersList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSParametersList.m; sourceTree = "<group>"; };
 		B09B417B1A4285D200DDF74A /* ss_09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ss_09.png; sourceTree = "<group>"; };
+		B0C127381A7154B300AA7A0A /* TSForumModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSForumModel.h; sourceTree = "<group>"; };
+		B0C127391A7154B300AA7A0A /* TSForumModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSForumModel.m; sourceTree = "<group>"; };
+		B0C1273C1A71560D00AA7A0A /* TSForumTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSForumTableViewCell.h; sourceTree = "<group>"; };
+		B0C1273D1A71560D00AA7A0A /* TSForumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSForumTableViewCell.m; sourceTree = "<group>"; };
+		B0C1273E1A71560D00AA7A0A /* TSForumTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSForumTableViewCell.xib; sourceTree = "<group>"; };
 		B0C4991919FFE7550092EE09 /* mine_addressManager.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_addressManager.png; sourceTree = "<group>"; };
 		B0C4991A19FFE7550092EE09 /* mine_changePassword.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_changePassword.png; sourceTree = "<group>"; };
 		B0C4991B19FFE7550092EE09 /* mine_checknew.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mine_checknew.png; sourceTree = "<group>"; };
@@ -558,6 +567,8 @@
 		B0D2AC0719F8E4020074D10B /* TSRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSRegisterViewController.h; sourceTree = "<group>"; };
 		B0D2AC0819F8E4020074D10B /* TSRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSRegisterViewController.m; sourceTree = "<group>"; };
 		B0D2AC0919F8E4020074D10B /* TSRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSRegisterViewController.xib; sourceTree = "<group>"; };
+		B0D899D61A6FF8B000082535 /* TSAddressModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSAddressModel.h; sourceTree = "<group>"; };
+		B0D899D71A6FF8B000082535 /* TSAddressModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAddressModel.m; sourceTree = "<group>"; };
 		B0E2C3841A618EE200FF410B /* TSExchangeDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSExchangeDetailViewController.h; sourceTree = "<group>"; };
 		B0E2C3851A618EE200FF410B /* TSExchangeDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSExchangeDetailViewController.m; sourceTree = "<group>"; };
 		B0E2C3861A618EE200FF410B /* TSExchangeDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSExchangeDetailViewController.xib; sourceTree = "<group>"; };
@@ -946,8 +957,9 @@
 				B0F63C6A1A57983800A0C754 /* 商家推荐模型 */,
 				B0C686C61A53092B002053F1 /* 秒杀模型 */,
 				B0C686C51A530912002053F1 /* 用户信息 */,
-				B0C5C8EB1A6B4ACC00BF18EF /* TSCommentModel.h */,
-				B0C5C8EC1A6B4ACC00BF18EF /* TSCommentModel.m */,
+				B0C127371A71549A00AA7A0A /* 评论 */,
+				B0C127361A71548E00AA7A0A /* 地址管理 */,
+				B0C1273B1A7154B700AA7A0A /* 论坛 */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -957,20 +969,23 @@
 			children = (
 				B08571461A6D51DA00EFB589 /* ClockView.h */,
 				B08571471A6D51DA00EFB589 /* ClockView.m */,
-				B0F476EE1A590861005C851D /* 招聘cell */,
-				B07700D41A58DC7C001E3623 /* 分类cell */,
-				B00ED6C21A4193DC001D6737 /* 商家详情 */,
-				B05B62DF19FE86CC008F76E0 /* 掌上秒杀cell */,
+				B0C1273C1A71560D00AA7A0A /* TSForumTableViewCell.h */,
+				B0C1273D1A71560D00AA7A0A /* TSForumTableViewCell.m */,
+				B0C1273E1A71560D00AA7A0A /* TSForumTableViewCell.xib */,
+				B05B62DF19FE86CC008F76E0 /* 首页掌上秒杀cell */,
 				B05E6E961A045572009C92CC /* 掌上秒杀详情cell */,
 				B05B62E019FE86F0008F76E0 /* 首页商家推荐cell */,
 				B015C3101A0F0A180060FBE2 /* 商家列表cell */,
+				B00ED6C21A4193DC001D6737 /* 商家详情 */,
+				B02658681A6968CC001261B0 /* 评论页cell */,
 				B05B62E119FE86FA008F76E0 /* 首页商品推荐cell */,
 				B015C31B1A0F0E9F0060FBE2 /* 商品推荐列表cell */,
 				B05B62E219FE8711008F76E0 /* 以物换物cell */,
 				B015C32B1A0F18490060FBE2 /* 以物换物详情cell */,
+				B0F476EE1A590861005C851D /* 招聘cell */,
+				B07700D41A58DC7C001E3623 /* 分类cell */,
 				B05B62DE19FE86BC008F76E0 /* BaseView */,
 				B05B62DD19FE86A6008F76E0 /* CustomView */,
-				B02658681A6968CC001261B0 /* 评论页cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1313,14 +1328,14 @@
 			name = BaseView;
 			sourceTree = "<group>";
 		};
-		B05B62DF19FE86CC008F76E0 /* 掌上秒杀cell */ = {
+		B05B62DF19FE86CC008F76E0 /* 首页掌上秒杀cell */ = {
 			isa = PBXGroup;
 			children = (
 				B05B62E319FE88BC008F76E0 /* TSSecondsDealTableViewCell.h */,
 				B05B62E419FE88BC008F76E0 /* TSSecondsDealTableViewCell.m */,
 				B05B62E519FE88BC008F76E0 /* TSSecondsDealTableViewCell.xib */,
 			);
-			name = "掌上秒杀cell";
+			name = "首页掌上秒杀cell";
 			sourceTree = "<group>";
 		};
 		B05B62E019FE86F0008F76E0 /* 首页商家推荐cell */ = {
@@ -1661,6 +1676,33 @@
 				B08DBECE1A603F21007A301F /* TSParametersList.m */,
 			);
 			name = "商品规格参数";
+			sourceTree = "<group>";
+		};
+		B0C127361A71548E00AA7A0A /* 地址管理 */ = {
+			isa = PBXGroup;
+			children = (
+				B0D899D61A6FF8B000082535 /* TSAddressModel.h */,
+				B0D899D71A6FF8B000082535 /* TSAddressModel.m */,
+			);
+			name = "地址管理";
+			sourceTree = "<group>";
+		};
+		B0C127371A71549A00AA7A0A /* 评论 */ = {
+			isa = PBXGroup;
+			children = (
+				B0C5C8EB1A6B4ACC00BF18EF /* TSCommentModel.h */,
+				B0C5C8EC1A6B4ACC00BF18EF /* TSCommentModel.m */,
+			);
+			name = "评论";
+			sourceTree = "<group>";
+		};
+		B0C1273B1A7154B700AA7A0A /* 论坛 */ = {
+			isa = PBXGroup;
+			children = (
+				B0C127381A7154B300AA7A0A /* TSForumModel.h */,
+				B0C127391A7154B300AA7A0A /* TSForumModel.m */,
+			);
+			name = "论坛";
 			sourceTree = "<group>";
 		};
 		B0C686C51A530912002053F1 /* 用户信息 */ = {
@@ -2184,6 +2226,7 @@
 				B05115FC19F9748C00CA6E2E /* my_icon.png in Resources */,
 				B05B632519FEB15F008F76E0 /* cell_goodsExchange_bg.jpg in Resources */,
 				B018473519F898BF00938054 /* Images.xcassets in Resources */,
+				B0C127401A71560D00AA7A0A /* TSForumTableViewCell.xib in Resources */,
 				B05115E019F96A8100CA6E2E /* TSInviteViewController.xib in Resources */,
 				B08702DE1A2B7DD0008C8088 /* secondDeal_plus.png in Resources */,
 				B0E2C3941A6195D600FF410B /* exhcange_location.png in Resources */,
@@ -2284,6 +2327,8 @@
 				B0F4770B1A59231E005C851D /* MJRefreshConst.m in Sources */,
 				B015C3241A0F10D60060FBE2 /* TSGoodsRecommadDetailTableViewCell.m in Sources */,
 				B0ED9FC01A6ECDC8009EF241 /* TSAddressViewController.m in Sources */,
+				B0C1273A1A7154B300AA7A0A /* TSForumModel.m in Sources */,
+				B0D899D81A6FF8B000082535 /* TSAddressModel.m in Sources */,
 				B02658621A69611D001261B0 /* TSCommentViewModel.m in Sources */,
 				B00ED6C11A416694001D6737 /* TSShopDetailViewModel.m in Sources */,
 				B01847E319F89DCC00938054 /* NSFileManager+PathSize.m in Sources */,
@@ -2352,6 +2397,7 @@
 				B05E6E9C1A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.m in Sources */,
 				B04411C51A5C3E0C005ED736 /* TSInviteComanyModel.m in Sources */,
 				B08702D41A2ACADD008C8088 /* TSSecondDealDetailViewModel.m in Sources */,
+				B0C1273F1A71560D00AA7A0A /* TSForumTableViewCell.m in Sources */,
 				B05B62EB19FE88DE008F76E0 /* TSShopReccommendTableViewCell.m in Sources */,
 				B01847E519F89DCC00938054 /* UIColor+TSUIColorEX.m in Sources */,
 				B0ED9FBC1A6E8B04009EF241 /* TSFindPWDViewModel.m in Sources */,

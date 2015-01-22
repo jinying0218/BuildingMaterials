@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface TSForumViewModel : NSObject
-
+@property (nonatomic, strong) NSMutableArray *dataArray;
 @end

@@ -9,5 +9,12 @@
 #import "TSAddressViewModel.h"
 
 @implementation TSAddressViewModel
-
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _addressArray = [[NSMutableArray alloc] initWithCapacity:0];
+    }
+    return self;
+}
 @end

@@ -221,7 +221,11 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     int index = (int)button.tag - 10000;
     TSSecKillModel *model = self.viewModel.secKillDataArray[index];
 //秒杀
-    
+    TSSecondsDealTableViewCell *cell = (TSSecondsDealTableViewCell *)[self.firstTable cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
+    if (cell.isOver) {
+        [self showProgressHUD:@"秒杀已结束" delay:1];
+        return;
+    }
     TSGoodsDetailViewModel *viewModel = [[TSGoodsDetailViewModel alloc] init];
     viewModel.goodsID = model.ID;
     viewModel.isSecondsDeal = YES;
