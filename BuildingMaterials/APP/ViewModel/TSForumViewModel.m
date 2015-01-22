@@ -9,5 +9,12 @@
 #import "TSForumViewModel.h"
 
 @implementation TSForumViewModel
-
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.dataArray = [[NSMutableArray alloc] initWithCapacity:0];
+    }
+    return self;
+}
 @end

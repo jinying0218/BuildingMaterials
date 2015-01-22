@@ -7,7 +7,9 @@
 //
 
 #import "TSBaseViewController.h"
+#import "TSForumViewModel.h"
 
 @interface TSForumViewController : TSBaseViewController
+@property (nonatomic, strong) TSForumViewModel *viewModel;
 
 @end
