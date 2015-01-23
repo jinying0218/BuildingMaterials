@@ -9,5 +9,5 @@
 #import "TSBaseViewController.h"
 
 @interface TSReplyViewController : TSBaseViewController
-
+@property (nonatomic, assign) int forumId;
 @end

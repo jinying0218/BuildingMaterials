@@ -17,7 +17,7 @@
     self.forum_content_time = [self objectOrNilForKey:@"FORUM_CONTENT_TIME" fromDictionary:dict];
     self.forum_content_title = [self objectOrNilForKey:@"FORUM_CONTENT_TITLE" fromDictionary:dict];
     self.forum_user = [self objectOrNilForKey:@"FORUM_USER" fromDictionary:dict];
-    self.forum_userId = [[self objectOrNilForKey:@"ID" fromDictionary:dict] intValue];
+    self.forum_Id = [[self objectOrNilForKey:@"ID" fromDictionary:dict] intValue];
     self.is_recommend = [[self objectOrNilForKey:@"IS_RECOMMEND" fromDictionary:dict] intValue];
     self.N_O = [[self objectOrNilForKey:@"NO" fromDictionary:dict] intValue];
     self.recomment_time = [self objectOrNilForKey:@"RECOMMEND_TIME" fromDictionary:dict];

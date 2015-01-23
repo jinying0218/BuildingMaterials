@@ -7,8 +7,15 @@
 //
 
 #import "TSForumDetailViewController.h"
+#import "TSReplyViewController.h"
 
 @interface TSForumDetailViewController ()
+@property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UIButton *bottomButton;
+@property (weak, nonatomic) IBOutlet UILabel *forumTitle;
+@property (weak, nonatomic) IBOutlet UIImageView *forumClassifyImage;
+@property (weak, nonatomic) IBOutlet UILabel *forumClassifyName;
+@property (weak, nonatomic) IBOutlet UILabel *commentNumber;
 
 @end
 
@@ -16,7 +23,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    [self initailizeData];
+    [self setupUI];
+    
+    [self blindActionHandler];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +34,30 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)initailizeData{
 }
-*/
 
+#pragma mark - set UI
+- (void)setupUI{
+    
+    [self createNavigationBarTitle:@"帖子详情" leftButtonImageName:@"Previous" rightButtonImageName:nil];
+    self.navigationBar.frame = CGRectMake( 0, STATUS_BAR_HEGHT, KscreenW, 44);
+    [self.view addSubview:self.navigationBar];
+    
+    self.forumTitle.text = self.forumClassifyModel.forum_content_title;
+    self.commentNumber.text = [NSString stringWithFormat:@"%d",self.forumClassifyModel.forum_content_comment_number];
+    
+    [self.webView loadHTMLString:self.forumClassifyModel.forum_content baseURL:nil];
+    self.webView.scrollView.showsHorizontalScrollIndicator = NO;
+    self.webView.scrollView.showsVerticalScrollIndicator = NO;
+}
+- (void)blindActionHandler{
+    @weakify(self);
+    [self.bottomButton bk_addEventHandler:^(id sender) {
+        @strongify(self);
+        TSReplyViewController *replyVC = [[TSReplyViewController alloc] init];
+        replyVC.forumId = self.forumClassifyModel.forum_Id;
+        [self.navigationController pushViewController:replyVC animated:YES];
+    } forControlEvents:UIControlEventTouchUpInside];
+}
 @end

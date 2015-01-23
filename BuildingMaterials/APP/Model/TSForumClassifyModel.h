@@ -16,7 +16,7 @@
 @property (nonatomic, strong) NSString *forum_content_time;
 @property (nonatomic, strong) NSString *forum_content_title;
 @property (nonatomic, strong) NSString *forum_user;
-@property (nonatomic, assign) int forum_userId;
+@property (nonatomic, assign) int forum_Id;
 @property (nonatomic, assign) int is_recommend;
 @property (nonatomic, assign) int N_O;
 @property (nonatomic, strong) NSString *recomment_time;

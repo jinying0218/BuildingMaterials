@@ -7,7 +7,8 @@
 //
 
 #import "TSBaseViewController.h"
+#import "TSForumClassifyModel.h"
 
 @interface TSForumDetailViewController : TSBaseViewController
-
+@property (nonatomic, strong) TSForumClassifyModel *forumClassifyModel;
 @end
