@@ -1,18 +1,18 @@
 //
-//  TSForumDetailViewController.m
+//  TSReplyViewController.m
 //  BuildingMaterials
 //
-//  Created by Ariel on 15/1/23.
+//  Created by Ariel on 15/1/24.
 //  Copyright (c) 2015年 Ariel. All rights reserved.
 //
 
-#import "TSForumDetailViewController.h"
+#import "TSReplyViewController.h"
 
-@interface TSForumDetailViewController ()
+@interface TSReplyViewController ()
 
 @end
 
-@implementation TSForumDetailViewController
+@implementation TSReplyViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];

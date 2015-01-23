@@ -8,6 +8,7 @@
 
 #import "TSBaseViewController.h"
 
-@interface TSForumDetailViewController : TSBaseViewController
-
+@interface TSForumClassifyDetailViewController : TSBaseViewController
+@property (nonatomic, assign) int forumClassifyId;
+@property (nonatomic, strong) NSString *forumClassifyName;
 @end
