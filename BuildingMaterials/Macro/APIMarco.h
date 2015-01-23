@@ -74,6 +74,13 @@
 #define Forum_URL Domain"/forumClassifyLoad"
 //论坛类别
 #define ForumClassifyLoad_URL Domain"/forumLoad"
+//帖子详情
+#define ForumLoadById_URL Domain"/forumLoadById"
+//帖子回复
+#define ForumComment_URL Domain"/forumCommentLoadById"
+
+
+
 
 //////////  招聘
 //招聘

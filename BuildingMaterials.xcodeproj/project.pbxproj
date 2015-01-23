@@ -77,6 +77,12 @@
 		B031218619F8B7B0008721C4 /* login_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = B031218319F8B7B0008721C4 /* login_bg.jpg */; };
 		B031218719F8B7B0008721C4 /* login_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = B031218419F8B7B0008721C4 /* login_btn.png */; };
 		B031218819F8B7B0008721C4 /* login_header.png in Resources */ = {isa = PBXBuildFile; fileRef = B031218519F8B7B0008721C4 /* login_header.png */; };
+		B03252241A729EF2004FBF9B /* TSReplyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B03252221A729EF2004FBF9B /* TSReplyTableViewCell.m */; };
+		B03252251A729EF2004FBF9B /* TSReplyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B03252231A729EF2004FBF9B /* TSReplyTableViewCell.xib */; };
+		B032522F1A72A654004FBF9B /* TSForumDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B032522D1A72A654004FBF9B /* TSForumDetailViewController.m */; };
+		B03252301A72A654004FBF9B /* TSForumDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B032522E1A72A654004FBF9B /* TSForumDetailViewController.xib */; };
+		B03252341A72B5F6004FBF9B /* TSReplyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B03252321A72B5F6004FBF9B /* TSReplyViewController.m */; };
+		B03252351A72B5F6004FBF9B /* TSReplyViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B03252331A72B5F6004FBF9B /* TSReplyViewController.xib */; };
 		B03AC4D219F904AB002FC299 /* register_btn_next.png in Resources */ = {isa = PBXBuildFile; fileRef = B03AC4CF19F904AB002FC299 /* register_btn_next.png */; };
 		B03AC4D319F904AB002FC299 /* register_btn_test.png in Resources */ = {isa = PBXBuildFile; fileRef = B03AC4D019F904AB002FC299 /* register_btn_test.png */; };
 		B03AC4D419F904AB002FC299 /* register_textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = B03AC4D119F904AB002FC299 /* register_textfield.png */; };
@@ -185,8 +191,8 @@
 		B0C1273A1A7154B300AA7A0A /* TSForumModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0C127391A7154B300AA7A0A /* TSForumModel.m */; };
 		B0C1273F1A71560D00AA7A0A /* TSForumTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0C1273D1A71560D00AA7A0A /* TSForumTableViewCell.m */; };
 		B0C127401A71560D00AA7A0A /* TSForumTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0C1273E1A71560D00AA7A0A /* TSForumTableViewCell.xib */; };
-		B0C127441A715C9100AA7A0A /* TSForumDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0C127421A715C9100AA7A0A /* TSForumDetailViewController.m */; };
-		B0C127451A715C9100AA7A0A /* TSForumDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0C127431A715C9100AA7A0A /* TSForumDetailViewController.xib */; };
+		B0C127441A715C9100AA7A0A /* TSForumClassifyDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0C127421A715C9100AA7A0A /* TSForumClassifyDetailViewController.m */; };
+		B0C127451A715C9100AA7A0A /* TSForumClassifyDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0C127431A715C9100AA7A0A /* TSForumClassifyDetailViewController.xib */; };
 		B0C127481A71600100AA7A0A /* forum_left.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C127471A71600100AA7A0A /* forum_left.png */; };
 		B0C1274D1A716AF500AA7A0A /* TSForumClassifyTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B0C1274B1A716AF500AA7A0A /* TSForumClassifyTableViewCell.m */; };
 		B0C1274E1A716AF500AA7A0A /* TSForumClassifyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0C1274C1A716AF500AA7A0A /* TSForumClassifyTableViewCell.xib */; };
@@ -397,6 +403,15 @@
 		B031218319F8B7B0008721C4 /* login_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login_bg.jpg; sourceTree = "<group>"; };
 		B031218419F8B7B0008721C4 /* login_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_btn.png; sourceTree = "<group>"; };
 		B031218519F8B7B0008721C4 /* login_header.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_header.png; sourceTree = "<group>"; };
+		B03252211A729EF2004FBF9B /* TSReplyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSReplyTableViewCell.h; sourceTree = "<group>"; };
+		B03252221A729EF2004FBF9B /* TSReplyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSReplyTableViewCell.m; sourceTree = "<group>"; };
+		B03252231A729EF2004FBF9B /* TSReplyTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSReplyTableViewCell.xib; sourceTree = "<group>"; };
+		B032522C1A72A654004FBF9B /* TSForumDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSForumDetailViewController.h; sourceTree = "<group>"; };
+		B032522D1A72A654004FBF9B /* TSForumDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSForumDetailViewController.m; sourceTree = "<group>"; };
+		B032522E1A72A654004FBF9B /* TSForumDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSForumDetailViewController.xib; sourceTree = "<group>"; };
+		B03252311A72B5F6004FBF9B /* TSReplyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSReplyViewController.h; sourceTree = "<group>"; };
+		B03252321A72B5F6004FBF9B /* TSReplyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSReplyViewController.m; sourceTree = "<group>"; };
+		B03252331A72B5F6004FBF9B /* TSReplyViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSReplyViewController.xib; sourceTree = "<group>"; };
 		B03AC4CF19F904AB002FC299 /* register_btn_next.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register_btn_next.png; sourceTree = "<group>"; };
 		B03AC4D019F904AB002FC299 /* register_btn_test.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register_btn_test.png; sourceTree = "<group>"; };
 		B03AC4D119F904AB002FC299 /* register_textfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register_textfield.png; sourceTree = "<group>"; };
@@ -540,9 +555,9 @@
 		B0C1273C1A71560D00AA7A0A /* TSForumTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSForumTableViewCell.h; sourceTree = "<group>"; };
 		B0C1273D1A71560D00AA7A0A /* TSForumTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSForumTableViewCell.m; sourceTree = "<group>"; };
 		B0C1273E1A71560D00AA7A0A /* TSForumTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSForumTableViewCell.xib; sourceTree = "<group>"; };
-		B0C127411A715C9100AA7A0A /* TSForumDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSForumDetailViewController.h; sourceTree = "<group>"; };
-		B0C127421A715C9100AA7A0A /* TSForumDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSForumDetailViewController.m; sourceTree = "<group>"; };
-		B0C127431A715C9100AA7A0A /* TSForumDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSForumDetailViewController.xib; sourceTree = "<group>"; };
+		B0C127411A715C9100AA7A0A /* TSForumClassifyDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSForumClassifyDetailViewController.h; sourceTree = "<group>"; };
+		B0C127421A715C9100AA7A0A /* TSForumClassifyDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSForumClassifyDetailViewController.m; sourceTree = "<group>"; };
+		B0C127431A715C9100AA7A0A /* TSForumClassifyDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSForumClassifyDetailViewController.xib; sourceTree = "<group>"; };
 		B0C127471A71600100AA7A0A /* forum_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = forum_left.png; sourceTree = "<group>"; };
 		B0C1274A1A716AF500AA7A0A /* TSForumClassifyTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSForumClassifyTableViewCell.h; sourceTree = "<group>"; };
 		B0C1274B1A716AF500AA7A0A /* TSForumClassifyTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSForumClassifyTableViewCell.m; sourceTree = "<group>"; };
@@ -984,6 +999,9 @@
 			children = (
 				B08571461A6D51DA00EFB589 /* ClockView.h */,
 				B08571471A6D51DA00EFB589 /* ClockView.m */,
+				B03252211A729EF2004FBF9B /* TSReplyTableViewCell.h */,
+				B03252221A729EF2004FBF9B /* TSReplyTableViewCell.m */,
+				B03252231A729EF2004FBF9B /* TSReplyTableViewCell.xib */,
 				B0C127491A716ACD00AA7A0A /* 论坛 */,
 				B05B62DF19FE86CC008F76E0 /* 首页掌上秒杀cell */,
 				B05E6E961A045572009C92CC /* 掌上秒杀详情cell */,
@@ -1157,6 +1175,23 @@
 			path = 1_Login;
 			sourceTree = "<group>";
 		};
+		B032522B1A72A62C004FBF9B /* 论坛详情 */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "论坛详情";
+			sourceTree = "<group>";
+		};
+		B03252361A72B5FA004FBF9B /* 回复 */ = {
+			isa = PBXGroup;
+			children = (
+				B03252311A72B5F6004FBF9B /* TSReplyViewController.h */,
+				B03252321A72B5F6004FBF9B /* TSReplyViewController.m */,
+				B03252331A72B5F6004FBF9B /* TSReplyViewController.xib */,
+			);
+			name = "回复";
+			sourceTree = "<group>";
+		};
 		B03AC4CE19F904AB002FC299 /* 2_Register */ = {
 			isa = PBXGroup;
 			children = (
@@ -1261,6 +1296,11 @@
 				B05115D819F96A6D00CA6E2E /* TSForumViewController.m */,
 				B05115D919F96A6D00CA6E2E /* TSForumViewController.xib */,
 				B0C127461A715C9700AA7A0A /* 论坛栏目详情 */,
+				B032522B1A72A62C004FBF9B /* 论坛详情 */,
+				B032522C1A72A654004FBF9B /* TSForumDetailViewController.h */,
+				B032522D1A72A654004FBF9B /* TSForumDetailViewController.m */,
+				B032522E1A72A654004FBF9B /* TSForumDetailViewController.xib */,
+				B03252361A72B5FA004FBF9B /* 回复 */,
 			);
 			name = "论坛";
 			sourceTree = "<group>";
@@ -1725,9 +1765,9 @@
 		B0C127461A715C9700AA7A0A /* 论坛栏目详情 */ = {
 			isa = PBXGroup;
 			children = (
-				B0C127411A715C9100AA7A0A /* TSForumDetailViewController.h */,
-				B0C127421A715C9100AA7A0A /* TSForumDetailViewController.m */,
-				B0C127431A715C9100AA7A0A /* TSForumDetailViewController.xib */,
+				B0C127411A715C9100AA7A0A /* TSForumClassifyDetailViewController.h */,
+				B0C127421A715C9100AA7A0A /* TSForumClassifyDetailViewController.m */,
+				B0C127431A715C9100AA7A0A /* TSForumClassifyDetailViewController.xib */,
 			);
 			name = "论坛栏目详情";
 			sourceTree = "<group>";
@@ -2195,6 +2235,7 @@
 				B05B5A0F1A3FD9F8008E83C9 /* shop_connect_selected.png in Resources */,
 				B04411CD1A5C5475005ED736 /* invite_telButton.png in Resources */,
 				B05B5A0D1A3FD9F8008E83C9 /* shop_button_bg.png in Resources */,
+				B03252351A72B5F6004FBF9B /* TSReplyViewController.xib in Resources */,
 				B0E2C38F1A6194A700FF410B /* exchange_broadcast.png in Resources */,
 				B05115F519F9748C00CA6E2E /* category_icon_selected.png in Resources */,
 				B08455B81A5ACBA200F8164E /* select_icon.png in Resources */,
@@ -2235,6 +2276,7 @@
 				B05B5A021A3FD9EC008E83C9 /* navigaoinbar_shopDetail_selected.png in Resources */,
 				B00ED6C71A4193FC001D6737 /* TSShopDetailCollectionViewCell.xib in Resources */,
 				B05B62F119FE88F3008F76E0 /* TSGoodsRecommendTableViewCell.xib in Resources */,
+				B03252301A72A654004FBF9B /* TSForumDetailViewController.xib in Resources */,
 				B00BB8861A0E8D8A00B94208 /* purchase_progressOver.png in Resources */,
 				B0F477091A59231E005C851D /* MJRefresh.bundle in Resources */,
 				B05115F619F9748C00CA6E2E /* first_icon.png in Resources */,
@@ -2295,11 +2337,12 @@
 				B05115FA19F9748C00CA6E2E /* invite_icon.png in Resources */,
 				B05B5A031A3FD9EC008E83C9 /* navigaoinbar_shopDetail.png in Resources */,
 				B03B30D31A5EE9A000E77FB9 /* TSShopGoodsViewController.xib in Resources */,
+				B03252251A729EF2004FBF9B /* TSReplyTableViewCell.xib in Resources */,
 				B08455BE1A5AD2DA00F8164E /* TSInviteDetailViewController.xib in Resources */,
 				B00BB8851A0E8D8A00B94208 /* purchase_progress.png in Resources */,
 				B05B632219FEB15F008F76E0 /* banner1.png in Resources */,
 				B05115CC19F969C600CA6E2E /* TSFristViewController.xib in Resources */,
-				B0C127451A715C9100AA7A0A /* TSForumDetailViewController.xib in Resources */,
+				B0C127451A715C9100AA7A0A /* TSForumClassifyDetailViewController.xib in Resources */,
 				B08702DB1A2B7DD0008C8088 /* secondDeal_miner_bg.png in Resources */,
 				B0C4992819FFE7550092EE09 /* mine_changePassword.png in Resources */,
 				B05E6E951A04538E009C92CC /* TSSecondsListViewController.xib in Resources */,
@@ -2374,7 +2417,7 @@
 				B0D899D81A6FF8B000082535 /* TSAddressModel.m in Sources */,
 				B02658621A69611D001261B0 /* TSCommentViewModel.m in Sources */,
 				B00ED6C11A416694001D6737 /* TSShopDetailViewModel.m in Sources */,
-				B0C127441A715C9100AA7A0A /* TSForumDetailViewController.m in Sources */,
+				B0C127441A715C9100AA7A0A /* TSForumClassifyDetailViewController.m in Sources */,
 				B01847E319F89DCC00938054 /* NSFileManager+PathSize.m in Sources */,
 				B0FA14521A643F6200C1C377 /* RSADataVerifier.m in Sources */,
 				B0C5C8ED1A6B4ACC00BF18EF /* TSCommentModel.m in Sources */,
@@ -2404,6 +2447,7 @@
 				B01847E819F89DCC00938054 /* UIImage+RoundedCorner.m in Sources */,
 				B08DBEC31A601708007A301F /* TSGoodsDetailViewController.m in Sources */,
 				B031217E19F8AFA9008721C4 /* TSLoginViewController.m in Sources */,
+				B03252241A729EF2004FBF9B /* TSReplyTableViewCell.m in Sources */,
 				B018482419F89DCC00938054 /* TSArrayDataSource.m in Sources */,
 				B01847E719F89DCC00938054 /* UIImage+Resize.m in Sources */,
 				B018472F19F898BF00938054 /* main.m in Sources */,
@@ -2435,6 +2479,7 @@
 				B08DBEBF1A6015EA007A301F /* TSGoodsDetailViewModel.m in Sources */,
 				B05E6E941A04538E009C92CC /* TSSecondsListViewController.m in Sources */,
 				B01847DC19F89DCC00938054 /* TSScrollView.m in Sources */,
+				B03252341A72B5F6004FBF9B /* TSReplyViewController.m in Sources */,
 				B0CB19EA1A5A3DBA00C6D8B1 /* TSExchangeListModel.m in Sources */,
 				B0F476F21A59087A005C851D /* TSInviteCell.m in Sources */,
 				B05B62F019FE88F3008F76E0 /* TSGoodsRecommendTableViewCell.m in Sources */,
@@ -2463,6 +2508,7 @@
 				B01847DE19F89DCC00938054 /* BSJSONEncoder.m in Sources */,
 				B015C3191A0F0CE70060FBE2 /* TSShopRecommedViewController.m in Sources */,
 				B05FF51B1A655F1800F6AB12 /* TSAdModel.m in Sources */,
+				B032522F1A72A654004FBF9B /* TSForumDetailViewController.m in Sources */,
 				B0C686D31A530AD1002053F1 /* TSForumViewModel.m in Sources */,
 				B0F7B87C1A626F9100D3EC95 /* TSReleaseExchangeViewController.m in Sources */,
 				B05115E819F96DD400CA6E2E /* TSMainTabBarViewController.m in Sources */,
