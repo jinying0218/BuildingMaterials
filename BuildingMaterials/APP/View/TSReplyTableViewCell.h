@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TSForumDetailTableViewCell : UITableViewCell
+@interface TSReplyTableViewCell : UITableViewCell
 
 @end

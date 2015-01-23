@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface TSForumClassifyTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *contentTitle;
+@property (weak, nonatomic) IBOutlet UILabel *forumUser;
+@property (weak, nonatomic) IBOutlet UILabel *contentTime;
 
 @end

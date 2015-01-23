@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 Ariel. All rights reserved.
 //
 
-#import "TSForumDetailTableViewCell.h"
+#import "TSReplyTableViewCell.h"
 
-@implementation TSForumDetailTableViewCell
+@implementation TSReplyTableViewCell
 
 - (void)awakeFromNib {
     // Initialization code
