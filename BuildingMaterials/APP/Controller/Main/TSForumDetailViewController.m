@@ -9,6 +9,8 @@
 #import "TSForumDetailViewController.h"
 #import "TSReplyViewController.h"
 
+#import <UIImageView+WebCache.h>
+
 @interface TSForumDetailViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIButton *bottomButton;
@@ -46,6 +48,7 @@
     
     self.forumTitle.text = self.forumClassifyModel.forum_content_title;
     self.commentNumber.text = [NSString stringWithFormat:@"%d",self.forumClassifyModel.forum_content_comment_number];
+    [self.forumClassifyImage sd_setImageWithURL:[NSURL URLWithString:self.forumClassifyImageURL]];
     
     [self.webView loadHTMLString:self.forumClassifyModel.forum_content baseURL:nil];
     self.webView.scrollView.showsHorizontalScrollIndicator = NO;

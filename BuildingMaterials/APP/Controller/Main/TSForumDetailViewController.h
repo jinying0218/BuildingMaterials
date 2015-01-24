@@ -11,4 +11,6 @@
 
 @interface TSForumDetailViewController : TSBaseViewController
 @property (nonatomic, strong) TSForumClassifyModel *forumClassifyModel;
+@property (nonatomic, strong) NSString *forumClassifyImageURL;
+
 @end

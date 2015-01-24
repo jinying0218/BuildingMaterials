@@ -132,6 +132,7 @@ static NSString *const ForumClassifyTableViewCellIdentifier = @"ForumClassifyTab
     TSForumDetailViewController *forumDetailVC = [[TSForumDetailViewController alloc] init];
     TSForumClassifyModel *model = self.dataArray[indexPath.row];
     forumDetailVC.forumClassifyModel = model;
+    forumDetailVC.forumClassifyImageURL = self.forumClassifyImageURL;
     [self.navigationController pushViewController:forumDetailVC animated:YES];
 }
 
