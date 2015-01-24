@@ -9,6 +9,7 @@
 #import "TSReplyViewController.h"
 #import "TSReplyTableViewCell.h"
 #import "TSReplyModel.h"
+#import "TSUserModel.h"
 
 static NSString *const ReplyTableViewCellIdentifier = @"ReplyTableViewCellIdentifier";
 
@@ -19,7 +20,7 @@ static NSString *const ReplyTableViewCellIdentifier = @"ReplyTableViewCellIdenti
 @property (weak, nonatomic) IBOutlet UITextView *replyInput;
 @property (nonatomic, assign) int page;
 @property (nonatomic, strong) NSMutableArray *dataArray;
-
+@property (nonatomic, strong) TSUserModel *userModel;
 @end
 
 @implementation TSReplyViewController
@@ -28,6 +29,9 @@ static NSString *const ReplyTableViewCellIdentifier = @"ReplyTableViewCellIdenti
     [super viewDidLoad];
     self.dataArray = [[NSMutableArray alloc] initWithCapacity:0];
     self.page = 1;
+    self.userModel = [TSUserModel getCurrentLoginUser];
+    
+    
     [self initailizeData];
     [self setupUI];
 
@@ -40,10 +44,11 @@ static NSString *const ReplyTableViewCellIdentifier = @"ReplyTableViewCellIdenti
     // Dispose of any resources that can be recreated.
 }
 - (void)initailizeData{
+    [self.dataArray removeAllObjects];
     NSDictionary *params = @{@"forumId" : [NSString stringWithFormat:@"%d",self.forumId],
                              @"page" : [NSString stringWithFormat:@"%d",self.page]};
     [TSHttpTool getWithUrl:ForumComment_URL params:params withCache:NO success:^(id result) {
-        NSLog(@"帖子回复:%@",result);
+//        NSLog(@"帖子回复:%@",result);
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *dict in result[@"result"]) {
                 TSReplyModel *model = [[TSReplyModel alloc] init];
@@ -71,6 +76,21 @@ static NSString *const ReplyTableViewCellIdentifier = @"ReplyTableViewCellIdenti
     @weakify(self);
     [self.replyButton bk_addEventHandler:^(id sender) {
         @strongify(self);
+        NSDictionary *params = @{@"commentContent" : self.replyInput.text,
+                                 @"forumId" : [NSString stringWithFormat:@"%d",self.forumId],
+                                 @"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId]};
+        [TSHttpTool postWithUrl:CommentPost_URL params:params success:^(id result) {
+//            NSLog(@"发表回复：%@",result);
+            if ([result[@"success"] intValue] == 1) {
+                [self showProgressHUD:@"回复成功" delay:1];
+                self.replyInput.text = @"";
+                [self.view endEditing:YES];
+                [self initailizeData];
+            }
+            
+        } failure:^(NSError *error) {
+            NSLog(@"发表回复：%@",error);
+        }];
         
     } forControlEvents:UIControlEventTouchUpInside];
 }

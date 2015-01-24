@@ -78,7 +78,8 @@
 #define ForumLoadById_URL Domain"/forumLoadById"
 //帖子回复
 #define ForumComment_URL Domain"/forumCommentLoadById"
-
+//发表回复
+#define CommentPost_URL Domain "/forumComment"
 
 
 
