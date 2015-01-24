@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@class TSReplyModel;
 @interface TSReplyTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *floorNumber;
+@property (weak, nonatomic) IBOutlet UILabel *replyName;
+@property (weak, nonatomic) IBOutlet UILabel *replyContent;
+@property (weak, nonatomic) IBOutlet UILabel *replyTime;
 
+- (void)configureCell:(TSReplyModel *)model indexPath:(NSIndexPath *)indexPath;
 @end
