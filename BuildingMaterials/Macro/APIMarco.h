@@ -110,4 +110,9 @@
 #define CollectDelete_URL Domain "/collectionDelete"
 
 
+//购物车
+#define GoodsCarLoad_URL Domain"/goodsCarLoad"
+//购物车商品删除
+#define GoodsCarDeleteURL Domain"/goodsCarDelete"
+
 #endif

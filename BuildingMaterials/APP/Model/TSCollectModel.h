@@ -29,3 +29,18 @@
 - (void)setValueWithDict:(NSDictionary *)dict;
 
 @end
+
+/*
+ GOODS_HEAD_IMAGE 商品图片地址
+ GOODS_NAME 商品名称
+ GOODS_DES_SIMPLE 商品描述
+ GOODS_NEW_PRICE 商品价格
+ C_ID  收藏id用来做删除收藏用的
+ COLLECTION_ID  商品的Id  用来点击跳转到商品详情也用的id
+ company  商家对象数组
+ COMPANY_IMAGE_URL 商家图片
+ COMPANY_NAME 商家名称
+ COMPANY_DES 商家描述
+ C_ID 收藏id 用来做删除收藏用的
+ COLLECTION_ID  商家id 用来做跳转到商家详情页用的
+ */

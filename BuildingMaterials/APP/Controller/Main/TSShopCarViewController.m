@@ -9,6 +9,8 @@
 #import "TSShopCarViewController.h"
 #import "TSShopCarViewModel.h"
 #import "TSUserModel.h"
+#import "TSShopCarModel.h"
+#import "TSShopCarTableViewCell.h"
 
 static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellIdentifier";
 
@@ -34,6 +36,7 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tabBarController.tabBar.hidden =  YES;
+    self.userModel = [TSUserModel getCurrentLoginUser];
     [self initializeData];
     [self setupUI];
     [self blindActionHandler];
@@ -45,10 +48,9 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
 }
 
 - (void)initializeData{
-    self.userModel = [TSUserModel getCurrentLoginUser];
     NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId]};
-    [TSHttpTool getWithUrl:Address_URL params:params withCache:NO success:^(id result) {
-        NSLog(@"购物列表:%@",result);
+    [TSHttpTool getWithUrl:GoodsCarLoad_URL params:params withCache:NO success:^(id result) {
+        NSLog(@"购物车:%@",result);
         if ([result[@"success"] intValue] == 1) {
 //            [self.viewModel.addressArray removeAllObjects];
 //            for (NSDictionary *dict in result[@"result"]) {
@@ -60,7 +62,7 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
             
         }
     } failure:^(NSError *error) {
-        NSLog(@"购物列表:%@",error);
+        NSLog(@"购物车:%@",error);
     }];
 }
 #pragma mark - set up UI
@@ -87,19 +89,16 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ShopCarTableViewCellIdentifier];
+    TSShopCarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ShopCarTableViewCellIdentifier];
     if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:ShopCarTableViewCellIdentifier];
-        cell.textLabel.font = [UIFont systemFontOfSize:14];
-        cell.textLabel.numberOfLines = 0;
-        UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake( 0, tableView.rowHeight - 1, KscreenW, 1)];
-        line.backgroundColor = [UIColor lightGrayColor];
-        [cell.contentView addSubview:line];
-        
-        
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"TSShopCarTableViewCell" owner:nil options:nil]lastObject];
+        UIView *backView = [[UIView alloc] init];
+        backView.backgroundColor = [UIColor colorWithHexString:@"1ca6df"];
+        cell.selectedBackgroundView = backView;
     }
-//    TSAddressModel *model = self.viewModel.addressArray[indexPath.row];
-//    cell.textLabel.text = model.addressMain;
+    
+    TSShopCarModel *model = self.viewModel.dataArray[indexPath.row];
+    
     return cell;
 }
 #pragma mark - tableview  delegate
