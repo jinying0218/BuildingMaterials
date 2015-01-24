@@ -13,6 +13,8 @@
 #import "TSAddressViewController.h"
 #import "TSAddressViewModel.h"
 
+#import "TSCollectViewController.h"
+#import "TSCollectViewModel.h"
 #import "TSShopCarViewController.h"
 #import "TSShopCarViewModel.h"
 
@@ -124,7 +126,10 @@
     [collectionBtn setImage:[UIImage imageNamedString:@"mine_collection"] forState:UIControlStateNormal];
     [collectionBtn setImageEdgeInsets:UIEdgeInsetsMake( 15, 60, 15, 60)];
     [collectionBtn bk_addEventHandler:^(id sender) {
-        NSLog(@"收藏");
+        TSCollectViewModel *viewModel = [[TSCollectViewModel alloc] init];
+        TSCollectViewController *collectVC = [[TSCollectViewController alloc] initWithViewModel:viewModel];
+        [self.navigationController pushViewController:collectVC animated:YES];
+        
     } forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:collectionBtn];
 

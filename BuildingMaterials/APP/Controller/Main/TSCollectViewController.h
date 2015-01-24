@@ -7,7 +7,8 @@
 //
 
 #import "TSBaseViewController.h"
-
+@class TSCollectViewModel;
 @interface TSCollectViewController : TSBaseViewController
+- (instancetype)initWithViewModel:(TSCollectViewModel *)viewModel;
 
 @end

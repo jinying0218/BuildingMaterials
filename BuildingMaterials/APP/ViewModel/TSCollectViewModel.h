@@ -9,5 +9,6 @@
 #import <Foundation/Foundation.h>
 
 @interface TSCollectViewModel : NSObject
+@property (nonatomic, strong) NSMutableArray *dataArray;
 
 @end
