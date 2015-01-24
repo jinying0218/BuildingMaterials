@@ -12,8 +12,10 @@
 #import "TSCollectModel.h"
 
 #import "TSGoodsCollectTableViewCell.h"
+#import "TSShopCollectTableViewCell.h"
 
 static NSString *const GoodsCollectTableViewCellIdentifier = @"GoodsCollectTableViewCellIdentifier";
+static NSString *const ShopCollectTableViewCellIdentifier = @"ShopCollectTableViewCellIdentifier";
 
 @interface TSCollectViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) TSCollectViewModel *viewModel;
@@ -56,7 +58,7 @@ static NSString *const GoodsCollectTableViewCellIdentifier = @"GoodsCollectTable
             for (NSDictionary *dict in result[@"goods2"]) {
                 TSCollectModel *model = [[TSCollectModel alloc]init];
                 [model setValueWithDict:dict];
-                [self.viewModel.dataArray addObject:model];
+                [self.viewModel.goodsDataArray addObject:model];
             }
             [self.tableView reloadData];
         }
@@ -74,6 +76,7 @@ static NSString *const GoodsCollectTableViewCellIdentifier = @"GoodsCollectTable
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
 }
 - (void)blindViewModel{
 }
@@ -104,64 +107,66 @@ static NSString *const GoodsCollectTableViewCellIdentifier = @"GoodsCollectTable
     return 70;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.viewModel.dataArray.count;
+    if (self.viewModel.isGoodsCollect) {
+        return self.viewModel.goodsDataArray.count;
+    }else {
+        return self.viewModel.goodsDataArray.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (self.viewModel.isGoodsCollect) {
         TSGoodsCollectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:GoodsCollectTableViewCellIdentifier];
         if (!cell) {
-            if (cell == nil) {
-                cell = [[[NSBundle mainBundle] loadNibNamed:@"TSGoodsCollectTableViewCell" owner:nil options:nil]lastObject];
-            }
-            
-            TSCollectModel *model = self.viewModel.dataArray[indexPath.row];
-            [cell configureGoodsCollectCell:model];
-            return cell;
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"TSGoodsCollectTableViewCell" owner:nil options:nil]lastObject];
+            UIView *backView = [[UIView alloc] init];
+            backView.backgroundColor = [UIColor colorWithHexString:@"1ca6df"];
+            cell.selectedBackgroundView = backView;
         }
-        //    TSAddressModel *model = self.viewModel.addressArray[indexPath.row];
-        //    cell.textLabel.text = model.addressMain;
+        
+        TSCollectModel *model = self.viewModel.goodsDataArray[indexPath.row];
+        [cell configureGoodsCollectCell:model];
+
         return cell;
 
     }else {
-        TSGoodsCollectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:GoodsCollectTableViewCellIdentifier];
+        TSShopCollectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ShopCollectTableViewCellIdentifier];
         if (!cell) {
-            if (cell == nil) {
-                cell = [[[NSBundle mainBundle] loadNibNamed:@"TSInviteCell" owner:nil options:nil]lastObject];
-            }
-            
-//            TSInviteModel *model = self.viewModel.dataArray[indexPath.row];
-//            [cell configureCellWithModel:model];
-            return cell;
-            
-            
+            cell = [[[NSBundle mainBundle] loadNibNamed:@"TSShopCollectTableViewCell" owner:nil options:nil]lastObject];
+            UIView *backView = [[UIView alloc] init];
+            backView.backgroundColor = [UIColor colorWithHexString:@"1ca6df"];
+            cell.selectedBackgroundView = backView;
         }
-        //    TSAddressModel *model = self.viewModel.addressArray[indexPath.row];
-        //    cell.textLabel.text = model.addressMain;
+        TSCollectModel *model = self.viewModel.goodsDataArray[indexPath.row];
+        [cell configureShopCell:model];
         return cell;
     }
 }
 #pragma mark - tableview  delegate
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        //        TSAddressModel *model = self.viewModel.addressArray[indexPath.row];
-        NSDictionary *params = @{@"addressId" : @"",
-                                 @"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId]};
-        [TSHttpTool getWithUrl:AddressDelete_URL params:params withCache:NO success:^(id result) {
-            if ([result[@"success"] intValue] == 1) {
-                NSLog(@"删除地址：%@",result);
-                [UIView animateWithDuration:0.25 animations:^{
-                } completion:^(BOOL finished) {
-                    if (finished) {
-                        [self.viewModel.dataArray removeObjectAtIndex:indexPath.row];
-                        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
-                    }
-                }];
-            }
-        } failure:^(NSError *error) {
+        TSCollectModel *model = self.viewModel.goodsDataArray[indexPath.row];
+        if (self.viewModel.isGoodsCollect) {
+            NSDictionary *params = @{@"id" : [NSString stringWithFormat:@"%d",model.c_id]};
+            //        @"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId]
+            [TSHttpTool getWithUrl:CollectDelete_URL params:params withCache:NO success:^(id result) {
+                if ([result[@"success"] intValue] == 1) {
+                    NSLog(@"删除地址：%@",result);
+                    [UIView animateWithDuration:0.25 animations:^{
+                    } completion:^(BOOL finished) {
+                        if (finished) {
+                            [self.viewModel.goodsDataArray removeObjectAtIndex:indexPath.row];
+                            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
+                        }
+                    }];
+                }
+            } failure:^(NSError *error) {
+                NSLog(@"删除地址：%@",error);
+            } ];
+        }else {
             
-        } ];
-    }
+        }
+     }
 }
 
 @end
