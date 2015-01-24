@@ -9,8 +9,11 @@
 #import "TSCollectViewController.h"
 #import "TSCollectViewModel.h"
 #import "TSUserModel.h"
+#import "TSCollectModel.h"
 
-static NSString *const CollectTableViewCellIdentifier = @"CollectTableViewCellIdentifier";
+#import "TSGoodsCollectTableViewCell.h"
+
+static NSString *const GoodsCollectTableViewCellIdentifier = @"GoodsCollectTableViewCellIdentifier";
 
 @interface TSCollectViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) TSCollectViewModel *viewModel;
@@ -35,6 +38,7 @@ static NSString *const CollectTableViewCellIdentifier = @"CollectTableViewCellId
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tabBarController.tabBar.hidden =  YES;
+    self.userModel = [TSUserModel getCurrentLoginUser];
     [self initializeData];
     [self setupUI];
     [self blindActionHandler];
@@ -45,12 +49,28 @@ static NSString *const CollectTableViewCellIdentifier = @"CollectTableViewCellId
     // Dispose of any resources that can be recreated.
 }
 - (void)initializeData{
+    NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId]};
+    [TSHttpTool getWithUrl:Collect_URL params:params withCache:NO success:^(id result) {
+        NSLog(@"收藏列表:%@",result);
+        if ([result[@"success"] intValue] == 1) {
+            for (NSDictionary *dict in result[@"goods2"]) {
+                TSCollectModel *model = [[TSCollectModel alloc]init];
+                [model setValueWithDict:dict];
+                [self.viewModel.dataArray addObject:model];
+            }
+            [self.tableView reloadData];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"收藏列表:%@",error);
+    }];
 }
 #pragma mark - set up UI
 - (void)setupUI{
     [self createNavigationBarTitle:@"我的收藏" leftButtonImageName:@"Previous" rightButtonImageName:nil];
     self.navigationBar.frame = CGRectMake( 0, STATUS_BAR_HEGHT, KscreenW, 44);
     [self.view addSubview:self.navigationBar];
+    
+    self.goodsCollectButton.backgroundColor = [UIColor colorWithHexString:@"f4f4f4"];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -59,31 +79,67 @@ static NSString *const CollectTableViewCellIdentifier = @"CollectTableViewCellId
 }
 
 - (void)blindActionHandler{
+    @weakify(self);
+    [self.goodsCollectButton bk_addEventHandler:^(id sender) {
+        @strongify(self);
+        self.selectLine.frame = CGRectMake( 0, 28, KscreenW/2, 2);
+        self.goodsCollectButton.backgroundColor = [UIColor colorWithHexString:@"f4f4f4"];
+        self.shopCollectButton.backgroundColor = [UIColor whiteColor];
+        self.viewModel.isGoodsCollect = YES;
+        [self.tableView reloadData];
+    } forControlEvents:UIControlEventTouchUpInside];
+
+    [self.shopCollectButton bk_addEventHandler:^(id sender) {
+        @strongify(self);
+        self.selectLine.frame = CGRectMake( KscreenW/2, 28, KscreenW/2, 2);
+        self.shopCollectButton.backgroundColor = [UIColor colorWithHexString:@"f4f4f4"];
+        self.goodsCollectButton.backgroundColor = [UIColor whiteColor];
+        self.viewModel.isGoodsCollect = NO;
+        [self.tableView reloadData];
+    } forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - dataSource method
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 50;
+    return 70;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.viewModel.dataArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CollectTableViewCellIdentifier];
-    if (!cell) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CollectTableViewCellIdentifier];
-        cell.textLabel.font = [UIFont systemFontOfSize:14];
-        cell.textLabel.numberOfLines = 0;
-        UILabel *line = [[UILabel alloc] initWithFrame:CGRectMake( 0, tableView.rowHeight - 1, KscreenW, 1)];
-        line.backgroundColor = [UIColor lightGrayColor];
-        [cell.contentView addSubview:line];
-        
-        
+    if (self.viewModel.isGoodsCollect) {
+        TSGoodsCollectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:GoodsCollectTableViewCellIdentifier];
+        if (!cell) {
+            if (cell == nil) {
+                cell = [[[NSBundle mainBundle] loadNibNamed:@"TSGoodsCollectTableViewCell" owner:nil options:nil]lastObject];
+            }
+            
+            TSCollectModel *model = self.viewModel.dataArray[indexPath.row];
+            [cell configureGoodsCollectCell:model];
+            return cell;
+        }
+        //    TSAddressModel *model = self.viewModel.addressArray[indexPath.row];
+        //    cell.textLabel.text = model.addressMain;
+        return cell;
+
+    }else {
+        TSGoodsCollectTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:GoodsCollectTableViewCellIdentifier];
+        if (!cell) {
+            if (cell == nil) {
+                cell = [[[NSBundle mainBundle] loadNibNamed:@"TSInviteCell" owner:nil options:nil]lastObject];
+            }
+            
+//            TSInviteModel *model = self.viewModel.dataArray[indexPath.row];
+//            [cell configureCellWithModel:model];
+            return cell;
+            
+            
+        }
+        //    TSAddressModel *model = self.viewModel.addressArray[indexPath.row];
+        //    cell.textLabel.text = model.addressMain;
+        return cell;
     }
-    //    TSAddressModel *model = self.viewModel.addressArray[indexPath.row];
-    //    cell.textLabel.text = model.addressMain;
-    return cell;
 }
 #pragma mark - tableview  delegate
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{

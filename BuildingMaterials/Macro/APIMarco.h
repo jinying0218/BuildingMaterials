@@ -104,4 +104,10 @@
 #define AddressSave_URL Domain"/addressSave"
 
 
+//  我的收藏
+#define Collect_URL Domain"/collectionLoad"
+//删除我的收藏
+#define CollectDelete_URL Domain "/collectionDelete"
+
+
 #endif

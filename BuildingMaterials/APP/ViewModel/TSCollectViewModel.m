@@ -14,6 +14,7 @@
     self = [super init];
     if (self) {
         _dataArray = [[NSMutableArray alloc] initWithCapacity:0];
+        _isGoodsCollect = YES;
     }
     return self;
 }

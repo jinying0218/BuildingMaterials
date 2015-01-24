@@ -10,5 +10,5 @@
 
 @interface TSCollectViewModel : NSObject
 @property (nonatomic, strong) NSMutableArray *dataArray;
-
+@property (nonatomic, assign) BOOL isGoodsCollect;
 @end
