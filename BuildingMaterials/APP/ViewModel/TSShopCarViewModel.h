@@ -7,8 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TSShopCarMoneyModel.h"
 
 @interface TSShopCarViewModel : NSObject
-@property (nonatomic, strong) NSMutableArray *dataArray;
-
+//@property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *subviewModels;
+@property (nonatomic, strong) TSShopCarMoneyModel *shopCarMoney;
+@property (nonatomic, assign) float shopCarGoodsMoney;
 @end

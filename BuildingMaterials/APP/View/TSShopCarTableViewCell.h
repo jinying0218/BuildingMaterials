@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-@class TSShopCarModel;
+#import "TSShopCarCellSubviewModel.h"
+
+//@class TSShopCarModel;
 
 @interface TSShopCarTableViewCell : UITableViewCell
+@property (nonatomic, strong) TSShopCarCellSubviewModel *subviewModel;
 @property (weak, nonatomic) IBOutlet UIImageView *goodsImage;
 @property (weak, nonatomic) IBOutlet UILabel *goodsName;
 @property (weak, nonatomic) IBOutlet UILabel *goodsPrice;
@@ -18,5 +21,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *plusButton;
 @property (weak, nonatomic) IBOutlet UIButton *minutsButton;
 
-- (void)configureCell:(TSShopCarModel *)model;
+//- (void)configureCell:(TSShopCarModel *)model;
+- (void)attachViewModel:(TSShopCarCellSubviewModel *)subviewModel;
 @end

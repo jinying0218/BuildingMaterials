@@ -112,6 +112,10 @@
 
 //购物车
 #define GoodsCarLoad_URL Domain"/goodsCarLoad"
+//加入购物车
+#define ShopCarAdd_URL Domain"/carAdd"
+
+
 //购物车商品删除
 #define GoodsCarDeleteURL Domain"/goodsCarDelete"
 

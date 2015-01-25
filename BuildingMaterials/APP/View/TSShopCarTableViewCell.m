@@ -24,9 +24,69 @@
 - (void)configureCell:(TSShopCarModel *)model{
     [self.goodsImage sd_setImageWithURL:[NSURL URLWithString:model.goods_head_imageURL] placeholderImage:[UIImage imageNamed:@"not_load"]];
     self.goodsName.text = model.goodsName;
-//    self.goodsCount.text =
     self.goodsPrice.text = [NSString stringWithFormat:@"￥%d",model.goods_price];
     
-    
+    self.goodsCount.text = [NSString stringWithFormat:@"%d",self.subviewModel.goodsCount];
 }
+- (void)attachViewModel:(TSShopCarCellSubviewModel *)subviewModel{
+    self.subviewModel = subviewModel;
+    
+    [self configureCell:subviewModel.shopCarModel];
+    [self blindViewModel];
+    [self blindActionHandler];
+}
+- (void)blindViewModel{
+    [self.KVOController
+     observe:self.subviewModel
+     keyPath:@keypath(self.subviewModel,goodsCount)
+     options:NSKeyValueObservingOptionNew
+     block:^(TSShopCarTableViewCell *observer, TSShopCarCellSubviewModel *object, NSDictionary *change) {
+         if (![change[NSKeyValueChangeNewKey] isEqual:[NSNull null]]) {
+             int goodsCount = [change[NSKeyValueChangeNewKey] intValue];
+             //  修改当前物品的总价钱
+             [object setGoodsTotalMoney:(goodsCount * object.shopCarModel.goods_price)];
+             [observer.goodsCount setText:[NSString stringWithFormat:@"%d",goodsCount]];
+         }
+    }];
+    
+    [self.KVOController
+     observe:self.subviewModel
+     keyPath:@keypath(self.subviewModel,goodsTotalMoney)
+     options:NSKeyValueObservingOptionNew
+     block:^(TSShopCarTableViewCell *observer, TSShopCarCellSubviewModel *object, NSDictionary *change) {
+         if (![change[NSKeyValueChangeNewKey] isEqual:[NSNull null]]) {
+             float currentGoodsTotalMoney = [change[NSKeyValueChangeNewKey] floatValue];
+             //  修改购物车的总价钱
+             float shopCarTotalMoney = currentGoodsTotalMoney;
+             [object.shopCarMoney setMoney:shopCarTotalMoney];
+         }
+     }];
+
+
+}
+- (void)blindActionHandler{
+    @weakify(self);
+    [self.minutsButton bk_addEventHandler:^(id sender) {
+        @strongify(self);
+        if (self.subviewModel.goodsCount > 1) {
+            int goodsCount = self.subviewModel.goodsCount - 1;
+            [self.subviewModel setGoodsCount:goodsCount];
+        }
+    } forControlEvents:UIControlEventTouchUpInside];
+ 
+    [self.plusButton bk_addEventHandler:^(id sender) {
+        @strongify(self);
+        if (self.subviewModel.goodsCount < 20) {
+            int goodsCount = self.subviewModel.goodsCount + 1;
+            [self.subviewModel setGoodsCount:goodsCount];
+        }
+
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.selectButton bk_addEventHandler:^(id sender) {
+        @strongify(self);
+        self.selectButton.selected = !self.selectButton.selected;
+    } forControlEvents:UIControlEventTouchUpInside];
+}
+
 @end

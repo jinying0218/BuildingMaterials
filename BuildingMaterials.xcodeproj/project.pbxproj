@@ -200,6 +200,8 @@
 		B08702DD1A2B7DD0008C8088 /* secondDeal_plus_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = B08702D81A2B7DD0008C8088 /* secondDeal_plus_bg.png */; };
 		B08702DE1A2B7DD0008C8088 /* secondDeal_plus.png in Resources */ = {isa = PBXBuildFile; fileRef = B08702D91A2B7DD0008C8088 /* secondDeal_plus.png */; };
 		B08702E01A2B8108008C8088 /* secondDeal_countBg.png in Resources */ = {isa = PBXBuildFile; fileRef = B08702DF1A2B8108008C8088 /* secondDeal_countBg.png */; };
+		B08C88DF1A74B7D200F7BF81 /* TSShopCarCellSubviewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B08C88DE1A74B7D200F7BF81 /* TSShopCarCellSubviewModel.m */; };
+		B08C88E21A74D5CF00F7BF81 /* TSShopCarMoneyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B08C88E11A74D5CF00F7BF81 /* TSShopCarMoneyModel.m */; };
 		B08DBEBF1A6015EA007A301F /* TSGoodsDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B08DBEBE1A6015EA007A301F /* TSGoodsDetailViewModel.m */; };
 		B08DBEC31A601708007A301F /* TSGoodsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B08DBEC11A601708007A301F /* TSGoodsDetailViewController.m */; };
 		B08DBEC41A601708007A301F /* TSGoodsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B08DBEC21A601708007A301F /* TSGoodsDetailViewController.xib */; };
@@ -586,6 +588,10 @@
 		B08702D81A2B7DD0008C8088 /* secondDeal_plus_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = secondDeal_plus_bg.png; sourceTree = "<group>"; };
 		B08702D91A2B7DD0008C8088 /* secondDeal_plus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = secondDeal_plus.png; sourceTree = "<group>"; };
 		B08702DF1A2B8108008C8088 /* secondDeal_countBg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = secondDeal_countBg.png; sourceTree = "<group>"; };
+		B08C88DD1A74B7D200F7BF81 /* TSShopCarCellSubviewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSShopCarCellSubviewModel.h; sourceTree = "<group>"; };
+		B08C88DE1A74B7D200F7BF81 /* TSShopCarCellSubviewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSShopCarCellSubviewModel.m; sourceTree = "<group>"; };
+		B08C88E01A74D5CF00F7BF81 /* TSShopCarMoneyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSShopCarMoneyModel.h; sourceTree = "<group>"; };
+		B08C88E11A74D5CF00F7BF81 /* TSShopCarMoneyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSShopCarMoneyModel.m; sourceTree = "<group>"; };
 		B08DBEBD1A6015EA007A301F /* TSGoodsDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSGoodsDetailViewModel.h; sourceTree = "<group>"; };
 		B08DBEBE1A6015EA007A301F /* TSGoodsDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSGoodsDetailViewModel.m; sourceTree = "<group>"; };
 		B08DBEC01A601708007A301F /* TSGoodsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSGoodsDetailViewController.h; sourceTree = "<group>"; };
@@ -1043,6 +1049,8 @@
 				B06BF4271A7413A700D999FC /* TSCollectModel.m */,
 				B06BF4361A74309800D999FC /* TSShopCarModel.h */,
 				B06BF4371A74309800D999FC /* TSShopCarModel.m */,
+				B08C88E01A74D5CF00F7BF81 /* TSShopCarMoneyModel.h */,
+				B08C88E11A74D5CF00F7BF81 /* TSShopCarMoneyModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1644,6 +1652,8 @@
 				B06BF4211A73FA2000D999FC /* TSShopCarViewModel.m */,
 				B06BF4231A73FA2D00D999FC /* TSCollectViewModel.h */,
 				B06BF4241A73FA2D00D999FC /* TSCollectViewModel.m */,
+				B08C88DD1A74B7D200F7BF81 /* TSShopCarCellSubviewModel.h */,
+				B08C88DE1A74B7D200F7BF81 /* TSShopCarCellSubviewModel.m */,
 			);
 			name = "我的";
 			sourceTree = "<group>";
@@ -2577,6 +2587,7 @@
 				B0C686CD1A530995002053F1 /* TSFristViewModel.m in Sources */,
 				B0F4770C1A59231E005C851D /* MJRefreshFooterView.m in Sources */,
 				B08DBECF1A603F21007A301F /* TSParametersList.m in Sources */,
+				B08C88DF1A74B7D200F7BF81 /* TSShopCarCellSubviewModel.m in Sources */,
 				B01847E219F89DCC00938054 /* NSString+BSJSONAdditions.m in Sources */,
 				B0C686D91A530AEF002053F1 /* TSMineViewModel.m in Sources */,
 				B0F63C6D1A5799B300A0C754 /* TSShopModel.m in Sources */,
@@ -2672,6 +2683,7 @@
 				B0C686D31A530AD1002053F1 /* TSForumViewModel.m in Sources */,
 				B0F7B87C1A626F9100D3EC95 /* TSReleaseExchangeViewController.m in Sources */,
 				B05115E819F96DD400CA6E2E /* TSMainTabBarViewController.m in Sources */,
+				B08C88E21A74D5CF00F7BF81 /* TSShopCarMoneyModel.m in Sources */,
 				B0F4770A1A59231E005C851D /* MJRefreshBaseView.m in Sources */,
 				B0FEA9BA1A56465B000860FC /* MZTimerLabel.m in Sources */,
 				B05B62E619FE88BC008F76E0 /* TSSecondsDealTableViewCell.m in Sources */,

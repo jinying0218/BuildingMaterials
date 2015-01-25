@@ -11,6 +11,8 @@
 #import "TSUserModel.h"
 #import "TSShopCarModel.h"
 #import "TSShopCarTableViewCell.h"
+#import "TSShopCarCellSubviewModel.h"
+
 
 static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellIdentifier";
 
@@ -39,6 +41,7 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
     self.userModel = [TSUserModel getCurrentLoginUser];
     [self initializeData];
     [self setupUI];
+    [self blindViewModel];
     [self blindActionHandler];
 }
 
@@ -52,14 +55,20 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
     [TSHttpTool getWithUrl:GoodsCarLoad_URL params:params withCache:NO success:^(id result) {
         NSLog(@"购物车:%@",result);
         if ([result[@"success"] intValue] == 1) {
-//            [self.viewModel.addressArray removeAllObjects];
-//            for (NSDictionary *dict in result[@"result"]) {
-//                TSAddressModel *model = [[TSAddressModel alloc] init];
-//                [model setValueWithDict:dict];
-//                [self.viewModel.addressArray addObject:model];
-//            }
-//            [self.tableView reloadData];
-            
+            [self.viewModel.subviewModels removeAllObjects];
+            for (NSDictionary *dict in result[@"result"]) {
+                TSShopCarModel *model = [[TSShopCarModel alloc] init];
+                [model setValueWithDict:dict];
+                TSShopCarCellSubviewModel *subviewModel = [[TSShopCarCellSubviewModel alloc] init];
+                subviewModel.shopCarMoney = self.viewModel.shopCarMoney;
+                subviewModel.goodsCount = model.goods_number;
+                subviewModel.shopCarModel = model;
+                subviewModel.goodsTotalMoney = subviewModel.goodsCount * model.goods_price;
+                [self.viewModel.subviewModels addObject:subviewModel];
+//                [self.viewModel.dataArray addObject:model];
+            }
+            [self.tableView reloadData];
+            [self layoutSubviews];
         }
     } failure:^(NSError *error) {
         NSLog(@"购物车:%@",error);
@@ -74,31 +83,60 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
 }
+
+- (void)layoutSubviews{
+    float goodsTotalMoney = 0;
+    for (TSShopCarCellSubviewModel *oneSubviewModel in self.viewModel.subviewModels) {
+          goodsTotalMoney += oneSubviewModel.goodsTotalMoney;
+    }
+    [self.viewModel.shopCarMoney setMoney:goodsTotalMoney];
+}
 - (void)blindViewModel{
+    [self.KVOController
+     observe:self.viewModel
+     keyPath:@keypath(self.viewModel,shopCarGoodsMoney)
+     options:NSKeyValueObservingOptionNew
+     block:^(TSShopCarViewController *observer, TSShopCarViewModel *object, NSDictionary *change) {
+         if (![change[NSKeyValueChangeNewKey] isEqual:[NSNull null]]) {
+             self.totalMoney.text = [NSString stringWithFormat:@"%.2f",[change[NSKeyValueChangeNewKey] floatValue]];
+         }
+    }];
 }
 
 - (void)blindActionHandler{
+    @weakify(self);
+    [self.selectAllButton bk_addEventHandler:^(id sender) {
+        @strongify(self);
+        self.selectAllButton.selected = !self.selectAllButton.selected;
+    } forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - dataSource method
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 50;
+    return 70;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.viewModel.dataArray.count;
+    return self.viewModel.subviewModels.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     TSShopCarTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ShopCarTableViewCellIdentifier];
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"TSShopCarTableViewCell" owner:nil options:nil]lastObject];
-        UIView *backView = [[UIView alloc] init];
-        backView.backgroundColor = [UIColor colorWithHexString:@"1ca6df"];
-        cell.selectedBackgroundView = backView;
+//        UIView *backView = [[UIView alloc] init];
+//        backView.backgroundColor = [UIColor colorWithHexString:@"1ca6df"];
+//        cell.selectedBackgroundView = backView;
+        cell.goodsCount.layer.borderColor = [UIColor colorWithHexString:@"f4f4f4"].CGColor;
+        cell.goodsCount.layer.borderWidth = 1;
+        cell.minutsButton.layer.borderColor = [UIColor colorWithHexString:@"f4f4f4"].CGColor;
+        cell.minutsButton.layer.borderWidth = 1;
+        cell.plusButton.layer.borderColor = [UIColor colorWithHexString:@"f4f4f4"].CGColor;
+        cell.plusButton.layer.borderWidth = 1;
     }
     
-    TSShopCarModel *model = self.viewModel.dataArray[indexPath.row];
-    
+//    TSShopCarModel *model = self.viewModel.dataArray[indexPath.row];
+    TSShopCarCellSubviewModel *subviewModel = self.viewModel.subviewModels[indexPath.row];
+    [cell attachViewModel:subviewModel];
     return cell;
 }
 #pragma mark - tableview  delegate
@@ -109,11 +147,11 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
                                  @"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId]};
         [TSHttpTool getWithUrl:AddressDelete_URL params:params withCache:NO success:^(id result) {
             if ([result[@"success"] intValue] == 1) {
-                NSLog(@"删除地址：%@",result);
+                NSLog(@"删购物车商品：%@",result);
                 [UIView animateWithDuration:0.25 animations:^{
                 } completion:^(BOOL finished) {
                     if (finished) {
-                        [self.viewModel.dataArray removeObjectAtIndex:indexPath.row];
+                        [self.viewModel.subviewModels removeObjectAtIndex:indexPath.row];
                         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
                     }
                 }];

@@ -53,13 +53,15 @@
 @property (strong, nonatomic) UIButton *plusBtn;
 
 @property (strong, nonatomic) UIImageView *countImageView;
-
+@property (nonatomic, strong) TSUserModel *userModel;
 @end
 
 @implementation TSGoodsDetailViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.userModel = [TSUserModel getCurrentLoginUser];
     [self initializeData];
     [self setupUI];
     self.tabBarController.tabBar.hidden =  YES;
@@ -241,10 +243,9 @@
 
     } forControlEvents:UIControlEventTouchUpInside];
     
-    TSUserModel *userModel = [TSUserModel getCurrentLoginUser];
     [self.collectButton bk_addEventHandler:^(id sender) {
         @strongify(self);
-        NSDictionary *params = @{@"userId" : @(userModel.userId),
+        NSDictionary *params = @{@"userId" : @(self.userModel.userId),
                                  @"collectionType" : @"GOODS",
                                  @"collectionId" : @(self.viewModel.goodsID)};
         [TSHttpTool getWithUrl:GoodsCollection_URL params:params withCache:NO success:^(id result) {
@@ -257,6 +258,23 @@
             }
         } failure:^(NSError *error) {
             NSLog(@"商品收藏:%@",error);
+        }];
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.addShopCarButton bk_addEventHandler:^(id sender) {
+        @strongify(self);
+        NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId],
+                                 @"goodsId" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID],
+                                 @"goodsParameters" : @"",
+                                 @"number" : [NSString stringWithFormat:@"%d",self.viewModel.count]};
+        
+        [TSHttpTool getWithUrl:ShopCarAdd_URL params:params withCache:NO success:^(id result) {
+//            NSLog(@"加入购物车:%@",result);
+            if ([result[@"success"] intValue] == 1) {
+                [self showProgressHUD:@"添加成功" delay:1];
+            }
+        } failure:^(NSError *error) {
+            NSLog(@"加入购物车:%@",error);
         }];
     } forControlEvents:UIControlEventTouchUpInside];
     
