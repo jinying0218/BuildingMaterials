@@ -13,7 +13,6 @@
 {
     self = [super init];
     if (self) {
-//        _goodsCount = 1;
     }
     return self;
 }

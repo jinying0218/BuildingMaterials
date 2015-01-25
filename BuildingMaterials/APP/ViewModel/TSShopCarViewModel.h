@@ -14,4 +14,6 @@
 @property (nonatomic, strong) NSMutableArray *subviewModels;
 @property (nonatomic, strong) TSShopCarMoneyModel *shopCarMoney;
 @property (nonatomic, assign) float shopCarGoodsMoney;
+@property (nonatomic, assign) BOOL allInShopCar;    //用来判断是否有物品从购物车删除
+
 @end

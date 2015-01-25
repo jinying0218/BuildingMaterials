@@ -16,4 +16,5 @@
 @property (nonatomic, assign) float goodsTotalMoney;    //当前物品的总价钱
 @property (nonatomic, strong) TSShopCarMoneyModel *shopCarMoney;    //购物车内商品总价格 即：结算价格
 
+@property (nonatomic, assign) BOOL inShopCar;
 @end

@@ -24,6 +24,7 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
 @property (weak, nonatomic) IBOutlet UILabel *totalMoney;
 @property (weak, nonatomic) IBOutlet UIButton *selectAllButton;
 @property (nonatomic, strong) TSUserModel *userModel;
+
 @end
 
 @implementation TSShopCarViewController
@@ -60,6 +61,7 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
                 TSShopCarModel *model = [[TSShopCarModel alloc] init];
                 [model setValueWithDict:dict];
                 TSShopCarCellSubviewModel *subviewModel = [[TSShopCarCellSubviewModel alloc] init];
+                subviewModel.inShopCar = self.viewModel.allInShopCar;
                 subviewModel.shopCarMoney = self.viewModel.shopCarMoney;
                 subviewModel.goodsCount = model.goods_number;
                 subviewModel.shopCarModel = model;
@@ -87,7 +89,9 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
 - (void)layoutSubviews{
     float goodsTotalMoney = 0;
     for (TSShopCarCellSubviewModel *oneSubviewModel in self.viewModel.subviewModels) {
-          goodsTotalMoney += oneSubviewModel.goodsTotalMoney;
+        if (oneSubviewModel.inShopCar) {
+            goodsTotalMoney += oneSubviewModel.goodsTotalMoney;
+        }
     }
     [self.viewModel.shopCarMoney setMoney:goodsTotalMoney];
 }
@@ -101,6 +105,17 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
              self.totalMoney.text = [NSString stringWithFormat:@"%.2f",[change[NSKeyValueChangeNewKey] floatValue]];
          }
     }];
+    [self.KVOController
+     observe:self.viewModel
+     keyPath:@keypath(self.viewModel,allInShopCar)
+     options:NSKeyValueObservingOptionNew
+     block:^(TSShopCarViewController *observer, TSShopCarViewModel *object, NSDictionary *change) {
+         if (![change[NSKeyValueChangeNewKey] isEqual:[NSNull null]]) {
+             [self layoutSubviews];
+         }
+     }];
+
+
 }
 
 - (void)blindActionHandler{

@@ -15,6 +15,7 @@
     if (self) {
         _subviewModels = [[NSMutableArray alloc] initWithCapacity:0];
         _shopCarMoney = [[TSShopCarMoneyModel alloc] init];
+        _allInShopCar = YES;
         [self blindViewModel];
     }
     return self;
