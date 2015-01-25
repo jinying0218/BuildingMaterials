@@ -53,7 +53,7 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
 - (void)initializeData{
     NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId]};
     [TSHttpTool getWithUrl:GoodsCarLoad_URL params:params withCache:NO success:^(id result) {
-        NSLog(@"购物车:%@",result);
+//        NSLog(@"购物车:%@",result);
         if ([result[@"success"] intValue] == 1) {
             [self.viewModel.subviewModels removeAllObjects];
             for (NSDictionary *dict in result[@"result"]) {
@@ -142,12 +142,12 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
 #pragma mark - tableview  delegate
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        TSAddressModel *model = self.viewModel.addressArray[indexPath.row];
-        NSDictionary *params = @{@"addressId" : @"",
-                                 @"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId]};
-        [TSHttpTool getWithUrl:AddressDelete_URL params:params withCache:NO success:^(id result) {
+        TSShopCarCellSubviewModel *subviewModel = self.viewModel.subviewModels[indexPath.row];
+        
+        NSDictionary *params = @{@"id" : [NSString stringWithFormat:@"%d",subviewModel.shopCarModel.C_ID]};
+        [TSHttpTool getWithUrl:GoodsCarDeleteURL params:params withCache:NO success:^(id result) {
             if ([result[@"success"] intValue] == 1) {
-                NSLog(@"删购物车商品：%@",result);
+//                NSLog(@"删购物车商品：%@",result);
                 [UIView animateWithDuration:0.25 animations:^{
                 } completion:^(BOOL finished) {
                     if (finished) {

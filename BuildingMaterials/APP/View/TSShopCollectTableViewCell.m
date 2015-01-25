@@ -7,7 +7,7 @@
 //
 
 #import "TSShopCollectTableViewCell.h"
-#import "TSCollectModel.h"
+#import "TSCollectionShopModel.h"
 #import <UIImageView+WebCache.h>
 
 @implementation TSShopCollectTableViewCell
@@ -21,11 +21,9 @@
 
     // Configure the view for the selected state
 }
-- (void)configureShopCell:(TSCollectModel *)model{
-    [self.shopImage sd_setImageWithURL:[NSURL URLWithString:model.goods_Head_ImageUrl] placeholderImage:[UIImage imageNamed:@"not_load"]];
-    self.shopName.text = model.goodsName;
-    self.shopDesc.text = model.goods_des_simple;
-    self.price.text = [NSString stringWithFormat:@"%d",model.goods_new_price];
-    
+- (void)configureShopCell:(TSCollectionShopModel *)model{
+    [self.shopImage sd_setImageWithURL:[NSURL URLWithString:model.collectionCompanyImageURL] placeholderImage:[UIImage imageNamed:@"not_load"]];
+    self.shopName.text = model.collectionCompanyName;
+    self.shopDesc.text = model.collectionCompanyDes;
 }
 @end

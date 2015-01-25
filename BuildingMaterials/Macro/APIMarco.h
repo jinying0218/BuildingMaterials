@@ -48,8 +48,6 @@
 #define GoodsParameters_URL Domain"/goodsParametersLoadById"
 //商品评论
 #define GoodsComment_URL Domain"/goodsCommentLoadById"
-//商品收藏
-#define GoodsCollection_URL Domain"/collection"
 
 //////////  换物
 //首页换物加载
@@ -105,17 +103,16 @@
 
 
 //  我的收藏
-#define Collect_URL Domain"/collectionLoad"
+#define CollectLoad_URL Domain"/collectionLoad"
 //删除我的收藏
 #define CollectDelete_URL Domain "/collectionDelete"
-
+//收藏商家  . 商品   collectionType GOODS   COMPANY
+#define Collection_URL Domain"/collection"
 
 //购物车
 #define GoodsCarLoad_URL Domain"/goodsCarLoad"
 //加入购物车
 #define ShopCarAdd_URL Domain"/carAdd"
-
-
 //购物车商品删除
 #define GoodsCarDeleteURL Domain"/goodsCarDelete"
 

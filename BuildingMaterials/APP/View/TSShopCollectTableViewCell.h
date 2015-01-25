@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-@class TSCollectModel;
+@class TSCollectionShopModel;
 
 @interface TSShopCollectTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *shopImage;
@@ -15,5 +15,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *shopDesc;
 @property (weak, nonatomic) IBOutlet UILabel *price;
 
-- (void)configureShopCell:(TSCollectModel *)model;
+- (void)configureShopCell:(TSCollectionShopModel *)model;
 @end
