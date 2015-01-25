@@ -7,7 +7,7 @@
 //
 
 #import "TSGoodsCollectTableViewCell.h"
-#import "TSCollectModel.h"
+#import "TSCollectGoodsModel.h"
 #import <UIImageView+WebCache.h>
 
 @implementation TSGoodsCollectTableViewCell
@@ -21,7 +21,7 @@
 
     // Configure the view for the selected state
 }
-- (void)configureGoodsCollectCell:(TSCollectModel *)model{
+- (void)configureGoodsCollectCell:(TSCollectGoodsModel *)model{
     self.goodsDes.text = model.goods_des_simple;
     self.goodsName.text =model.goodsName;
     [self.goodsImage sd_setImageWithURL:[NSURL URLWithString:model.goods_Head_ImageUrl] placeholderImage:[UIImage imageNamed:@"not_load"]];

@@ -9,7 +9,8 @@
 #import "TSCollectViewController.h"
 #import "TSCollectViewModel.h"
 #import "TSUserModel.h"
-#import "TSCollectModel.h"
+#import "TSCollectGoodsModel.h"
+#import "TSCollectionShopModel.h"
 
 #import "TSGoodsCollectTableViewCell.h"
 #import "TSShopCollectTableViewCell.h"
@@ -52,13 +53,18 @@ static NSString *const ShopCollectTableViewCellIdentifier = @"ShopCollectTableVi
 }
 - (void)initializeData{
     NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId]};
-    [TSHttpTool getWithUrl:Collect_URL params:params withCache:NO success:^(id result) {
+    [TSHttpTool getWithUrl:CollectLoad_URL params:params withCache:NO success:^(id result) {
         NSLog(@"收藏列表:%@",result);
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *dict in result[@"goods2"]) {
-                TSCollectModel *model = [[TSCollectModel alloc]init];
+                TSCollectGoodsModel *model = [[TSCollectGoodsModel alloc]init];
                 [model setValueWithDict:dict];
                 [self.viewModel.goodsDataArray addObject:model];
+            }
+            for (NSDictionary *dict in result[@"company"]) {
+                TSCollectionShopModel *model = [[TSCollectionShopModel alloc] init];
+                [model setValueWithDict:dict];
+                [self.viewModel.shopDataArray addObject:model];
             }
             [self.tableView reloadData];
         }
@@ -110,7 +116,7 @@ static NSString *const ShopCollectTableViewCellIdentifier = @"ShopCollectTableVi
     if (self.viewModel.isGoodsCollect) {
         return self.viewModel.goodsDataArray.count;
     }else {
-        return self.viewModel.goodsDataArray.count;
+        return self.viewModel.shopDataArray.count;
     }
 }
 
@@ -124,7 +130,7 @@ static NSString *const ShopCollectTableViewCellIdentifier = @"ShopCollectTableVi
             cell.selectedBackgroundView = backView;
         }
         
-        TSCollectModel *model = self.viewModel.goodsDataArray[indexPath.row];
+        TSCollectGoodsModel *model = self.viewModel.goodsDataArray[indexPath.row];
         [cell configureGoodsCollectCell:model];
 
         return cell;
@@ -137,7 +143,7 @@ static NSString *const ShopCollectTableViewCellIdentifier = @"ShopCollectTableVi
             backView.backgroundColor = [UIColor colorWithHexString:@"1ca6df"];
             cell.selectedBackgroundView = backView;
         }
-        TSCollectModel *model = self.viewModel.goodsDataArray[indexPath.row];
+        TSCollectionShopModel *model = self.viewModel.shopDataArray[indexPath.row];
         [cell configureShopCell:model];
         return cell;
     }
@@ -145,27 +151,32 @@ static NSString *const ShopCollectTableViewCellIdentifier = @"ShopCollectTableVi
 #pragma mark - tableview  delegate
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        TSCollectModel *model = self.viewModel.goodsDataArray[indexPath.row];
+        NSDictionary *params;
         if (self.viewModel.isGoodsCollect) {
-            NSDictionary *params = @{@"id" : [NSString stringWithFormat:@"%d",model.c_id]};
-            //        @"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId]
-            [TSHttpTool getWithUrl:CollectDelete_URL params:params withCache:NO success:^(id result) {
-                if ([result[@"success"] intValue] == 1) {
-                    NSLog(@"删除地址：%@",result);
-                    [UIView animateWithDuration:0.25 animations:^{
-                    } completion:^(BOOL finished) {
-                        if (finished) {
-                            [self.viewModel.goodsDataArray removeObjectAtIndex:indexPath.row];
-                            [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
-                        }
-                    }];
-                }
-            } failure:^(NSError *error) {
-                NSLog(@"删除地址：%@",error);
-            } ];
+            TSCollectGoodsModel *model = self.viewModel.goodsDataArray[indexPath.row];
+            params = @{@"id" : [NSString stringWithFormat:@"%d",model.c_id]};
         }else {
-            
+            TSCollectionShopModel *model = self.viewModel.shopDataArray[indexPath.row];
+            params = @{@"id" : [NSString stringWithFormat:@"%d",model.C_ID]};
         }
+        [TSHttpTool getWithUrl:CollectDelete_URL params:params withCache:NO success:^(id result) {
+            if ([result[@"success"] intValue] == 1) {
+                NSLog(@"删除收藏：%@",result);
+                [UIView animateWithDuration:0.25 animations:^{
+                } completion:^(BOOL finished) {
+                    if (finished) {
+                        if (self.viewModel.isGoodsCollect) {
+                            [self.viewModel.goodsDataArray removeObjectAtIndex:indexPath.row];
+                        }else {
+                            [self.viewModel.shopDataArray removeObjectAtIndex:indexPath.row];
+                        }
+                        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
+                    }
+                }];
+            }
+        } failure:^(NSError *error) {
+            NSLog(@"删除收藏：%@",error);
+        } ];
      }
 }
 

@@ -17,6 +17,7 @@
 
 #import "TSGoodsDetailViewController.h"
 #import "TSGoodsDetailViewModel.h"
+#import "TSUserModel.h"
 
 static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailCollectionHeaderIdentifier";
 
@@ -31,7 +32,7 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
 @property (weak, nonatomic) IBOutlet UIButton *allGoodsButton;
 @property (weak, nonatomic) IBOutlet UILabel *contactName;
 @property (weak, nonatomic) IBOutlet UILabel *contactTelNumber;
-
+@property (nonatomic, strong) TSUserModel *userModel;
 @end
 
 @implementation TSShopDetailViewController
@@ -40,6 +41,7 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
     self = [super init];
     if (self) {
         self.viewModel = viewModel;
+        self.userModel = [TSUserModel getCurrentLoginUser];
     }
     return self;
 }
@@ -73,6 +75,25 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
         TSShopGoodsViewController *shopGoodsVC = [[TSShopGoodsViewController alloc] init];
         shopGoodsVC.viewModel = viewModel;
         [self.navigationController pushViewController:shopGoodsVC animated:YES];
+
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.naviRightBtn bk_addEventHandler:^(id sender) {
+        @strongify(self);
+        NSDictionary *params = @{@"userId" : @(self.userModel.userId),
+                                 @"collectionType" : @"COMPANY",
+                                 @"collectionId" : @(self.viewModel.companyID)};
+        [TSHttpTool getWithUrl:Collection_URL params:params withCache:NO success:^(id result) {
+            if ([result[@"success"] intValue] == 1) {
+                [self showProgressHUD:@"收藏成功" delay:1];
+            }else if ([result[@"errorMsg"] isEqualToString:@"have_collection"]) {
+                [self showProgressHUD:@"该商家已经收藏了" delay:1];
+            }else {
+                [self showProgressHUD:@"收藏失败" delay:1];
+            }
+        } failure:^(NSError *error) {
+            NSLog(@"商品收藏:%@",error);
+        }];
 
     } forControlEvents:UIControlEventTouchUpInside];
 }
@@ -117,9 +138,10 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
 - (void)setupUI{
     
     [self creatRootView];
-    [self createNavigationBarTitle:@"商家详情" leftButtonImageName:@"Previous" rightButtonImageName:nil];
+    [self createNavigationBarTitle:@"商家详情" leftButtonImageName:@"Previous" rightButtonImageName:@"navigaoinbar_shopDetail"];
+    [self.navigationBar addSubview:self.naviRightBtn];
     [self.rootView addSubview:self.navigationBar];
-    
+
     // 1.创建流水布局
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     // 2.设置每个格子的尺寸

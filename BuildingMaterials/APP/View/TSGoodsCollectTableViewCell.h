@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-@class TSCollectModel;
+@class TSCollectGoodsModel;
 @interface TSGoodsCollectTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *goodsImage;
 @property (weak, nonatomic) IBOutlet UILabel *goodsName;
 @property (weak, nonatomic) IBOutlet UILabel *goodsDes;
-- (void)configureGoodsCollectCell:(TSCollectModel *)model;
+- (void)configureGoodsCollectCell:(TSCollectGoodsModel *)model;
 @end

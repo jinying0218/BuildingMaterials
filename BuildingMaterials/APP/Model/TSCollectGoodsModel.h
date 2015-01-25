@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface TSCollectModel : NSObject
+@interface TSCollectGoodsModel : NSObject
 @property (nonatomic, assign) int collectiong_id;
 @property (nonatomic, assign) int c_id;
 @property (nonatomic, assign) int goods_classify_id;

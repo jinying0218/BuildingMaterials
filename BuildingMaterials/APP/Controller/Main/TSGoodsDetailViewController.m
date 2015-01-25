@@ -248,7 +248,7 @@
         NSDictionary *params = @{@"userId" : @(self.userModel.userId),
                                  @"collectionType" : @"GOODS",
                                  @"collectionId" : @(self.viewModel.goodsID)};
-        [TSHttpTool getWithUrl:GoodsCollection_URL params:params withCache:NO success:^(id result) {
+        [TSHttpTool getWithUrl:Collection_URL params:params withCache:NO success:^(id result) {
             if ([result[@"success"] intValue] == 1) {
                 [self showProgressHUD:@"收藏成功" delay:1];
             }else if ([result[@"errorMsg"] isEqualToString:@"have_collection"]) {

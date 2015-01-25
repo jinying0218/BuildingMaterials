@@ -88,17 +88,10 @@
         
     }
     if (rightImage != nil) {
-        UIButton *rightBtn  = [UIButton buttonWithType:UIButtonTypeCustom];
-        rightBtn.frame = CGRectMake( KscreenW - 36, 9, 24, 25);
-        [rightBtn setImage:[UIImage imageNamedString:rightImage] forState:UIControlStateNormal];
-        [rightBtn setImage:[UIImage imageNamedString:[NSString stringWithFormat:@"%@_highlighted",rightBtn]] forState:UIControlStateHighlighted];
-
-//        if ([rightImage isEqualToString:@"redbook_btn"]) {
-//            [rightBtn setImage:[UIImage imageNamedString:rightImage] forState:UIControlStateNormal];
-//            [rightBtn setImage:[UIImage imageNamedString:[NSString stringWithFormat:@"%@_highlighted",rightBtn]] forState:UIControlStateHighlighted];
-//        }
-        [rightBtn addTarget:self action:@selector(rightButtonOnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.navigationBar addSubview:rightBtn];
+        self.naviRightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.naviRightBtn.frame = CGRectMake( KscreenW - 43, 9, 30, 25);
+        [self.naviRightBtn setImage:[UIImage imageNamedString:rightImage] forState:UIControlStateNormal];
+        [self.naviRightBtn setImage:[UIImage imageNamedString:[NSString stringWithFormat:@"%@_selected",self.naviRightBtn]] forState:UIControlStateHighlighted];
     }
     
     UILabel *titleLabel = [[UILabel alloc] init];
@@ -117,10 +110,6 @@
 - (void)leftButtonClick:(UIButton *)button
 {
     [self.navigationController popViewControllerAnimated:YES];
-    
-}
-- (void)rightButtonOnClick:(UIButton *)button
-{
     
 }
 

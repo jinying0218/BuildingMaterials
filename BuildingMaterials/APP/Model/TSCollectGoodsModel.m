@@ -6,9 +6,9 @@
 //  Copyright (c) 2015年 Ariel. All rights reserved.
 //
 
-#import "TSCollectModel.h"
+#import "TSCollectGoodsModel.h"
 
-@implementation TSCollectModel
+@implementation TSCollectGoodsModel
 - (void)setValueWithDict:(NSDictionary *)dict{
     self.collectiong_id = [[self objectOrNilForKey:@"COLLECTION_ID" fromDictionary:dict] intValue];
     self.c_id = [[self objectOrNilForKey:@"C_ID" fromDictionary:dict] intValue];
