@@ -8,6 +8,7 @@
 
 #import "TSSecondsDealDetailTableViewCell.h"
 #import "TSSecKillModel.h"
+#import <UIImageView+WebCache.h>
 
 @implementation TSSecondsDealDetailTableViewCell
 
@@ -26,6 +27,6 @@
     self.oldPrice.strikeThroughEnabled = YES;
     self.seckillPrice.text = [NSString stringWithFormat:@"%d",model.SECKILL_PRICE];
     self.seckillNumber.text = [NSString stringWithFormat:@"剩余%d",model.SECKILL_NUMBER_NOW];
-    
+    [self.goodsImage sd_setImageWithURL:[NSURL URLWithString:model.GOODS_HEAD_IMAGE] placeholderImage:[UIImage imageNamed:@"not_load"]];
 }
 @end

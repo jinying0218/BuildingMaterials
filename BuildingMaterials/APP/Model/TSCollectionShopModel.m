@@ -13,8 +13,8 @@
     self.collectionId = [[self objectOrNilForKey:@"COLLECTION_ID" fromDictionary:dict] intValue];
     self.C_ID = [[self objectOrNilForKey:@"C_ID" fromDictionary:dict] intValue];
     self.collectionCompanyDes = [self objectOrNilForKey:@"COMPANY_DES" fromDictionary:dict];
-    self.collectionCompanyImageURL = [self objectOrNilForKey:@"COMPANY_DES" fromDictionary:dict];
-    self.collectionCompanyName = [self objectOrNilForKey:@"COMPANY_DES" fromDictionary:dict];
+    self.collectionCompanyImageURL = [self objectOrNilForKey:@"COMPANY_IMAGE_URL" fromDictionary:dict];
+    self.collectionCompanyName = [self objectOrNilForKey:@"COMPANY_NAME" fromDictionary:dict];
 
 }
 #pragma mark - Helper Method

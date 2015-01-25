@@ -80,6 +80,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="discountPercent" destination="tsv-Ig-CBL" id="OCo-Kb-73S"/>
+                <outlet property="goodsImage" destination="LHI-0Q-AIN" id="YdC-Vl-UwA"/>
                 <outlet property="goodsName" destination="YXu-w1-NmO" id="oCL-fj-v3B"/>
                 <outlet property="oldPrice" destination="dV6-0B-mrC" id="JP1-6Z-sSE"/>
                 <outlet property="seckillNumber" destination="NXV-YT-r1V" id="6ro-Ag-Bby"/>
