@@ -52,12 +52,13 @@
     [self.KVOController
      observe:self.subviewModel
      keyPath:@keypath(self.subviewModel,goodsTotalMoney)
-     options:NSKeyValueObservingOptionNew
+     options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
      block:^(TSShopCarTableViewCell *observer, TSShopCarCellSubviewModel *object, NSDictionary *change) {
          if (![change[NSKeyValueChangeNewKey] isEqual:[NSNull null]]) {
+             float oldGoodsTotalMoney = [change[NSKeyValueChangeOldKey] floatValue];
              float currentGoodsTotalMoney = [change[NSKeyValueChangeNewKey] floatValue];
              //  修改购物车的总价钱
-             float shopCarTotalMoney = currentGoodsTotalMoney;
+             float shopCarTotalMoney = object.shopCarMoney.money - oldGoodsTotalMoney + currentGoodsTotalMoney;
              [object.shopCarMoney setMoney:shopCarTotalMoney];
          }
      }];
