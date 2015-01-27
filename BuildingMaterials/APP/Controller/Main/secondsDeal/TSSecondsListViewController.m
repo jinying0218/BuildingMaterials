@@ -57,7 +57,7 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
 - (void)initializeData{
     //秒杀
     [TSHttpTool getWithUrl:Frist_SecKillLoad_URL params:nil withCache:NO success:^(id result) {
-//                NSLog(@"秒杀列表:%@",result);
+                NSLog(@"秒杀列表:%@",result);
         if ([result[@"success"] intValue] == 1) {
             NSArray *goods_result = result[@"goods_result"];
             for (NSDictionary *oneGoodsResult in goods_result) {
@@ -119,7 +119,7 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
 }
 
 - (void)layoutSubviews{
-    @weakify(self);
+//    @weakify(self);
     [self.endDateView setWithEndTime:self.viewModel.endDate];
 }
 #pragma mark - tableView delegateMethod
