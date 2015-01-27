@@ -13,6 +13,11 @@
 #import "TSAddressViewController.h"
 #import "TSAddressViewModel.h"
 
+#import "TSCollectViewController.h"
+#import "TSCollectViewModel.h"
+#import "TSShopCarViewController.h"
+#import "TSShopCarViewModel.h"
+
 @interface TSMineViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *iConArray;
@@ -108,7 +113,11 @@
     [shopCarBtn setImage:[UIImage imageNamedString:@"mine_shopBag"] forState:UIControlStateNormal];
     [shopCarBtn setImageEdgeInsets:UIEdgeInsetsMake( 15, 50, 15, 50)];
     [shopCarBtn bk_addEventHandler:^(id sender) {
-        NSLog(@"购物车");
+        
+        TSShopCarViewModel *viewModel = [[TSShopCarViewModel alloc] init];
+        TSShopCarViewController *shopCarVC = [[TSShopCarViewController alloc] initWithViewModel:viewModel];
+        [self.navigationController pushViewController:shopCarVC animated:YES];
+        
     } forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:shopCarBtn];
     
@@ -117,7 +126,10 @@
     [collectionBtn setImage:[UIImage imageNamedString:@"mine_collection"] forState:UIControlStateNormal];
     [collectionBtn setImageEdgeInsets:UIEdgeInsetsMake( 15, 60, 15, 60)];
     [collectionBtn bk_addEventHandler:^(id sender) {
-        NSLog(@"收藏");
+        TSCollectViewModel *viewModel = [[TSCollectViewModel alloc] init];
+        TSCollectViewController *collectVC = [[TSCollectViewController alloc] initWithViewModel:viewModel];
+        [self.navigationController pushViewController:collectVC animated:YES];
+        
     } forControlEvents:UIControlEventTouchUpInside];
     [headerView addSubview:collectionBtn];
 

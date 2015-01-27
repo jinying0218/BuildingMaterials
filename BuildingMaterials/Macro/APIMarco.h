@@ -25,7 +25,7 @@
 //首页秒杀加载
 #define Frist_SecKillLoad_URL Domain"/appSeckillLoad"
 
-
+//////////  商家
 //首页商家加载
 #define First_CompanyLoad_URL Domain"/appCompanyLoad"
 //商家列表
@@ -35,7 +35,7 @@
 //商家商品加载
 #define CompanyGoodsLoad_URL Domain"/goodsLoadByCompanyId"
 
-
+//////////  商品相关
 //首页商品加载
 #define First_GoodsLoad_URL Domain"/appGoodsLoad"
 //商品列表
@@ -48,9 +48,8 @@
 #define GoodsParameters_URL Domain"/goodsParametersLoadById"
 //商品评论
 #define GoodsComment_URL Domain"/goodsCommentLoadById"
-//商品收藏
-#define GoodsCollection_URL Domain"/collection"
 
+//////////  换物
 //首页换物加载
 #define First_Exchange_URL Domain"/appExchangeLoad"
 //以物换物列表
@@ -64,13 +63,25 @@
 //换物上传照片
 #define ImageUpload_URL Domain"/ImageUpload"
 
+//////////   分类
 //分类
 #define Category_URL Domain"/goodsClassifyLoad"
 
+//////////  论坛
 //论坛
 #define Forum_URL Domain"/forumClassifyLoad"
+//论坛类别
+#define ForumClassifyLoad_URL Domain"/forumLoad"
+//帖子详情
+#define ForumLoadById_URL Domain"/forumLoadById"
+//帖子回复
+#define ForumComment_URL Domain"/forumCommentLoadById"
+//发表回复
+#define CommentPost_URL Domain "/forumComment"
 
 
+
+//////////  招聘
 //招聘
 #define Invite_URL Domain"/postLoad"
 //招聘类别
@@ -82,6 +93,7 @@
 //岗位申请
 #define Invite_PostApply_URL Domain"/postAskSave"
 
+//////////  我的信息
 //我的地址
 #define Address_URL Domain"/addressLoad"
 //删除地址
@@ -89,5 +101,19 @@
 //保存地址
 #define AddressSave_URL Domain"/addressSave"
 
+
+//  我的收藏
+#define CollectLoad_URL Domain"/collectionLoad"
+//删除我的收藏
+#define CollectDelete_URL Domain "/collectionDelete"
+//收藏商家  . 商品   collectionType GOODS   COMPANY
+#define Collection_URL Domain"/collection"
+
+//购物车
+#define GoodsCarLoad_URL Domain"/goodsCarLoad"
+//加入购物车
+#define ShopCarAdd_URL Domain"/carAdd"
+//购物车商品删除
+#define GoodsCarDeleteURL Domain"/goodsCarDelete"
 
 #endif

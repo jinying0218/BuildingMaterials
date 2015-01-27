@@ -14,11 +14,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *goodsName;
 @property (weak, nonatomic) IBOutlet UILabel *seckillPrice;
 @property (weak, nonatomic) IBOutlet LPLabel *oldPrice;
+@property (weak, nonatomic) IBOutlet UILabel *goodsDesc;
 
-@property (weak, nonatomic) IBOutlet UIButton *discountPercent;
 @property (weak, nonatomic) IBOutlet UIImageView *secondsDealNumber;
 @property (weak, nonatomic) IBOutlet UILabel *seckillNumber;
 @property (weak, nonatomic) IBOutlet UIButton *secondsBuyButton;
+@property (weak, nonatomic) IBOutlet UIImageView *goodsImage;
 
 - (void)configureCellWithModel:(TSSecKillModel *)model indexPath:(NSIndexPath *)indexPath;
 @end

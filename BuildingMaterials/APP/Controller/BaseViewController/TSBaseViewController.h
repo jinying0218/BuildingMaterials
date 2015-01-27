@@ -16,6 +16,7 @@
 @property (nonatomic, strong) TSScrollView *rootScrollView;
 @property (nonatomic, strong) UIView *navigationBar;
 @property (nonatomic, strong) UIButton *naviLeftBtn;
+@property (nonatomic, strong) UIButton *naviRightBtn;
 
 //初始化
 -(id)initWithDict:(NSDictionary*)dict;
