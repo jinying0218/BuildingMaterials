@@ -27,15 +27,23 @@
 }
 - (void)setShopModelValueForDictionary:(NSDictionary *)dict{
     
-    self.COMPANY_ADDRESS = dict[@"companyAddress"];
-    self.COMPANY_CONTACT = dict[@"companyContact"];
-    self.COMPANY_DES = dict[@"companyDes"] ? dict[@"companyDes"] : @"";
-    self.COMPANY_IMAGE_URL = dict[@"companyImageUrl"];
-    self.COMPANY_NAME = dict[@"companyName"] ? dict[@"companyName"] : @"";
-    self.COMPANY_TEL_PHONE = dict[@"companyTelPhone"];
-    self.I_D = [dict[@"id"] intValue];
-    self.IS_RECOMMEND = [dict[@"isRecommend"] intValue];
-    self.RECOMMEND_TIME = dict[@"recommendTime"];
+    self.COMPANY_ADDRESS = [self objectOrNilForKey:@"companyAddress" fromDictionary:dict];
+    self.COMPANY_CONTACT = [self objectOrNilForKey:@"companyContact" fromDictionary:dict];
+    self.COMPANY_DES = [self objectOrNilForKey:@"companyDes" fromDictionary:dict];
+    self.COMPANY_IMAGE_URL = [self objectOrNilForKey:@"companyImageUrl" fromDictionary:dict];
+    self.COMPANY_NAME = [self objectOrNilForKey:@"companyName" fromDictionary:dict];
+    self.COMPANY_TEL_PHONE = [self objectOrNilForKey:@"companyTelPhone" fromDictionary:dict];
+    self.I_D = [[self objectOrNilForKey:@"id" fromDictionary:dict] intValue];
+    self.IS_RECOMMEND = [[self objectOrNilForKey:@"isRecommend" fromDictionary:dict] intValue];
+    self.RECOMMEND_TIME = [self objectOrNilForKey:@"recommendTime" fromDictionary:dict];
 
 }
+#pragma mark - Helper Method
+- (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict
+{
+    id object = [dict objectForKey:aKey];
+    return [object isEqual:[NSNull null]] ? nil : object;
+}
+
+
 @end

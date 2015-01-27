@@ -99,6 +99,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
             for (NSDictionary *oneGoodsResult in goods_result) {
                 TSSecKillModel *model = [[TSSecKillModel alloc] init];
                 [model setValueForDictionary:oneGoodsResult];
+                
                 model.END_TIME = result[@"result"][@"END_TIME"];
                 model.SecondsDeal_EventID = [[result[@"result"] objectForKey:@"ID"] intValue] ;
                 model.STATUS = [[result[@"result"] objectForKey:@"STATUS"] intValue];

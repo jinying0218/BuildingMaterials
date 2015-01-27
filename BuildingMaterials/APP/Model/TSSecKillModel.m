@@ -21,10 +21,10 @@
     self.ID = [[self objectOrNilForKey:@"ID" fromDictionary:dict] intValue];
     self.SECKILL_PRICE = [[self objectOrNilForKey:@"SECKILL_PRICE" fromDictionary:dict] intValue];
     self.SECKILL_NUMBER = [[self objectOrNilForKey:@"SECKILL_NUMBER" fromDictionary:dict] intValue];
-    self.SECKILL_NUMBER_NOW = [[self objectOrNilForKey:@"" fromDictionary:dict] intValue];
-    self.END_TIME = [self objectOrNilForKey:@"END_TIME" fromDictionary:dict];
-    self.SecondsDeal_EventID = [[self objectOrNilForKey:@"SecondsDeal_EventID" fromDictionary:dict] intValue];
-    self.STATUS = [[self objectOrNilForKey:@"STATUS" fromDictionary:dict] intValue];
+    self.SECKILL_NUMBER_NOW = [[self objectOrNilForKey:@"SECKILL_NUMBER_NOW" fromDictionary:dict] intValue];
+//    self.END_TIME = [self objectOrNilForKey:@"END_TIME" fromDictionary:dict];
+//    self.SecondsDeal_EventID = [[self objectOrNilForKey:@"SecondsDeal_EventID" fromDictionary:dict] intValue];
+//    self.STATUS = [[self objectOrNilForKey:@"STATUS" fromDictionary:dict] intValue];
 }
 
 - (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict
