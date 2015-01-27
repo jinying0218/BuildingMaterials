@@ -10,26 +10,23 @@
 
 @implementation TSGoodsInfoModel
 - (void)setValueForDictionary:(NSDictionary *)dict{
-    self.goodsClassifyId = [dict[@"goodsClassifyId"] intValue];
-    self.goodsCompanyId = [dict[@"goodsCompanyId"] intValue];
-    if (![dict[@"goodsDes"] isEqual:[NSNull null]]) {
-        self.goodsDes = dict[@"goodsDes"] ? dict[@"goodsDes"] : @"";
-    }
+    self.goodsClassifyId = [[self objectOrNilForKey:@"goodsClassifyId" fromDictionary:dict] intValue];
+    self.goodsCompanyId = [[self objectOrNilForKey:@"goodsCompanyId" fromDictionary:dict] intValue];
+    self.goodsDes = [self objectOrNilForKey:@"goodsDes" fromDictionary:dict];
+
     self.goodsDesSimple = [self objectOrNilForKey:@"goodsDesSimple" fromDictionary:dict];
     self.goodsHeadImage = [self objectOrNilForKey:@"goodsHeadImage" fromDictionary:dict];
     self.goodsName = [self objectOrNilForKey:@"goodsName" fromDictionary:dict];
 
-    self.goodsNewPrice = [dict[@"goodsNewPrice"] intValue];
-    if (![dict[@"goodsOldPrice"] isEqual:[NSNull null]]) {
-        self.goodsOldPrice = [dict[@"goodsOldPrice"] intValue];
-    }
-    
-    self.goodsSellNumber = [dict[@"goodsSellNumber"] intValue];
-    self.goodsWeight = [dict[@"goodsWeight"] intValue];
-    self.goodsID = [dict[@"id"] intValue];
-    self.isRecommend = [dict[@"isRecommend"] intValue];
-    self.isUsed = [dict[@"isUsed"] intValue];
-    self.recommendTime = dict[@"recommendTime"];
+    self.goodsNewPrice = [[self objectOrNilForKey:@"goodsNewPrice" fromDictionary:dict] intValue];
+    self.goodsOldPrice = [[self objectOrNilForKey:@"goodsOldPrice" fromDictionary:dict] intValue];
+
+    self.goodsSellNumber = [[self objectOrNilForKey:@"goodsSellNumber" fromDictionary:dict] intValue];
+    self.goodsWeight = [[self objectOrNilForKey:@"goodsWeight" fromDictionary:dict] intValue];
+    self.goodsID = [[self objectOrNilForKey:@"id" fromDictionary:dict] intValue];
+    self.isRecommend = [[self objectOrNilForKey:@"isRecommend" fromDictionary:dict] intValue];
+    self.isUsed = [[self objectOrNilForKey:@"isUsed" fromDictionary:dict] intValue];
+    self.recommendTime = [self objectOrNilForKey:@"recommendTime" fromDictionary:dict];
 
 }
 

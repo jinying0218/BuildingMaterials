@@ -54,7 +54,7 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
 - (void)initializeData{
     NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId]};
     [TSHttpTool getWithUrl:GoodsCarLoad_URL params:params withCache:NO success:^(id result) {
-//        NSLog(@"购物车:%@",result);
+        NSLog(@"购物车:%@",result);
         if ([result[@"success"] intValue] == 1) {
             [self.viewModel.subviewModels removeAllObjects];
             for (NSDictionary *dict in result[@"result"]) {
