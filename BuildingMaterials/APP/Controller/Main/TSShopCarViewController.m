@@ -12,7 +12,8 @@
 #import "TSShopCarModel.h"
 #import "TSShopCarTableViewCell.h"
 #import "TSShopCarCellSubviewModel.h"
-
+#import "TSOrderConfirmViewController.h"
+#import "TSOrderConfirmViewModel.h"
 
 static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellIdentifier";
 
@@ -123,6 +124,13 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
     [self.selectAllButton bk_addEventHandler:^(id sender) {
         @strongify(self);
         self.selectAllButton.selected = !self.selectAllButton.selected;
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.payButton bk_addEventHandler:^(id sender) {
+        @strongify(self);
+        TSOrderConfirmViewModel *viewModel = [[TSOrderConfirmViewModel alloc] init];
+        TSOrderConfirmViewController *orderConfirmVC = [[TSOrderConfirmViewController alloc] initWithViewModel:viewModel];
+        [self.navigationController pushViewController:orderConfirmVC animated:YES];
     } forControlEvents:UIControlEventTouchUpInside];
 }
 
