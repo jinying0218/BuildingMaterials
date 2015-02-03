@@ -89,9 +89,9 @@
     }
     if (rightImage != nil) {
         self.naviRightBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.naviRightBtn.frame = CGRectMake( KscreenW - 43, 9, 30, 25);
+        self.naviRightBtn.frame = CGRectMake( KscreenW - 43, 9, 25, 25);
         [self.naviRightBtn setImage:[UIImage imageNamedString:rightImage] forState:UIControlStateNormal];
-        [self.naviRightBtn setImage:[UIImage imageNamedString:[NSString stringWithFormat:@"%@_selected",self.naviRightBtn]] forState:UIControlStateHighlighted];
+//        [self.naviRightBtn setImage:[UIImage imageNamedString:[NSString stringWithFormat:@"%@_selected",self.naviRightBtn]] forState:UIControlStateHighlighted];
     }
     
     UILabel *titleLabel = [[UILabel alloc] init];

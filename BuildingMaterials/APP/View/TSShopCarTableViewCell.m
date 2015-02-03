@@ -9,6 +9,7 @@
 #import "TSShopCarTableViewCell.h"
 #import "TSShopCarModel.h"
 #import <UIImageView+WebCache.h>
+#import <BlocksKit+UIKit.h>
 
 @implementation TSShopCarTableViewCell
 

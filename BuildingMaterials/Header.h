@@ -20,7 +20,7 @@
 #import "UIImage+Resize.h"
 #import "UIImage+RoundedCorner.h"
 #import "UIImage+Alpha.h"
-#import "BlocksKit+UIKit.h"
+#import <BlocksKit+UIKit.h>
 #import "EXTScope.h"
 #import "EXTKeyPathCoding.h"
 #import <FBKVOController.h>
