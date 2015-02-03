@@ -78,7 +78,8 @@
 #define ForumComment_URL Domain"/forumCommentLoadById"
 //发表回复
 #define CommentPost_URL Domain "/forumComment"
-
+//帖子保存    发帖
+#define ForumSave_URL Domain "/forumSave"
 
 
 //////////  招聘

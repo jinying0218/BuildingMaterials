@@ -10,6 +10,9 @@
 #import "TSForumClassifyModel.h"
 #import "TSForumClassifyTableViewCell.h"
 #import "TSForumDetailViewController.h"
+#import "TSPublishViewController.h"
+#import "TSPublishViewModel.h"
+#import "MJRefresh.h"
 
 static NSString *const ForumClassifyTableViewCellIdentifier = @"ForumClassifyTableViewCell";
 
@@ -25,7 +28,10 @@ static NSString *const ForumClassifyTableViewCellIdentifier = @"ForumClassifyTab
 @end
 
 @implementation TSForumClassifyDetailViewController
-
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self.tableView headerBeginRefreshing];
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tabBarController.tabBar.hidden = YES;
@@ -34,7 +40,7 @@ static NSString *const ForumClassifyTableViewCellIdentifier = @"ForumClassifyTab
     self.page = 1;
     self.dataArray = [[NSMutableArray alloc] initWithCapacity:0];
     
-    [self initailizeData];
+//    [self initailizeData];
     [self setupUI];
     
     [self blindActionHandler];
@@ -72,12 +78,83 @@ static NSString *const ForumClassifyTableViewCellIdentifier = @"ForumClassifyTab
 - (void)setupUI{
     
     //    [self creatRootView];
-    [self createNavigationBarTitle:self.forumClassifyName leftButtonImageName:@"Previous" rightButtonImageName:nil];
+    [self createNavigationBarTitle:self.forumClassifyName leftButtonImageName:@"Previous" rightButtonImageName:@"navi_pulish_btn"];
+    [self.navigationBar addSubview:self.naviRightBtn];
     self.navigationBar.frame = CGRectMake( 0, STATUS_BAR_HEGHT, KscreenW, 44);
     [self.view addSubview:self.navigationBar];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
+    //集成上拉加载更多
+    [self.tableView addFooterWithTarget:self action:@selector(footerRereshing)];
+    self.tableView.footerPullToRefreshText = @"上拉加载更多";
+    self.tableView.footerReleaseToRefreshText = @"松开马上加载更多数据";
+    self.tableView.footerRefreshingText = @"加载中……";
+    
+    //集成下拉刷新
+    [self.tableView addHeaderWithTarget:self action:@selector(headerRefreshing)];
+    self.tableView.headerPullToRefreshText = @"下拉刷新";
+    self.tableView.headerReleaseToRefreshText = @"松开马上加载更多数据";
+    self.tableView.headerRefreshingText = @"加载中……";
+
+}
+#pragma mark - 上拉加载更多
+- (void)footerRereshing{
+    self.page += 1;
+    [self showProgressHUD];
+    ///// 1 全部  2. 推荐  3. 最新
+    NSDictionary *params = @{@"forumOrderType" : [NSString stringWithFormat:@"%d",self.forumOrderType],
+                             @"forumSearchName" : @"",
+                             @"forumClassifyId" : [NSString stringWithFormat:@"%d",self.forumClassifyId],
+                             @"page" : [NSString stringWithFormat:@"%d",self.page]};
+    [TSHttpTool getWithUrl:ForumClassifyLoad_URL params:params withCache:NO success:^(id result) {
+        //        NSLog(@"论坛--栏目：%@",result);
+        [self hideProgressHUD];
+
+        if ([result[@"success"] intValue] == 1) {
+            for (NSDictionary *dict in result[@"result"]) {
+                TSForumClassifyModel *model = [[TSForumClassifyModel alloc] init];
+                [model setValueWithDict:dict];
+                [self.dataArray addObject:model];
+            }
+            [self.tableView reloadData];
+            [self.tableView footerEndRefreshing];
+
+        }
+    } failure:^(NSError *error) {
+        [self hideProgressHUD];
+        NSLog(@"论坛--栏目：%@",error);
+    }];
+    
+}
+
+- (void)headerRefreshing{
+    self.page = 1;
+    ///// 1 全部  2. 推荐  3. 最新
+    [self.dataArray removeAllObjects];
+    NSDictionary *params = @{@"forumOrderType" : [NSString stringWithFormat:@"%d",self.forumOrderType],
+                             @"forumSearchName" : @"",
+                             @"forumClassifyId" : [NSString stringWithFormat:@"%d",self.forumClassifyId],
+                             @"page" : [NSString stringWithFormat:@"%d",self.page]};
+    [self showProgressHUD];
+    [TSHttpTool getWithUrl:ForumClassifyLoad_URL params:params withCache:NO success:^(id result) {
+        //        NSLog(@"论坛--栏目：%@",result);
+        [self hideProgressHUD];
+        if ([result[@"success"] intValue] == 1) {
+            for (NSDictionary *dict in result[@"result"]) {
+                TSForumClassifyModel *model = [[TSForumClassifyModel alloc] init];
+                [model setValueWithDict:dict];
+                [self.dataArray addObject:model];
+            }
+            [self.tableView reloadData];
+            [self.tableView headerEndRefreshing];
+        }
+    } failure:^(NSError *error) {
+        [self hideProgressHUD];
+        NSLog(@"论坛--栏目：%@",error);
+    }];
+
 }
 
 - (void)blindActionHandler{
@@ -103,6 +180,14 @@ static NSString *const ForumClassifyTableViewCellIdentifier = @"ForumClassifyTab
         }
         [self initailizeData];
     } forControlEvents:UIControlEventValueChanged];
+    
+    [self.naviRightBtn bk_addEventHandler:^(id sender) {
+        @strongify(self);
+        TSPublishViewModel *viewModel = [[TSPublishViewModel alloc] init];
+        viewModel.forumClassifyId = self.forumClassifyId;
+        TSPublishViewController *publishVC = [[TSPublishViewController alloc] initWithViewModel:viewModel];
+        [self.navigationController pushViewController:publishVC animated:YES];
+    } forControlEvents:UIControlEventTouchUpInside];
 }
 #pragma mark - tableView delegate & dataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
