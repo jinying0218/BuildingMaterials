@@ -117,4 +117,7 @@
 //购物车商品删除
 #define GoodsCarDeleteURL Domain"/goodsCarDelete"
 
+//购买接口
+#define OrderSure_URL Domain"/orderSure"
+
 #endif

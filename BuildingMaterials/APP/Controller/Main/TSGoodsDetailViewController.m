@@ -47,15 +47,15 @@
 
 @property (weak, nonatomic) IBOutlet UIView *goodsComment;  //商品评价
 @property (weak, nonatomic) IBOutlet UILabel *goodsCommentCount;
-@property (weak, nonatomic) IBOutlet UIView *goodsDetailView;
+@property (weak, nonatomic) IBOutlet UIView *goodsDetailView;   //商品详情view
 @property (weak, nonatomic) IBOutlet UIImageView *shopImage;
 @property (weak, nonatomic) IBOutlet UILabel *shopName;
 @property (weak, nonatomic) IBOutlet UIView *goodsParamsView;
 
-@property (weak, nonatomic) IBOutlet UIView *goodsCountView;        //商品参数View
+@property (weak, nonatomic) IBOutlet UIView *goodsCountView;        //数量参数View
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 
-@property (weak, nonatomic) IBOutlet UIView *shopView;
+@property (weak, nonatomic) IBOutlet UIView *shopView;  //底部view
 
 @property (strong, nonatomic) UIImageView *goodsImageView;
 @property (strong, nonatomic) UIButton *minerBtn;
@@ -147,6 +147,7 @@
 
 - (void)setuiParamsView {
     
+    UILabel *lastLine = nil;
     int buttonTag = 0;
     for (int i = 0; i < self.viewModel.dataArray.count; i ++) {
         TSGoodsParamsModel *oneParameterModel = self.viewModel.dataArray[i];
@@ -183,7 +184,9 @@
         UILabel *seperatorLine = [[UILabel alloc] initWithFrame:CGRectMake( 10, CGRectGetMaxY(label.frame) + 15, KscreenW - 20, 1)];
         seperatorLine.backgroundColor = [UIColor colorWithHexString:@"c9cbcb"];
         [self.goodsParamsView addSubview:seperatorLine];
+        lastLine = seperatorLine;
     }
+    [lastLine removeFromSuperview];
 }
 
 - (void)layoutSubviews{
@@ -212,18 +215,30 @@
     self.shopImage.layer.borderWidth = 1;
     self.shopName.text = self.viewModel.shopModel.COMPANY_NAME;
     
+    //如果没有参数，把参数view移除掉
     if (self.viewModel.dataArray.count == 0) {
         [self.goodsParamsView removeFromSuperview];
+        self.goodsParamsView = nil;
     } else {
         [self setuiParamsView];
     }
     
     [self setupGoodsCountView];
 
-    CGFloat originY = CGRectGetMaxY(self.goodsInfoView.frame) + 5;
+    CGFloat originY = 0;
     
+    if (self.goodsParamsView) {
+        originY = CGRectGetMaxY(self.goodsParamsView.frame) + 5;
+
+    }else {
+        originY = CGRectGetMaxY(self.goodsInfoView.frame) + 5;
+    }
+    //数量view
     self.goodsCountView.frame = CGRectMake( 0, originY, KscreenW, 44);
+
+    //评论
     self.goodsComment.frame = CGRectMake( 0, CGRectGetMaxY(self.goodsCountView.frame) + 5, KscreenW, 44);
+    //详情
     self.goodsDetailView.frame = CGRectMake( 0, CGRectGetMaxY(self.goodsComment.frame) + 5, KscreenW, 44);
     
     self.shopView.frame = CGRectMake( 0, CGRectGetMaxY(self.goodsDetailView.frame) + 5, KscreenW, 64);
@@ -238,6 +253,10 @@
 
 - (void)paramsButtonClick:(UIButton *)button{
     //////   确定选中的是哪个一个，，， 赋值非viewModel
+    
+    
+    
+    
 }
 #pragma mark - blind methods
 - (void)bindActionHandler{
@@ -303,6 +322,11 @@
     
     [self.addShopCarButton bk_addEventHandler:^(id sender) {
         @strongify(self);
+        if (self.viewModel.dataArray.count != 0) {
+            
+        }
+        
+        
         NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId],
                                  @"goodsId" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID],
                                  @"goodsParameters" : @"",
