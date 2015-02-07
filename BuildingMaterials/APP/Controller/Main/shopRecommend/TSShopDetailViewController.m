@@ -145,11 +145,15 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
     // 1.创建流水布局
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     // 2.设置每个格子的尺寸
-    layout.itemSize = CGSizeMake( 150, 170);
+    if ([UIScreen mainScreen].bounds.size.width > 320) {
+        layout.itemSize = CGSizeMake( 150, 170);
+        layout.sectionInset = UIEdgeInsetsMake( 5, 15, 0, 15);
+    }else {
+        layout.sectionInset = UIEdgeInsetsMake( 5, 5, 0, 5);
+    }
     // 3.设置每一行之间的间距
     layout.minimumLineSpacing = 5;
     // 4.设置间距
-    layout.sectionInset = UIEdgeInsetsMake( 5, 5, 0, 5);
 
     self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, KnaviBarHeight, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT - 49) collectionViewLayout:layout];
     self.collectionView.showsVerticalScrollIndicator = NO;

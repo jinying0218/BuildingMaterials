@@ -99,7 +99,7 @@
         </view>
         <view contentMode="scaleToFill" id="x4I-GC-8Gg">
             <rect key="frame" x="0.0" y="0.0" width="262" height="134"/>
-            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  选择运送方式" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="s7L-uV-09C">
                     <rect key="frame" x="8" y="0.0" width="246" height="23"/>

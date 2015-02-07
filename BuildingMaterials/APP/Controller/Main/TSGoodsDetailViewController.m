@@ -14,8 +14,10 @@
 #import "TSParamsButton.h"
 
 #import <UIImageView+WebCache.h>
-#import "NSArray+BSJSONAdditions.h"
-#import "NSDictionary+BSJSONAdditions.h"
+//#import "NSArray+BSJSONAdditions.h"
+//#import "NSDictionary+BSJSONAdditions.h"
+#import "JSONKit.h"
+
 
 #import "TSCommentViewController.h"
 #import "TSCommentViewModel.h"
@@ -358,7 +360,7 @@
         NSDictionary *goodsParameters = @{@"result" : arr};
         NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId],
                                  @"goodsId" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID],
-                                 @"goodsParameters" : [goodsParameters jsonStringValue],
+                                 @"goodsParameters" : [goodsParameters JSONString],
                                  @"number" : [NSString stringWithFormat:@"%d",self.viewModel.count]};
         [TSHttpTool getWithUrl:ShopCarAdd_URL params:params withCache:NO success:^(id result) {
             if ([result[@"success"] intValue] == 1) {
@@ -386,7 +388,7 @@
         NSDictionary *goodsInformation = @{@"post" : postArr};
         
         NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId],
-                                 @"goodsInformation" : [goodsInformation jsonStringValue]};
+                                 @"goodsInformation" : [goodsInformation JSONString]};
         [TSHttpTool postWithUrl:OrderSure_URL params:params success:^(id result) {
 //            NSLog(@"购买：%@",result);
             if ([result[@"success"] intValue] == 1) {

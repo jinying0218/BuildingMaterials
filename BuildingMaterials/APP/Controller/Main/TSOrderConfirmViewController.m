@@ -18,8 +18,9 @@
 #import "TSOrderTableFooterView.h"
 
 #import <UIImageView+WebCache.h>
-#import "NSArray+BSJSONAdditions.h"
-#import "NSDictionary+BSJSONAdditions.h"
+//#import "NSArray+BSJSONAdditions.h"
+//#import "NSDictionary+BSJSONAdditions.h"
+#import "JSONKit.h"
 
 #define Tag_orderTable 9000
 #define Tag_transportTable 9001
@@ -150,7 +151,8 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
     self.transportTable.delegate = self;
     self.transportTable.dataSource = self;
     self.transportTable.tag = Tag_transportTable;
-    self.popView.frame = CGRectMake( (KscreenW - 262)/2 , 200, 262, 134);
+    self.popView.bounds = CGRectMake( 0, 0, 262, 134);
+    self.popView.center = self.view.center;
     self.popView.hidden = YES;
     self.transportTable.frame = CGRectMake( 0, 24, 262, 80);
     [self.view addSubview:self.popView];
@@ -178,22 +180,20 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
         for (TSOrderSubviewModel *subviewModel in self.viewModel.subviewModels) {
             NSMutableArray *goods = [[NSMutableArray alloc] initWithCapacity:0];
             for (TSOrderModel *orderModel in subviewModel.goodsArray) {
-                NSDictionary *dict = @{@"goodsId" : @"90",
-                                       @"price" : @"1",
-                                       @"number" : @"1",
+                NSDictionary *dict = @{@"goodsId" : [NSString stringWithFormat:@"%d",orderModel.G_ID],
+                                       @"price" : [NSString stringWithFormat:@"%d",orderModel.price],
+                                       @"number" : [NSString stringWithFormat:@"%d",orderModel.goodsNumber],
                                        @"goodsParameters" : orderModel.goodsParameters};
-//                [NSString stringWithFormat:@"%d",orderModel.G_ID]
-//                [NSString stringWithFormat:@"%d",orderModel.price]
-//                [NSString stringWithFormat:@"%d",orderModel.goodsNumber]
                 [goods addObject:dict];
             }
             TSOrderModel *firstOrderModel = [subviewModel goodsArray][0];
             NSDictionary *dict = @{@"companyId" : [NSString stringWithFormat:@"%d",firstOrderModel.CC_ID],
                                    @"totalPrice" : [NSString stringWithFormat:@"%d",subviewModel.companyTotalPrice],
+                                   @"goodsPrice" : [NSString stringWithFormat:@"%d",firstOrderModel.price],
                                    @"transportPrice" : [NSString stringWithFormat:@"%d",subviewModel.transportPrice],
                                    @"transportName" : subviewModel.transportModel.transportName,
                                    @"transportType" : [NSString stringWithFormat:@"%d",subviewModel.transportModel.transportType],
-                                   @"goods" : [goods jsonStringValue]};
+                                   @"goods" : goods};
             [post addObject:dict];
         }
         NSDictionary *companyPostDict = @{@"post" : post};
@@ -207,8 +207,8 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
                                         @"address" : self.viewModel.address};
 
         
-        NSDictionary *params = @{@"orderPost" : [orderPostDict jsonStringValue],
-                                 @"companyPost" : [companyPostDict jsonStringValue]};
+        NSDictionary *params = @{@"orderPost" : [orderPostDict JSONString],
+                                 @"companyPost" : [companyPostDict JSONString]};
         
         NSLog(@"\n orderPost:%@",orderPostDict);
         NSLog(@"\n companyPost:%@",companyPostDict);
