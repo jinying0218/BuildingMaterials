@@ -77,6 +77,8 @@ static NSString *const AddressCellIdentifier = @"addressCellIdentifier";
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.addressView.frame = CGRectMake( 0, KscreenH, KscreenW, 207);
+    
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
 - (void)blindViewModel{
     [self.KVOController
@@ -136,6 +138,15 @@ static NSString *const AddressCellIdentifier = @"addressCellIdentifier";
     
     [self.saveButton bk_addEventHandler:^(id sender) {
         @strongify(self);
+        if ([self.viewModel.addressString isEqualToString:@""] ||
+            [self.viewModel.telNumber isEqualToString:@""] ||
+            [self.viewModel.nameString isEqualToString:@""] ||
+            !self.viewModel.addressString ||
+            !self.viewModel.telNumber ||
+            !self.viewModel.nameString) {
+            [self showProgressHUD:@"请填写完整信息" delay:1];
+            return ;
+        }
         NSString *addressMain = [NSString stringWithFormat:@"%@ %@ %@",self.viewModel.addressString,self.viewModel.telNumber,self.viewModel.nameString];
         NSDictionary *params = @{@"addressMain" : addressMain,
                                  @"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId]};
@@ -181,17 +192,17 @@ static NSString *const AddressCellIdentifier = @"addressCellIdentifier";
     [self.userNameInput bk_addEventHandler:^(UITextField *userNameInput) {
         @strongify(self);
         [self.viewModel setNameString:userNameInput.text];
-    } forControlEvents:UIControlEventEditingChanged];
+    } forControlEvents:UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit];
     
-    [self.contactTelNumberInput bk_addEventHandler:^(UITextField *userNameInput) {
+    [self.contactTelNumberInput bk_addEventHandler:^(UITextField *telNumberInput) {
         @strongify(self);
-        [self.viewModel setTelNumber:userNameInput.text];
-    } forControlEvents:UIControlEventEditingChanged];
+        [self.viewModel setTelNumber:telNumberInput.text];
+    } forControlEvents:UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit];
 
-    [self.addressInput bk_addEventHandler:^(UITextField *userNameInput) {
+    [self.addressInput bk_addEventHandler:^(UITextField *addressInput) {
         @strongify(self);
-        [self.viewModel setAddressString:userNameInput.text];
-    } forControlEvents:UIControlEventEditingChanged];
+        [self.viewModel setAddressString:addressInput.text];
+    } forControlEvents:UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit];
 }
 
 #pragma mark - dataSource method
