@@ -8,9 +8,15 @@
 
 #import "TSWaitForPayViewController.h"
 #import "TSWaitForPayViewModel.h"
+#import "TSWaitForPayTableViewCell.h"
 
-@interface TSWaitForPayViewController ()
+static NSString *const WaitForPayTableViewCellIdendifier = @"WaitForPayTableViewCellIdendifier";
+
+
+@interface TSWaitForPayViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) TSWaitForPayViewModel *viewModel;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
 @end
 
 @implementation TSWaitForPayViewController
@@ -44,6 +50,10 @@
     [self createNavigationBarTitle:@"待付订单" leftButtonImageName:@"Previous" rightButtonImageName:nil];
     self.navigationBar.frame = CGRectMake( 0, STATUS_BAR_HEGHT, KscreenW, 44);
     [self.view addSubview:self.navigationBar];
+    
+    [self.tableView setTableFooterView:[[UIView alloc] initWithFrame:CGRectZero]];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
 
 }
 
@@ -52,4 +62,28 @@
 }
 - (void)blindActionHandler{
 }
+
+#pragma mark - dataSource method
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 105;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return  2;
+    //[self.viewModel.dataArray count];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    TSWaitForPayTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:WaitForPayTableViewCellIdendifier];
+    if (!cell) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"TSWaitForPayTableViewCell" owner:nil options:nil]lastObject];
+    }
+    
+    //    TSShopCarModel *model = self.viewModel.dataArray[indexPath.row];
+    //    TSShopCarCellSubviewModel *subviewModel = self.viewModel.subviewModels[indexPath.row];
+    //    [cell attachViewModel:subviewModel];
+//    [cell.headerImage sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"not_load"]];
+//    cell.goodsName.text = @"test";
+    return cell;
+}
+
 @end
