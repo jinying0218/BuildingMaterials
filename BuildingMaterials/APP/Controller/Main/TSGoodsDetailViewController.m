@@ -377,15 +377,16 @@
                                    @"goodsParametersName" : params.parametersName};
             [arr addObject:dict];
         }
-        NSDictionary *goodsParameters = @{@"result" : arr};
-
-        NSDictionary *params = @{@"userId" : @(self.userModel.userId),
-                                 @"carId" : @"",
-                                 @"seckillId" : @"",
-                                 @"goodsId" : @(self.viewModel.goodsID),
-                                 @"price" : @(self.viewModel.goodsInfoModel.goodsNewPrice),
-                                 @"number" : @(self.viewModel.count),
-                                 @"goodsParameters" : [goodsParameters jsonStringValue]};
+        NSArray *postArr = @[@{@"carId" : @"",
+                               @"seckillId" : @"",
+                               @"goodsId" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID],
+                               @"price" : [NSString stringWithFormat:@"%d",self.viewModel.goodsInfoModel.goodsNewPrice],
+                               @"number" : [NSString stringWithFormat:@"%d",self.viewModel.count],
+                               @"goodsParameters" : @""}];
+        NSDictionary *goodsInformation = @{@"post" : postArr};
+        
+        NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId],
+                                 @"goodsInformation" : [goodsInformation jsonStringValue]};
         [TSHttpTool postWithUrl:OrderSure_URL params:params success:^(id result) {
             NSLog(@"购买：%@",result);
             if ([result[@"success"] intValue] == 1) {

@@ -26,12 +26,18 @@
     [self.goodsImage sd_setImageWithURL:[NSURL URLWithString:model.goods_head_imageURL] placeholderImage:[UIImage imageNamed:@"not_load"]];
     self.goodsName.text = model.goodsName;
     self.goodsPrice.text = [NSString stringWithFormat:@"￥%d",model.goods_price];
-    
     self.goodsCount.text = [NSString stringWithFormat:@"%d",self.subviewModel.goodsCount];
-}
-- (void)attachViewModel:(TSShopCarCellSubviewModel *)subviewModel{
-    self.subviewModel = subviewModel;
     
+    if (self.subviewModel.inShopCar) {
+        self.selectButton.selected = YES;
+    }else {
+        self.selectButton.selected = NO;
+    }
+}
+- (void)attachViewModel:(TSShopCarCellSubviewModel *)subviewModel carInfo:(TSGetCarInfo)getCarInfo{
+    [self.KVOController unobserve:self.subviewModel];
+    self.getCarInfo = getCarInfo;
+    self.subviewModel = subviewModel;
     [self configureCell:subviewModel.shopCarModel];
     [self blindViewModel];
     [self blindActionHandler];
@@ -107,6 +113,7 @@
         }else {
             [self.subviewModel setInShopCar:NO];
         }
+        self.getCarInfo(YES);
     } forControlEvents:UIControlEventTouchUpInside];
 }
 

@@ -12,6 +12,7 @@
 #import "TSAddressViewController.h"
 #import "TSAddressViewModel.h"
 #import "TSUserModel.h"
+#import "TSOrderModel.h"
 
 #import <UIImageView+WebCache.h>
 
@@ -57,6 +58,26 @@ static NSString *const OrderConfirmTableViewCellIdendifier = @"orderConfirmTable
     NSDictionary *params = @{@"userId" : @(self.userModel.userId)};
     [TSHttpTool getWithUrl:OrderSureLoad_URL params:params withCache:NO success:^(id result) {
         NSLog(@"订单数据加载:%@",result);
+        if ([result[@"success"] intValue] == 1) {
+            NSMutableArray *allGoodsArray = [[NSMutableArray alloc] initWithCapacity:0];
+            NSMutableArray *allCompanyIds = [[NSMutableArray alloc] initWithCapacity:0];
+            for (NSDictionary *dict in result[@"result"]) {
+                TSOrderModel *orderModel = [[TSOrderModel alloc] init];
+                [orderModel modelWithDict:dict];
+                [allGoodsArray addObject:orderModel];
+                if (![allCompanyIds containsObject:@(orderModel.CC_ID)]) {
+                    [allCompanyIds addObject:@(orderModel.CC_ID)];
+                }
+            }
+//            [self.viewModel.dataArray addObject:allGoodsArray];
+            for (id companyId in allCompanyIds) {
+                NSPredicate *predicate = [NSPredicate predicateWithFormat:@"CC_ID=%d",[companyId intValue]];
+                NSArray *companyArr = [allGoodsArray filteredArrayUsingPredicate:predicate];
+                [self.viewModel.dataArray addObject:companyArr];
+            }
+            [self.tableView reloadData];
+            
+        }
     } failure:^(NSError *error) {
         NSLog(@"订单数据加载:%@",error);
     }];
@@ -73,7 +94,6 @@ static NSString *const OrderConfirmTableViewCellIdendifier = @"orderConfirmTable
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     
-    [self.viewModel.dataArray setArray:@[@[@"",@"",@""],@[@"",@"",@""],@[@"",@"",@""]]];
 }
 
 - (void)blindViewModel{
@@ -118,7 +138,8 @@ static NSString *const OrderConfirmTableViewCellIdendifier = @"orderConfirmTable
         headerView = [[UITableViewHeaderFooterView alloc] initWithReuseIdentifier:@"orderTableHeaderViewIdentifer"];
         headerView.contentView.backgroundColor = [UIColor lightGrayColor];
     }
-    headerView.textLabel.text = @"店铺名称";
+    TSOrderModel *model = self.viewModel.dataArray[section][0];
+    headerView.textLabel.text = model.companyName;
     return headerView;
 }
 - (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
@@ -141,22 +162,13 @@ static NSString *const OrderConfirmTableViewCellIdendifier = @"orderConfirmTable
     TSOrderConfirmTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:OrderConfirmTableViewCellIdendifier];
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"TSOrderConfirmTableViewCell" owner:nil options:nil]lastObject];
-        //        UIView *backView = [[UIView alloc] init];
-        //        backView.backgroundColor = [UIColor colorWithHexString:@"1ca6df"];
-        //        cell.selectedBackgroundView = backView;
-//        cell.goodsCount.layer.borderColor = [UIColor colorWithHexString:@"f4f4f4"].CGColor;
-//        cell.goodsCount.layer.borderWidth = 1;
-//        cell.minutsButton.layer.borderColor = [UIColor colorWithHexString:@"f4f4f4"].CGColor;
-//        cell.minutsButton.layer.borderWidth = 1;
-//        cell.plusButton.layer.borderColor = [UIColor colorWithHexString:@"f4f4f4"].CGColor;
-//        cell.plusButton.layer.borderWidth = 1;
     }
     
-    //    TSShopCarModel *model = self.viewModel.dataArray[indexPath.row];
-//    TSShopCarCellSubviewModel *subviewModel = self.viewModel.subviewModels[indexPath.row];
-//    [cell attachViewModel:subviewModel];
-    [cell.headerImage sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"not_load"]];
-    cell.goodsName.text = @"test";
+    TSOrderModel *model = self.viewModel.dataArray[indexPath.section][indexPath.row];
+    cell.goodsName.text = model.goodsName;
+    cell.goodsParamters.text = model.goodsParameters;
+    cell.goodsNumberPrice.text = [NSString stringWithFormat:@"%d * %d",model.price,model.goodsNumber];
+    [cell.headerImage sd_setImageWithURL:[NSURL URLWithString:model.goodsHeadImageURL] placeholderImage:[UIImage imageNamed:@"not_load"]];
     return cell;
 }
 

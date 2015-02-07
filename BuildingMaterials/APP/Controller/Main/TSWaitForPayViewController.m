@@ -9,6 +9,7 @@
 #import "TSWaitForPayViewController.h"
 #import "TSWaitForPayViewModel.h"
 #import "TSWaitForPayTableViewCell.h"
+#import "TSUserModel.h"
 
 static NSString *const WaitForPayTableViewCellIdendifier = @"WaitForPayTableViewCellIdendifier";
 
@@ -43,6 +44,14 @@ static NSString *const WaitForPayTableViewCellIdendifier = @"WaitForPayTableView
 }
 
 - (void)initializeData{
+    TSUserModel *userModel = [TSUserModel getCurrentLoginUser];
+    NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",userModel.userId]};
+    [TSHttpTool getWithUrl:WaitForPay_URL params:params withCache:NO success:^(id result) {
+        NSLog(@"待付款订单:%@",result);
+    } failure:^(NSError *error) {
+        NSLog(@"待付款订单:%@",error);
+    }];
+    
 }
 - (void)configureUI{
     self.tabBarController.tabBar.hidden =  YES;

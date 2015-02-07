@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "TSShopCarCellSubviewModel.h"
 
+typedef void(^TSGetCarInfo)(BOOL refreshCarMoney);
+
 //@class TSShopCarModel;
 
 @interface TSShopCarTableViewCell : UITableViewCell
@@ -20,7 +22,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *goodsCount;
 @property (weak, nonatomic) IBOutlet UIButton *plusButton;
 @property (weak, nonatomic) IBOutlet UIButton *minutsButton;
-
+@property (nonatomic, strong) TSGetCarInfo getCarInfo;
 //- (void)configureCell:(TSShopCarModel *)model;
-- (void)attachViewModel:(TSShopCarCellSubviewModel *)subviewModel;
+- (void)attachViewModel:(TSShopCarCellSubviewModel *)subviewModel carInfo:(TSGetCarInfo)getCarInfo;
 @end

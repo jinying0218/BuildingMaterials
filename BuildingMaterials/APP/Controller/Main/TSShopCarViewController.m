@@ -62,13 +62,12 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
                 TSShopCarModel *model = [[TSShopCarModel alloc] init];
                 [model setValueWithDict:dict];
                 TSShopCarCellSubviewModel *subviewModel = [[TSShopCarCellSubviewModel alloc] init];
-                subviewModel.inShopCar = self.viewModel.allInShopCar;
                 subviewModel.shopCarMoney = self.viewModel.shopCarMoney;
+                subviewModel.inShopCar = self.viewModel.allInShopCar;
                 subviewModel.goodsCount = model.goods_number;
                 subviewModel.shopCarModel = model;
                 subviewModel.goodsTotalMoney = subviewModel.goodsCount * model.goods_price;
                 [self.viewModel.subviewModels addObject:subviewModel];
-//                [self.viewModel.dataArray addObject:model];
             }
             [self.tableView reloadData];
             [self layoutSubviews];
@@ -87,12 +86,28 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
     self.tableView.dataSource = self;
 }
 
+//计算总价格
 - (void)layoutSubviews{
     float goodsTotalMoney = 0;
+    int goodsCount = 0;
+    int index = 0;
     for (TSShopCarCellSubviewModel *oneSubviewModel in self.viewModel.subviewModels) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        TSShopCarTableViewCell *cell = (TSShopCarTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+
         if (oneSubviewModel.inShopCar) {
             goodsTotalMoney += oneSubviewModel.goodsTotalMoney;
+            cell.selectButton.selected = YES;
+            goodsCount ++;
+        }else {
+            cell.selectButton.selected = NO;
         }
+        index ++;
+    }
+    if (goodsCount == self.viewModel.subviewModels.count) {
+        self.selectAllButton.selected = YES;
+    }else {
+        self.selectAllButton.selected = NO;
     }
     [self.viewModel.shopCarMoney setMoney:goodsTotalMoney];
 }
@@ -115,8 +130,6 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
              [self layoutSubviews];
          }
      }];
-
-
 }
 
 - (void)blindActionHandler{
@@ -124,6 +137,16 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
     [self.selectAllButton bk_addEventHandler:^(id sender) {
         @strongify(self);
         self.selectAllButton.selected = !self.selectAllButton.selected;
+        if (self.selectAllButton.selected) {
+            for (TSShopCarCellSubviewModel *oneSubviewModel in self.viewModel.subviewModels) {
+                oneSubviewModel.inShopCar = YES;
+            }
+        }else {
+            for (TSShopCarCellSubviewModel *oneSubviewModel in self.viewModel.subviewModels) {
+                oneSubviewModel.inShopCar = NO;
+            }
+        }
+        [self layoutSubviews];
     } forControlEvents:UIControlEventTouchUpInside];
     
     [self.payButton bk_addEventHandler:^(id sender) {
@@ -157,9 +180,10 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
         cell.plusButton.layer.borderWidth = 1;
     }
     
-//    TSShopCarModel *model = self.viewModel.dataArray[indexPath.row];
     TSShopCarCellSubviewModel *subviewModel = self.viewModel.subviewModels[indexPath.row];
-    [cell attachViewModel:subviewModel];
+    [cell attachViewModel:subviewModel  carInfo:^(BOOL refreshCarMoney) {
+        [self layoutSubviews];
+    }];
     return cell;
 }
 #pragma mark - tableview  delegate

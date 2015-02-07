@@ -161,6 +161,7 @@
 		B05E6E9C1A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B05E6E9A1A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.m */; };
 		B05E6E9D1A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B05E6E9B1A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.xib */; };
 		B05FF51B1A655F1800F6AB12 /* TSAdModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B05FF51A1A655F1800F6AB12 /* TSAdModel.m */; };
+		B064EAE41A85ED6900D8CB26 /* TSOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B064EAE31A85ED6900D8CB26 /* TSOrderModel.m */; };
 		B06BF40A1A733EA400D999FC /* TSCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B06BF4081A733EA400D999FC /* TSCollectViewController.m */; };
 		B06BF40B1A733EA400D999FC /* TSCollectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B06BF4091A733EA400D999FC /* TSCollectViewController.xib */; };
 		B06BF40F1A733FAF00D999FC /* froum_icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = B06BF40D1A733FAF00D999FC /* froum_icon3.png */; };
@@ -553,6 +554,8 @@
 		B05E6E9B1A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSSecondsDealDetailTableViewCell.xib; sourceTree = "<group>"; };
 		B05FF5191A655F1800F6AB12 /* TSAdModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSAdModel.h; sourceTree = "<group>"; };
 		B05FF51A1A655F1800F6AB12 /* TSAdModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAdModel.m; sourceTree = "<group>"; };
+		B064EAE21A85ED6900D8CB26 /* TSOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSOrderModel.h; sourceTree = "<group>"; };
+		B064EAE31A85ED6900D8CB26 /* TSOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSOrderModel.m; sourceTree = "<group>"; };
 		B06BF4071A733EA400D999FC /* TSCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCollectViewController.h; sourceTree = "<group>"; };
 		B06BF4081A733EA400D999FC /* TSCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCollectViewController.m; sourceTree = "<group>"; };
 		B06BF4091A733EA400D999FC /* TSCollectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSCollectViewController.xib; sourceTree = "<group>"; };
@@ -1110,6 +1113,8 @@
 				B06BF4371A74309800D999FC /* TSShopCarModel.m */,
 				B08C88E01A74D5CF00F7BF81 /* TSShopCarMoneyModel.h */,
 				B08C88E11A74D5CF00F7BF81 /* TSShopCarMoneyModel.m */,
+				B064EAE21A85ED6900D8CB26 /* TSOrderModel.h */,
+				B064EAE31A85ED6900D8CB26 /* TSOrderModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2769,6 +2774,7 @@
 				B0B4B83F1A7C948500F0F427 /* TSOrderConfirmTableViewCell.m in Sources */,
 				B07700D81A58DCAB001E3623 /* TSCategoryCell.m in Sources */,
 				B06BF4251A73FA2D00D999FC /* TSCollectViewModel.m in Sources */,
+				B064EAE41A85ED6900D8CB26 /* TSOrderModel.m in Sources */,
 				B08DBEC81A602ECE007A301F /* TSGoodsInfoModel.m in Sources */,
 				B05115DA19F96A6D00CA6E2E /* TSForumViewController.m in Sources */,
 				B015C3141A0F0A490060FBE2 /* TSShopRecommedDetailTableViewCell.m in Sources */,
