@@ -119,5 +119,7 @@
 
 //购买接口
 #define OrderSure_URL Domain"/orderSure"
+//订单数据加载
+#define OrderSureLoad_URL Domain"/orderSureLoad"
 
 #endif

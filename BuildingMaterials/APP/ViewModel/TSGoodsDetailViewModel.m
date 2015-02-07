@@ -18,6 +18,7 @@
         self.shopModel = [[TSShopModel alloc] init];
         self.dataArray = [[NSMutableArray alloc] initWithCapacity:0];
         self.count = 1;
+        _paramsValue = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }

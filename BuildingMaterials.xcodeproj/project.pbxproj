@@ -290,6 +290,7 @@
 		B0F7B87D1A626F9100D3EC95 /* TSReleaseExchangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0F7B87B1A626F9100D3EC95 /* TSReleaseExchangeViewController.xib */; };
 		B0F7B8801A626FBA00D3EC95 /* TSReleaseEchangeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F7B87F1A626FBA00D3EC95 /* TSReleaseEchangeViewModel.m */; };
 		B0F7B8821A62B7A200D3EC95 /* take_picture.png in Resources */ = {isa = PBXBuildFile; fileRef = B0F7B8811A62B7A200D3EC95 /* take_picture.png */; };
+		B0F992F81A83E44C00A24E6C /* TSParamsButton.m in Sources */ = {isa = PBXBuildFile; fileRef = B0F992F71A83E44C00A24E6C /* TSParamsButton.m */; };
 		B0FA13E31A64321F00C1C377 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B0FA13E11A64321F00C1C377 /* AlipaySDK.bundle */; };
 		B0FA13E41A64321F00C1C377 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0FA13E21A64321F00C1C377 /* AlipaySDK.framework */; };
 		B0FA13E91A6436EE00C1C377 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0FA13E81A6436EE00C1C377 /* SystemConfiguration.framework */; };
@@ -742,6 +743,8 @@
 		B0F7B87E1A626FBA00D3EC95 /* TSReleaseEchangeViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSReleaseEchangeViewModel.h; sourceTree = "<group>"; };
 		B0F7B87F1A626FBA00D3EC95 /* TSReleaseEchangeViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSReleaseEchangeViewModel.m; sourceTree = "<group>"; };
 		B0F7B8811A62B7A200D3EC95 /* take_picture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = take_picture.png; sourceTree = "<group>"; };
+		B0F992F61A83E44C00A24E6C /* TSParamsButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSParamsButton.h; sourceTree = "<group>"; };
+		B0F992F71A83E44C00A24E6C /* TSParamsButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSParamsButton.m; sourceTree = "<group>"; };
 		B0FA13E11A64321F00C1C377 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		B0FA13E21A64321F00C1C377 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlipaySDK.framework; path = BuildingMaterials/lib/AlipaySDK.framework; sourceTree = "<group>"; };
 		B0FA13E81A6436EE00C1C377 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -1112,6 +1115,8 @@
 				B0B4B83C1A7C948500F0F427 /* TSOrderConfirmTableViewCell.h */,
 				B0B4B83D1A7C948500F0F427 /* TSOrderConfirmTableViewCell.m */,
 				B0B4B83E1A7C948500F0F427 /* TSOrderConfirmTableViewCell.xib */,
+				B0F992F61A83E44C00A24E6C /* TSParamsButton.h */,
+				B0F992F71A83E44C00A24E6C /* TSParamsButton.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -2750,6 +2755,7 @@
 				B01431AD1A74FD6A00A6FC38 /* TSCollectionShopModel.m in Sources */,
 				B0FA144A1A643F6200C1C377 /* Order.m in Sources */,
 				B08DBECC1A602EED007A301F /* TSGoodsParamsModel.m in Sources */,
+				B0F992F81A83E44C00A24E6C /* TSParamsButton.m in Sources */,
 				B01847E019F89DCC00938054 /* NSDictionary+BSJSONAdditions.m in Sources */,
 				B0C127511A716E4A00AA7A0A /* TSForumClassifyModel.m in Sources */,
 				B0C686D01A530ABC002053F1 /* TSCategoryViewModel.m in Sources */,
@@ -2822,6 +2828,7 @@
 /* Begin XCBuildConfiguration section */
 		B018474919F898BF00938054 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CC85AD3F1CAF437A65DAA63C /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -2859,10 +2866,10 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/BuildingMaterials/lib";
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "0005ffb5-96e9-40e8-8c65-53d2d5ec2afd";
 				SDKROOT = iphoneos;
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
@@ -2899,10 +2906,11 @@
 				);
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/BuildingMaterials/lib";
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "0005ffb5-96e9-40e8-8c65-53d2d5ec2afd";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};
@@ -2939,10 +2947,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BuildingMaterials/lib",
 				);
-				ONLY_ACTIVE_ARCH = NO;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0005ffb5-96e9-40e8-8c65-53d2d5ec2afd";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2980,9 +2988,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/BuildingMaterials/lib",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0005ffb5-96e9-40e8-8c65-53d2d5ec2afd";
-				VALID_ARCHS = "armv7 armv7s";
+				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

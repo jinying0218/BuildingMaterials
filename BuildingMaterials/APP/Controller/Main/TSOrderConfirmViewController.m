@@ -11,7 +11,7 @@
 #import "TSOrderConfirmTableViewCell.h"
 #import "TSAddressViewController.h"
 #import "TSAddressViewModel.h"
-
+#import "TSUserModel.h"
 
 #import <UIImageView+WebCache.h>
 
@@ -25,7 +25,7 @@ static NSString *const OrderConfirmTableViewCellIdendifier = @"orderConfirmTable
 @property (weak, nonatomic) IBOutlet UIButton *confirePayButton;
 @property (weak, nonatomic) IBOutlet UILabel *totalMoney;
 @property (weak, nonatomic) IBOutlet UILabel *postageMoney;
-
+@property (nonatomic, strong) TSUserModel *userModel;
 
 @end
 
@@ -40,6 +40,7 @@ static NSString *const OrderConfirmTableViewCellIdendifier = @"orderConfirmTable
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self initializeData];
     [self configureUI];
     [self blindViewModel];
     [self blindActionHandler];
@@ -49,6 +50,16 @@ static NSString *const OrderConfirmTableViewCellIdendifier = @"orderConfirmTable
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)initializeData{
+    self.userModel = [TSUserModel getCurrentLoginUser];
+    NSDictionary *params = @{@"userId" : @(self.userModel.userId)};
+    [TSHttpTool getWithUrl:OrderSureLoad_URL params:params withCache:NO success:^(id result) {
+        NSLog(@"订单数据加载:%@",result);
+    } failure:^(NSError *error) {
+        NSLog(@"订单数据加载:%@",error);
+    }];
 }
 - (void)configureUI{
     self.tabBarController.tabBar.hidden =  YES;
