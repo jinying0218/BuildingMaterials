@@ -210,6 +210,12 @@
 		B08DBECC1A602EED007A301F /* TSGoodsParamsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B08DBECB1A602EED007A301F /* TSGoodsParamsModel.m */; };
 		B08DBECF1A603F21007A301F /* TSParametersList.m in Sources */ = {isa = PBXBuildFile; fileRef = B08DBECE1A603F21007A301F /* TSParametersList.m */; };
 		B09B417C1A4285D200DDF74A /* ss_09.png in Resources */ = {isa = PBXBuildFile; fileRef = B09B417B1A4285D200DDF74A /* ss_09.png */; };
+		B0AAD5921A85AAEC00F2DB68 /* TSWaitForPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AAD5901A85AAEC00F2DB68 /* TSWaitForPayViewController.m */; };
+		B0AAD5931A85AAEC00F2DB68 /* TSWaitForPayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0AAD5911A85AAEC00F2DB68 /* TSWaitForPayViewController.xib */; };
+		B0AAD5981A85AB2600F2DB68 /* TSHavePayedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AAD5961A85AB2600F2DB68 /* TSHavePayedViewController.m */; };
+		B0AAD5991A85AB2600F2DB68 /* TSHavePayedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0AAD5971A85AB2600F2DB68 /* TSHavePayedViewController.xib */; };
+		B0AAD59F1A85ABA600F2DB68 /* TSHavePayedViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AAD59E1A85ABA600F2DB68 /* TSHavePayedViewModel.m */; };
+		B0AAD5A21A85ABBD00F2DB68 /* TSWaitForPayViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AAD5A11A85ABBD00F2DB68 /* TSWaitForPayViewModel.m */; };
 		B0B4B8351A7C8E6700F0F427 /* TSOrderConfirmViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B4B8331A7C8E6700F0F427 /* TSOrderConfirmViewController.m */; };
 		B0B4B8361A7C8E6700F0F427 /* TSOrderConfirmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0B4B8341A7C8E6700F0F427 /* TSOrderConfirmViewController.xib */; };
 		B0B4B83A1A7C8E9600F0F427 /* TSOrderConfirmViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0B4B8391A7C8E9600F0F427 /* TSOrderConfirmViewModel.m */; };
@@ -618,6 +624,16 @@
 		B08DBECD1A603F21007A301F /* TSParametersList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSParametersList.h; sourceTree = "<group>"; };
 		B08DBECE1A603F21007A301F /* TSParametersList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSParametersList.m; sourceTree = "<group>"; };
 		B09B417B1A4285D200DDF74A /* ss_09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ss_09.png; sourceTree = "<group>"; };
+		B0AAD58F1A85AAEC00F2DB68 /* TSWaitForPayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSWaitForPayViewController.h; sourceTree = "<group>"; };
+		B0AAD5901A85AAEC00F2DB68 /* TSWaitForPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSWaitForPayViewController.m; sourceTree = "<group>"; };
+		B0AAD5911A85AAEC00F2DB68 /* TSWaitForPayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSWaitForPayViewController.xib; sourceTree = "<group>"; };
+		B0AAD5951A85AB2600F2DB68 /* TSHavePayedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSHavePayedViewController.h; sourceTree = "<group>"; };
+		B0AAD5961A85AB2600F2DB68 /* TSHavePayedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSHavePayedViewController.m; sourceTree = "<group>"; };
+		B0AAD5971A85AB2600F2DB68 /* TSHavePayedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSHavePayedViewController.xib; sourceTree = "<group>"; };
+		B0AAD59D1A85ABA600F2DB68 /* TSHavePayedViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSHavePayedViewModel.h; sourceTree = "<group>"; };
+		B0AAD59E1A85ABA600F2DB68 /* TSHavePayedViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSHavePayedViewModel.m; sourceTree = "<group>"; };
+		B0AAD5A01A85ABBD00F2DB68 /* TSWaitForPayViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSWaitForPayViewModel.h; sourceTree = "<group>"; };
+		B0AAD5A11A85ABBD00F2DB68 /* TSWaitForPayViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSWaitForPayViewModel.m; sourceTree = "<group>"; };
 		B0B4B8321A7C8E6700F0F427 /* TSOrderConfirmViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSOrderConfirmViewController.h; sourceTree = "<group>"; };
 		B0B4B8331A7C8E6700F0F427 /* TSOrderConfirmViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSOrderConfirmViewController.m; sourceTree = "<group>"; };
 		B0B4B8341A7C8E6700F0F427 /* TSOrderConfirmViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSOrderConfirmViewController.xib; sourceTree = "<group>"; };
@@ -1427,6 +1443,8 @@
 				B0ED9FC21A6ECDCC009EF241 /* 管理收货地址 */,
 				B06BF40C1A733EA900D999FC /* 收藏列表 */,
 				B06BF41A1A73BFCB00D999FC /* 购物车 */,
+				B0AAD5941A85AAF200F2DB68 /* 待付款 */,
+				B0AAD59A1A85AB2900F2DB68 /* 已付款 */,
 			);
 			name = "我的信息";
 			sourceTree = "<group>";
@@ -1692,10 +1710,14 @@
 				B0ED9FC41A6ECDE4009EF241 /* TSAddressViewModel.m */,
 				B06BF4201A73FA2000D999FC /* TSShopCarViewModel.h */,
 				B06BF4211A73FA2000D999FC /* TSShopCarViewModel.m */,
-				B06BF4231A73FA2D00D999FC /* TSCollectViewModel.h */,
-				B06BF4241A73FA2D00D999FC /* TSCollectViewModel.m */,
+				B0AAD59C1A85AB8C00F2DB68 /* 收藏 */,
 				B08C88DD1A74B7D200F7BF81 /* TSShopCarCellSubviewModel.h */,
 				B08C88DE1A74B7D200F7BF81 /* TSShopCarCellSubviewModel.m */,
+				B0AAD59B1A85AB7700F2DB68 /* 找回密码 */,
+				B0AAD59D1A85ABA600F2DB68 /* TSHavePayedViewModel.h */,
+				B0AAD59E1A85ABA600F2DB68 /* TSHavePayedViewModel.m */,
+				B0AAD5A01A85ABBD00F2DB68 /* TSWaitForPayViewModel.h */,
+				B0AAD5A11A85ABBD00F2DB68 /* TSWaitForPayViewModel.m */,
 			);
 			name = "我的";
 			sourceTree = "<group>";
@@ -1868,8 +1890,6 @@
 				B05E82D11A5D758500DC33D8 /* 论坛 */,
 				B08455BF1A5AD2E400F8164E /* 招聘 */,
 				B05E82D21A5D758F00DC33D8 /* 我的 */,
-				B0ED9FBA1A6E8B04009EF241 /* TSFindPWDViewModel.h */,
-				B0ED9FBB1A6E8B04009EF241 /* TSFindPWDViewModel.m */,
 				B0B4B83B1A7C945500F0F427 /* 订单确定 */,
 			);
 			path = ViewModel;
@@ -1926,6 +1946,44 @@
 				B08DBECE1A603F21007A301F /* TSParametersList.m */,
 			);
 			name = "商品规格参数";
+			sourceTree = "<group>";
+		};
+		B0AAD5941A85AAF200F2DB68 /* 待付款 */ = {
+			isa = PBXGroup;
+			children = (
+				B0AAD58F1A85AAEC00F2DB68 /* TSWaitForPayViewController.h */,
+				B0AAD5901A85AAEC00F2DB68 /* TSWaitForPayViewController.m */,
+				B0AAD5911A85AAEC00F2DB68 /* TSWaitForPayViewController.xib */,
+			);
+			name = "待付款";
+			sourceTree = "<group>";
+		};
+		B0AAD59A1A85AB2900F2DB68 /* 已付款 */ = {
+			isa = PBXGroup;
+			children = (
+				B0AAD5951A85AB2600F2DB68 /* TSHavePayedViewController.h */,
+				B0AAD5961A85AB2600F2DB68 /* TSHavePayedViewController.m */,
+				B0AAD5971A85AB2600F2DB68 /* TSHavePayedViewController.xib */,
+			);
+			name = "已付款";
+			sourceTree = "<group>";
+		};
+		B0AAD59B1A85AB7700F2DB68 /* 找回密码 */ = {
+			isa = PBXGroup;
+			children = (
+				B0ED9FBA1A6E8B04009EF241 /* TSFindPWDViewModel.h */,
+				B0ED9FBB1A6E8B04009EF241 /* TSFindPWDViewModel.m */,
+			);
+			name = "找回密码";
+			sourceTree = "<group>";
+		};
+		B0AAD59C1A85AB8C00F2DB68 /* 收藏 */ = {
+			isa = PBXGroup;
+			children = (
+				B06BF4231A73FA2D00D999FC /* TSCollectViewModel.h */,
+				B06BF4241A73FA2D00D999FC /* TSCollectViewModel.m */,
+			);
+			name = "收藏";
 			sourceTree = "<group>";
 		};
 		B0B4B8371A7C8E6D00F0F427 /* 订单确定 */ = {
@@ -2492,6 +2550,7 @@
 				B05115F419F9748C00CA6E2E /* category_icon.png in Resources */,
 				B0F476F31A59087A005C851D /* TSInviteCell.xib in Resources */,
 				B015C3301A0F18AE0060FBE2 /* TSGoodsExchangeDetailTableViewCell.xib in Resources */,
+				B0AAD5931A85AAEC00F2DB68 /* TSWaitForPayViewController.xib in Resources */,
 				B09B417C1A4285D200DDF74A /* ss_09.png in Resources */,
 				B0C4992A19FFE7550092EE09 /* mine_circleAttention.png in Resources */,
 				B05E6E9D1A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.xib in Resources */,
@@ -2516,6 +2575,7 @@
 				B05B62E719FE88BC008F76E0 /* TSSecondsDealTableViewCell.xib in Resources */,
 				B05115F819F9748C00CA6E2E /* forum_icon.png in Resources */,
 				B06BF4101A733FAF00D999FC /* message.png in Resources */,
+				B0AAD5991A85AB2600F2DB68 /* TSHavePayedViewController.xib in Resources */,
 				B0C4992F19FFE7550092EE09 /* mine_headImage.png in Resources */,
 				B04411CC1A5C5475005ED736 /* invite_applyButton.png in Resources */,
 				B0ED9FC11A6ECDC8009EF241 /* TSAddressViewController.xib in Resources */,
@@ -2645,6 +2705,8 @@
 			files = (
 				B0ED9FC51A6ECDE4009EF241 /* TSAddressViewModel.m in Sources */,
 				B0C686D61A530AE2002053F1 /* TSInviteViewModel.m in Sources */,
+				B0AAD5921A85AAEC00F2DB68 /* TSWaitForPayViewController.m in Sources */,
+				B0AAD5981A85AB2600F2DB68 /* TSHavePayedViewController.m in Sources */,
 				B0FA144E1A643F6200C1C377 /* MD5DataSigner.m in Sources */,
 				B05115E419F96A9500CA6E2E /* TSMineViewController.m in Sources */,
 				B01847DD19F89DCC00938054 /* TSTextField.m in Sources */,
@@ -2723,6 +2785,7 @@
 				B0F477101A59231E005C851D /* UIView+MJExtension.m in Sources */,
 				B03B30CE1A5EE90900E77FB9 /* TSShopGoodsViewModel.m in Sources */,
 				B07700D31A58D137001E3623 /* TSCategoryModel.m in Sources */,
+				B0AAD59F1A85ABA600F2DB68 /* TSHavePayedViewModel.m in Sources */,
 				B01847DA19F89DCC00938054 /* TSBaseView.m in Sources */,
 				B08571481A6D51DA00EFB589 /* ClockView.m in Sources */,
 				B015C3291A0F16F10060FBE2 /* TSGoodsExchangeViewController.m in Sources */,
@@ -2753,6 +2816,7 @@
 				B05115C419F957CA00CA6E2E /* TSRegisterTwoViewController.m in Sources */,
 				B06BF42C1A74188400D999FC /* TSGoodsCollectTableViewCell.m in Sources */,
 				B01431AD1A74FD6A00A6FC38 /* TSCollectionShopModel.m in Sources */,
+				B0AAD5A21A85ABBD00F2DB68 /* TSWaitForPayViewModel.m in Sources */,
 				B0FA144A1A643F6200C1C377 /* Order.m in Sources */,
 				B08DBECC1A602EED007A301F /* TSGoodsParamsModel.m in Sources */,
 				B0F992F81A83E44C00A24E6C /* TSParamsButton.m in Sources */,

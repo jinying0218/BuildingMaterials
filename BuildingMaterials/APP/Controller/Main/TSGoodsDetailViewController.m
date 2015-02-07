@@ -21,6 +21,8 @@
 #import "TSCommentViewModel.h"
 
 #import "TSGoodsDesViewController.h"
+#import "TSOrderConfirmViewController.h"
+#import "TSOrderConfirmViewModel.h"
 
 #import "TSShopDetailViewController.h"
 #import "TSShopDetailViewModel.h"
@@ -256,7 +258,7 @@
 
 - (void)paramsButtonClick:(TSParamsButton *)button{
     //////   确定选中的是哪个一个，，， 赋值非viewModel
-    int index = button.indexPath.section;
+    NSUInteger index = button.indexPath.section;
     TSGoodsParamsModel *paramsModel = self.viewModel.dataArray[index];
     //点击一下，创建一个参数对象     判断该参数是否已经加入过，。加入过，不在加入，paramsCount 不增加
     TSParametersList *newParams = [[TSParametersList alloc] init];
@@ -364,6 +366,36 @@
             }
         } failure:^(NSError *error) {
             NSLog(@"加入购物车:%@",error);
+        }];
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.buyButton bk_addEventHandler:^(id sender) {
+        @strongify(self);
+        NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:0];
+        for (TSParametersList *params in self.viewModel.paramsValue) {
+            NSDictionary *dict = @{@"goodsParametersId" : [NSString stringWithFormat:@"%d",params.parametersId],
+                                   @"goodsParametersName" : params.parametersName};
+            [arr addObject:dict];
+        }
+        NSDictionary *goodsParameters = @{@"result" : arr};
+
+        NSDictionary *params = @{@"userId" : @(self.userModel.userId),
+                                 @"carId" : @"",
+                                 @"seckillId" : @"",
+                                 @"goodsId" : @(self.viewModel.goodsID),
+                                 @"price" : @(self.viewModel.goodsInfoModel.goodsNewPrice),
+                                 @"number" : @(self.viewModel.count),
+                                 @"goodsParameters" : [goodsParameters jsonStringValue]};
+        [TSHttpTool postWithUrl:OrderSure_URL params:params success:^(id result) {
+            NSLog(@"购买：%@",result);
+            if ([result[@"success"] intValue] == 1) {
+                TSOrderConfirmViewModel *viewModel = [[TSOrderConfirmViewModel alloc] init];
+                TSOrderConfirmViewController *orderConfirmVC = [[TSOrderConfirmViewController alloc] initWithViewModel:viewModel];
+                [self.navigationController pushViewController:orderConfirmVC animated:YES];
+            }
+            
+        } failure:^(NSError *error) {
+            NSLog(@"购买：%@",error);
         }];
     } forControlEvents:UIControlEventTouchUpInside];
     

@@ -18,6 +18,12 @@
 #import "TSShopCarViewController.h"
 #import "TSShopCarViewModel.h"
 
+#import "TSWaitForPayViewController.h"
+#import "TSWaitForPayViewModel.h"
+
+#import "TSHavePayedViewController.h"
+#import "TSHavePayedViewModel.h"
+
 @interface TSMineViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *iConArray;
@@ -192,11 +198,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     switch (indexPath.row) {
         case 0:{
-            
+            TSWaitForPayViewModel *viewModel = [[TSWaitForPayViewModel alloc] init];
+            TSWaitForPayViewController *waitForPayVC = [[TSWaitForPayViewController alloc] initWithViewModel:viewModel];
+            [self.navigationController pushViewController:waitForPayVC animated:YES];
         }
             break;
         case 1:{
-            
+            TSHavePayedViewModel *viewModel = [[TSHavePayedViewModel alloc] init];
+            TSHavePayedViewController *waitForPayVC = [[TSHavePayedViewController alloc] initWithViewModel:viewModel];
+            [self.navigationController pushViewController:waitForPayVC animated:YES];
+
         }
             break;
         case 2:{
