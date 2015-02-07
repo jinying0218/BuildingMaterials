@@ -198,11 +198,13 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
         }
         NSDictionary *companyPostDict = @{@"post" : post};
         
-        
+        TSOrderModel *firstOrderModel = [[self.viewModel.subviewModels[0] goodsArray] objectAtIndex:0];
+
         NSDictionary *orderPostDict = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId],
-                                        @"seckillId" : @"",
+                                        @"seckillId" : [NSString stringWithFormat:@"%d",firstOrderModel.seckillId],
                                         @"goodsFee" : @"0",
                                         @"transportFee" : @"0",
+                                 
                                         @"totalFee" : @"0",
                                         @"address" : self.viewModel.address};
 
