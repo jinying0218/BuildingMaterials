@@ -19,13 +19,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BuildingMaterials/APP/Controller/Main/TSWaitForPayViewController.m"
-            timestampString = "444988482.799915"
+            filePath = "BuildingMaterials/APP/Controller/Main/TSCategoryViewController.m"
+            timestampString = "444995796.749771"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "-initializeData"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "-setupUI"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
