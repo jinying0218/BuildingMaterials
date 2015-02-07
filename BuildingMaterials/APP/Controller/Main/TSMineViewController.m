@@ -212,7 +212,9 @@
             break;
         case 2:{
             TSAddressViewModel *viewModel = [[TSAddressViewModel alloc] init];
-            TSAddressViewController *addressVC = [[TSAddressViewController alloc] initWithViewModel:viewModel];
+            TSAddressViewController *addressVC = [[TSAddressViewController alloc] initWithViewModel:viewModel address:^(NSString *address) {
+                
+            }];
             [self.navigationController pushViewController:addressVC animated:YES];
         }
             break;

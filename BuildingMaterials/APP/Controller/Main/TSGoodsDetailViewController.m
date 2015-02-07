@@ -388,7 +388,7 @@
         NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId],
                                  @"goodsInformation" : [goodsInformation jsonStringValue]};
         [TSHttpTool postWithUrl:OrderSure_URL params:params success:^(id result) {
-            NSLog(@"购买：%@",result);
+//            NSLog(@"购买：%@",result);
             if ([result[@"success"] intValue] == 1) {
                 TSOrderConfirmViewModel *viewModel = [[TSOrderConfirmViewModel alloc] init];
                 TSOrderConfirmViewController *orderConfirmVC = [[TSOrderConfirmViewController alloc] initWithViewModel:viewModel];

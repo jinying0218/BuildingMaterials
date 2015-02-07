@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TSOrderConfirmViewController">
             <connections>
+                <outlet property="addressLabel" destination="bVm-qr-TUf" id="aoH-G0-N1s"/>
                 <outlet property="cancelSelectButton" destination="EQV-51-aFK" id="82C-35-LMo"/>
                 <outlet property="confirePayButton" destination="gx1-9f-YOU" id="b1H-uA-P0i"/>
                 <outlet property="cover" destination="XSW-UB-2xa" id="ezb-Mj-la1"/>
@@ -45,14 +46,14 @@
                             </state>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yRd-iM-IRs">
-                            <rect key="frame" x="139" y="23" width="104.99999837109317" height="18"/>
+                            <rect key="frame" x="138.99999792104438" y="23" width="105" height="18"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="0.2196078431372549" green="0.63921568627450975" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NS0-f2-LiP">
-                            <rect key="frame" x="146.99999837109317" y="8" width="97" height="18"/>
+                            <rect key="frame" x="146.99999792104438" y="8" width="97" height="18"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="0.2196078431372549" green="0.63921568627450975" blue="0.8784313725490196" alpha="1" colorSpace="calibratedRGB"/>
@@ -70,7 +71,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择地址" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bVm-qr-TUf">
-                    <rect key="frame" x="8" y="11" width="85" height="21"/>
+                    <rect key="frame" x="8" y="11" width="286" height="21"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>

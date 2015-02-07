@@ -134,4 +134,8 @@
 //订单最后确认
 #define OrderPost_URL Domain"/orderPost"
 #define CompanyePost_URL Domain"/companyPost"
+
+///// 支付
+#define Pay_URL @"http://www.d-anshun.com/aliPay/payApp"
+
 #endif

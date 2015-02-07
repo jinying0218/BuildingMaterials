@@ -18,6 +18,8 @@
 #import "TSOrderTableFooterView.h"
 
 #import <UIImageView+WebCache.h>
+#import "NSArray+BSJSONAdditions.h"
+#import "NSDictionary+BSJSONAdditions.h"
 
 #define Tag_orderTable 9000
 #define Tag_transportTable 9001
@@ -38,6 +40,7 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
 @property (strong, nonatomic) IBOutlet UIView *cover;
 @property (strong, nonatomic) IBOutlet UIView *popView;
 @property (weak, nonatomic) IBOutlet UILabel *popTitle;
+@property (weak, nonatomic) IBOutlet UILabel *addressLabel;
 
 @property (nonatomic, strong) TSUserModel *userModel;
 
@@ -51,6 +54,8 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
     }
     return self;
 }
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -77,6 +82,9 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
             for (NSDictionary *dict in result[@"result"]) {
                 TSOrderModel *orderModel = [[TSOrderModel alloc] init];
                 [orderModel modelWithDict:dict];
+                if (!orderModel.goodsParameters) {
+                    orderModel.goodsParameters = @"";
+                }
                 [allGoodsArray addObject:orderModel];
                 if (![allCompanyIds containsObject:@(orderModel.CC_ID)]) {
                     [allCompanyIds addObject:@(orderModel.CC_ID)];
@@ -95,25 +103,28 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
             }
             [self.tableView reloadData];
             
+            //默认提示第一个选择运送方式
+            TSOrderModel *firstOrderModel = [self.viewModel.subviewModels[0] goodsArray][0];
+            NSDictionary *paramsTransport = @{@"companyId" : [NSString stringWithFormat:@"%d",firstOrderModel.CC_ID]};
+            [TSHttpTool getWithUrl:TransportLoad_URL params:paramsTransport withCache:NO success:^(id result) {
+                //        NSLog(@"TransportLoad_URL---运输方式：%@",result);
+                if ([result[@"success"] intValue] == 1) {
+                    for (NSDictionary *dict in result[@"result"]) {
+                        TSTransportModel *model = [[TSTransportModel alloc] init];
+                        [model modelWithDict:dict];
+                        [self.viewModel.transportsArray addObject:model];
+                    }
+                    self.cover.hidden = NO;
+                    self.popView.hidden = NO;
+                    [self.transportTable reloadData];
+                }
+            } failure:^(NSError *error) {
+                NSLog(@"TransportLoad_URL---运输方式：%@",error);
+            }];
+            
         }
     } failure:^(NSError *error) {
         NSLog(@"订单数据加载:%@",error);
-    }];
-    NSDictionary *paramsTransport = @{@"companyId" : @"3"};
-    [TSHttpTool getWithUrl:TransportLoad_URL params:paramsTransport withCache:NO success:^(id result) {
-        NSLog(@"TransportLoad_URL---运输方式：%@",result);
-        if ([result[@"success"] intValue] == 1) {
-            for (NSDictionary *dict in result[@"result"]) {
-                TSTransportModel *model = [[TSTransportModel alloc] init];
-                [model modelWithDict:dict];
-                [self.viewModel.transportsArray addObject:model];
-            }
-            self.cover.hidden = NO;
-            self.popView.hidden = NO;
-            [self.transportTable reloadData];
-        }
-    } failure:^(NSError *error) {
-        NSLog(@"TransportLoad_URL---运输方式：%@",error);
     }];
     
 }
@@ -123,6 +134,8 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
     [self createNavigationBarTitle:@"订单确认" leftButtonImageName:@"Previous" rightButtonImageName:nil];
     self.navigationBar.frame = CGRectMake( 0, STATUS_BAR_HEGHT, KscreenW, 44);
     [self.view addSubview:self.navigationBar];
+    
+    self.addressLabel.adjustsFontSizeToFitWidth = YES;
 
     self.tableView.tag = Tag_orderTable;
     self.tableView.tableHeaderView = self.managerAddressView;
@@ -144,20 +157,82 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
 }
 
 - (void)blindViewModel{
-    
+    [self.KVOController
+     observe:self.viewModel
+     keyPath:@keypath(self.viewModel,address)
+     options:NSKeyValueObservingOptionNew
+     block:^(TSOrderConfirmViewController *observer, TSOrderConfirmViewModel *object, NSDictionary *change) {
+         if (![[change objectForKey:NSKeyValueChangeNewKey] isEqual:[NSNull null]]) {
+             observer.addressLabel.text = change[NSKeyValueChangeNewKey];
+         }
+     }];
+
 }
 
 - (void)blindActionHandler{
     @weakify(self);
     [self.confirePayButton bk_addEventHandler:^(id sender) {
-//        @strongify(self);
+        @strongify(self);
+        
+        NSMutableArray *post = [[NSMutableArray alloc] initWithCapacity:0];
+        for (TSOrderSubviewModel *subviewModel in self.viewModel.subviewModels) {
+            NSMutableArray *goods = [[NSMutableArray alloc] initWithCapacity:0];
+            for (TSOrderModel *orderModel in subviewModel.goodsArray) {
+                NSDictionary *dict = @{@"goodsId" : @"90",
+                                       @"price" : @"1",
+                                       @"number" : @"1",
+                                       @"goodsParameters" : orderModel.goodsParameters};
+//                [NSString stringWithFormat:@"%d",orderModel.G_ID]
+//                [NSString stringWithFormat:@"%d",orderModel.price]
+//                [NSString stringWithFormat:@"%d",orderModel.goodsNumber]
+                [goods addObject:dict];
+            }
+            TSOrderModel *firstOrderModel = [subviewModel goodsArray][0];
+            NSDictionary *dict = @{@"companyId" : [NSString stringWithFormat:@"%d",firstOrderModel.CC_ID],
+                                   @"totalPrice" : [NSString stringWithFormat:@"%d",subviewModel.companyTotalPrice],
+                                   @"transportPrice" : [NSString stringWithFormat:@"%d",subviewModel.transportPrice],
+                                   @"transportName" : subviewModel.transportModel.transportName,
+                                   @"transportType" : [NSString stringWithFormat:@"%d",subviewModel.transportModel.transportType],
+                                   @"goods" : [goods jsonStringValue]};
+            [post addObject:dict];
+        }
+        NSDictionary *companyPostDict = @{@"post" : post};
+        
+        
+        NSDictionary *orderPostDict = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId],
+                                        @"seckillId" : @"",
+                                        @"goodsFee" : @"0",
+                                        @"transportFee" : @"0",
+                                        @"totalFee" : @"0",
+                                        @"address" : self.viewModel.address};
+
+        
+        NSDictionary *params = @{@"orderPost" : [orderPostDict jsonStringValue],
+                                 @"companyPost" : [companyPostDict jsonStringValue]};
+        
+        NSLog(@"\n orderPost:%@",orderPostDict);
+        NSLog(@"\n companyPost:%@",companyPostDict);
+
+//        NSLog(@"%@",params);
+        
+        [TSHttpTool postWithUrl:OrderPost_URL params:params success:^(id result) {
+            NSLog(@"OrderPost_URL------确定支付:%@",result);
+        } failure:^(NSError *error) {
+            NSLog(@"OrderPost_URL------确定支付:%@",error);
+        }];
+        
+        
         
     } forControlEvents:UIControlEventTouchUpInside];
     
     [self.managerAddressButton bk_addEventHandler:^(id sender) {
       @strongify(self);
         TSAddressViewModel *viewModel = [[TSAddressViewModel alloc] init];
-        TSAddressViewController *addressVC = [[TSAddressViewController alloc] initWithViewModel:viewModel];
+        viewModel.allowSelect = YES;
+        TSAddressViewController *addressVC = [[TSAddressViewController alloc] initWithViewModel:viewModel address:^(NSString *address) {
+            @strongify(self);
+            self.viewModel.address = address;
+        }];
         [self.navigationController pushViewController:addressVC animated:YES];
 
     } forControlEvents:UIControlEventTouchUpInside];
@@ -264,7 +339,8 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
             @strongify(self);
             [self showProgressHUD];
             self.viewModel.currentSection = footerView.indexSection;
-            NSDictionary *paramsTransport = @{@"companyId" : @"3"};
+            TSOrderModel *firstOrderModel = [self.viewModel.subviewModels[footerView.indexSection] goodsArray][0];
+            NSDictionary *paramsTransport = @{@"companyId" : [NSString stringWithFormat:@"%d",firstOrderModel.CC_ID]};
             [TSHttpTool getWithUrl:TransportLoad_URL params:paramsTransport withCache:NO success:^(id result) {
                 [self hideProgressHUD];
                 if ([result[@"success"] intValue] == 1) {

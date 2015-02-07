@@ -165,6 +165,8 @@
 		B064EAE71A861CD800D8CB26 /* TSTransportModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B064EAE61A861CD800D8CB26 /* TSTransportModel.m */; };
 		B064EAEA1A8663D500D8CB26 /* TSOrderSubviewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B064EAE91A8663D500D8CB26 /* TSOrderSubviewModel.m */; };
 		B064EAED1A8669A000D8CB26 /* TSOrderTableFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B064EAEC1A8669A000D8CB26 /* TSOrderTableFooterView.m */; };
+		B064EAF11A867B5B00D8CB26 /* TSPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B064EAEF1A867B5B00D8CB26 /* TSPayViewController.m */; };
+		B064EAF21A867B5B00D8CB26 /* TSPayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B064EAF01A867B5B00D8CB26 /* TSPayViewController.xib */; };
 		B06BF40A1A733EA400D999FC /* TSCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B06BF4081A733EA400D999FC /* TSCollectViewController.m */; };
 		B06BF40B1A733EA400D999FC /* TSCollectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B06BF4091A733EA400D999FC /* TSCollectViewController.xib */; };
 		B06BF40F1A733FAF00D999FC /* froum_icon3.png in Resources */ = {isa = PBXBuildFile; fileRef = B06BF40D1A733FAF00D999FC /* froum_icon3.png */; };
@@ -564,6 +566,9 @@
 		B064EAE91A8663D500D8CB26 /* TSOrderSubviewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSOrderSubviewModel.m; sourceTree = "<group>"; };
 		B064EAEB1A8669A000D8CB26 /* TSOrderTableFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSOrderTableFooterView.h; sourceTree = "<group>"; };
 		B064EAEC1A8669A000D8CB26 /* TSOrderTableFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSOrderTableFooterView.m; sourceTree = "<group>"; };
+		B064EAEE1A867B5B00D8CB26 /* TSPayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSPayViewController.h; sourceTree = "<group>"; };
+		B064EAEF1A867B5B00D8CB26 /* TSPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSPayViewController.m; sourceTree = "<group>"; };
+		B064EAF01A867B5B00D8CB26 /* TSPayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSPayViewController.xib; sourceTree = "<group>"; };
 		B06BF4071A733EA400D999FC /* TSCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCollectViewController.h; sourceTree = "<group>"; };
 		B06BF4081A733EA400D999FC /* TSCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCollectViewController.m; sourceTree = "<group>"; };
 		B06BF4091A733EA400D999FC /* TSCollectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSCollectViewController.xib; sourceTree = "<group>"; };
@@ -1762,6 +1767,16 @@
 			name = "广告信息模型";
 			sourceTree = "<group>";
 		};
+		B064EAF31A867B5F00D8CB26 /* 支付 */ = {
+			isa = PBXGroup;
+			children = (
+				B064EAEE1A867B5B00D8CB26 /* TSPayViewController.h */,
+				B064EAEF1A867B5B00D8CB26 /* TSPayViewController.m */,
+				B064EAF01A867B5B00D8CB26 /* TSPayViewController.xib */,
+			);
+			name = "支付";
+			sourceTree = "<group>";
+		};
 		B06BF40C1A733EA900D999FC /* 收藏列表 */ = {
 			isa = PBXGroup;
 			children = (
@@ -2023,6 +2038,7 @@
 				B0B4B8321A7C8E6700F0F427 /* TSOrderConfirmViewController.h */,
 				B0B4B8331A7C8E6700F0F427 /* TSOrderConfirmViewController.m */,
 				B0B4B8341A7C8E6700F0F427 /* TSOrderConfirmViewController.xib */,
+				B064EAF31A867B5F00D8CB26 /* 支付 */,
 			);
 			name = "订单确定";
 			sourceTree = "<group>";
@@ -2589,6 +2605,7 @@
 				B05E6E9D1A045BE0009C92CC /* TSSecondsDealDetailTableViewCell.xib in Resources */,
 				B076AB591A18A5B5007CF312 /* secondsDealGoodsDetail.png in Resources */,
 				B05B5A0E1A3FD9F8008E83C9 /* shop_connect.png in Resources */,
+				B064EAF21A867B5B00D8CB26 /* TSPayViewController.xib in Resources */,
 				B0F4771A1A598C26005C851D /* TSInviteCategoryCell.xib in Resources */,
 				B015C3151A0F0A490060FBE2 /* TSShopRecommedDetailTableViewCell.xib in Resources */,
 				B015C32A1A0F16F10060FBE2 /* TSGoodsExchangeViewController.xib in Resources */,
@@ -2800,6 +2817,7 @@
 				B01847E719F89DCC00938054 /* UIImage+Resize.m in Sources */,
 				B018472F19F898BF00938054 /* main.m in Sources */,
 				B0FA144D1A643F6200C1C377 /* DataVerifier.m in Sources */,
+				B064EAF11A867B5B00D8CB26 /* TSPayViewController.m in Sources */,
 				B01847E419F89DCC00938054 /* NSString+Helper.m in Sources */,
 				B064EAED1A8669A000D8CB26 /* TSOrderTableFooterView.m in Sources */,
 				B015C32F1A0F18AE0060FBE2 /* TSGoodsExchangeDetailTableViewCell.m in Sources */,

@@ -14,4 +14,5 @@
 @property (nonatomic, strong) NSString *addressString;
 @property (nonatomic, strong) NSMutableArray *addressArray;
 
+@property (nonatomic, assign) BOOL allowSelect;
 @end
