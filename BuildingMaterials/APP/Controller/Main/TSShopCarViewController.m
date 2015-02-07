@@ -14,6 +14,9 @@
 #import "TSShopCarCellSubviewModel.h"
 #import "TSOrderConfirmViewController.h"
 #import "TSOrderConfirmViewModel.h"
+#import "NSArray+BSJSONAdditions.h"
+#import "NSDictionary+BSJSONAdditions.h"
+
 
 static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellIdentifier";
 
@@ -55,7 +58,7 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
 - (void)initializeData{
     NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId]};
     [TSHttpTool getWithUrl:GoodsCarLoad_URL params:params withCache:NO success:^(id result) {
-        NSLog(@"购物车:%@",result);
+        NSLog(@"GoodsCarLoad_URL购物车:%@",result);
         if ([result[@"success"] intValue] == 1) {
             [self.viewModel.subviewModels removeAllObjects];
             for (NSDictionary *dict in result[@"result"]) {
@@ -151,9 +154,36 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
     
     [self.payButton bk_addEventHandler:^(id sender) {
         @strongify(self);
-        TSOrderConfirmViewModel *viewModel = [[TSOrderConfirmViewModel alloc] init];
-        TSOrderConfirmViewController *orderConfirmVC = [[TSOrderConfirmViewController alloc] initWithViewModel:viewModel];
-        [self.navigationController pushViewController:orderConfirmVC animated:YES];
+        if (self.viewModel.shopCarMoney.money == 0) {
+            [self showProgressHUD:@"请添加要购买的商品" delay:1];
+            return ;
+        }
+        NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:0];
+        for (TSShopCarCellSubviewModel *subviewModel in self.viewModel.subviewModels) {
+            if (subviewModel.inShopCar) {
+                NSDictionary *dict = @{@"carId" : [NSString stringWithFormat:@"%d",subviewModel.shopCarModel.C_ID],
+                                       @"seckillId" : @"",
+                                       @"goodsId" : [NSString stringWithFormat:@"%d",subviewModel.shopCarModel.goods_id],
+                                       @"price" : [NSString stringWithFormat:@"%d",subviewModel.shopCarModel.goods_price],
+                                       @"number" : [NSString stringWithFormat:@"%d",subviewModel.shopCarModel.goods_number],
+                                       @"goodsParameters" : subviewModel.shopCarModel.parameters};
+                [arr addObject:dict];
+            }
+        }
+        
+        NSDictionary *goodsInformation = @{@"post" : arr};
+        NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId],
+                                 @"goodsInformation" : [goodsInformation jsonStringValue]};
+        [TSHttpTool postWithUrl:OrderSure_URL params:params success:^(id result) {
+            NSLog(@"OrderSure_URL--结算：%@",result);
+            if ([result[@"success"] intValue] == 1) {
+                TSOrderConfirmViewModel *viewModel = [[TSOrderConfirmViewModel alloc] init];
+                TSOrderConfirmViewController *orderConfirmVC = [[TSOrderConfirmViewController alloc] initWithViewModel:viewModel];
+                [self.navigationController pushViewController:orderConfirmVC animated:YES];
+            }
+        } failure:^(NSError *error) {
+            NSLog(@"OrderSure_URL--结算：%@",error);
+        }];
     } forControlEvents:UIControlEventTouchUpInside];
 }
 

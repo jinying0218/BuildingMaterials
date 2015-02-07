@@ -338,9 +338,7 @@
             frame.origin.y = self.rootScrollView.contentSize.height + 44;
             self.applyView.frame = frame;
             self.coverView.hidden = YES;
-
         } completion:nil];
-
     }];
 }
 
