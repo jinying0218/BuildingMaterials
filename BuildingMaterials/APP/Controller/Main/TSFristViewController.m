@@ -234,11 +234,6 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     goodsDetailVC.viewModel = viewModel;
     [self.navigationController pushViewController:goodsDetailVC animated:YES];
 
-//    TSSecondDealDetailViewModel *viewModel = [[TSSecondDealDetailViewModel alloc] init];
-//    viewModel.secKillModel = model;
-//    TSSecondDealDetailViewController *secondDealDetailVC = [[TSSecondDealDetailViewController alloc] initWithViewModel:viewModel];
-//    [self.navigationController pushViewController:secondDealDetailVC animated:YES];
-
 }
 #pragma mark - tableView delegate & dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
