@@ -102,6 +102,16 @@
 //保存地址
 #define AddressSave_URL Domain"/addressSave"
 
+//代付款
+#define WaitForPay_URL Domain"/myOrderLoad"     //// 订单数组,只显示 ORDER_STATUS=WAIT_PAY 的对象
+//取消订单
+#define DeleteOrder_URL Domain"/orderDelete"
+
+//订单商品加载
+#define OrderGoodsLoad_URL Domain"/orderGoodsLoad"
+//运输方式加载
+#define TransportLoad_URL Domain"/transportLoad"
+
 
 //  我的收藏
 #define CollectLoad_URL Domain"/collectionLoad"
@@ -117,4 +127,11 @@
 //购物车商品删除
 #define GoodsCarDeleteURL Domain"/goodsCarDelete"
 
+//购买接口      //购物车结算接口
+#define OrderSure_URL Domain"/orderSure"
+//订单数据加载
+#define OrderSureLoad_URL Domain"/orderSureLoad"
+//订单最后确认
+#define OrderPost_URL Domain"/orderPost"
+#define CompanyePost_URL Domain"/companyPost"
 #endif

@@ -11,7 +11,7 @@
 @interface TSShopCarModel : NSObject
 @property (nonatomic, assign) int CC_ID;
 @property (nonatomic, strong) NSString *companyName;
-@property (nonatomic, assign) int C_ID;
+@property (nonatomic, assign) int C_ID;     //删除商品时候使用，，，购物车结算时候使用 carId
 
 @property (nonatomic, strong) NSString *goods_head_imageURL;
 @property (nonatomic, strong) NSString *goodsName;

@@ -14,6 +14,8 @@
     self = [super init];
     if (self) {
         _dataArray = [[NSMutableArray alloc] initWithCapacity:0];
+        _transportsArray = [[NSMutableArray alloc] initWithCapacity:0];
+        _subviewModels = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }

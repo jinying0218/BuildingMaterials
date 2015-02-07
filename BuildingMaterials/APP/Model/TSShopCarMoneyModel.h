@@ -10,5 +10,4 @@
 
 @interface TSShopCarMoneyModel : NSObject
 @property (nonatomic, assign) float money;      //购物车总价钱
-
 @end

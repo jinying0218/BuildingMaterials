@@ -11,17 +11,21 @@
 #import "TSShopModel.h"
 #import "TSGoodsParamsModel.h"
 #import "LPLabel.h"
+#import "TSParamsButton.h"
 
 #import <UIImageView+WebCache.h>
+#import "NSArray+BSJSONAdditions.h"
+#import "NSDictionary+BSJSONAdditions.h"
 
 #import "TSCommentViewController.h"
 #import "TSCommentViewModel.h"
 
 #import "TSGoodsDesViewController.h"
+#import "TSOrderConfirmViewController.h"
+#import "TSOrderConfirmViewModel.h"
 
 #import "TSShopDetailViewController.h"
 #import "TSShopDetailViewModel.h"
-
 #import "TSUserModel.h"
 
 #define Tag_paramsButton 8000
@@ -47,15 +51,15 @@
 
 @property (weak, nonatomic) IBOutlet UIView *goodsComment;  //商品评价
 @property (weak, nonatomic) IBOutlet UILabel *goodsCommentCount;
-@property (weak, nonatomic) IBOutlet UIView *goodsDetailView;
+@property (weak, nonatomic) IBOutlet UIView *goodsDetailView;   //商品详情view
 @property (weak, nonatomic) IBOutlet UIImageView *shopImage;
 @property (weak, nonatomic) IBOutlet UILabel *shopName;
 @property (weak, nonatomic) IBOutlet UIView *goodsParamsView;
 
-@property (weak, nonatomic) IBOutlet UIView *goodsCountView;        //商品参数View
+@property (weak, nonatomic) IBOutlet UIView *goodsCountView;        //数量参数View
 @property (weak, nonatomic) IBOutlet UILabel *countLabel;
 
-@property (weak, nonatomic) IBOutlet UIView *shopView;
+@property (weak, nonatomic) IBOutlet UIView *shopView;  //底部view
 
 @property (strong, nonatomic) UIImageView *goodsImageView;
 @property (strong, nonatomic) UIButton *minerBtn;
@@ -147,6 +151,7 @@
 
 - (void)setuiParamsView {
     
+    UILabel *lastLine = nil;
     int buttonTag = 0;
     for (int i = 0; i < self.viewModel.dataArray.count; i ++) {
         TSGoodsParamsModel *oneParameterModel = self.viewModel.dataArray[i];
@@ -163,10 +168,10 @@
             TSParametersList *oneParam = oneParameterModel.parametersList[j];
             
             //            CGRect titleSize = [oneParam.parametersName boundingRectWithSize:CGSizeMake( CGFLOAT_MAX, 30) options:NSStringDrawingUsesLineFragmentOrigin attributes:nil context:nil];
-            UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+            TSParamsButton *button = [TSParamsButton buttonWithType:UIButtonTypeCustom];
             [button setTitle:oneParam.parametersName forState:UIControlStateNormal];
             [button setTitleColor:[UIColor colorWithHexString:@"c9cbcb"] forState:UIControlStateNormal];
-            [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
+            [button setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
             button.titleLabel.font = [UIFont systemFontOfSize:13];
             button.titleLabel.adjustsFontSizeToFitWidth = YES;
             button.frame = CGRectMake( CGRectGetMaxX(label.frame) + 30 + j * 90, 5 + 50 * i, 60, 30);
@@ -175,6 +180,7 @@
             button.layer.borderColor = [UIColor lightGrayColor].CGColor;
             button.backgroundColor = [UIColor clearColor];
             button.tag = Tag_paramsButton + buttonTag;
+            button.indexPath = [NSIndexPath indexPathForItem:buttonTag inSection:i];
             [self.goodsParamsView addSubview:button];
             buttonTag ++;
             [button addTarget:self action:@selector(paramsButtonClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -183,7 +189,9 @@
         UILabel *seperatorLine = [[UILabel alloc] initWithFrame:CGRectMake( 10, CGRectGetMaxY(label.frame) + 15, KscreenW - 20, 1)];
         seperatorLine.backgroundColor = [UIColor colorWithHexString:@"c9cbcb"];
         [self.goodsParamsView addSubview:seperatorLine];
+        lastLine = seperatorLine;
     }
+    [lastLine removeFromSuperview];
 }
 
 - (void)layoutSubviews{
@@ -212,18 +220,30 @@
     self.shopImage.layer.borderWidth = 1;
     self.shopName.text = self.viewModel.shopModel.COMPANY_NAME;
     
+    //如果没有参数，把参数view移除掉
     if (self.viewModel.dataArray.count == 0) {
         [self.goodsParamsView removeFromSuperview];
+        self.goodsParamsView = nil;
     } else {
         [self setuiParamsView];
     }
     
     [self setupGoodsCountView];
 
-    CGFloat originY = CGRectGetMaxY(self.goodsInfoView.frame) + 5;
+    CGFloat originY = 0;
     
+    if (self.goodsParamsView) {
+        originY = CGRectGetMaxY(self.goodsParamsView.frame) + 5;
+
+    }else {
+        originY = CGRectGetMaxY(self.goodsInfoView.frame) + 5;
+    }
+    //数量view
     self.goodsCountView.frame = CGRectMake( 0, originY, KscreenW, 44);
+
+    //评论
     self.goodsComment.frame = CGRectMake( 0, CGRectGetMaxY(self.goodsCountView.frame) + 5, KscreenW, 44);
+    //详情
     self.goodsDetailView.frame = CGRectMake( 0, CGRectGetMaxY(self.goodsComment.frame) + 5, KscreenW, 44);
     
     self.shopView.frame = CGRectMake( 0, CGRectGetMaxY(self.goodsDetailView.frame) + 5, KscreenW, 64);
@@ -236,8 +256,29 @@
     [self bindActionHandler];
 }
 
-- (void)paramsButtonClick:(UIButton *)button{
+- (void)paramsButtonClick:(TSParamsButton *)button{
     //////   确定选中的是哪个一个，，， 赋值非viewModel
+    NSUInteger index = button.indexPath.section;
+    TSGoodsParamsModel *paramsModel = self.viewModel.dataArray[index];
+    //点击一下，创建一个参数对象     判断该参数是否已经加入过，。加入过，不在加入，paramsCount 不增加
+    TSParametersList *newParams = [[TSParametersList alloc] init];
+    newParams.parametersId = paramsModel.goodsParametersId;
+    newParams.parametersName = button.titleLabel.text;
+    //遍历已选中的参数
+    TSParametersList *deleteParam = nil;
+    for (TSParametersList *param in self.viewModel.paramsValue) {
+        if (param.parametersId == newParams.parametersId) {
+            deleteParam = param;
+        }
+    }
+    if (deleteParam) {
+        [self.viewModel.paramsValue removeObject:deleteParam];
+        self.viewModel.paramsCount -= 1;
+    }
+    [self.viewModel.paramsValue addObject:newParams];
+    self.viewModel.paramsCount += 1;
+    NSLog(@"%@-----%@",paramsModel.goodsParametersName,newParams.parametersName);
+    
 }
 #pragma mark - blind methods
 - (void)bindActionHandler{
@@ -303,18 +344,59 @@
     
     [self.addShopCarButton bk_addEventHandler:^(id sender) {
         @strongify(self);
+        if (self.viewModel.paramsCount != self.viewModel.dataArray.count) {
+            [self showProgressHUD:@"请选择参数" delay:1];
+            return ;
+        }
+
+        NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:0];
+        for (TSParametersList *params in self.viewModel.paramsValue) {
+            NSDictionary *dict = @{@"goodsParametersId" : [NSString stringWithFormat:@"%d",params.parametersId],
+                                   @"goodsParametersName" : params.parametersName};
+            [arr addObject:dict];
+        }
+        NSDictionary *goodsParameters = @{@"result" : arr};
         NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId],
                                  @"goodsId" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID],
-                                 @"goodsParameters" : @"",
+                                 @"goodsParameters" : [goodsParameters jsonStringValue],
                                  @"number" : [NSString stringWithFormat:@"%d",self.viewModel.count]};
-        
         [TSHttpTool getWithUrl:ShopCarAdd_URL params:params withCache:NO success:^(id result) {
-//            NSLog(@"加入购物车:%@",result);
             if ([result[@"success"] intValue] == 1) {
                 [self showProgressHUD:@"添加成功" delay:1];
             }
         } failure:^(NSError *error) {
             NSLog(@"加入购物车:%@",error);
+        }];
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.buyButton bk_addEventHandler:^(id sender) {
+        @strongify(self);
+        NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:0];
+        for (TSParametersList *params in self.viewModel.paramsValue) {
+            NSDictionary *dict = @{@"goodsParametersId" : [NSString stringWithFormat:@"%d",params.parametersId],
+                                   @"goodsParametersName" : params.parametersName};
+            [arr addObject:dict];
+        }
+        NSArray *postArr = @[@{@"carId" : @"",
+                               @"seckillId" : @"",
+                               @"goodsId" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID],
+                               @"price" : [NSString stringWithFormat:@"%d",self.viewModel.goodsInfoModel.goodsNewPrice],
+                               @"number" : [NSString stringWithFormat:@"%d",self.viewModel.count],
+                               @"goodsParameters" : @""}];
+        NSDictionary *goodsInformation = @{@"post" : postArr};
+        
+        NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId],
+                                 @"goodsInformation" : [goodsInformation jsonStringValue]};
+        [TSHttpTool postWithUrl:OrderSure_URL params:params success:^(id result) {
+            NSLog(@"购买：%@",result);
+            if ([result[@"success"] intValue] == 1) {
+                TSOrderConfirmViewModel *viewModel = [[TSOrderConfirmViewModel alloc] init];
+                TSOrderConfirmViewController *orderConfirmVC = [[TSOrderConfirmViewController alloc] initWithViewModel:viewModel];
+                [self.navigationController pushViewController:orderConfirmVC animated:YES];
+            }
+            
+        } failure:^(NSError *error) {
+            NSLog(@"购买：%@",error);
         }];
     } forControlEvents:UIControlEventTouchUpInside];
     

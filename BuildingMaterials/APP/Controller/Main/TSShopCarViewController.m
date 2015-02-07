@@ -14,6 +14,9 @@
 #import "TSShopCarCellSubviewModel.h"
 #import "TSOrderConfirmViewController.h"
 #import "TSOrderConfirmViewModel.h"
+#import "NSArray+BSJSONAdditions.h"
+#import "NSDictionary+BSJSONAdditions.h"
+
 
 static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellIdentifier";
 
@@ -55,20 +58,19 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
 - (void)initializeData{
     NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId]};
     [TSHttpTool getWithUrl:GoodsCarLoad_URL params:params withCache:NO success:^(id result) {
-        NSLog(@"购物车:%@",result);
+        NSLog(@"GoodsCarLoad_URL购物车:%@",result);
         if ([result[@"success"] intValue] == 1) {
             [self.viewModel.subviewModels removeAllObjects];
             for (NSDictionary *dict in result[@"result"]) {
                 TSShopCarModel *model = [[TSShopCarModel alloc] init];
                 [model setValueWithDict:dict];
                 TSShopCarCellSubviewModel *subviewModel = [[TSShopCarCellSubviewModel alloc] init];
-                subviewModel.inShopCar = self.viewModel.allInShopCar;
                 subviewModel.shopCarMoney = self.viewModel.shopCarMoney;
+                subviewModel.inShopCar = self.viewModel.allInShopCar;
                 subviewModel.goodsCount = model.goods_number;
                 subviewModel.shopCarModel = model;
                 subviewModel.goodsTotalMoney = subviewModel.goodsCount * model.goods_price;
                 [self.viewModel.subviewModels addObject:subviewModel];
-//                [self.viewModel.dataArray addObject:model];
             }
             [self.tableView reloadData];
             [self layoutSubviews];
@@ -87,12 +89,28 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
     self.tableView.dataSource = self;
 }
 
+//计算总价格
 - (void)layoutSubviews{
     float goodsTotalMoney = 0;
+    int goodsCount = 0;
+    int index = 0;
     for (TSShopCarCellSubviewModel *oneSubviewModel in self.viewModel.subviewModels) {
+        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index inSection:0];
+        TSShopCarTableViewCell *cell = (TSShopCarTableViewCell *)[self.tableView cellForRowAtIndexPath:indexPath];
+
         if (oneSubviewModel.inShopCar) {
             goodsTotalMoney += oneSubviewModel.goodsTotalMoney;
+            cell.selectButton.selected = YES;
+            goodsCount ++;
+        }else {
+            cell.selectButton.selected = NO;
         }
+        index ++;
+    }
+    if (goodsCount == self.viewModel.subviewModels.count) {
+        self.selectAllButton.selected = YES;
+    }else {
+        self.selectAllButton.selected = NO;
     }
     [self.viewModel.shopCarMoney setMoney:goodsTotalMoney];
 }
@@ -115,8 +133,6 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
              [self layoutSubviews];
          }
      }];
-
-
 }
 
 - (void)blindActionHandler{
@@ -124,13 +140,50 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
     [self.selectAllButton bk_addEventHandler:^(id sender) {
         @strongify(self);
         self.selectAllButton.selected = !self.selectAllButton.selected;
+        if (self.selectAllButton.selected) {
+            for (TSShopCarCellSubviewModel *oneSubviewModel in self.viewModel.subviewModels) {
+                oneSubviewModel.inShopCar = YES;
+            }
+        }else {
+            for (TSShopCarCellSubviewModel *oneSubviewModel in self.viewModel.subviewModels) {
+                oneSubviewModel.inShopCar = NO;
+            }
+        }
+        [self layoutSubviews];
     } forControlEvents:UIControlEventTouchUpInside];
     
     [self.payButton bk_addEventHandler:^(id sender) {
         @strongify(self);
-        TSOrderConfirmViewModel *viewModel = [[TSOrderConfirmViewModel alloc] init];
-        TSOrderConfirmViewController *orderConfirmVC = [[TSOrderConfirmViewController alloc] initWithViewModel:viewModel];
-        [self.navigationController pushViewController:orderConfirmVC animated:YES];
+        if (self.viewModel.shopCarMoney.money == 0) {
+            [self showProgressHUD:@"请添加要购买的商品" delay:1];
+            return ;
+        }
+        NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:0];
+        for (TSShopCarCellSubviewModel *subviewModel in self.viewModel.subviewModels) {
+            if (subviewModel.inShopCar) {
+                NSDictionary *dict = @{@"carId" : [NSString stringWithFormat:@"%d",subviewModel.shopCarModel.C_ID],
+                                       @"seckillId" : @"",
+                                       @"goodsId" : [NSString stringWithFormat:@"%d",subviewModel.shopCarModel.goods_id],
+                                       @"price" : [NSString stringWithFormat:@"%d",subviewModel.shopCarModel.goods_price],
+                                       @"number" : [NSString stringWithFormat:@"%d",subviewModel.shopCarModel.goods_number],
+                                       @"goodsParameters" : subviewModel.shopCarModel.parameters};
+                [arr addObject:dict];
+            }
+        }
+        
+        NSDictionary *goodsInformation = @{@"post" : arr};
+        NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId],
+                                 @"goodsInformation" : [goodsInformation jsonStringValue]};
+        [TSHttpTool postWithUrl:OrderSure_URL params:params success:^(id result) {
+            NSLog(@"OrderSure_URL--结算：%@",result);
+            if ([result[@"success"] intValue] == 1) {
+                TSOrderConfirmViewModel *viewModel = [[TSOrderConfirmViewModel alloc] init];
+                TSOrderConfirmViewController *orderConfirmVC = [[TSOrderConfirmViewController alloc] initWithViewModel:viewModel];
+                [self.navigationController pushViewController:orderConfirmVC animated:YES];
+            }
+        } failure:^(NSError *error) {
+            NSLog(@"OrderSure_URL--结算：%@",error);
+        }];
     } forControlEvents:UIControlEventTouchUpInside];
 }
 
@@ -157,9 +210,10 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
         cell.plusButton.layer.borderWidth = 1;
     }
     
-//    TSShopCarModel *model = self.viewModel.dataArray[indexPath.row];
     TSShopCarCellSubviewModel *subviewModel = self.viewModel.subviewModels[indexPath.row];
-    [cell attachViewModel:subviewModel];
+    [cell attachViewModel:subviewModel  carInfo:^(BOOL refreshCarMoney) {
+        [self layoutSubviews];
+    }];
     return cell;
 }
 #pragma mark - tableview  delegate

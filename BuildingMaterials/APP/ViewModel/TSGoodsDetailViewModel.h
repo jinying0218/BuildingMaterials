@@ -20,6 +20,8 @@
 @property (nonatomic, assign) BOOL isSecondsDeal;
 @property (nonatomic, assign) BOOL loadGoodsInfo;
 @property (nonatomic, assign) BOOL loadGoodsParams;
+@property (nonatomic, assign) int paramsCount;   // 选中参数个数
 
+@property (nonatomic, strong) NSMutableArray *paramsValue;  //参数字典
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @end
