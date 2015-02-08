@@ -21,6 +21,7 @@
 //#import "NSArray+BSJSONAdditions.h"
 //#import "NSDictionary+BSJSONAdditions.h"
 #import "JSONKit.h"
+#import "TSPayViewController.h"
 
 #define Tag_orderTable 9000
 #define Tag_transportTable 9001
@@ -158,6 +159,7 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
     [self.view addSubview:self.popView];
 }
 
+#pragma mark - blind Methods
 - (void)blindViewModel{
     [self.KVOController
      observe:self.viewModel
@@ -216,10 +218,18 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
         NSLog(@"\n companyPost:%@",companyPostDict);
 
 //        NSLog(@"%@",params);
-        
+        [self showProgressHUD];
         [TSHttpTool postWithUrl:OrderPost_URL params:params success:^(id result) {
+            [self hideProgressHUD];
             NSLog(@"OrderPost_URL------确定支付:%@",result);
+            if ([result[@"success"] intValue] == 1) {
+                NSString *orderCode = result[@"result"];
+                TSPayViewController *payVC = [[TSPayViewController alloc] init];
+                payVC.orderCode = orderCode;
+                [self.navigationController pushViewController:payVC animated:YES];
+            }
         } failure:^(NSError *error) {
+            [self hideProgressHUD];
             NSLog(@"OrderPost_URL------确定支付:%@",error);
         }];
         

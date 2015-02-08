@@ -10,6 +10,8 @@
 
 @interface TSPayViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *backItem;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *nextItem;
 
 @end
 
@@ -26,6 +28,12 @@
 }
 
 - (void)initializeData{
+    if (self.orderCode) {
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?orderCode=%@",Pay_URL,self.orderCode]]]];
+    }else {
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?orderId=%d",Pay_URL,self.orderId]]]];
+    }
+    
 }
 - (void)configureUI{
     
@@ -39,6 +47,24 @@
     
 }
 - (void)blindActionHandler{
+    @weakify(self);
+
+    [self.webView bk_setDidStartLoadBlock:^(UIWebView *webView) {
+        @strongify(self);
+        [self showProgressHUD];
+    }];
+    [self.webView bk_setDidFinishLoadBlock:^(UIWebView *webView) {
+        @strongify(self);
+        [self hideProgressHUD];
+    }];
+
+    
+}
+- (IBAction)backItemClick:(UIBarButtonItem *)sender {
+    [self.webView goBack];
+}
+- (IBAction)nextItemClick:(UIBarButtonItem *)sender {
+    [self.webView goForward];
 }
 
 @end

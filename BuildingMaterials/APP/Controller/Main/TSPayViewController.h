@@ -9,5 +9,6 @@
 #import "TSBaseViewController.h"
 
 @interface TSPayViewController : TSBaseViewController
-
+@property (nonatomic, strong) NSString *orderCode;
+@property (nonatomic, assign) int orderId;
 @end

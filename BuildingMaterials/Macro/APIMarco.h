@@ -127,6 +127,11 @@
 //购物车商品删除
 #define GoodsCarDeleteURL Domain"/goodsCarDelete"
 
+//////------ 购买 -----
+//秒杀
+#define SeckillCheck Domain"/seckillCheck"
+#define SeckillGoodsLoad_URL Domain"/seckillGoodsLoad"
+
 //购买接口      //购物车结算接口
 #define OrderSure_URL Domain"/orderSure"
 //订单数据加载
