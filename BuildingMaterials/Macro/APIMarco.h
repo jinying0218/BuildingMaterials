@@ -106,6 +106,8 @@
 #define WaitForPay_URL Domain"/myOrderLoad"     //// 订单数组,只显示 ORDER_STATUS=WAIT_PAY 的对象
 //取消订单
 #define DeleteOrder_URL Domain"/orderDelete"
+//订单详情
+#define OrderDetail_URL Domain"/orderGoodsLoad"
 
 //订单商品加载
 #define OrderGoodsLoad_URL Domain"/orderGoodsLoad"
