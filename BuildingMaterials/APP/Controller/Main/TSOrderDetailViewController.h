@@ -7,7 +7,7 @@
 //
 
 #import "TSBaseViewController.h"
-
+@class TSOrderDetailViewModel;
 @interface TSOrderDetailViewController : TSBaseViewController
-
+- (instancetype)initWithViewModel:(TSOrderDetailViewModel *)viewModel;
 @end

@@ -193,6 +193,12 @@
 		B07700D31A58D137001E3623 /* TSCategoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B07700D21A58D137001E3623 /* TSCategoryModel.m */; };
 		B07700D81A58DCAB001E3623 /* TSCategoryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B07700D61A58DCAB001E3623 /* TSCategoryCell.m */; };
 		B07700D91A58DCAB001E3623 /* TSCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B07700D71A58DCAB001E3623 /* TSCategoryCell.xib */; };
+		B07AA1F01A891AF100571E6E /* TSWaitOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B07AA1EF1A891AF100571E6E /* TSWaitOrderModel.m */; };
+		B07AA1F41A89298400571E6E /* TSOrderDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B07AA1F21A89298400571E6E /* TSOrderDetailViewController.m */; };
+		B07AA1F51A89298400571E6E /* TSOrderDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B07AA1F31A89298400571E6E /* TSOrderDetailViewController.xib */; };
+		B07AA1F91A892D2400571E6E /* TSOrderDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B07AA1F81A892D2400571E6E /* TSOrderDetailViewModel.m */; };
+		B07AA2021A892E0300571E6E /* TSOrderDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B07AA2001A892E0300571E6E /* TSOrderDetailTableViewCell.m */; };
+		B07AA2031A892E0300571E6E /* TSOrderDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B07AA2011A892E0300571E6E /* TSOrderDetailTableViewCell.xib */; };
 		B08455B01A5AAFA900F8164E /* TSGoodsRecommandViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B08455AF1A5AAFA900F8164E /* TSGoodsRecommandViewModel.m */; };
 		B08455B41A5AB16700F8164E /* TSShopRecommandViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B08455B31A5AB16700F8164E /* TSShopRecommandViewModel.m */; };
 		B08455B61A5AC1FD00F8164E /* recommend.png in Resources */ = {isa = PBXBuildFile; fileRef = B08455B51A5AC1FD00F8164E /* recommend.png */; };
@@ -610,6 +616,16 @@
 		B07700D51A58DCAB001E3623 /* TSCategoryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSCategoryCell.h; sourceTree = "<group>"; };
 		B07700D61A58DCAB001E3623 /* TSCategoryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSCategoryCell.m; sourceTree = "<group>"; };
 		B07700D71A58DCAB001E3623 /* TSCategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSCategoryCell.xib; sourceTree = "<group>"; };
+		B07AA1EE1A891AF100571E6E /* TSWaitOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSWaitOrderModel.h; sourceTree = "<group>"; };
+		B07AA1EF1A891AF100571E6E /* TSWaitOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSWaitOrderModel.m; sourceTree = "<group>"; };
+		B07AA1F11A89298400571E6E /* TSOrderDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSOrderDetailViewController.h; sourceTree = "<group>"; };
+		B07AA1F21A89298400571E6E /* TSOrderDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSOrderDetailViewController.m; sourceTree = "<group>"; };
+		B07AA1F31A89298400571E6E /* TSOrderDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSOrderDetailViewController.xib; sourceTree = "<group>"; };
+		B07AA1F71A892D2400571E6E /* TSOrderDetailViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSOrderDetailViewModel.h; sourceTree = "<group>"; };
+		B07AA1F81A892D2400571E6E /* TSOrderDetailViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSOrderDetailViewModel.m; sourceTree = "<group>"; };
+		B07AA1FF1A892E0300571E6E /* TSOrderDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSOrderDetailTableViewCell.h; sourceTree = "<group>"; };
+		B07AA2001A892E0300571E6E /* TSOrderDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSOrderDetailTableViewCell.m; sourceTree = "<group>"; };
+		B07AA2011A892E0300571E6E /* TSOrderDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSOrderDetailTableViewCell.xib; sourceTree = "<group>"; };
 		B08455AE1A5AAFA900F8164E /* TSGoodsRecommandViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSGoodsRecommandViewModel.h; sourceTree = "<group>"; };
 		B08455AF1A5AAFA900F8164E /* TSGoodsRecommandViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSGoodsRecommandViewModel.m; sourceTree = "<group>"; };
 		B08455B21A5AB16700F8164E /* TSShopRecommandViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSShopRecommandViewModel.h; sourceTree = "<group>"; };
@@ -1133,6 +1149,8 @@
 				B064EAE31A85ED6900D8CB26 /* TSOrderModel.m */,
 				B064EAE51A861CD800D8CB26 /* TSTransportModel.h */,
 				B064EAE61A861CD800D8CB26 /* TSTransportModel.m */,
+				B07AA1EE1A891AF100571E6E /* TSWaitOrderModel.h */,
+				B07AA1EF1A891AF100571E6E /* TSWaitOrderModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1161,19 +1179,15 @@
 				B06BF42E1A74188B00D999FC /* 商品收藏 */,
 				B06BF4351A74208D00D999FC /* 店铺收藏 */,
 				B06BF43E1A7431B100D999FC /* 购物车 */,
-				B0B4B83C1A7C948500F0F427 /* TSOrderConfirmTableViewCell.h */,
-				B0B4B83D1A7C948500F0F427 /* TSOrderConfirmTableViewCell.m */,
-				B0B4B83E1A7C948500F0F427 /* TSOrderConfirmTableViewCell.xib */,
+				B07AA1FE1A892DE600571E6E /* 订单确定cell */,
 				B0F992F61A83E44C00A24E6C /* TSParamsButton.h */,
 				B0F992F71A83E44C00A24E6C /* TSParamsButton.m */,
-				B0AAD5A31A85B96400F2DB68 /* TSWaitForPayTableViewCell.h */,
-				B0AAD5A41A85B96400F2DB68 /* TSWaitForPayTableViewCell.m */,
-				B0AAD5A51A85B96400F2DB68 /* TSWaitForPayTableViewCell.xib */,
-				B0AAD5A81A85BBDA00F2DB68 /* TSHavePayedTableViewCell.h */,
-				B0AAD5A91A85BBDA00F2DB68 /* TSHavePayedTableViewCell.m */,
-				B0AAD5AA1A85BBDA00F2DB68 /* TSHavePayedTableViewCell.xib */,
-				B064EAEB1A8669A000D8CB26 /* TSOrderTableFooterView.h */,
-				B064EAEC1A8669A000D8CB26 /* TSOrderTableFooterView.m */,
+				B07AA1FC1A892DC300571E6E /* 待付款cell */,
+				B07AA1FB1A892DB900571E6E /* 已付款cell */,
+				B07AA1FD1A892DD600571E6E /* 订单确定footerView */,
+				B07AA1FF1A892E0300571E6E /* TSOrderDetailTableViewCell.h */,
+				B07AA2001A892E0300571E6E /* TSOrderDetailTableViewCell.m */,
+				B07AA2011A892E0300571E6E /* TSOrderDetailTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1903,6 +1917,64 @@
 			name = "分类cell";
 			sourceTree = "<group>";
 		};
+		B07AA1F61A89298900571E6E /* 订单详情 */ = {
+			isa = PBXGroup;
+			children = (
+				B07AA1F11A89298400571E6E /* TSOrderDetailViewController.h */,
+				B07AA1F21A89298400571E6E /* TSOrderDetailViewController.m */,
+				B07AA1F31A89298400571E6E /* TSOrderDetailViewController.xib */,
+			);
+			name = "订单详情";
+			sourceTree = "<group>";
+		};
+		B07AA1FA1A892D2800571E6E /* 订单详情 */ = {
+			isa = PBXGroup;
+			children = (
+				B07AA1F71A892D2400571E6E /* TSOrderDetailViewModel.h */,
+				B07AA1F81A892D2400571E6E /* TSOrderDetailViewModel.m */,
+			);
+			name = "订单详情";
+			sourceTree = "<group>";
+		};
+		B07AA1FB1A892DB900571E6E /* 已付款cell */ = {
+			isa = PBXGroup;
+			children = (
+				B0AAD5A81A85BBDA00F2DB68 /* TSHavePayedTableViewCell.h */,
+				B0AAD5A91A85BBDA00F2DB68 /* TSHavePayedTableViewCell.m */,
+				B0AAD5AA1A85BBDA00F2DB68 /* TSHavePayedTableViewCell.xib */,
+			);
+			name = "已付款cell";
+			sourceTree = "<group>";
+		};
+		B07AA1FC1A892DC300571E6E /* 待付款cell */ = {
+			isa = PBXGroup;
+			children = (
+				B0AAD5A31A85B96400F2DB68 /* TSWaitForPayTableViewCell.h */,
+				B0AAD5A41A85B96400F2DB68 /* TSWaitForPayTableViewCell.m */,
+				B0AAD5A51A85B96400F2DB68 /* TSWaitForPayTableViewCell.xib */,
+			);
+			name = "待付款cell";
+			sourceTree = "<group>";
+		};
+		B07AA1FD1A892DD600571E6E /* 订单确定footerView */ = {
+			isa = PBXGroup;
+			children = (
+				B064EAEB1A8669A000D8CB26 /* TSOrderTableFooterView.h */,
+				B064EAEC1A8669A000D8CB26 /* TSOrderTableFooterView.m */,
+			);
+			name = "订单确定footerView";
+			sourceTree = "<group>";
+		};
+		B07AA1FE1A892DE600571E6E /* 订单确定cell */ = {
+			isa = PBXGroup;
+			children = (
+				B0B4B83C1A7C948500F0F427 /* TSOrderConfirmTableViewCell.h */,
+				B0B4B83D1A7C948500F0F427 /* TSOrderConfirmTableViewCell.m */,
+				B0B4B83E1A7C948500F0F427 /* TSOrderConfirmTableViewCell.xib */,
+			);
+			name = "订单确定cell";
+			sourceTree = "<group>";
+		};
 		B08455AD1A5AAF7C00F8164E /* 物品推荐 */ = {
 			isa = PBXGroup;
 			children = (
@@ -1953,6 +2025,7 @@
 				B08455BF1A5AD2E400F8164E /* 招聘 */,
 				B05E82D21A5D758F00DC33D8 /* 我的 */,
 				B0B4B83B1A7C945500F0F427 /* 订单确定 */,
+				B07AA1FA1A892D2800571E6E /* 订单详情 */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2055,6 +2128,7 @@
 				B0B4B8331A7C8E6700F0F427 /* TSOrderConfirmViewController.m */,
 				B0B4B8341A7C8E6700F0F427 /* TSOrderConfirmViewController.xib */,
 				B064EAF31A867B5F00D8CB26 /* 支付 */,
+				B07AA1F61A89298900571E6E /* 订单详情 */,
 			);
 			name = "订单确定";
 			sourceTree = "<group>";
@@ -2570,6 +2644,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B07AA2031A892E0300571E6E /* TSOrderDetailTableViewCell.xib in Resources */,
 				B00BB8871A0E8D8A00B94208 /* purchase.png in Resources */,
 				B03AC4D419F904AB002FC299 /* register_textfield.png in Resources */,
 				B0AAD5A71A85B96400F2DB68 /* TSWaitForPayTableViewCell.xib in Resources */,
@@ -2711,6 +2786,7 @@
 				B0C127451A715C9100AA7A0A /* TSForumClassifyDetailViewController.xib in Resources */,
 				B08702DB1A2B7DD0008C8088 /* secondDeal_miner_bg.png in Resources */,
 				B0C4992819FFE7550092EE09 /* mine_changePassword.png in Resources */,
+				B07AA1F51A89298400571E6E /* TSOrderDetailViewController.xib in Resources */,
 				B05E6E951A04538E009C92CC /* TSSecondsListViewController.xib in Resources */,
 				B0C4993119FFE7550092EE09 /* mine_payed.png in Resources */,
 				B05B632419FEB15F008F76E0 /* cell_accessView.png in Resources */,
@@ -2859,12 +2935,14 @@
 				B03B30CE1A5EE90900E77FB9 /* TSShopGoodsViewModel.m in Sources */,
 				B07700D31A58D137001E3623 /* TSCategoryModel.m in Sources */,
 				B0AAD59F1A85ABA600F2DB68 /* TSHavePayedViewModel.m in Sources */,
+				B07AA2021A892E0300571E6E /* TSOrderDetailTableViewCell.m in Sources */,
 				B01847DA19F89DCC00938054 /* TSBaseView.m in Sources */,
 				B08571481A6D51DA00EFB589 /* ClockView.m in Sources */,
 				B015C3291A0F16F10060FBE2 /* TSGoodsExchangeViewController.m in Sources */,
 				B08455B01A5AAFA900F8164E /* TSGoodsRecommandViewModel.m in Sources */,
 				B05115CB19F969C600CA6E2E /* TSFristViewController.m in Sources */,
 				B08DBEBF1A6015EA007A301F /* TSGoodsDetailViewModel.m in Sources */,
+				B07AA1F91A892D2400571E6E /* TSOrderDetailViewModel.m in Sources */,
 				B05E6E941A04538E009C92CC /* TSSecondsListViewController.m in Sources */,
 				B01847DC19F89DCC00938054 /* TSScrollView.m in Sources */,
 				B064EAF91A86A6AF00D8CB26 /* README.md in Sources */,
@@ -2889,6 +2967,7 @@
 				B05B62F519FE8905008F76E0 /* TSGoodsExchangeTableViewCell.m in Sources */,
 				B01847D819F89DCC00938054 /* TSBaseViewController.m in Sources */,
 				B05115C419F957CA00CA6E2E /* TSRegisterTwoViewController.m in Sources */,
+				B07AA1F41A89298400571E6E /* TSOrderDetailViewController.m in Sources */,
 				B06BF42C1A74188400D999FC /* TSGoodsCollectTableViewCell.m in Sources */,
 				B01431AD1A74FD6A00A6FC38 /* TSCollectionShopModel.m in Sources */,
 				B0AAD5A21A85ABBD00F2DB68 /* TSWaitForPayViewModel.m in Sources */,
@@ -2900,6 +2979,7 @@
 				B0C127511A716E4A00AA7A0A /* TSForumClassifyModel.m in Sources */,
 				B0C686D01A530ABC002053F1 /* TSCategoryViewModel.m in Sources */,
 				B08455B41A5AB16700F8164E /* TSShopRecommandViewModel.m in Sources */,
+				B07AA1F01A891AF100571E6E /* TSWaitOrderModel.m in Sources */,
 				B01847D919F89DCC00938054 /* TSUserModel.m in Sources */,
 				B06BF43C1A7431AE00D999FC /* TSShopCarTableViewCell.m in Sources */,
 				B01847DE19F89DCC00938054 /* BSJSONEncoder.m in Sources */,

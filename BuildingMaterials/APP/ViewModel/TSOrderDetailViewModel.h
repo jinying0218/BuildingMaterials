@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface TSOrderDetailViewModel : NSObject
+@property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, assign) int orderId;
 
 @end

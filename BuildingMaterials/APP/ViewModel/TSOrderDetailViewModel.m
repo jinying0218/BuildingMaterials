@@ -9,5 +9,13 @@
 #import "TSOrderDetailViewModel.h"
 
 @implementation TSOrderDetailViewModel
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        _dataArray = [[NSMutableArray alloc] initWithCapacity:0];
+    }
+    return self;
+}
 
 @end

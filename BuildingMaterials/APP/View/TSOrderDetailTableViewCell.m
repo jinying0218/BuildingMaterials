@@ -8,6 +8,14 @@
 
 #import "TSOrderDetailTableViewCell.h"
 
+
+@interface TSOrderDetailTableViewCell ()
+@property (weak, nonatomic) IBOutlet UIImageView *orderHeaderImage;
+@property (weak, nonatomic) IBOutlet UILabel *goodsName;
+@property (weak, nonatomic) IBOutlet UILabel *goodsPrice;
+@property (weak, nonatomic) IBOutlet UIButton *commentGoodsButton;
+
+@end
 @implementation TSOrderDetailTableViewCell
 
 - (void)awakeFromNib {
