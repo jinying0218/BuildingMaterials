@@ -10,4 +10,23 @@
 
 @implementation TSWaitOrderModel
 
+- (void)modelWithDict:(NSDictionary *)dict{
+    self.companyName = [self objectOrNilForKey:@"COMPANY_NAME" fromDictionary:dict];
+    self.orderCode = [self objectOrNilForKey:@"ORDER_CODE" fromDictionary:dict];
+    self.orderStatus = [self objectOrNilForKey:@"ORDER_STATUS" fromDictionary:dict];
+    self.orderSureTime = [self objectOrNilForKey:@"ORDER_SURE_TIME" fromDictionary:dict];
+    self.orderTotalPrice = [[self objectOrNilForKey:@"ORDER_TOTAL_PRICE" fromDictionary:dict] intValue];
+    self.transportCode = [self objectOrNilForKey:@"ORDER_TRANSPORT_CODE" fromDictionary:dict];
+    self.transportName = [self objectOrNilForKey:@"ORDER_TRANSPORT_NAME" fromDictionary:dict];
+    self.transportPrice = [[self objectOrNilForKey:@"ORDER_TRANSPORT_PRICE" fromDictionary:dict] intValue];
+    self.orderId = [[self objectOrNilForKey:@"O_ID" fromDictionary:dict] intValue];
+    self.goods = [self objectOrNilForKey:@"goods" fromDictionary:dict];
+}
+#pragma mark - Helper Method
+- (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict
+{
+    id object = [dict objectForKey:aKey];
+    return [object isEqual:[NSNull null]] ? nil : object;
+}
+
 @end
