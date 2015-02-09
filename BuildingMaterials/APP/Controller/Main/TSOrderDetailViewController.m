@@ -10,6 +10,7 @@
 #import "TSOrderDetailViewModel.h"
 #import "TSUserModel.h"
 #import "TSOrderDetailTableViewCell.h"
+#import "TSOrderDetailGoodsModel.h"
 
 static NSString *const OrderDetailTableViewCellIdendifier = @"OrderDetailTableViewCellIdendifier";
 
@@ -42,17 +43,15 @@ static NSString *const OrderDetailTableViewCellIdendifier = @"OrderDetailTableVi
 }
 
 - (void)initializeData{
-    TSUserModel *userModel = [TSUserModel getCurrentLoginUser];
+
     NSDictionary *params = @{@"orderId" : [NSString stringWithFormat:@"%d",self.viewModel.orderId]};
     [TSHttpTool getWithUrl:OrderDetail_URL params:params withCache:NO success:^(id result) {
                 NSLog(@"订单详情:%@",result);
       if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *dict in result[@"result"]) {
-//                TSWaitOrderModel *orderModel = [[TSWaitOrderModel alloc] init];
-//                [orderModel modelWithDict:dict];
-//                if ([orderModel.orderStatus isEqualToString:@"WAIT_PAY"]) {
-//                    [self.viewModel.dataArray addObject:orderModel];
-//                }
+                TSOrderDetailGoodsModel *orderGoodsModel = [[TSOrderDetailGoodsModel alloc] init];
+                [orderGoodsModel modelWithDict:dict];
+                [self.viewModel.dataArray addObject:orderGoodsModel];
             }
             [self.tableView reloadData];
         }
@@ -64,7 +63,7 @@ static NSString *const OrderDetailTableViewCellIdendifier = @"OrderDetailTableVi
 - (void)configureUI{
     self.tabBarController.tabBar.hidden =  YES;
     
-    [self createNavigationBarTitle:@"待付订单" leftButtonImageName:@"Previous" rightButtonImageName:nil];
+    [self createNavigationBarTitle:@"订单详情" leftButtonImageName:@"Previous" rightButtonImageName:nil];
     self.navigationBar.frame = CGRectMake( 0, STATUS_BAR_HEGHT, KscreenW, 44);
     [self.view addSubview:self.navigationBar];
     
@@ -93,19 +92,10 @@ static NSString *const OrderDetailTableViewCellIdendifier = @"OrderDetailTableVi
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"TSOrderDetailTableViewCell" owner:nil options:nil]lastObject];
     }
-//    TSWaitOrderModel *orderModel = self.viewModel.dataArray[indexPath.row];
-//    [cell configureCell:orderModel orderDetailButtonHandler:^(TSWaitOrderModel *currentOrderModel) {
-        //订单详情
-        //        NSLog(@"111111-%@-----%@",orderModel,currentOrderModel);
-        
-//    } buyNowButtonHandler:^(TSWaitOrderModel *currentOrderModel) {
-        //立即购买
-        //        NSLog(@"22222--%@-----%@",orderModel,currentOrderModel);
-//        TSPayViewController *payVC = [[TSPayViewController alloc] init];
-//        payVC.orderId = currentOrderModel.orderId;
-//        [self.navigationController pushViewController:payVC animated:YES];
-    
-//    }];
+    TSOrderDetailGoodsModel *orderGoodsModel = self.viewModel.dataArray[indexPath.row];
+    [cell configureCell:orderGoodsModel commentButtonHandler:^{
+       //评论按钮
+    }];
     return cell;
 }
 

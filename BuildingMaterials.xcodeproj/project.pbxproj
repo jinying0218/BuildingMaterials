@@ -199,6 +199,7 @@
 		B07AA1F91A892D2400571E6E /* TSOrderDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B07AA1F81A892D2400571E6E /* TSOrderDetailViewModel.m */; };
 		B07AA2021A892E0300571E6E /* TSOrderDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B07AA2001A892E0300571E6E /* TSOrderDetailTableViewCell.m */; };
 		B07AA2031A892E0300571E6E /* TSOrderDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B07AA2011A892E0300571E6E /* TSOrderDetailTableViewCell.xib */; };
+		B07AA2061A89315100571E6E /* TSOrderDetailGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B07AA2051A89315100571E6E /* TSOrderDetailGoodsModel.m */; };
 		B08455B01A5AAFA900F8164E /* TSGoodsRecommandViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B08455AF1A5AAFA900F8164E /* TSGoodsRecommandViewModel.m */; };
 		B08455B41A5AB16700F8164E /* TSShopRecommandViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B08455B31A5AB16700F8164E /* TSShopRecommandViewModel.m */; };
 		B08455B61A5AC1FD00F8164E /* recommend.png in Resources */ = {isa = PBXBuildFile; fileRef = B08455B51A5AC1FD00F8164E /* recommend.png */; };
@@ -626,6 +627,8 @@
 		B07AA1FF1A892E0300571E6E /* TSOrderDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSOrderDetailTableViewCell.h; sourceTree = "<group>"; };
 		B07AA2001A892E0300571E6E /* TSOrderDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSOrderDetailTableViewCell.m; sourceTree = "<group>"; };
 		B07AA2011A892E0300571E6E /* TSOrderDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSOrderDetailTableViewCell.xib; sourceTree = "<group>"; };
+		B07AA2041A89315100571E6E /* TSOrderDetailGoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSOrderDetailGoodsModel.h; sourceTree = "<group>"; };
+		B07AA2051A89315100571E6E /* TSOrderDetailGoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSOrderDetailGoodsModel.m; sourceTree = "<group>"; };
 		B08455AE1A5AAFA900F8164E /* TSGoodsRecommandViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSGoodsRecommandViewModel.h; sourceTree = "<group>"; };
 		B08455AF1A5AAFA900F8164E /* TSGoodsRecommandViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSGoodsRecommandViewModel.m; sourceTree = "<group>"; };
 		B08455B21A5AB16700F8164E /* TSShopRecommandViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSShopRecommandViewModel.h; sourceTree = "<group>"; };
@@ -1151,6 +1154,8 @@
 				B064EAE61A861CD800D8CB26 /* TSTransportModel.m */,
 				B07AA1EE1A891AF100571E6E /* TSWaitOrderModel.h */,
 				B07AA1EF1A891AF100571E6E /* TSWaitOrderModel.m */,
+				B07AA2041A89315100571E6E /* TSOrderDetailGoodsModel.h */,
+				B07AA2051A89315100571E6E /* TSOrderDetailGoodsModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2965,6 +2970,7 @@
 				B0C686C91A530950002053F1 /* TSSecKillModel.m in Sources */,
 				B018482719F89DCC00938054 /* TSImageUtil.m in Sources */,
 				B05B62F519FE8905008F76E0 /* TSGoodsExchangeTableViewCell.m in Sources */,
+				B07AA2061A89315100571E6E /* TSOrderDetailGoodsModel.m in Sources */,
 				B01847D819F89DCC00938054 /* TSBaseViewController.m in Sources */,
 				B05115C419F957CA00CA6E2E /* TSRegisterTwoViewController.m in Sources */,
 				B07AA1F41A89298400571E6E /* TSOrderDetailViewController.m in Sources */,
