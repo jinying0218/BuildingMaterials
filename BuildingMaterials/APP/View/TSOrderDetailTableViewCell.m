@@ -17,7 +17,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *goodsPrice;
 @property (weak, nonatomic) IBOutlet UILabel *goodsParameters;
 
-@property (weak, nonatomic) IBOutlet UIButton *commentGoodsButton;
 @property (nonatomic, strong) TSOrderDetailGoodsModel *orderGoodsModel;
 @property (nonatomic, strong) CommentButtonHandler commentButtonHandler;
 
@@ -45,7 +44,7 @@
     @weakify(self);
     [self.commentGoodsButton bk_addEventHandler:^(id sender) {
         @strongify(self);
-        self.commentButtonHandler();
+        self.commentButtonHandler(self.indexPath);
     } forControlEvents:UIControlEventTouchUpInside];
     
 }

@@ -11,5 +11,7 @@
 @interface TSOrderDetailViewModel : NSObject
 @property (nonatomic, strong) NSMutableArray *dataArray;
 @property (nonatomic, assign) int orderId;
+@property (nonatomic, strong) NSString *orderStatus;
 
+@property (nonatomic, strong) NSString *commentContentString;
 @end
