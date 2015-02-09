@@ -25,13 +25,15 @@ static NSString *const AddressCellIdentifier = @"addressCellIdentifier";
 @property (weak, nonatomic) IBOutlet UITextField *addressInput;
 @property (weak, nonatomic) IBOutlet UIButton *bottomButton;
 @property (nonatomic, strong) TSUserModel *userModel;
+@property (nonatomic, strong) SelectedAddress selectedAddress;
 @end
 
 @implementation TSAddressViewController
-- (instancetype)initWithViewModel:(TSAddressViewModel *)viewModel{
+- (instancetype)initWithViewModel:(TSAddressViewModel *)viewModel address:(SelectedAddress)selecedAddress{
     self = [super init];
     if (self) {
         self.viewModel = viewModel;
+        self.selectedAddress = selecedAddress;
     }
     return self;
 }
@@ -267,4 +269,11 @@ static NSString *const AddressCellIdentifier = @"addressCellIdentifier";
     }
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.viewModel.allowSelect) {
+        TSAddressModel *model = self.viewModel.addressArray[indexPath.row];
+        self.selectedAddress(model.addressMain);
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
 @end

@@ -217,7 +217,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     self.bannerScrollView.contentSize = CGSizeMake( self.viewModel.adArray.count * KscreenW, 120);
 }
 
-#pragma  mark - secondDealTableView delegate
+#pragma  mark - secondDealTableView delegate           点击首页秒杀商品
 - (void)touchCellImageView:(UIButton *)button{
     int index = (int)button.tag - 10000;
     TSSecKillModel *model = self.viewModel.secKillDataArray[index];
@@ -228,8 +228,9 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
         return;
     }
     TSGoodsDetailViewModel *viewModel = [[TSGoodsDetailViewModel alloc] init];
-    viewModel.goodsID = model.ID;
+    viewModel.goodsID = model.goodsId;
     viewModel.isSecondsDeal = YES;
+    viewModel.seckillModel = model;
     TSGoodsDetailViewController *goodsDetailVC = [[TSGoodsDetailViewController alloc] init];
     goodsDetailVC.viewModel = viewModel;
     [self.navigationController pushViewController:goodsDetailVC animated:YES];

@@ -26,8 +26,13 @@
         [self.shopImage sd_setImageWithURL:[NSURL URLWithString:model.COMPANY_IMAGE_URL] placeholderImage:[UIImage imageNamed:@"not_load"]];
     }
     self.shopName.text = model.COMPANY_NAME;
-    self.shopDes.text = model.COMPANY_DES;
+    CGFloat descWidth = [self.shopName.text boundingRectWithSize:
+                          CGSizeMake(CGFLOAT_MAX, self.shopName.frame.size.height)
+                                                          options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
+                                                       attributes:[NSDictionary dictionaryWithObjectsAndKeys:self.shopName.font,NSFontAttributeName, nil] context:nil].size.width;
+    self.shopName.frame = CGRectMake( 113, 5, descWidth, 21);
     
+    self.shopDes.text = model.COMPANY_DES;
     if (model.IS_RECOMMEND) {
         self.recommendBtn.hidden = NO;
         self.recommendBtn.frame = CGRectMake( CGRectGetMaxX(self.shopName.frame), CGRectGetMinY(self.shopName.frame), 20, 20);

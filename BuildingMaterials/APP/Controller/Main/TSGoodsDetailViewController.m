@@ -14,8 +14,9 @@
 #import "TSParamsButton.h"
 
 #import <UIImageView+WebCache.h>
-#import "NSArray+BSJSONAdditions.h"
-#import "NSDictionary+BSJSONAdditions.h"
+//#import "NSArray+BSJSONAdditions.h"
+//#import "NSDictionary+BSJSONAdditions.h"
+#import "JSONKit.h"
 
 #import "TSCommentViewController.h"
 #import "TSCommentViewModel.h"
@@ -27,6 +28,7 @@
 #import "TSShopDetailViewController.h"
 #import "TSShopDetailViewModel.h"
 #import "TSUserModel.h"
+#import "TSSecKillModel.h"
 
 #define Tag_paramsButton 8000
 
@@ -47,7 +49,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *addShopCarButton;//加入购物车
 @property (weak, nonatomic) IBOutlet UIButton *buyButton;//立即购买
 @property (weak, nonatomic) IBOutlet UIView *goodsInfoView;
-
 
 @property (weak, nonatomic) IBOutlet UIView *goodsComment;  //商品评价
 @property (weak, nonatomic) IBOutlet UILabel *goodsCommentCount;
@@ -139,8 +140,12 @@
     _enterShop.layer.borderColor = [UIColor lightGrayColor].CGColor;
     _enterShop.layer.borderWidth = 1;
     
-    
     self.baseView.contentSize = CGSizeMake(KscreenW, CGRectGetMaxY(self.shopView.frame) + 54 + 120);
+    
+    if (self.viewModel.isSecondsDeal) {
+        self.addShopCarButton.hidden = YES;
+        self.buyButton.frame = CGRectMake( KscreenW - 70 - 60, 80, 60, 35);
+    }
 }
 
 - (void)initialAllData{
@@ -281,6 +286,48 @@
     
 }
 #pragma mark - blind methods
+- (void)normalBuy {
+    NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:0];
+    for (TSParametersList *params in self.viewModel.paramsValue) {
+        NSDictionary *dict = @{@"goodsParametersId" : [NSString stringWithFormat:@"%d",params.parametersId],
+                               @"goodsParametersName" : params.parametersName};
+        [arr addObject:dict];
+    }
+    NSDictionary *goodsInformation = nil;
+    if (self.viewModel.isSecondsDeal) {
+        NSArray *postArr = @[@{@"carId" : @"",
+                               @"seckillId" : [NSString stringWithFormat:@"%d",self.viewModel.seckillModel.SecondsDeal_EventID],
+                               @"goodsId" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID],
+                               @"price" : [NSString stringWithFormat:@"%d",self.viewModel.goodsInfoModel.goodsNewPrice],
+                               @"number" : [NSString stringWithFormat:@"%d",self.viewModel.count],
+                               @"goodsParameters" : @""}];
+        goodsInformation = @{@"post" : postArr};
+
+    }else {
+        NSArray *postArr = @[@{@"carId" : @"",
+                               @"seckillId" : @"",
+                               @"goodsId" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID],
+                               @"price" : [NSString stringWithFormat:@"%d",self.viewModel.goodsInfoModel.goodsNewPrice],
+                               @"number" : [NSString stringWithFormat:@"%d",self.viewModel.count],
+                               @"goodsParameters" : @""}];
+        goodsInformation = @{@"post" : postArr};
+    }
+    
+    NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId],
+                             @"goodsInformation" : [goodsInformation JSONString]};
+    [TSHttpTool postWithUrl:OrderSure_URL params:params success:^(id result) {
+        //            NSLog(@"购买：%@",result);
+        if ([result[@"success"] intValue] == 1) {
+            TSOrderConfirmViewModel *viewModel = [[TSOrderConfirmViewModel alloc] init];
+            TSOrderConfirmViewController *orderConfirmVC = [[TSOrderConfirmViewController alloc] initWithViewModel:viewModel];
+            [self.navigationController pushViewController:orderConfirmVC animated:YES];
+        }
+        
+    } failure:^(NSError *error) {
+        NSLog(@"购买：%@",error);
+    }];
+}
+
 - (void)bindActionHandler{
     @weakify(self);
     [self.minerBtn bk_addEventHandler:^(id sender) {
@@ -358,7 +405,7 @@
         NSDictionary *goodsParameters = @{@"result" : arr};
         NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId],
                                  @"goodsId" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID],
-                                 @"goodsParameters" : [goodsParameters jsonStringValue],
+                                 @"goodsParameters" : [goodsParameters JSONString],
                                  @"number" : [NSString stringWithFormat:@"%d",self.viewModel.count]};
         [TSHttpTool getWithUrl:ShopCarAdd_URL params:params withCache:NO success:^(id result) {
             if ([result[@"success"] intValue] == 1) {
@@ -371,33 +418,31 @@
     
     [self.buyButton bk_addEventHandler:^(id sender) {
         @strongify(self);
-        NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:0];
-        for (TSParametersList *params in self.viewModel.paramsValue) {
-            NSDictionary *dict = @{@"goodsParametersId" : [NSString stringWithFormat:@"%d",params.parametersId],
-                                   @"goodsParametersName" : params.parametersName};
-            [arr addObject:dict];
-        }
-        NSArray *postArr = @[@{@"carId" : @"",
-                               @"seckillId" : @"",
-                               @"goodsId" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID],
-                               @"price" : [NSString stringWithFormat:@"%d",self.viewModel.goodsInfoModel.goodsNewPrice],
-                               @"number" : [NSString stringWithFormat:@"%d",self.viewModel.count],
-                               @"goodsParameters" : @""}];
-        NSDictionary *goodsInformation = @{@"post" : postArr};
-        
-        NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId],
-                                 @"goodsInformation" : [goodsInformation jsonStringValue]};
-        [TSHttpTool postWithUrl:OrderSure_URL params:params success:^(id result) {
-            NSLog(@"购买：%@",result);
-            if ([result[@"success"] intValue] == 1) {
-                TSOrderConfirmViewModel *viewModel = [[TSOrderConfirmViewModel alloc] init];
-                TSOrderConfirmViewController *orderConfirmVC = [[TSOrderConfirmViewController alloc] initWithViewModel:viewModel];
-                [self.navigationController pushViewController:orderConfirmVC animated:YES];
-            }
+        if (self.viewModel.isSecondsDeal) {
+            //秒杀
+            NSDictionary *dict = @{@"goodsId" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID],
+                                   @"seckillId" : [NSString stringWithFormat:@"%d",self.viewModel.seckillModel.SecondsDeal_EventID]};
+//            [TSHttpTool getWithUrl:SeckillGoodsLoad_URL params:dict withCache:NO success:^(id result) {
+//                NSLog(@"秒杀商品加载:%@",result);
+//            } failure:^(NSError *error) {
+//                NSLog(@"秒杀商品加载:%@",error);
+//            }];
             
-        } failure:^(NSError *error) {
-            NSLog(@"购买：%@",error);
-        }];
+            ////
+            
+            NSDictionary *params = @{@"id" : [NSString stringWithFormat:@"%d",self.viewModel.seckillModel.S_ID]};
+            [TSHttpTool getWithUrl:SeckillCheck params:params withCache:NO success:^(id result) {
+                NSLog(@"秒杀商品数量:%@",result);
+                [self normalBuy];
+
+            } failure:^(NSError *error) {
+                NSLog(@"秒杀商品数量:%@",error);
+            }];
+            
+        }else {
+            //购买
+            [self normalBuy];
+        }
     } forControlEvents:UIControlEventTouchUpInside];
     
 }

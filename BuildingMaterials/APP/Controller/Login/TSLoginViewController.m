@@ -28,7 +28,7 @@
     [super viewDidLoad];
     [self configUIAttributes];
     [self bindActionHandler];
-
+    
 }
 
 - (void)didReceiveMemoryWarning {

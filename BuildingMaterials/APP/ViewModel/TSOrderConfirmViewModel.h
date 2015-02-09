@@ -14,4 +14,6 @@
 @property (nonatomic, strong) NSMutableArray *subviewModels;    //分组viewModel
 
 @property (nonatomic, assign) NSUInteger currentSection;    //记录当前选择运送方式的cell
+@property (nonatomic, strong) NSString *address;
+
 @end

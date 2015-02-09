@@ -131,8 +131,9 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
     TSSecKillModel *secKillModel = self.viewModel.dataArray[indexPath.row];
     //秒杀
     TSGoodsDetailViewModel *viewModel = [[TSGoodsDetailViewModel alloc] init];
-    viewModel.goodsID = secKillModel.ID;
+    viewModel.goodsID = secKillModel.goodsId;
     viewModel.isSecondsDeal = YES;
+    viewModel.seckillModel = secKillModel;
     TSGoodsDetailViewController *goodsDetailVC = [[TSGoodsDetailViewController alloc] init];
     goodsDetailVC.viewModel = viewModel;
     [self.navigationController pushViewController:goodsDetailVC animated:YES];

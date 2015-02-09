@@ -10,12 +10,14 @@
 #import "TSGoodsInfoModel.h"
 #import "TSShopModel.h"
 #import "TSGoodsParamsModel.h"
+#import "TSSecKillModel.h"
 
 @interface TSGoodsDetailViewModel : NSObject
 @property (nonatomic, assign) int goodsID;      //利用id 获取所有详情信息
 @property (nonatomic, strong) TSShopModel *shopModel;
 @property (nonatomic, strong) TSGoodsInfoModel *goodsInfoModel;
 @property (nonatomic, strong) TSGoodsParamsModel *goodsParamsModel;
+@property (nonatomic, strong) TSSecKillModel *seckillModel;
 @property (nonatomic, assign) int count;
 @property (nonatomic, assign) BOOL isSecondsDeal;
 @property (nonatomic, assign) BOOL loadGoodsInfo;
