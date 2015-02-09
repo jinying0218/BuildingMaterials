@@ -124,7 +124,6 @@ static NSString *const OrderDetailTableViewCellIdendifier = @"OrderDetailTableVi
                                  @"commentContent" : self.viewModel.commentContentString,
                                  @"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId]};
         [TSHttpTool postWithUrl:PostGoodsComment_URL params:params success:^(id result) {
-            NSLog(@"%@",result);
             if ([result[@"success"] intValue] == 1) {
                 [self showProgressHUD:@"评论成功" delay:1];
                 self.commentInput.text = @"";
@@ -160,7 +159,7 @@ static NSString *const OrderDetailTableViewCellIdendifier = @"OrderDetailTableVi
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"TSOrderDetailTableViewCell" owner:nil options:nil]lastObject];
     }
-    if (![self.viewModel.orderStatus isEqualToString:@"HAVE_GET"]) {
+    if ([self.viewModel.orderStatus isEqualToString:@"HAVE_GET"]) {
         cell.commentGoodsButton.enabled = YES;
     }
     cell.indexPath = indexPath;

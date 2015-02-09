@@ -9,6 +9,8 @@
 #import "TSHavePayedViewController.h"
 #import "TSHavePayedViewModel.h"
 #import "TSHavePayedTableViewCell.h"
+#import "TSWaitOrderModel.h"
+#import "TSUserModel.h"
 
 static NSString *const HavePayedTableViewCellIdendifier = @"HavePayedTableViewCellIdendifier";
 
@@ -40,6 +42,24 @@ static NSString *const HavePayedTableViewCellIdendifier = @"HavePayedTableViewCe
 }
 
 - (void)initializeData{
+    TSUserModel *userModel = [TSUserModel getCurrentLoginUser];
+    NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",userModel.userId]};
+    [TSHttpTool getWithUrl:WaitForPay_URL params:params withCache:NO success:^(id result) {
+        //        NSLog(@"待付款订单:%@",result);
+        if ([result[@"success"] intValue] == 1) {
+            for (NSDictionary *dict in result[@"result"]) {
+                TSWaitOrderModel *orderModel = [[TSWaitOrderModel alloc] init];
+                [orderModel modelWithDict:dict];
+                if ([orderModel.orderStatus isEqualToString:@"TIME_OVER"]) {
+                    [self.viewModel.dataArray addObject:orderModel];
+                }
+            }
+            [self.tableView reloadData];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"待付款订单:%@",error);
+    }];
+
 }
 - (void)configureUI{
     self.tabBarController.tabBar.hidden =  YES;
@@ -65,8 +85,7 @@ static NSString *const HavePayedTableViewCellIdendifier = @"HavePayedTableViewCe
     return 128;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return  2;
-    //[self.viewModel.dataArray count];
+    return  [self.viewModel.dataArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -74,12 +93,25 @@ static NSString *const HavePayedTableViewCellIdendifier = @"HavePayedTableViewCe
     if (!cell) {
         cell = [[[NSBundle mainBundle] loadNibNamed:@"TSHavePayedTableViewCell" owner:nil options:nil]lastObject];
     }
-    
-    //    TSShopCarModel *model = self.viewModel.dataArray[indexPath.row];
-    //    TSShopCarCellSubviewModel *subviewModel = self.viewModel.subviewModels[indexPath.row];
-    //    [cell attachViewModel:subviewModel];
-    //    [cell.headerImage sd_setImageWithURL:[NSURL URLWithString:@""] placeholderImage:[UIImage imageNamed:@"not_load"]];
-    //    cell.goodsName.text = @"test";
+    TSWaitOrderModel *orderModel = self.viewModel.dataArray[indexPath.row];
+    @weakify(self);
+    [cell configureCell:orderModel orderDetailButtonHandler:^(NSIndexPath *indexPath) {
+        //订单详情
+        @strongify(self);
+        
+    } moneyBackButtonHandler:^(NSIndexPath *indexPath) {
+        //申请退款
+        @strongify(self);
+        
+    } checkTransportButtonHandler:^(NSIndexPath *indexPath) {
+        //查看物流
+        @strongify(self);
+        
+    } confirmReceiveButtonHandler:^(NSIndexPath *indexPath) {
+        //确认收货
+        @strongify(self);
+        
+    }];
     return cell;
 }
 
