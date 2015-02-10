@@ -2619,7 +2619,7 @@
 				ORGANIZATIONNAME = Ariel;
 				TargetAttributes = {
 					B018471E19F898BF00938054 = {
-						DevelopmentTeam = 6GASTWWZR6;
+						DevelopmentTeam = 4C6P6Z426Y;
 					};
 					B018473919F898BF00938054 = {
 						TestTargetID = B018471E19F898BF00938054;
@@ -3069,8 +3069,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yingying Jin (4C6P6Z426Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yingying Jin (4C6P6Z426Y)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -3093,7 +3093,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/BuildingMaterials/lib";
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "0005ffb5-96e9-40e8-8c65-53d2d5ec2afd";
+				PROVISIONING_PROFILE = "b3683a37-fec3-45b8-b54b-bf3828cdaded";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
@@ -3115,8 +3115,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yingying Jin (4C6P6Z426Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yingying Jin (4C6P6Z426Y)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3133,7 +3133,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/BuildingMaterials/lib";
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "0005ffb5-96e9-40e8-8c65-53d2d5ec2afd";
+				PROVISIONING_PROFILE = "b3683a37-fec3-45b8-b54b-bf3828cdaded";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -3146,8 +3146,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yingying Jin (4C6P6Z426Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yingying Jin (4C6P6Z426Y)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BuildingMaterials/lib",
@@ -3175,7 +3175,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0005ffb5-96e9-40e8-8c65-53d2d5ec2afd";
+				PROVISIONING_PROFILE = "b3683a37-fec3-45b8-b54b-bf3828cdaded";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -3187,8 +3187,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yingying Jin (4C6P6Z426Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yingying Jin (4C6P6Z426Y)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BuildingMaterials/lib",
@@ -3216,7 +3216,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0005ffb5-96e9-40e8-8c65-53d2d5ec2afd";
+				PROVISIONING_PROFILE = "b3683a37-fec3-45b8-b54b-bf3828cdaded";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};

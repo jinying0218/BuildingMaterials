@@ -18,7 +18,7 @@
 @property (nonatomic, strong) NSString *transportName;
 @property (nonatomic, assign) int transportPrice;
 @property (nonatomic, assign) int orderId;
-@property (nonatomic, strong) NSArray *goods;
+@property (nonatomic, strong) NSMutableArray *goods;
 
 - (void)modelWithDict:(NSDictionary *)dict;
 @end

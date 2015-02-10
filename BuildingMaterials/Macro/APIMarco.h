@@ -110,6 +110,11 @@
 #define DeleteOrder_URL Domain"/orderDelete"
 //订单详情
 #define OrderDetail_URL Domain"/orderGoodsLoad"
+//退款
+#define OrderAskBack_URL Domain"/orderAskBack"
+//确定收货
+#define OrderGet_URL Domain"/orderGet"
+
 
 //订单商品加载
 #define OrderGoodsLoad_URL Domain"/orderGoodsLoad"

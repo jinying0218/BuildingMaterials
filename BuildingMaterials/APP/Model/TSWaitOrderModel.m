@@ -7,6 +7,7 @@
 //
 
 #import "TSWaitOrderModel.h"
+#import "TSOrderDetailGoodsModel.h"
 
 @implementation TSWaitOrderModel
 
@@ -20,7 +21,13 @@
     self.transportName = [self objectOrNilForKey:@"ORDER_TRANSPORT_NAME" fromDictionary:dict];
     self.transportPrice = [[self objectOrNilForKey:@"ORDER_TRANSPORT_PRICE" fromDictionary:dict] intValue];
     self.orderId = [[self objectOrNilForKey:@"O_ID" fromDictionary:dict] intValue];
-    self.goods = [self objectOrNilForKey:@"goods" fromDictionary:dict];
+    self.goods = [[NSMutableArray alloc] initWithCapacity:0];
+    for (NSDictionary *goodDict in [self objectOrNilForKey:@"goods" fromDictionary:dict]) {
+        TSOrderDetailGoodsModel *goodsModel = [[TSOrderDetailGoodsModel alloc] init];
+        [goodsModel havePayModelWithDict:goodDict];
+        [self.goods addObject:goodsModel];
+    }
+//    self.goods = [self objectOrNilForKey:@"goods" fromDictionary:dict];
 }
 #pragma mark - Helper Method
 - (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict

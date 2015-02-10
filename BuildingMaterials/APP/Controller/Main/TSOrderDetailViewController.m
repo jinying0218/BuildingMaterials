@@ -108,7 +108,7 @@ static NSString *const OrderDetailTableViewCellIdendifier = @"OrderDetailTableVi
     [self.commentInput bk_addEventHandler:^(UITextField *commentInput) {
         @strongify(self);
         [self.viewModel setCommentContentString:commentInput.text];
-        [self.view resignFirstResponder];
+        [self.commentInput resignFirstResponder];
     } forControlEvents:UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit];
     
     [self.postCommentButton bk_addEventHandler:^(id sender) {
@@ -126,13 +126,13 @@ static NSString *const OrderDetailTableViewCellIdendifier = @"OrderDetailTableVi
         [TSHttpTool postWithUrl:PostGoodsComment_URL params:params success:^(id result) {
             if ([result[@"success"] intValue] == 1) {
                 [self showProgressHUD:@"评论成功" delay:1];
-                self.commentInput.text = @"";
-                [self.commentInput resignFirstResponder];
             }else if ([result[@"errorMsg"] isEqualToString:@"have_comment"]){
                 [self showProgressHUD:@"不可以重复评论哦亲" delay:1];
-                self.commentInput.text = @"";
-                [self.commentInput resignFirstResponder];
             }
+            self.commentInput.text = @"";
+            [self.commentInput resignFirstResponder];
+            self.commentView.hidden = YES;
+
         } failure:^(NSError *error) {
             
         }];
@@ -141,6 +141,7 @@ static NSString *const OrderDetailTableViewCellIdendifier = @"OrderDetailTableVi
     
     [self.cancelCommentButton bk_addEventHandler:^(id sender) {
         @strongify(self);
+        self.commentView.hidden = YES;
         [self.commentInput resignFirstResponder];
     } forControlEvents:UIControlEventTouchUpInside];
     
@@ -169,6 +170,7 @@ static NSString *const OrderDetailTableViewCellIdendifier = @"OrderDetailTableVi
        //评论按钮
         @strongify(self);
         self.commentIndexPath = indexPath;
+        self.commentView.hidden = NO;
         [self.commentInput becomeFirstResponder];
     }];
     return cell;
