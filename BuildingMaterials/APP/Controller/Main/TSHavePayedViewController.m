@@ -78,10 +78,10 @@ static NSString *const HavePayedTableViewCellIdendifier = @"HavePayedTableViewCe
             for (NSDictionary *dict in result[@"result"]) {
                 TSWaitOrderModel *orderModel = [[TSWaitOrderModel alloc] init];
                 [orderModel modelWithDict:dict];
-//                if ([orderModel.orderStatus isEqualToString:@"TIME_OVER"]) {
-//                    [self.viewModel.dataArray addObject:orderModel];
-//                }
-                [self.viewModel.dataArray addObject:orderModel];
+                if ([orderModel.orderStatus isEqualToString:@"HAVE_PAY"]) {
+                    [self.viewModel.dataArray addObject:orderModel];
+                }
+//                [self.viewModel.dataArray addObject:orderModel];
 
             }
             [self.tableView reloadData];

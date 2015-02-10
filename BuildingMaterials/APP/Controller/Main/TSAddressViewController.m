@@ -78,7 +78,7 @@ static NSString *const AddressCellIdentifier = @"addressCellIdentifier";
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.addressView.frame = CGRectMake( 0, KscreenH, KscreenW, 207);
+    self.addressView.frame = CGRectMake( 0, KscreenH, self.view.frame.size.width, 207);
     
     self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
 }
