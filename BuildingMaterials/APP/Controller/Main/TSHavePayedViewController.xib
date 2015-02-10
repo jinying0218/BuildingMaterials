@@ -15,7 +15,7 @@
                 <outlet property="coverView" destination="f8U-3J-cfJ" id="XKH-L0-X8Z"/>
                 <outlet property="reasonInput" destination="nAq-F2-mT8" id="QWm-f5-Y5t"/>
                 <outlet property="tableView" destination="6BZ-4b-0r9" id="Weq-FY-dni"/>
-                <outlet property="tansportCode" destination="ioF-AJ-QdW" id="p4B-FG-XZB"/>
+                <outlet property="transportCode" destination="ioF-AJ-QdW" id="TPw-5y-7cM"/>
                 <outlet property="transportName" destination="gvI-xo-3Nu" id="SXt-VU-ZvK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

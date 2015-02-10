@@ -26,7 +26,7 @@ static NSString *const HavePayedTableViewCellIdendifier = @"HavePayedTableViewCe
 @property (weak, nonatomic) IBOutlet UIButton *confirmAskBackButton;
 @property (weak, nonatomic) IBOutlet UIButton *cancelAskBackButton;
 @property (weak, nonatomic) IBOutlet UILabel *transportName;
-@property (weak, nonatomic) IBOutlet UILabel *tansportCode;
+@property (weak, nonatomic) IBOutlet UILabel *transportCode;
 @property (weak, nonatomic) IBOutlet UIButton *cancelCheckTransportButton;
 @property (nonatomic, assign) CGFloat popHeight;
 @property (nonatomic, strong) NSIndexPath *askBackIndexPath;
@@ -69,9 +69,11 @@ static NSString *const HavePayedTableViewCellIdendifier = @"HavePayedTableViewCe
 
 - (void)initializeData{
     TSUserModel *userModel = [TSUserModel getCurrentLoginUser];
+    [self.viewModel.dataArray removeAllObjects];
     NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",userModel.userId]};
     [TSHttpTool getWithUrl:WaitForPay_URL params:params withCache:NO success:^(id result) {
                 NSLog(@"待付款订单:%@",result);
+        [self hideProgressHUD];
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *dict in result[@"result"]) {
                 TSWaitOrderModel *orderModel = [[TSWaitOrderModel alloc] init];
@@ -104,8 +106,7 @@ static NSString *const HavePayedTableViewCellIdendifier = @"HavePayedTableViewCe
     [[UIApplication sharedApplication].keyWindow addSubview:self.askBackView];
 
     self.checkTransportView.frame = CGRectMake( 0, KscreenH, KscreenW, 90);
-    [self.view addSubview:self.checkTransportView];
-
+    [[UIApplication sharedApplication].keyWindow addSubview:self.checkTransportView];
 }
 
 - (void)blindViewModel{
@@ -150,14 +151,9 @@ static NSString *const HavePayedTableViewCellIdendifier = @"HavePayedTableViewCe
                 [self.reasonInput resignFirstResponder];
                 self.coverView.hidden = YES;
                 self.askBackView.hidden = YES;
+            }else {
+                [self showProgressHUD:@"退款失败" delay:1];
             }
-            /*
-            else if ([result[@"errorMsg"] isEqualToString:@"have_comment"]){
-                [self showProgressHUD:@"不可以重复评论哦亲" delay:1];
-                self.commentInput.text = @"";
-                [self.commentInput resignFirstResponder];
-            }
-             */
         } failure:^(NSError *error) {
         }];
     } forControlEvents:UIControlEventTouchUpInside];
@@ -169,6 +165,16 @@ static NSString *const HavePayedTableViewCellIdendifier = @"HavePayedTableViewCe
         self.askBackView.hidden = YES;
     } forControlEvents:UIControlEventTouchUpInside];
 
+    [self.cancelCheckTransportButton bk_addEventHandler:^(id sender) {
+        @strongify(self);
+        [UIView animateWithDuration:0.25 animations:^{
+            CGRect frame = self.checkTransportView.frame;
+            frame.origin.y += 90;
+            self.checkTransportView.frame = frame;
+        }];
+        self.coverView.hidden = YES;
+
+    } forControlEvents:UIControlEventTouchUpInside];
 }
 
 #pragma mark - dataSource method
@@ -193,6 +199,7 @@ static NSString *const HavePayedTableViewCellIdendifier = @"HavePayedTableViewCe
         TSWaitOrderModel *currentOrderModel = self.viewModel.dataArray[indexPath.row];
         TSOrderDetailViewModel *viewModel = [[TSOrderDetailViewModel alloc] init];
         viewModel.orderId = currentOrderModel.orderId;
+        viewModel.orderStatus = currentOrderModel.orderStatus;
         TSOrderDetailViewController *orderDetailVC = [[TSOrderDetailViewController alloc] initWithViewModel:viewModel];
         [self.navigationController pushViewController:orderDetailVC animated:YES];
 
@@ -206,11 +213,37 @@ static NSString *const HavePayedTableViewCellIdendifier = @"HavePayedTableViewCe
     } checkTransportButtonHandler:^(NSIndexPath *indexPath) {
         //查看物流
         @strongify(self);
+        TSWaitOrderModel *orderModel = self.viewModel.dataArray[indexPath.row];
+        self.transportName.text = orderModel.transportName;
+        self.transportCode.text = orderModel.transportCode;
+        
+        CGFloat originY = 0;
+        if (self.checkTransportView.frame.origin.y < KscreenH) {
+            originY = 90;
+            self.coverView.hidden = YES;
+        }else {
+            originY = -90;
+            self.coverView.hidden = NO;
+        }
+        [UIView animateWithDuration:0.25 animations:^{
+            CGRect frame = self.checkTransportView.frame;
+            frame.origin.y += originY;
+            self.checkTransportView.frame = frame;
+        }];
         
     } confirmReceiveButtonHandler:^(NSIndexPath *indexPath) {
         //确认收货
         @strongify(self);
-        
+        [self showProgressHUD];
+        TSWaitOrderModel *orderModel = self.viewModel.dataArray[indexPath.row];
+        NSDictionary *params = @{@"orderId" : [NSString stringWithFormat:@"%d",orderModel.orderId]};
+        [TSHttpTool getWithUrl:OrderGet_URL params:params withCache:NO success:^(id result) {
+            if ([result[@"success"] intValue] == 1) {
+                [self initializeData];
+            }
+        } failure:^(NSError *error) {
+            
+        }];
     }];
     return cell;
 }

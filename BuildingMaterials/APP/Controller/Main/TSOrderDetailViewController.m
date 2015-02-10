@@ -59,7 +59,7 @@ static NSString *const OrderDetailTableViewCellIdendifier = @"OrderDetailTableVi
 
     NSDictionary *params = @{@"orderId" : [NSString stringWithFormat:@"%d",self.viewModel.orderId]};
     [TSHttpTool getWithUrl:OrderDetail_URL params:params withCache:NO success:^(id result) {
-//                NSLog(@"订单详情:%@",result);
+                NSLog(@"订单详情:%@",result);
       if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *dict in result[@"result"]) {
                 TSOrderDetailGoodsModel *orderGoodsModel = [[TSOrderDetailGoodsModel alloc] init];
