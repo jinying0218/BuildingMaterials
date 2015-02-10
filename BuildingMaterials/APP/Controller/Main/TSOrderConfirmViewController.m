@@ -189,6 +189,10 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
                 [goods addObject:dict];
             }
             TSOrderModel *firstOrderModel = [subviewModel goodsArray][0];
+            if (!subviewModel.transportModel) {
+                [self showProgressHUD:@"请选择配送方式" delay:1];
+                return ;
+            }
             NSDictionary *dict = @{@"companyId" : [NSString stringWithFormat:@"%d",firstOrderModel.CC_ID],
                                    @"totalPrice" : [NSString stringWithFormat:@"%d",subviewModel.companyTotalPrice],
                                    @"goodsPrice" : [NSString stringWithFormat:@"%d",firstOrderModel.price],
