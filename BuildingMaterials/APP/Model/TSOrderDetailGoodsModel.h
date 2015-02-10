@@ -20,4 +20,6 @@
 @property (nonatomic, assign) int orderGoodsPrice;
 
 - (void)modelWithDict:(NSDictionary *)dict;
+
+- (void)havePayModelWithDict:(NSDictionary *)dict;
 @end
