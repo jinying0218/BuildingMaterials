@@ -33,10 +33,10 @@
     self.shopName.frame = CGRectMake( 113, 5, descWidth, 21);
     
     self.shopDes.text = model.COMPANY_DES;
-    if (model.IS_RECOMMEND) {
-        self.recommendBtn.hidden = NO;
-        self.recommendBtn.frame = CGRectMake( CGRectGetMaxX(self.shopName.frame), CGRectGetMinY(self.shopName.frame), 20, 20);
-    }
+//    if (model.IS_RECOMMEND) {
+//        self.recommendBtn.hidden = NO;
+//        self.recommendBtn.frame = CGRectMake( CGRectGetMaxX(self.shopName.frame), CGRectGetMinY(self.shopName.frame), 20, 20);
+//    }
     
 }
 @end

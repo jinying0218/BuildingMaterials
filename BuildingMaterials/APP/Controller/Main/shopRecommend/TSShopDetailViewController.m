@@ -123,7 +123,7 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
                 TSGoodsRecommandModel *goodsModel = [[TSGoodsRecommandModel alloc] init];
                 [goodsModel setValueForDictionary:oneDict];
                 //只展示4个商品
-                if (self.viewModel.dataArray.count <= 4) {
+                if (self.viewModel.dataArray.count < 4) {
                     [self.viewModel.dataArray addObject:goodsModel];
                 }
             }

@@ -36,15 +36,6 @@
                                 <color key="textColor" red="0.45098039215686275" green="0.45098039215686275" blue="0.45098039215686275" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3E7-7b-0nN">
-                                <rect key="frame" x="226" y="8" width="18" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="荐" backgroundImage="recommend.png">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -52,7 +43,6 @@
                 <color key="backgroundColor" red="0.92549019607843142" green="0.92549019607843142" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
             </tableViewCellContentView>
             <connections>
-                <outlet property="recommendBtn" destination="3E7-7b-0nN" id="dQl-V0-6Ef"/>
                 <outlet property="shopDes" destination="kcK-oM-yde" id="7SG-TB-bt2"/>
                 <outlet property="shopImage" destination="boe-Kz-UGS" id="oYN-5I-bxB"/>
                 <outlet property="shopName" destination="Qdr-1w-0Qv" id="eGO-2A-nP3"/>
@@ -62,7 +52,6 @@
     </objects>
     <resources>
         <image name="not_load" width="150" height="150"/>
-        <image name="recommend.png" width="18" height="18"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

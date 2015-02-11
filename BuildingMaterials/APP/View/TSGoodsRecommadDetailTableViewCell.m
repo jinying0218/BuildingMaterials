@@ -27,7 +27,7 @@
     }
     self.goodsName.text = model.GOODS_NAME;
     self.goodsDes.text = model.GOODS_DES_SIMPLE;
-    self.goodsPrice.text = [NSString stringWithFormat:@"%d",model.GOODS_NEW_PRICE];
+    self.goodsPrice.text = [NSString stringWithFormat:@"￥%d",model.GOODS_NEW_PRICE];
     self.goodsSellNumber.text = [NSString stringWithFormat:@"%d人购买",model.GOODS_SELL_NUMBER];
 }
 @end

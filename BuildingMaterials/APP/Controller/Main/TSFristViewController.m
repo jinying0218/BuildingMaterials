@@ -238,7 +238,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
 }
 #pragma mark - tableView delegate & dataSource
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    NSArray *array = @[@"185",@"185",@"230",@"245"];
+    NSArray *array = @[@"185",@"185",@"230",@"216"];
     return [array[indexPath.row] intValue];
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
