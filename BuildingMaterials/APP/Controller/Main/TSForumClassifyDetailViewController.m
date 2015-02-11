@@ -167,11 +167,11 @@ static NSString *const ForumClassifyTableViewCellIdentifier = @"ForumClassifyTab
             }
                 break;
             case 1:{
-                self.forumOrderType = 2;
+                self.forumOrderType = 3;    //推荐
             }
                 break;
             case 2:{
-               self.forumOrderType = 3;
+               self.forumOrderType = 2;     //最新
             }
                 break;
    

@@ -90,7 +90,7 @@
     
     NSDictionary *params = @{@"id" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID]};
     [TSHttpTool getWithUrl:GoodsInfo_URL params:params withCache:NO success:^(id result) {
-//        NSLog(@"商品信息:%@",result);
+        NSLog(@"商品信息:%@",result);
         if ([result[@"success"] intValue] == 1) {
             [self.viewModel.shopModel setShopModelValueForDictionary:result[@"companyResult"]];
             [self.viewModel.goodsInfoModel setValueForDictionary:result[@"goodsResult"]];

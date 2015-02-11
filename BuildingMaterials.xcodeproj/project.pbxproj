@@ -275,6 +275,8 @@
 		B0C8ABFF1A811875003B60B5 /* TSPublishViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0C8ABFE1A811875003B60B5 /* TSPublishViewModel.m */; };
 		B0C8AC011A813547003B60B5 /* take_photo.png in Resources */ = {isa = PBXBuildFile; fileRef = B0C8AC001A813547003B60B5 /* take_photo.png */; };
 		B0CB19EA1A5A3DBA00C6D8B1 /* TSExchangeListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0CB19E91A5A3DBA00C6D8B1 /* TSExchangeListModel.m */; };
+		B0D21EBF1A8BC589004E48AE /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D21EBC1A8BC589004E48AE /* libMobClickLibrary.a */; };
+		B0D21EC11A8BC64F004E48AE /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = B0D21EC01A8BC64F004E48AE /* libz.dylib */; };
 		B0D2AC0A19F8E4020074D10B /* TSRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D2AC0819F8E4020074D10B /* TSRegisterViewController.m */; };
 		B0D2AC0B19F8E4020074D10B /* TSRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0D2AC0919F8E4020074D10B /* TSRegisterViewController.xib */; };
 		B0D899D81A6FF8B000082535 /* TSAddressModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0D899D71A6FF8B000082535 /* TSAddressModel.m */; };
@@ -742,6 +744,10 @@
 		B0C8AC001A813547003B60B5 /* take_photo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = take_photo.png; sourceTree = "<group>"; };
 		B0CB19E81A5A3DBA00C6D8B1 /* TSExchangeListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSExchangeListModel.h; sourceTree = "<group>"; };
 		B0CB19E91A5A3DBA00C6D8B1 /* TSExchangeListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSExchangeListModel.m; sourceTree = "<group>"; };
+		B0D21EBC1A8BC589004E48AE /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		B0D21EBD1A8BC589004E48AE /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		B0D21EBE1A8BC589004E48AE /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
+		B0D21EC01A8BC64F004E48AE /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		B0D2AC0719F8E4020074D10B /* TSRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSRegisterViewController.h; sourceTree = "<group>"; };
 		B0D2AC0819F8E4020074D10B /* TSRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSRegisterViewController.m; sourceTree = "<group>"; };
 		B0D2AC0919F8E4020074D10B /* TSRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSRegisterViewController.xib; sourceTree = "<group>"; };
@@ -920,6 +926,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B0D21EC11A8BC64F004E48AE /* libz.dylib in Frameworks */,
+				B0D21EBF1A8BC589004E48AE /* libMobClickLibrary.a in Frameworks */,
 				B0FA14A21A64413800C1C377 /* libssl.a in Frameworks */,
 				B0FA13E91A6436EE00C1C377 /* SystemConfiguration.framework in Frameworks */,
 				B018472519F898BF00938054 /* CoreGraphics.framework in Frameworks */,
@@ -1025,6 +1033,7 @@
 		B018472119F898BF00938054 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B0D21EC01A8BC64F004E48AE /* libz.dylib */,
 				B0FA13E21A64321F00C1C377 /* AlipaySDK.framework */,
 				B0FA13E81A6436EE00C1C377 /* SystemConfiguration.framework */,
 				B018472219F898BF00938054 /* Foundation.framework */,
@@ -1200,6 +1209,7 @@
 		B018476519F89DCC00938054 /* lib */ = {
 			isa = PBXGroup;
 			children = (
+				B0D21EBB1A8BC589004E48AE /* UMAnalytics_Sdk_3.1.8 */,
 				B064EAF41A86A6AF00D8CB26 /* JSONKit */,
 				B0FA149F1A64413800C1C377 /* libcrypto.a */,
 				B0FA14A01A64413800C1C377 /* libssl.a */,
@@ -2253,6 +2263,16 @@
 			name = "以物换物列表";
 			sourceTree = "<group>";
 		};
+		B0D21EBB1A8BC589004E48AE /* UMAnalytics_Sdk_3.1.8 */ = {
+			isa = PBXGroup;
+			children = (
+				B0D21EBC1A8BC589004E48AE /* libMobClickLibrary.a */,
+				B0D21EBD1A8BC589004E48AE /* MobClick.h */,
+				B0D21EBE1A8BC589004E48AE /* MobClickSocialAnalytics.h */,
+			);
+			path = UMAnalytics_Sdk_3.1.8;
+			sourceTree = "<group>";
+		};
 		B0D2AC0519F8E3DE0074D10B /* Main */ = {
 			isa = PBXGroup;
 			children = (
@@ -3090,7 +3110,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/BuildingMaterials/lib";
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "b3683a37-fec3-45b8-b54b-bf3828cdaded";
@@ -3130,7 +3150,7 @@
 					"$(inherited)",
 					/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include,
 				);
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/BuildingMaterials/lib";
 				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "b3683a37-fec3-45b8-b54b-bf3828cdaded";
@@ -3172,6 +3192,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BuildingMaterials/lib",
+					"$(PROJECT_DIR)/BuildingMaterials/lib/UMAnalytics_Sdk_3.1.8",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -3213,6 +3234,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BuildingMaterials/lib",
+					"$(PROJECT_DIR)/BuildingMaterials/lib/UMAnalytics_Sdk_3.1.8",
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";

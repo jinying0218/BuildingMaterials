@@ -41,11 +41,13 @@ static NSString *const ShopRecommedDetailTableViewCell = @"ShopRecommedDetailTab
 }
 - (void)initializeData{
     
+    [self showProgressHUD];
 //http://www.d-anshun.com/appInterface/companyLoad
     NSDictionary *params = @{@"page":[NSString stringWithFormat:@"%d",self.page]};
     
     [TSHttpTool getWithUrl:CompanyLoad_URL params:params withCache:NO success:^(id result) {
         NSLog(@"商家列表:%@",result);
+        [self hideProgressHUD];
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneExchangeDict in result[@"result"]) {
                 TSShopModel *shopModel = [[TSShopModel alloc] init];
@@ -55,6 +57,7 @@ static NSString *const ShopRecommedDetailTableViewCell = @"ShopRecommedDetailTab
             [self.tableView reloadData];
         }
     } failure:^(NSError *error) {
+        [self hideProgressHUD];
         NSLog(@"以物换物：%@",error);
     }];
 

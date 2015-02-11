@@ -99,10 +99,12 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
 }
 
 - (void)initializeData{
-//    self.tableDataArray = [[NSMutableArray alloc] initWithObjects:@"莫非瓷砖商家",@"莫非瓷砖商家",@"莫非瓷砖商家",@"莫非瓷砖",@"莫非瓷砖商家",@"莫非瓷砖商家", nil];
     
+    [self showProgressHUD];
     NSDictionary *params = @{@"companyId" : [NSString stringWithFormat:@"%d",self.viewModel.companyID]};
     [TSHttpTool getWithUrl:CompanyDetail_URL params:params withCache:NO success:^(id result) {
+        [self hideProgressHUD];
+
 //        NSLog(@"商家详情：%@",result);
         if ([result[@"success"] intValue] == 1) {
             [self.viewModel.shopModel setShopModelValueForDictionary:result[@"result"]];
@@ -111,6 +113,7 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
         }
     } failure:^(NSError *error) {
         NSLog(@"商家详情：%@",error);
+        [self hideProgressHUD];
     }];
     
     NSDictionary *shopGoodsParams = @{@"page" : [NSString stringWithFormat:@"%d",self.page],
@@ -118,6 +121,8 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
                                       @"companyId" : [NSString stringWithFormat:@"%d",self.viewModel.companyID]};
     [TSHttpTool getWithUrl:CompanyGoodsLoad_URL params:shopGoodsParams withCache:NO success:^(id result) {
 //        NSLog(@"商家物品：%@",result);
+        [self hideProgressHUD];
+
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneDict in result[@"result"]) {
                 TSGoodsRecommandModel *goodsModel = [[TSGoodsRecommandModel alloc] init];
@@ -130,6 +135,8 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
             [self.collectionView reloadData];
         }
     } failure:^(NSError *error) {
+        [self hideProgressHUD];
+
         NSLog(@"商家物品：%@",error);
 
     }];

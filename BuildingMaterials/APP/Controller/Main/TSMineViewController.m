@@ -23,6 +23,8 @@
 
 #import "TSHavePayedViewController.h"
 #import "TSHavePayedViewModel.h"
+#import "MobClick.h"
+
 
 @interface TSMineViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
@@ -227,7 +229,7 @@
         }
             break;
         case 4:{
-            
+            [MobClick checkUpdate];   //自动更新检查, 如果需要自定义更新请使用下面的方法,需要接收一个(NSDictionary *)appInfo的参数
         }
             break;
         default:
