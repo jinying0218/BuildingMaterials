@@ -76,6 +76,12 @@
     self.uuid = [[TSDateFormatterTool shareInstance] dateIntervalString];
     NSDictionary *params = @{ @"telPhone" : telPhone,
                               @"uuid" : self.uuid};
+    
+    if ([telPhone isEqualToString:@""]) {
+        [self showProgressHUD:@"请输入手机号码" delay:1];
+        return;
+    }
+
     @weakify(self);
     [TSHttpTool postWithUrl:codePost_url params:params success:^(id result) {
         NSLog(@"注册获取验证码:%@",result);
@@ -109,6 +115,21 @@
     NSString *messageCode = self.checkNumberTextfield.text;
     NSString *password = self.secureTextfield.text;
     NSString *regFrom = @"ios";
+    
+    if ([telPhone isEqualToString:@""]) {
+        [self showProgressHUD:@"请输入手机号码" delay:1];
+        return;
+    }
+    if ([messageCode isEqualToString:@""]) {
+        [self showProgressHUD:@"请输入验证码" delay:1];
+        return;
+    }
+    if ([password isEqualToString:@""]) {
+        [self showProgressHUD:@"请输入密码" delay:1];
+        return;
+    }
+
+    
     NSDictionary *params = @{@"telPhone":telPhone,
                              @"uuid":uuid,
                              @"messageCode":messageCode,
