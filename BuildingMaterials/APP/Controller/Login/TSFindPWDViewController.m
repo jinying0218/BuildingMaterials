@@ -47,10 +47,18 @@
     }else {
         [self createNavigationBarTitle:@"修改密码" leftButtonImageName:@"Previous" rightButtonImageName:nil];
         self.tabBarController.tabBar.hidden =  YES;
-
     }
     self.navigationBar.frame = CGRectMake( 0, STATUS_BAR_HEGHT, KscreenW, 44);
     [self.view addSubview:self.navigationBar];
+    
+    self.telInput.layer.borderWidth = 1;
+    self.codeInput.layer.borderWidth = 1;
+    self.passwordInput.layer.borderWidth = 1;
+    
+    self.telInput.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.codeInput.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.passwordInput.layer.borderColor = [UIColor lightGrayColor].CGColor;
+
 }
 
 

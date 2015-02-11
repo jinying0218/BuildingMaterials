@@ -81,7 +81,7 @@
                 <outlet property="thirdShopImage" destination="9lt-lD-Oyu" id="y16-f2-NXS"/>
                 <outlet property="thirdShopName" destination="5Yk-Du-IGB" id="RLP-ff-pLz"/>
             </connections>
-            <point key="canvasLocation" x="383" y="338.5"/>
+            <point key="canvasLocation" x="478" y="333.5"/>
         </tableViewCell>
     </objects>
     <resources>

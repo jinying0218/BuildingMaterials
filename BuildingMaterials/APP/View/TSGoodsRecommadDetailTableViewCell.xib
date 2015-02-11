@@ -18,7 +18,7 @@
                         <rect key="frame" x="5" y="5" width="310" height="105"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="goodsDetail.png" id="EjP-s7-Rdp">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="not_load" id="EjP-s7-Rdp">
                                 <rect key="frame" x="5" y="5" width="106" height="92"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -68,7 +68,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="goodsDetail.png" width="480" height="234"/>
+        <image name="not_load" width="150" height="150"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -293,7 +293,6 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
     if (tableView.tag == Tag_orderTable) {
         TSOrderSubviewModel *subviewModel = self.viewModel.subviewModels[section];
         return subviewModel.goodsArray.count;
-//        [self.viewModel.dataArray[section] count];
     }else {
         return self.viewModel.transportsArray.count;
     }
