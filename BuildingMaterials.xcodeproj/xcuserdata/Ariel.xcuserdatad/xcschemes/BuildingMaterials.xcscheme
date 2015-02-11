@@ -20,6 +20,20 @@
                ReferencedContainer = "container:BuildingMaterials.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B018473919F898BF00938054"
+               BuildableName = "BuildingMaterialsTests.xctest"
+               BlueprintName = "BuildingMaterialsTests"
+               ReferencedContainer = "container:BuildingMaterials.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction

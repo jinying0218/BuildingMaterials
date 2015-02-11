@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *shopDes;
 @property (weak, nonatomic) IBOutlet UILabel *shopGoodsNumber;
 
-@property (weak, nonatomic) IBOutlet UIButton *recommendBtn;
 
 - (void)configureCellWithModel:(TSShopModel *)model indexPath:(NSIndexPath *)indexPath;
 

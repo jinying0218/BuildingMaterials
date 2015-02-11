@@ -199,6 +199,7 @@
 		B07AA1F91A892D2400571E6E /* TSOrderDetailViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B07AA1F81A892D2400571E6E /* TSOrderDetailViewModel.m */; };
 		B07AA2021A892E0300571E6E /* TSOrderDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = B07AA2001A892E0300571E6E /* TSOrderDetailTableViewCell.m */; };
 		B07AA2031A892E0300571E6E /* TSOrderDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B07AA2011A892E0300571E6E /* TSOrderDetailTableViewCell.xib */; };
+		B07AA2061A89315100571E6E /* TSOrderDetailGoodsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B07AA2051A89315100571E6E /* TSOrderDetailGoodsModel.m */; };
 		B08455B01A5AAFA900F8164E /* TSGoodsRecommandViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B08455AF1A5AAFA900F8164E /* TSGoodsRecommandViewModel.m */; };
 		B08455B41A5AB16700F8164E /* TSShopRecommandViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B08455B31A5AB16700F8164E /* TSShopRecommandViewModel.m */; };
 		B08455B61A5AC1FD00F8164E /* recommend.png in Resources */ = {isa = PBXBuildFile; fileRef = B08455B51A5AC1FD00F8164E /* recommend.png */; };
@@ -626,6 +627,8 @@
 		B07AA1FF1A892E0300571E6E /* TSOrderDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSOrderDetailTableViewCell.h; sourceTree = "<group>"; };
 		B07AA2001A892E0300571E6E /* TSOrderDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSOrderDetailTableViewCell.m; sourceTree = "<group>"; };
 		B07AA2011A892E0300571E6E /* TSOrderDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSOrderDetailTableViewCell.xib; sourceTree = "<group>"; };
+		B07AA2041A89315100571E6E /* TSOrderDetailGoodsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSOrderDetailGoodsModel.h; sourceTree = "<group>"; };
+		B07AA2051A89315100571E6E /* TSOrderDetailGoodsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSOrderDetailGoodsModel.m; sourceTree = "<group>"; };
 		B08455AE1A5AAFA900F8164E /* TSGoodsRecommandViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSGoodsRecommandViewModel.h; sourceTree = "<group>"; };
 		B08455AF1A5AAFA900F8164E /* TSGoodsRecommandViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSGoodsRecommandViewModel.m; sourceTree = "<group>"; };
 		B08455B21A5AB16700F8164E /* TSShopRecommandViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSShopRecommandViewModel.h; sourceTree = "<group>"; };
@@ -1151,6 +1154,8 @@
 				B064EAE61A861CD800D8CB26 /* TSTransportModel.m */,
 				B07AA1EE1A891AF100571E6E /* TSWaitOrderModel.h */,
 				B07AA1EF1A891AF100571E6E /* TSWaitOrderModel.m */,
+				B07AA2041A89315100571E6E /* TSOrderDetailGoodsModel.h */,
+				B07AA2051A89315100571E6E /* TSOrderDetailGoodsModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -2614,7 +2619,7 @@
 				ORGANIZATIONNAME = Ariel;
 				TargetAttributes = {
 					B018471E19F898BF00938054 = {
-						DevelopmentTeam = 6GASTWWZR6;
+						DevelopmentTeam = 4C6P6Z426Y;
 					};
 					B018473919F898BF00938054 = {
 						TestTargetID = B018471E19F898BF00938054;
@@ -2965,6 +2970,7 @@
 				B0C686C91A530950002053F1 /* TSSecKillModel.m in Sources */,
 				B018482719F89DCC00938054 /* TSImageUtil.m in Sources */,
 				B05B62F519FE8905008F76E0 /* TSGoodsExchangeTableViewCell.m in Sources */,
+				B07AA2061A89315100571E6E /* TSOrderDetailGoodsModel.m in Sources */,
 				B01847D819F89DCC00938054 /* TSBaseViewController.m in Sources */,
 				B05115C419F957CA00CA6E2E /* TSRegisterTwoViewController.m in Sources */,
 				B07AA1F41A89298400571E6E /* TSOrderDetailViewController.m in Sources */,
@@ -3063,8 +3069,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yingying Jin (4C6P6Z426Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yingying Jin (4C6P6Z426Y)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -3087,7 +3093,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/BuildingMaterials/lib";
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "0005ffb5-96e9-40e8-8c65-53d2d5ec2afd";
+				PROVISIONING_PROFILE = "b3683a37-fec3-45b8-b54b-bf3828cdaded";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
@@ -3109,8 +3115,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yingying Jin (4C6P6Z426Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yingying Jin (4C6P6Z426Y)";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -3127,7 +3133,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/BuildingMaterials/lib";
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "0005ffb5-96e9-40e8-8c65-53d2d5ec2afd";
+				PROVISIONING_PROFILE = "b3683a37-fec3-45b8-b54b-bf3828cdaded";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -3140,8 +3146,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yingying Jin (4C6P6Z426Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yingying Jin (4C6P6Z426Y)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BuildingMaterials/lib",
@@ -3169,7 +3175,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0005ffb5-96e9-40e8-8c65-53d2d5ec2afd";
+				PROVISIONING_PROFILE = "b3683a37-fec3-45b8-b54b-bf3828cdaded";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -3181,8 +3187,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Rongjia Huang (6GASTWWZR6)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yingying Jin (4C6P6Z426Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yingying Jin (4C6P6Z426Y)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/BuildingMaterials/lib",
@@ -3210,7 +3216,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0005ffb5-96e9-40e8-8c65-53d2d5ec2afd";
+				PROVISIONING_PROFILE = "b3683a37-fec3-45b8-b54b-bf3828cdaded";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};

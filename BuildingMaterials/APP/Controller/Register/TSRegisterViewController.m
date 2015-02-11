@@ -14,7 +14,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumberTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *checkNumberTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *secureTextfield;
+@property (weak, nonatomic) IBOutlet UIButton *getCodeButton;
+@property (weak, nonatomic) IBOutlet UILabel *secondsLabel;
+
 @property (nonatomic, strong) NSString *uuid;
+@property (nonatomic, assign) int seconds;    //倒计时
+@property (nonatomic, strong) NSString *secondsString;
 @end
 
 @implementation TSRegisterViewController
@@ -23,6 +28,7 @@
     [super viewDidLoad];
     
     [self configUIAttributes];
+    [self blindViewModel];
     [self bindActionHandler];
     
 }
@@ -35,11 +41,26 @@
     self.checkNumberTextfield.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.secureTextfield.layer.borderColor = [UIColor lightGrayColor].CGColor;
 
+    self.secondsLabel.layer.borderColor = [UIColor lightGrayColor].CGColor;
 }
 - (void)bindActionHandler {
     
     
-    
+}
+- (void)blindViewModel{
+//    [self.KVOController
+//     observe:self
+//     keyPath:@keypath(self,seconds)
+//     options:NSKeyValueObservingOptionNew
+//     block:^(TSRegisterViewController *observer, NSString *secondsString, NSDictionary *change) {
+//         if (![change[NSKeyValueChangeNewKey] isEqual:[NSNull null]]) {
+//             if ([change[NSKeyValueChangeNewKey] isEqualToString:@"0"]) {
+//                 observer.getCodeButton.enabled = YES;
+//                 [observer.getCodeButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+//             }
+//         }
+//     }];
+
 }
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -55,10 +76,33 @@
     self.uuid = [[TSDateFormatterTool shareInstance] dateIntervalString];
     NSDictionary *params = @{ @"telPhone" : telPhone,
                               @"uuid" : self.uuid};
+    
+    if ([telPhone isEqualToString:@""]) {
+        [self showProgressHUD:@"请输入手机号码" delay:1];
+        return;
+    }
+
+    @weakify(self);
     [TSHttpTool postWithUrl:codePost_url params:params success:^(id result) {
         NSLog(@"注册获取验证码:%@",result);
+        @strongify(self);
         if ([result[@"success"] intValue] == 1) {
-            [self showProgressHUD:@"获取验证码成功" delay:1];
+            [self showProgressHUD:@"获取验证码成功,请注意查收" delay:1];
+            self.seconds = 60;
+            [NSTimer bk_scheduledTimerWithTimeInterval:1 block:^(NSTimer *timer) {
+                @strongify(self);
+                self.seconds -= 1;
+                if (self.seconds > 0) {
+//                    [self.getCodeButton setTitle:[NSString stringWithFormat:@"倒计时(%ds)",self.seconds] forState:UIControlStateNormal];
+                    self.secondsLabel.hidden = NO;
+                    self.secondsLabel.text = [NSString stringWithFormat:@"倒计时(%ds)",self.seconds];
+                    self.getCodeButton.hidden = YES;
+                }else {
+                    [self.getCodeButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+                    self.getCodeButton.hidden = NO;
+                    self.secondsLabel.hidden = YES;
+                }
+            } repeats:YES];
         }
     } failure:^(NSError *error) {
         NSLog(@"获取验证码:%@",error);
@@ -71,6 +115,21 @@
     NSString *messageCode = self.checkNumberTextfield.text;
     NSString *password = self.secureTextfield.text;
     NSString *regFrom = @"ios";
+    
+    if ([telPhone isEqualToString:@""]) {
+        [self showProgressHUD:@"请输入手机号码" delay:1];
+        return;
+    }
+    if ([messageCode isEqualToString:@""]) {
+        [self showProgressHUD:@"请输入验证码" delay:1];
+        return;
+    }
+    if ([password isEqualToString:@""]) {
+        [self showProgressHUD:@"请输入密码" delay:1];
+        return;
+    }
+
+    
     NSDictionary *params = @{@"telPhone":telPhone,
                              @"uuid":uuid,
                              @"messageCode":messageCode,

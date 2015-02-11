@@ -16,9 +16,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *codeInput;
 @property (weak, nonatomic) IBOutlet UITextField *passwordInput;
 @property (weak, nonatomic) IBOutlet UIButton *getCodeButton;
+@property (weak, nonatomic) IBOutlet UILabel *secondsLabel;
+
 @property (weak, nonatomic) IBOutlet UIButton *confirmButton;
 @property (nonatomic, strong) NSString *uuid;
-
+@property (nonatomic, assign) int seconds;    //倒计时
+@property (nonatomic, strong) NSString *secondsString;
 @end
 
 @implementation TSFindPWDViewController
@@ -47,10 +50,20 @@
     }else {
         [self createNavigationBarTitle:@"修改密码" leftButtonImageName:@"Previous" rightButtonImageName:nil];
         self.tabBarController.tabBar.hidden =  YES;
-
     }
     self.navigationBar.frame = CGRectMake( 0, STATUS_BAR_HEGHT, KscreenW, 44);
     [self.view addSubview:self.navigationBar];
+    
+    self.telInput.layer.borderWidth = 1;
+    self.codeInput.layer.borderWidth = 1;
+    self.passwordInput.layer.borderWidth = 1;
+    
+    self.telInput.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.codeInput.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    self.passwordInput.layer.borderColor = [UIColor lightGrayColor].CGColor;
+
+    self.secondsLabel.layer.borderColor = [UIColor lightGrayColor].CGColor;
+
 }
 
 
@@ -62,12 +75,31 @@
         
         NSString *telPhone = self.telInput.text;
         self.uuid = [[TSDateFormatterTool shareInstance] dateIntervalString];
+        if ([telPhone isEqualToString:@""]) {
+            [self showProgressHUD:@"请输入手机号码" delay:1];
+            return;
+        }
         NSDictionary *params = @{ @"telPhone" : telPhone,
                                   @"uuid" : self.uuid};
         [TSHttpTool postWithUrl:codePost_url params:params success:^(id result) {
             NSLog(@"获取验证码:%@",result);
             if ([result[@"success"] intValue] == 1) {
                 [self showProgressHUD:@"验证码已发送，请注意查收" delay:1];
+                self.seconds = 60;
+                [NSTimer bk_scheduledTimerWithTimeInterval:1 block:^(NSTimer *timer) {
+                    @strongify(self);
+                    self.seconds -= 1;
+                    if (self.seconds > 0) {
+                        self.secondsLabel.hidden = NO;
+                        self.secondsLabel.text = [NSString stringWithFormat:@"倒计时(%ds)",self.seconds];
+                        self.getCodeButton.hidden = YES;
+                    }else {
+                        [self.getCodeButton setTitle:@"获取验证码" forState:UIControlStateNormal];
+                        self.getCodeButton.hidden = NO;
+                        self.secondsLabel.hidden = YES;
+                    }
+                } repeats:YES];
+
             }
         } failure:^(NSError *error) {
             NSLog(@"获取验证码:%@",error);
@@ -77,11 +109,26 @@
     
     [self.confirmButton bk_addEventHandler:^(id sender) {
         @strongify(self);
+        
         NSString *telPhone = self.telInput.text;
         NSString *uuid = self.uuid;
         NSString *messageCode = self.codeInput.text;
         NSString *password = self.passwordInput.text;
         NSString *regFrom = @"ios";
+        
+        if ([telPhone isEqualToString:@""]) {
+            [self showProgressHUD:@"请输入手机号码" delay:1];
+            return;
+        }
+        if ([messageCode isEqualToString:@""]) {
+            [self showProgressHUD:@"请输入验证码" delay:1];
+            return;
+        }
+        if ([password isEqualToString:@""]) {
+            [self showProgressHUD:@"请输入密码" delay:1];
+            return;
+        }
+
         NSDictionary *params = @{@"telPhone":telPhone,
                                  @"uuid":uuid,
                                  @"messageCode":messageCode,

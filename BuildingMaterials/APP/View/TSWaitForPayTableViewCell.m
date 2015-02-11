@@ -39,12 +39,12 @@
 }
 - (void)blindActionHandler{
     @weakify(self);
-    [self.orderDetialButton bk_addEventHandler:^(TSWaitOrderModel *currentOrderModel) {
+    [self.orderDetialButton bk_addEventHandler:^(id sender) {
         @strongify(self);
         self.orderDetailButtonHandler(self.orderModel);
     } forControlEvents:UIControlEventTouchUpInside];
     
-    [self.buyNowButton bk_addEventHandler:^(TSWaitOrderModel *currentOrderModel) {
+    [self.buyNowButton bk_addEventHandler:^(id sender) {
         @strongify(self);
         self.buyNowButtonHandler(self.orderModel);
     } forControlEvents:UIControlEventTouchUpInside];

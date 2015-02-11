@@ -32,7 +32,7 @@
                         <color key="textColor" red="0.2156862745" green="0.63921568630000003" blue="0.87450980389999999" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OTD-dz-pL0">
+                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="OTD-dz-pL0">
                         <rect key="frame" x="248" y="53" width="64" height="29"/>
                         <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -41,11 +41,19 @@
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="y32-Im-CQX">
+                        <rect key="frame" x="90" y="26" width="150" height="35"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
             </tableViewCellContentView>
             <connections>
                 <outlet property="commentGoodsButton" destination="OTD-dz-pL0" id="KrA-Tn-5vg"/>
                 <outlet property="goodsName" destination="vxi-o2-wWG" id="vHz-LC-QVw"/>
+                <outlet property="goodsParameters" destination="y32-Im-CQX" id="Owr-eK-BM1"/>
                 <outlet property="goodsPrice" destination="Wog-72-oop" id="fov-9p-wCF"/>
                 <outlet property="orderHeaderImage" destination="VMq-5j-JMn" id="2aI-na-alE"/>
             </connections>

@@ -25,7 +25,6 @@
                 <outlet property="goodsOldPrice" destination="Gfa-L1-yEa" id="3EY-ue-J5Z"/>
                 <outlet property="goodsParamsView" destination="tYX-iK-N0B" id="05W-5A-cnV"/>
                 <outlet property="goodsSellNumber" destination="WbY-YJ-vBI" id="3ll-Uh-xBP"/>
-                <outlet property="recommendLabel" destination="bjv-il-Fqg" id="bU0-Ck-Tpw"/>
                 <outlet property="shopImage" destination="g7Y-aD-CQA" id="pjq-AL-97d"/>
                 <outlet property="shopName" destination="BVI-W0-Irx" id="l4Y-51-VNV"/>
                 <outlet property="shopView" destination="MSA-wy-CRt" id="S2E-xm-CxC"/>
@@ -55,14 +54,6 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新品推荐" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bjv-il-Fqg">
-                                    <rect key="frame" x="179" y="11" width="56" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="backgroundColor" red="0.35686274509803922" green="0.69411764705882351" blue="0.90196078431372551" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qip-Zt-KIf">

@@ -238,5 +238,8 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
         } ];
     }
 }
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(3_0){
+    return @"删除";
+}
 
 @end

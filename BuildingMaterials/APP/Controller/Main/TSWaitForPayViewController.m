@@ -118,5 +118,29 @@ static NSString *const WaitForPayTableViewCellIdendifier = @"WaitForPayTableView
     }];
     return cell;
 }
-
+#pragma mark - tableview  delegate
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        TSWaitOrderModel *orderModel = self.viewModel.dataArray[indexPath.row];
+        
+        NSDictionary *params = @{@"orderId" : [NSString stringWithFormat:@"%d",orderModel.orderId]};
+        [TSHttpTool getWithUrl:DeleteOrder_URL params:params withCache:NO success:^(id result) {
+            if ([result[@"success"] intValue] == 1) {
+                                NSLog(@"删购物车商品：%@",result);
+                [UIView animateWithDuration:0.25 animations:^{
+                } completion:^(BOOL finished) {
+                    if (finished) {
+                        [self.viewModel.dataArray removeObjectAtIndex:indexPath.row];
+                        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationBottom];
+                    }
+                }];
+            }
+        } failure:^(NSError *error) {
+            
+        } ];
+    }
+}
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(3_0){
+    return @"删除";
+}
 @end

@@ -46,8 +46,10 @@
 #define GoodsInfo_URL Domain"/goodsLoadById"
 //商品规格参数
 #define GoodsParameters_URL Domain"/goodsParametersLoadById"
-//商品评论
+//商品评论加载
 #define GoodsComment_URL Domain"/goodsCommentLoadById"
+//发表商品评论
+#define PostGoodsComment_URL Domain"/goodsComment"
 
 //////////  换物
 //首页换物加载
@@ -108,6 +110,11 @@
 #define DeleteOrder_URL Domain"/orderDelete"
 //订单详情
 #define OrderDetail_URL Domain"/orderGoodsLoad"
+//退款
+#define OrderAskBack_URL Domain"/orderAskBack"
+//确定收货
+#define OrderGet_URL Domain"/orderGet"
+
 
 //订单商品加载
 #define OrderGoodsLoad_URL Domain"/orderGoodsLoad"

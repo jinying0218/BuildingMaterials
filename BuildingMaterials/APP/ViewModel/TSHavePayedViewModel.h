@@ -10,5 +10,5 @@
 
 @interface TSHavePayedViewModel : NSObject
 @property (nonatomic, strong) NSMutableArray *dataArray;
-
+@property (nonatomic, strong) NSString *reasonString;
 @end
