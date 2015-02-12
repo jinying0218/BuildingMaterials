@@ -26,6 +26,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *address;
 @property (weak, nonatomic) IBOutlet UILabel *telPhone;
 @property (weak, nonatomic) IBOutlet UIButton *telButton;
+
+@property (weak, nonatomic) IBOutlet UIView *changeDescView;
+
+@property (weak, nonatomic) IBOutlet UILabel *seperatorLine;
 @property (weak, nonatomic) IBOutlet UIButton *releaseButton;
 @property (weak, nonatomic) IBOutlet UIButton *reportButton;
 
@@ -35,10 +39,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.tabBarController.tabBar.hidden =  YES;
+
     [self initializeData];
     [self setupUI];
-    self.tabBarController.tabBar.hidden =  YES;
-    
     [self bindActionHandler];
 }
 - (void)didReceiveMemoryWarning {
@@ -79,7 +83,17 @@
     self.navigationBar.frame = CGRectMake( 0, STATUS_BAR_HEGHT, KscreenW, 44);
     [self.view addSubview:self.navigationBar];
     
-    NSLog(@"%@",self.thingsBanner);
+    
+    if (self.seperatorLine.frame.origin.y + 8 + 38 + 10 > KscreenH) {
+        
+        NSLog(@"%@",self.changeDescView);
+        self.seperatorLine.frame = CGRectMake( 0, CGRectGetMaxY(self.changeDescView.frame) + 10, KscreenW, 1);
+        
+        self.releaseButton.frame = CGRectMake( 20, CGRectGetMaxY(self.seperatorLine.frame) + 8, 120, 38);
+        self.reportButton.frame = CGRectMake( KscreenW - 20 - 120, CGRectGetMaxY(self.seperatorLine.frame) + 8, 120, 38);
+        
+        self.baseView.contentSize = CGSizeMake( KscreenW, CGRectGetMaxY(self.releaseButton.frame) + 10);
+    }
     
 //    _goodsImageView = [[UIImageView alloc] initWithFrame:CGRectMake( 0, 0, KscreenW, 130)];
 //    [self.banner addSubview:_goodsImageView];
