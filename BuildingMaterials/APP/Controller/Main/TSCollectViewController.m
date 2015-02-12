@@ -15,6 +15,11 @@
 #import "TSGoodsCollectTableViewCell.h"
 #import "TSShopCollectTableViewCell.h"
 
+#import "TSShopDetailViewModel.h"
+#import "TSShopDetailViewController.h"
+#import "TSGoodsDetailViewModel.h"
+#import "TSGoodsDetailViewController.h"
+
 static NSString *const GoodsCollectTableViewCellIdentifier = @"GoodsCollectTableViewCellIdentifier";
 static NSString *const ShopCollectTableViewCellIdentifier = @"ShopCollectTableViewCellIdentifier";
 
@@ -181,5 +186,23 @@ static NSString *const ShopCollectTableViewCellIdentifier = @"ShopCollectTableVi
 }
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(3_0){
     return @"删除";
+}
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.viewModel.isGoodsCollect) {
+        TSCollectGoodsModel *model = self.viewModel.goodsDataArray[indexPath.row];
+        TSGoodsDetailViewModel *viewModel = [[TSGoodsDetailViewModel alloc] init];
+        viewModel.isSecondsDeal = NO;
+        viewModel.goodsID = model.collectiong_id;
+        TSGoodsDetailViewController *goodsDetailVC = [[TSGoodsDetailViewController alloc] init];
+        goodsDetailVC.viewModel = viewModel;
+        [self.navigationController pushViewController:goodsDetailVC animated:YES];
+
+    }else {
+        TSCollectionShopModel *model = self.viewModel.shopDataArray[indexPath.row];
+        TSShopDetailViewModel *viewModel = [[TSShopDetailViewModel alloc] init];
+        viewModel.companyID = model.collectionId;
+        TSShopDetailViewController *shopDetailVC = [[TSShopDetailViewController alloc] initWithViewModel:viewModel];
+        [self.navigationController pushViewController:shopDetailVC animated:YES];
+    }
 }
 @end

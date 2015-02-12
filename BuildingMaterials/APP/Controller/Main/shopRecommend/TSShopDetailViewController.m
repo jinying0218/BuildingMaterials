@@ -19,6 +19,8 @@
 #import "TSGoodsDetailViewModel.h"
 #import "TSUserModel.h"
 
+
+
 static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailCollectionHeaderIdentifier";
 
 @interface TSShopDetailViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
@@ -75,6 +77,8 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
         TSShopGoodsViewController *shopGoodsVC = [[TSShopGoodsViewController alloc] init];
         shopGoodsVC.viewModel = viewModel;
         [self.navigationController pushViewController:shopGoodsVC animated:YES];
+        
+
 
     } forControlEvents:UIControlEventTouchUpInside];
     
@@ -152,8 +156,9 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
     // 1.创建流水布局
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     // 2.设置每个格子的尺寸
+    layout.itemSize = CGSizeMake( 150, 170);
+
     if ([UIScreen mainScreen].bounds.size.width > 320) {
-        layout.itemSize = CGSizeMake( 150, 170);
         layout.sectionInset = UIEdgeInsetsMake( 5, 15, 0, 15);
     }else {
         layout.sectionInset = UIEdgeInsetsMake( 5, 5, 0, 5);
@@ -212,13 +217,13 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
     self.bannerScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake( 0, 0, KscreenW, 120)];
     //    banner.showsVerticalScrollIndicator = NO;
     //    banner.showsHorizontalScrollIndicator = NO;
-    self.bannerScrollView.contentSize = CGSizeMake( 3 * KscreenW, 120);
+    self.bannerScrollView.contentSize = CGSizeMake( 1 * KscreenW, 120);
     self.bannerScrollView.delegate = self;
     self.bannerScrollView.pagingEnabled = YES;
     self.bannerScrollView.backgroundColor = [UIColor yellowColor];
     [headerView addSubview:self.bannerScrollView];
     
-    UIImageView *imageView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamedString:@"banner1"]];
+    UIImageView *imageView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamedString:@"shopDetail_top"]];
     imageView1.frame = CGRectMake( 0, 0, KscreenW, 120);
     [self.bannerScrollView addSubview:imageView1];
     

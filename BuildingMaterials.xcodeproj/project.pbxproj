@@ -224,6 +224,7 @@
 		B08DBEC81A602ECE007A301F /* TSGoodsInfoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B08DBEC71A602ECE007A301F /* TSGoodsInfoModel.m */; };
 		B08DBECC1A602EED007A301F /* TSGoodsParamsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B08DBECB1A602EED007A301F /* TSGoodsParamsModel.m */; };
 		B08DBECF1A603F21007A301F /* TSParametersList.m in Sources */ = {isa = PBXBuildFile; fileRef = B08DBECE1A603F21007A301F /* TSParametersList.m */; };
+		B08E31831A8C9EA60072833F /* shopDetail_top.png in Resources */ = {isa = PBXBuildFile; fileRef = B08E31821A8C9EA60072833F /* shopDetail_top.png */; };
 		B0AAD5921A85AAEC00F2DB68 /* TSWaitForPayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AAD5901A85AAEC00F2DB68 /* TSWaitForPayViewController.m */; };
 		B0AAD5931A85AAEC00F2DB68 /* TSWaitForPayViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0AAD5911A85AAEC00F2DB68 /* TSWaitForPayViewController.xib */; };
 		B0AAD5981A85AB2600F2DB68 /* TSHavePayedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0AAD5961A85AB2600F2DB68 /* TSHavePayedViewController.m */; };
@@ -669,6 +670,7 @@
 		B08DBECB1A602EED007A301F /* TSGoodsParamsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSGoodsParamsModel.m; sourceTree = "<group>"; };
 		B08DBECD1A603F21007A301F /* TSParametersList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSParametersList.h; sourceTree = "<group>"; };
 		B08DBECE1A603F21007A301F /* TSParametersList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSParametersList.m; sourceTree = "<group>"; };
+		B08E31821A8C9EA60072833F /* shopDetail_top.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shopDetail_top.png; sourceTree = "<group>"; };
 		B0AAD58F1A85AAEC00F2DB68 /* TSWaitForPayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSWaitForPayViewController.h; sourceTree = "<group>"; };
 		B0AAD5901A85AAEC00F2DB68 /* TSWaitForPayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSWaitForPayViewController.m; sourceTree = "<group>"; };
 		B0AAD5911A85AAEC00F2DB68 /* TSWaitForPayViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSWaitForPayViewController.xib; sourceTree = "<group>"; };
@@ -1542,6 +1544,7 @@
 			isa = PBXGroup;
 			children = (
 				B05B5A051A3FD9F8008E83C9 /* shop_button_bg.png */,
+				B08E31821A8C9EA60072833F /* shopDetail_top.png */,
 				B05B5A061A3FD9F8008E83C9 /* shop_connect.png */,
 				B05B5A071A3FD9F8008E83C9 /* shop_connect_selected.png */,
 				B05B5A081A3FD9F8008E83C9 /* shop_introduction.png */,
@@ -2705,6 +2708,7 @@
 				B026585E1A6956B3001261B0 /* TSCommentViewController.xib in Resources */,
 				B0B4B8361A7C8E6700F0F427 /* TSOrderConfirmViewController.xib in Resources */,
 				B00BB8891A0E8D8A00B94208 /* time_bg.png in Resources */,
+				B08E31831A8C9EA60072833F /* shopDetail_top.png in Resources */,
 				B05B632719FEB15F008F76E0 /* cell_secondsDeal_bg.jpg in Resources */,
 				B05B5A131A3FD9F8008E83C9 /* shop_map_selected.png in Resources */,
 				B05B5A111A3FD9F8008E83C9 /* shop_introduction_selected.png in Resources */,

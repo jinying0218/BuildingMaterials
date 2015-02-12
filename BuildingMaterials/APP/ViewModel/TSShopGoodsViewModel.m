@@ -13,7 +13,12 @@
 {
     self = [super init];
     if (self) {
-        self.dataArray = [[NSMutableArray alloc] initWithCapacity:0];
+        _page = 1;
+        _goodsOrderType = @"1";
+        _dataArray = [[NSMutableArray alloc] initWithCapacity:0];
+        _popDataArray = [[NSMutableArray alloc] initWithCapacity:0];
+        _categoryDataArray = [[NSMutableArray alloc] initWithCapacity:0];
+        _sortDataArray = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }

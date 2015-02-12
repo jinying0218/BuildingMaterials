@@ -46,7 +46,7 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="验证码" clearsOnBeginEditing="YES" minimumFontSize="17" id="BFi-ht-RDA">
-                                    <rect key="frame" x="8" y="52" width="288" height="30"/>
+                                    <rect key="frame" x="8" y="52" width="288.00000016407301" height="30"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
@@ -61,7 +61,7 @@
                                     </state>
                                 </button>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="新密码" clearsOnBeginEditing="YES" minimumFontSize="17" id="pw5-Ad-981">
-                                    <rect key="frame" x="8" y="97" width="288" height="30"/>
+                                    <rect key="frame" x="8" y="97" width="288.00000016407301" height="30"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>

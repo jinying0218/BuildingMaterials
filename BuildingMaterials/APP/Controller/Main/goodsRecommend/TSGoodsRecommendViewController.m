@@ -59,6 +59,7 @@ static NSString *const popTableViewCell = @"popTableViewCell";
 - (void)initializeData{
 
     NSDictionary *params;
+    
     if (self.viewModel.classifyID == 0) {
         params = @{@"page":[NSString stringWithFormat:@"%d",self.viewModel.page],
                    @"goodsOrderType" : self.viewModel.goodsOrderType};
@@ -328,6 +329,8 @@ static NSString *const popTableViewCell = @"popTableViewCell";
     //如果按照当前排序
     if (self.isSort) {
         self.viewModel.goodsOrderType = [NSString stringWithFormat:@"%d",categoryModel.classifyID];
+        [self.sortButton setTitle:categoryModel.classifyName forState:UIControlStateNormal];
+
         if (self.viewModel.classifyID == 0) {
             params = @{@"page" : [NSString stringWithFormat:@"%d",self.viewModel.page],
                        @"goodsOrderType" : self.viewModel.goodsOrderType};
@@ -337,6 +340,8 @@ static NSString *const popTableViewCell = @"popTableViewCell";
                        @"goodsClassifyId" : [NSString stringWithFormat:@"%d",self.viewModel.classifyID]};
         }
     }else {
+        [self.categoryButton setTitle:categoryModel.classifyName forState:UIControlStateNormal];
+
         //按照默认排序
         if (indexPath.row == 0) {
             self.viewModel.classifyID = 0;

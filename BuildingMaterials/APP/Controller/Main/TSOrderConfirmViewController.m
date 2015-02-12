@@ -104,7 +104,7 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
                 }
             }
             [self.tableView reloadData];
-            
+/*
             //默认提示第一个选择运送方式
             TSOrderModel *firstOrderModel = [self.viewModel.subviewModels[0] goodsArray][0];
             NSDictionary *paramsTransport = @{@"companyId" : [NSString stringWithFormat:@"%d",firstOrderModel.CC_ID]};
@@ -123,7 +123,7 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
             } failure:^(NSError *error) {
                 NSLog(@"TransportLoad_URL---运输方式：%@",error);
             }];
-            
+*/
         }
     } failure:^(NSError *error) {
         NSLog(@"订单数据加载:%@",error);
