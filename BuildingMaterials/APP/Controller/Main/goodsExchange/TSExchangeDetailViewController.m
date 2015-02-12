@@ -85,13 +85,9 @@
     
     
     if (self.seperatorLine.frame.origin.y + 8 + 38 + 10 > KscreenH) {
-        
-        NSLog(@"%@",self.changeDescView);
         self.seperatorLine.frame = CGRectMake( 0, CGRectGetMaxY(self.changeDescView.frame) + 10, KscreenW, 1);
-        
         self.releaseButton.frame = CGRectMake( 20, CGRectGetMaxY(self.seperatorLine.frame) + 8, 120, 38);
         self.reportButton.frame = CGRectMake( KscreenW - 20 - 120, CGRectGetMaxY(self.seperatorLine.frame) + 8, 120, 38);
-        
         self.baseView.contentSize = CGSizeMake( KscreenW, CGRectGetMaxY(self.releaseButton.frame) + 10);
     }
     
@@ -111,7 +107,7 @@
     for (TSImageModel *imageModel in self.viewModel.imageArray) {
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake( KscreenW * i, 0, KscreenW, 130)];
         if (![imageModel.imageUrl isEqual:[NSNull null]]) {
-            [imageView sd_setImageWithURL:[NSURL URLWithString:imageModel.imageUrl]];
+            [imageView sd_setImageWithURL:[NSURL URLWithString:imageModel.imageUrl] placeholderImage:[UIImage imageNamed:@"not_load_ad"]];
         }
         [self.thingsBanner addSubview:imageView];
         i ++;

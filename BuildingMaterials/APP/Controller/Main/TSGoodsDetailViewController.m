@@ -29,6 +29,7 @@
 #import "TSShopDetailViewModel.h"
 #import "TSUserModel.h"
 #import "TSSecKillModel.h"
+#import "TSGoodsImageModel.h"
 
 #define Tag_paramsButton 8000
 
@@ -62,7 +63,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *shopView;  //底部view
 
-@property (strong, nonatomic) UIImageView *goodsImageView;
 @property (strong, nonatomic) UIButton *minerBtn;
 @property (strong, nonatomic) UILabel *count;
 @property (strong, nonatomic) UIButton *plusBtn;
@@ -88,9 +88,10 @@
 }
 - (void)initializeData{
     
+    [self showProgressHUD];
     NSDictionary *params = @{@"id" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID]};
     [TSHttpTool getWithUrl:GoodsInfo_URL params:params withCache:NO success:^(id result) {
-        NSLog(@"商品信息:%@",result);
+//        NSLog(@"商品信息:%@",result);
         if ([result[@"success"] intValue] == 1) {
             [self.viewModel.shopModel setShopModelValueForDictionary:result[@"companyResult"]];
             [self.viewModel.goodsInfoModel setValueForDictionary:result[@"goodsResult"]];
@@ -105,7 +106,7 @@
     }];
     //商品规格参数
     [TSHttpTool getWithUrl:GoodsParameters_URL params:params withCache:NO success:^(id result) {
-        NSLog(@"商品参数:%@",result);
+//        NSLog(@"商品参数:%@",result);
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *dict in result[@"result"]) {
                 TSGoodsParamsModel *goodsParamsModel = [[TSGoodsParamsModel alloc] init];
@@ -118,7 +119,23 @@
         
     } failure:^(NSError *error) {
         NSLog(@"商品参数:%@",error);
-
+    }];
+    
+    NSDictionary *loadImageParams = @{@"id" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID]};
+    
+    [TSHttpTool getWithUrl:GoodsImageLoad_URL params:loadImageParams withCache:NO success:^(id result) {
+//        NSLog(@"商品详情图片：%@",result);
+        if ([result[@"success"] intValue] == 1) {
+            [self.viewModel.imageArray removeAllObjects];
+            for (NSDictionary *dict in result[@"result"]) {
+                TSGoodsImageModel *imageModel = [[TSGoodsImageModel alloc] init];
+                [imageModel modelWithDict:dict];
+                [self.viewModel.imageArray addObject:imageModel];
+            }
+            [self loadBannerImageView];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"换物图片:%@",error);
     }];
 }
 #pragma mark - set up UI
@@ -134,8 +151,8 @@
     self.navigationBar.frame = CGRectMake( 0, STATUS_BAR_HEGHT, KscreenW, 44);
     [self.view addSubview:self.navigationBar];
     
-    _goodsImageView = [[UIImageView alloc] initWithFrame:CGRectMake( 0, 0, KscreenW, 130)];
-    [self.banner addSubview:_goodsImageView];
+//    _goodsImageView = [[UIImageView alloc] initWithFrame:CGRectMake( 0, 0, KscreenW, 130)];
+//    [self.banner addSubview:_goodsImageView];
     
     _enterShop.layer.borderColor = [UIColor lightGrayColor].CGColor;
     _enterShop.layer.borderWidth = 1;
@@ -147,9 +164,22 @@
         self.buyButton.frame = CGRectMake( KscreenW - 70 - 60, 80, 60, 35);
     }
 }
+- (void)loadBannerImageView{
+    self.banner.contentSize = CGSizeMake( KscreenW * self.viewModel.imageArray.count, 129);
+    int i = 0;
+    for (TSGoodsImageModel *imageModel in self.viewModel.imageArray) {
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake( KscreenW * i, 0, KscreenW, 129)];
+        if (![imageModel.imageUrl isEqual:[NSNull null]]) {
+            [imageView sd_setImageWithURL:[NSURL URLWithString:imageModel.imageUrl] placeholderImage:[UIImage imageNamed:@"not_load_ad"]];
+        }
+        [self.banner addSubview:imageView];
+        i ++;
+    }
 
+}
 - (void)initialAllData{
     if (self.viewModel.loadGoodsInfo && self.viewModel.loadGoodsParams) {
+        [self hideProgressHUD];
         [self layoutSubviews];
     }
 }
@@ -200,8 +230,6 @@
 }
 
 - (void)layoutSubviews{
-    
-    [self.goodsImageView sd_setImageWithURL:[NSURL URLWithString:self.viewModel.goodsInfoModel.goodsHeadImage] placeholderImage:[UIImage imageNamed:@"not_load_ad"]];
     
     if (!self.viewModel.goodsInfoModel.isRecommend) {
         self.recommendLabel.hidden = YES;

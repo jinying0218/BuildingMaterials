@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B377FDA2DCC05B35A3C12D9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3279EFA92E8D5E0A96049531 /* libPods.a */; };
+		B0020B6D1A8D0891003FEFCC /* TSGoodsImageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0020B6C1A8D0891003FEFCC /* TSGoodsImageModel.m */; };
 		B00BB8841A0E8D8A00B94208 /* discount.png in Resources */ = {isa = PBXBuildFile; fileRef = B00BB87E1A0E8D8A00B94208 /* discount.png */; };
 		B00BB8851A0E8D8A00B94208 /* purchase_progress.png in Resources */ = {isa = PBXBuildFile; fileRef = B00BB87F1A0E8D8A00B94208 /* purchase_progress.png */; };
 		B00BB8861A0E8D8A00B94208 /* purchase_progressOver.png in Resources */ = {isa = PBXBuildFile; fileRef = B00BB8801A0E8D8A00B94208 /* purchase_progressOver.png */; };
@@ -349,6 +350,8 @@
 /* Begin PBXFileReference section */
 		3279EFA92E8D5E0A96049531 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		5D2F31DEF389312FF5F3525A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		B0020B6B1A8D0891003FEFCC /* TSGoodsImageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSGoodsImageModel.h; sourceTree = "<group>"; };
+		B0020B6C1A8D0891003FEFCC /* TSGoodsImageModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSGoodsImageModel.m; sourceTree = "<group>"; };
 		B00BB87E1A0E8D8A00B94208 /* discount.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = discount.png; sourceTree = "<group>"; };
 		B00BB87F1A0E8D8A00B94208 /* purchase_progress.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purchase_progress.png; sourceTree = "<group>"; };
 		B00BB8801A0E8D8A00B94208 /* purchase_progressOver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purchase_progressOver.png; sourceTree = "<group>"; };
@@ -2086,6 +2089,8 @@
 			children = (
 				B08DBEC61A602ECE007A301F /* TSGoodsInfoModel.h */,
 				B08DBEC71A602ECE007A301F /* TSGoodsInfoModel.m */,
+				B0020B6B1A8D0891003FEFCC /* TSGoodsImageModel.h */,
+				B0020B6C1A8D0891003FEFCC /* TSGoodsImageModel.m */,
 			);
 			name = "商品信息";
 			sourceTree = "<group>";
@@ -2939,6 +2944,7 @@
 				B01847E719F89DCC00938054 /* UIImage+Resize.m in Sources */,
 				B018472F19F898BF00938054 /* main.m in Sources */,
 				B0FA144D1A643F6200C1C377 /* DataVerifier.m in Sources */,
+				B0020B6D1A8D0891003FEFCC /* TSGoodsImageModel.m in Sources */,
 				B064EAF11A867B5B00D8CB26 /* TSPayViewController.m in Sources */,
 				B01847E419F89DCC00938054 /* NSString+Helper.m in Sources */,
 				B064EAED1A8669A000D8CB26 /* TSOrderTableFooterView.m in Sources */,

@@ -26,4 +26,5 @@
 
 @property (nonatomic, strong) NSMutableArray *paramsValue;  //参数字典
 @property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *imageArray;   //商品图片
 @end
