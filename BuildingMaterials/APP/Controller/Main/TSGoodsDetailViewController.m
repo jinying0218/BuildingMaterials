@@ -151,9 +151,6 @@
     self.navigationBar.frame = CGRectMake( 0, STATUS_BAR_HEGHT, KscreenW, 44);
     [self.view addSubview:self.navigationBar];
     
-//    _goodsImageView = [[UIImageView alloc] initWithFrame:CGRectMake( 0, 0, KscreenW, 130)];
-//    [self.banner addSubview:_goodsImageView];
-    
     _enterShop.layer.borderColor = [UIColor lightGrayColor].CGColor;
     _enterShop.layer.borderWidth = 1;
     
@@ -446,18 +443,15 @@
     
     [self.buyButton bk_addEventHandler:^(id sender) {
         @strongify(self);
+        if (self.viewModel.paramsCount != self.viewModel.dataArray.count) {
+            [self showProgressHUD:@"请选择参数" delay:1];
+            return ;
+        }
+
         if (self.viewModel.isSecondsDeal) {
-            //秒杀
-            NSDictionary *dict = @{@"goodsId" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID],
-                                   @"seckillId" : [NSString stringWithFormat:@"%d",self.viewModel.seckillModel.SecondsDeal_EventID]};
-//            [TSHttpTool getWithUrl:SeckillGoodsLoad_URL params:dict withCache:NO success:^(id result) {
-//                NSLog(@"秒杀商品加载:%@",result);
-//            } failure:^(NSError *error) {
-//                NSLog(@"秒杀商品加载:%@",error);
-//            }];
-            
+            //秒杀            
             ////
-            
+
             NSDictionary *params = @{@"id" : [NSString stringWithFormat:@"%d",self.viewModel.seckillModel.S_ID]};
             [TSHttpTool getWithUrl:SeckillCheck params:params withCache:NO success:^(id result) {
                 NSLog(@"秒杀商品数量:%@",result);
