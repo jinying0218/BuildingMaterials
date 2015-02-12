@@ -7,10 +7,11 @@
 //
 
 #import "TSReleaseExchangeViewController.h"
+#import "TSScrollView.h"
 
 @interface TSReleaseExchangeViewController ()<UINavigationControllerDelegate,UIImagePickerControllerDelegate,UIActionSheetDelegate,UITextViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIScrollView *baseView;
+@property (weak, nonatomic) IBOutlet TSScrollView *baseView;
 @property (weak, nonatomic) IBOutlet UIButton *releaseButton;
 @property (weak, nonatomic) IBOutlet UITextField *thingNameInput;
 @property (weak, nonatomic) IBOutlet UITextField *thingNewInput;
@@ -39,6 +40,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    
     [self setupUI];
     
     
@@ -59,12 +62,19 @@
     
     self.thingDesInput.delegate = self;
     
+    self.baseView.contentSize = CGSizeMake( KscreenW, CGRectGetMaxY(self.releaseButton.frame) + 20);
+    
     self.imagePickerController = [[UIImagePickerController alloc] init];
     [self.imagePickerController setAllowsEditing:YES];
     self.imagePickerController.delegate = self;
     
     
     self.sheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"取消" destructiveButtonTitle:@"拍摄" otherButtonTitles:@"相册", nil];
+    
+    
+    UIView *statusView = [[UIView alloc] initWithFrame:CGRectMake( 0, 0, KscreenW, 20)];
+    statusView.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:statusView];
 
 }
 
@@ -195,32 +205,32 @@
     [self.thingNameInput bk_addEventHandler:^(UITextField *sender) {
         @strongify(self);
         [self.viewModel setThingName:sender.text];
-    } forControlEvents:UIControlEventEditingChanged];
+    } forControlEvents:UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit];
     
     [self.thingNewInput bk_addEventHandler:^(UITextField *sender) {
         @strongify(self);
         [self.viewModel setThingNew:sender.text];
-    } forControlEvents:UIControlEventEditingChanged];
+    } forControlEvents:UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit];
 
     [self.thingWantInput bk_addEventHandler:^(UITextField *sender) {
         @strongify(self);
         [self.viewModel setThingWant:sender.text];
-    } forControlEvents:UIControlEventEditingChanged];
+    } forControlEvents:UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit];
 
     [self.contactAdressInput bk_addEventHandler:^(UITextField *sender) {
         @strongify(self);
         [self.viewModel setContactAddress:sender.text];
-    } forControlEvents:UIControlEventEditingChanged];
+    } forControlEvents:UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit];
 
     [self.contactUserNameInput bk_addEventHandler:^(UITextField *sender) {
         @strongify(self);
         [self.viewModel setContactUserName:sender.text];
-    } forControlEvents:UIControlEventEditingChanged];
+    } forControlEvents:UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit];
 
     [self.contactTelInput bk_addEventHandler:^(UITextField *sender) {
         @strongify(self);
         [self.viewModel setContactTel:sender.text];
-    } forControlEvents:UIControlEventEditingChanged];
+    } forControlEvents:UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit];
 
     
     [self.releaseButton bk_addEventHandler:^(id sender) {
@@ -257,8 +267,23 @@
 }
 
 #pragma mark - textView delegate
-- (void)textViewDidChange:(UITextView *)textView{
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        CGRect frame = self.baseView.frame;
+        frame.origin.y -= 165;
+        self.baseView.frame = frame;
+    }];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView{
     [self.viewModel setThingDes:textView.text];
+    [UIView animateWithDuration:0.25 animations:^{
+        CGRect frame = self.baseView.frame;
+        frame.origin.y += 165;
+        self.baseView.frame = frame;
+    }];
+    
 }
 #pragma mark - action sheet delegate
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -324,7 +349,26 @@
     [self dismissViewControllerAnimated:YES completion:NULL];
 
 }
+
+
+
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
     [self dismissViewControllerAnimated:YES completion:NULL];
 }
+
+-(void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [super touchesBegan:touches withEvent:event];
+    if ( !self.baseView.dragging)
+    {
+        [[self nextResponder] touchesBegan:touches withEvent:event];
+    }
+}
+-(void) touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event{
+    [super touchesEnded:touches withEvent:event];
+    if ( !self.baseView.dragging )
+    {
+        [[self nextResponder] touchesEnded:touches withEvent:event];
+    }
+}
+
 @end
