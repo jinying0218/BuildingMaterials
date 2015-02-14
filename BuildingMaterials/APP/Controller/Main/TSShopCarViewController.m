@@ -40,6 +40,11 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
     return self;
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self initializeData];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.tabBarController.tabBar.hidden =  YES;
@@ -154,7 +159,13 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
     
     [self.payButton bk_addEventHandler:^(id sender) {
         @strongify(self);
-        if (self.viewModel.shopCarMoney.money == 0) {
+        int shopCarGoodsNumber = 0;
+        for (TSShopCarCellSubviewModel *subviewModel in self.viewModel.subviewModels) {
+            if (subviewModel.inShopCar) {
+                shopCarGoodsNumber ++;
+            }
+        }
+        if (shopCarGoodsNumber == 0) {
             [self showProgressHUD:@"请添加要购买的商品" delay:1];
             return ;
         }

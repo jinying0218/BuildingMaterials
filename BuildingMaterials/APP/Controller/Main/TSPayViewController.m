@@ -7,6 +7,8 @@
 //
 
 #import "TSPayViewController.h"
+#import "TSGoodsDetailViewController.h"
+#import "TSShopCarViewController.h"
 
 @interface TSPayViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
@@ -51,7 +53,15 @@
     
     [self.backButton bk_addEventHandler:^(id sender) {
         @strongify(self);
-        [self.navigationController popViewControllerAnimated:YES];
+        for (UIViewController *controller in self.navigationController.viewControllers) {
+            NSLog(@"%@",controller);
+            if ([controller isKindOfClass:[TSGoodsDetailViewController class]]) {
+                [self.navigationController popToViewController:controller animated:YES];
+            }else if ([controller isKindOfClass:[TSShopCarViewController class]]){
+                [self.navigationController popToViewController:controller animated:YES];
+            }
+//            }
+        }
     } forControlEvents:UIControlEventTouchUpInside];
 
     [self.webView bk_setDidStartLoadBlock:^(UIWebView *webView) {

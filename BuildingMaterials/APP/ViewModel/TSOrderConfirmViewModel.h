@@ -16,4 +16,6 @@
 @property (nonatomic, assign) NSUInteger currentSection;    //记录当前选择运送方式的cell
 @property (nonatomic, strong) NSString *address;
 
+@property (nonatomic, assign) float totalGoodsMoney;
+@property (nonatomic, assign) float totalTransportMoney;
 @end

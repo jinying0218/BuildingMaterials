@@ -193,6 +193,12 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
                 [self showProgressHUD:@"请选择配送方式" delay:1];
                 return ;
             }
+            if (!self.viewModel.address ||
+                [self.viewModel.address isEqualToString:@""]) {
+                [self showProgressHUD:@"请选择地址" delay:1];
+                return ;
+            }
+            
             NSDictionary *dict = @{@"companyId" : [NSString stringWithFormat:@"%d",firstOrderModel.CC_ID],
                                    @"totalPrice" : [NSString stringWithFormat:@"%d",subviewModel.companyTotalPrice],
                                    @"goodsPrice" : [NSString stringWithFormat:@"%d",firstOrderModel.price],
@@ -410,6 +416,39 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
         TSTransportModel *transportModel = self.viewModel.transportsArray[indexPath.row];
         TSOrderSubviewModel *subviewModel = self.viewModel.subviewModels[self.viewModel.currentSection];
         subviewModel.transportModel = transportModel;
+        subviewModel.companyTotalPrice = 0;
+        for (TSOrderModel *orderModel in subviewModel.goodsArray) {
+            subviewModel.companyTotalPrice += orderModel.goodsNumber * orderModel.price;
+            subviewModel.goodsWeight += orderModel.goodsWeight;
+        }
+        switch (transportModel.transportType) {
+            case 1:{
+                subviewModel.transportPrice = 0;
+            }
+                break;
+            case 2:{
+                if (subviewModel.goodsWeight > transportModel.transportFirstWeight) {
+                    subviewModel.transportPrice =  (subviewModel.goodsWeight - transportModel.transportFirstWeight) * transportModel.transportOverFee + transportModel.transportFirstFee;
+                }else {
+                    subviewModel.transportPrice = transportModel.transportFirstFee;
+                }
+            }
+                break;
+            case 3:{
+                subviewModel.transportPrice = transportModel.transportFee;
+
+            }
+                break;
+            case 4:{
+                subviewModel.transportPrice = transportModel.transportFee;
+
+            }
+                break;
+            default:
+                break;
+        }
+        
+        [self countTotalMoney];
         
         TSOrderTableFooterView *footerView = (TSOrderTableFooterView *)[self.tableView footerViewForSection:self.viewModel.currentSection];
         footerView.transportName.text = transportModel.transportName;
@@ -419,4 +458,15 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
     }
 }
 
+- (void)countTotalMoney{
+    self.viewModel.totalGoodsMoney = 0;
+    self.viewModel.totalTransportMoney = 0;
+    for (TSOrderSubviewModel *subviewModel in self.viewModel.subviewModels) {
+        self.viewModel.totalGoodsMoney += subviewModel.companyTotalPrice;
+        self.viewModel.totalTransportMoney += subviewModel.transportPrice;
+    }
+    
+    self.postageMoney.text = [NSString stringWithFormat:@"￥%.2f",self.viewModel.totalTransportMoney];
+    self.totalMoney.text = [NSString stringWithFormat:@"￥%.2f",self.viewModel.totalGoodsMoney];
+}
 @end
