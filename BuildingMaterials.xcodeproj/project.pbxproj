@@ -290,6 +290,7 @@
 		B0E2C3921A61957100FF410B /* exchange_tel.png in Resources */ = {isa = PBXBuildFile; fileRef = B0E2C3911A61957000FF410B /* exchange_tel.png */; };
 		B0E2C3941A6195D600FF410B /* exhcange_location.png in Resources */ = {isa = PBXBuildFile; fileRef = B0E2C3931A6195D600FF410B /* exhcange_location.png */; };
 		B0EC2DDB1A8FAF99002F42B0 /* cancel_apply_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = B0EC2DDA1A8FAF99002F42B0 /* cancel_apply_btn.png */; };
+		B0EC2DDD1A8FB246002F42B0 /* navi_shopCar_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = B0EC2DDC1A8FB246002F42B0 /* navi_shopCar_btn.png */; };
 		B0ED9FB71A6E86A4009EF241 /* TSFindPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0ED9FB51A6E86A4009EF241 /* TSFindPWDViewController.m */; };
 		B0ED9FB81A6E86A4009EF241 /* TSFindPWDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0ED9FB61A6E86A4009EF241 /* TSFindPWDViewController.xib */; };
 		B0ED9FBC1A6E8B04009EF241 /* TSFindPWDViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0ED9FBB1A6E8B04009EF241 /* TSFindPWDViewModel.m */; };
@@ -769,6 +770,7 @@
 		B0E2C3911A61957000FF410B /* exchange_tel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exchange_tel.png; sourceTree = "<group>"; };
 		B0E2C3931A6195D600FF410B /* exhcange_location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exhcange_location.png; sourceTree = "<group>"; };
 		B0EC2DDA1A8FAF99002F42B0 /* cancel_apply_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel_apply_btn.png; sourceTree = "<group>"; };
+		B0EC2DDC1A8FB246002F42B0 /* navi_shopCar_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navi_shopCar_btn.png; sourceTree = "<group>"; };
 		B0ED9FB41A6E86A4009EF241 /* TSFindPWDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSFindPWDViewController.h; sourceTree = "<group>"; };
 		B0ED9FB51A6E86A4009EF241 /* TSFindPWDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSFindPWDViewController.m; sourceTree = "<group>"; };
 		B0ED9FB61A6E86A4009EF241 /* TSFindPWDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSFindPWDViewController.xib; sourceTree = "<group>"; };
@@ -1402,6 +1404,7 @@
 		B03AC4D719F90F0C002FC299 /* NavigationBar */ = {
 			isa = PBXGroup;
 			children = (
+				B0EC2DDC1A8FB246002F42B0 /* navi_shopCar_btn.png */,
 				B0C8ABF51A80FDE3003B60B5 /* navi_pulish_btn.png */,
 				B05B5A001A3FD9EC008E83C9 /* navigaoinbar_shopDetail_selected.png */,
 				B05B5A011A3FD9EC008E83C9 /* navigaoinbar_shopDetail.png */,
@@ -2707,6 +2710,7 @@
 				B05115DB19F96A6D00CA6E2E /* TSForumViewController.xib in Resources */,
 				B06BF4431A74355200D999FC /* shopCar_selected.png in Resources */,
 				B05B632919FEB15F008F76E0 /* goodExchange_ring.png in Resources */,
+				B0EC2DDD1A8FB246002F42B0 /* navi_shopCar_btn.png in Resources */,
 				B0E2C3901A6194A700FF410B /* exchange_circle.png in Resources */,
 				B06BF40B1A733EA400D999FC /* TSCollectViewController.xib in Resources */,
 				B015C31A1A0F0CE70060FBE2 /* TSShopRecommedViewController.xib in Resources */,

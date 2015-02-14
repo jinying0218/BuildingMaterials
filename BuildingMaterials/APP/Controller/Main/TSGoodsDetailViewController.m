@@ -31,6 +31,9 @@
 #import "TSSecKillModel.h"
 #import "TSGoodsImageModel.h"
 
+#import "TSShopCarViewModel.h"
+#import "TSShopCarViewController.h"
+
 #define Tag_paramsButton 8000
 
 @interface TSGoodsDetailViewController ()
@@ -142,14 +145,16 @@
 - (void)setupUI{
     
     if (self.viewModel.isSecondsDeal) {
-        [self createNavigationBarTitle:@"秒杀详情" leftButtonImageName:@"Previous" rightButtonImageName:nil];
+        [self createNavigationBarTitle:@"秒杀详情" leftButtonImageName:@"Previous" rightButtonImageName:@"navi_shopCar_btn"];
         self.goodsOldPrice.hidden = NO;
         self.goodsOldPrice.strikeThroughEnabled = YES;
     } else {
-        [self createNavigationBarTitle:@"商品详情" leftButtonImageName:@"Previous" rightButtonImageName:nil];
+        [self createNavigationBarTitle:@"商品详情" leftButtonImageName:@"Previous" rightButtonImageName:@"navi_shopCar_btn"];
     }
     self.navigationBar.frame = CGRectMake( 0, STATUS_BAR_HEGHT, KscreenW, 44);
     [self.view addSubview:self.navigationBar];
+    
+    [self.navigationBar addSubview:self.naviRightBtn];
     
     _enterShop.layer.borderColor = [UIColor lightGrayColor].CGColor;
     _enterShop.layer.borderWidth = 1;
@@ -465,6 +470,14 @@
             //购买
             [self normalBuy];
         }
+    } forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    [self.naviRightBtn bk_addEventHandler:^(id sender) {
+        @strongify(self);
+        TSShopCarViewModel *viewModel = [[TSShopCarViewModel alloc] init];
+        TSShopCarViewController *shopCarVC = [[TSShopCarViewController alloc] initWithViewModel:viewModel];
+        [self.navigationController pushViewController:shopCarVC animated:YES];
     } forControlEvents:UIControlEventTouchUpInside];
     
 }
