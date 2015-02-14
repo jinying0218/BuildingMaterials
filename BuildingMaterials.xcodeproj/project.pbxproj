@@ -289,6 +289,7 @@
 		B0E2C3901A6194A700FF410B /* exchange_circle.png in Resources */ = {isa = PBXBuildFile; fileRef = B0E2C38E1A6194A700FF410B /* exchange_circle.png */; };
 		B0E2C3921A61957100FF410B /* exchange_tel.png in Resources */ = {isa = PBXBuildFile; fileRef = B0E2C3911A61957000FF410B /* exchange_tel.png */; };
 		B0E2C3941A6195D600FF410B /* exhcange_location.png in Resources */ = {isa = PBXBuildFile; fileRef = B0E2C3931A6195D600FF410B /* exhcange_location.png */; };
+		B0EC2DDB1A8FAF99002F42B0 /* cancel_apply_btn.png in Resources */ = {isa = PBXBuildFile; fileRef = B0EC2DDA1A8FAF99002F42B0 /* cancel_apply_btn.png */; };
 		B0ED9FB71A6E86A4009EF241 /* TSFindPWDViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0ED9FB51A6E86A4009EF241 /* TSFindPWDViewController.m */; };
 		B0ED9FB81A6E86A4009EF241 /* TSFindPWDViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B0ED9FB61A6E86A4009EF241 /* TSFindPWDViewController.xib */; };
 		B0ED9FBC1A6E8B04009EF241 /* TSFindPWDViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = B0ED9FBB1A6E8B04009EF241 /* TSFindPWDViewModel.m */; };
@@ -767,6 +768,7 @@
 		B0E2C38E1A6194A700FF410B /* exchange_circle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exchange_circle.png; sourceTree = "<group>"; };
 		B0E2C3911A61957000FF410B /* exchange_tel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exchange_tel.png; sourceTree = "<group>"; };
 		B0E2C3931A6195D600FF410B /* exhcange_location.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = exhcange_location.png; sourceTree = "<group>"; };
+		B0EC2DDA1A8FAF99002F42B0 /* cancel_apply_btn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel_apply_btn.png; sourceTree = "<group>"; };
 		B0ED9FB41A6E86A4009EF241 /* TSFindPWDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSFindPWDViewController.h; sourceTree = "<group>"; };
 		B0ED9FB51A6E86A4009EF241 /* TSFindPWDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSFindPWDViewController.m; sourceTree = "<group>"; };
 		B0ED9FB61A6E86A4009EF241 /* TSFindPWDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TSFindPWDViewController.xib; sourceTree = "<group>"; };
@@ -1690,6 +1692,7 @@
 		B05B632019FEB15F008F76E0 /* invite */ = {
 			isa = PBXGroup;
 			children = (
+				B0EC2DDA1A8FAF99002F42B0 /* cancel_apply_btn.png */,
 				B04411CA1A5C5475005ED736 /* invite_applyButton.png */,
 				B04411CB1A5C5475005ED736 /* invite_telButton.png */,
 				B04411C81A5C45D1005ED736 /* invite_circle.png */,
@@ -2812,6 +2815,7 @@
 				B05B5A031A3FD9EC008E83C9 /* navigaoinbar_shopDetail.png in Resources */,
 				B03B30D31A5EE9A000E77FB9 /* TSShopGoodsViewController.xib in Resources */,
 				B03252251A729EF2004FBF9B /* TSReplyTableViewCell.xib in Resources */,
+				B0EC2DDB1A8FAF99002F42B0 /* cancel_apply_btn.png in Resources */,
 				B08455BE1A5AD2DA00F8164E /* TSInviteDetailViewController.xib in Resources */,
 				B00BB8851A0E8D8A00B94208 /* purchase_progress.png in Resources */,
 				B05B632219FEB15F008F76E0 /* banner1.png in Resources */,

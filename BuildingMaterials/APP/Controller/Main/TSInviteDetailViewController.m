@@ -98,11 +98,7 @@
     [self createNavigationBarTitle:@"招聘详情" leftButtonImageName:@"Previous" rightButtonImageName:nil];
     self.navigationBar.frame = CGRectMake( 0, STATUS_BAR_HEGHT, KscreenW, 44);
     [self.view addSubview:self.navigationBar];
-//    self.rootScrollView.backgroundColor = [UIColor colorWithHexString:@"f4f4f4"];
-//    self.rootScrollView.frame = CGRectMake(0, 64 + 30, KscreenW, KscreenH - KnaviBarHeight - STATUS_BAR_HEGHT - 30 - 60);
-    
-//    self.headerView.frame = CGRectMake( 0, CGRectGetMaxY(self.navigationBar.frame), KscreenW, 30);
-//    [self.view addSubview:self.headerView];
+
     
     self.headerView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     self.headerView.layer.borderWidth = 1;
@@ -128,11 +124,15 @@
     _coverView.backgroundColor = [UIColor blackColor];
     _coverView.alpha = 0.5;
     _coverView.hidden = YES;
-    [self.view addSubview:_coverView];
+    [self.view insertSubview:_coverView belowSubview:self.postView];
     
     //KscreenH - 315 - 20
     self.applyView.frame = CGRectMake( 0, self.view.frame.size.height, KscreenW, 315);
-//    [self.rootScrollView addSubview:self.applyView];
+    [[UIApplication sharedApplication].keyWindow addSubview:self.applyView];
+    
+    self.cancelApplyButton.frame = CGRectMake( KscreenW - 22, KscreenH - 315 - 11, 22, 22);
+    [[UIApplication sharedApplication].keyWindow addSubview:self.cancelApplyButton];
+    
     
     self.userNameInput.layer.borderWidth = 1;
     self.userNameInput.layer.borderColor = [UIColor lightGrayColor].CGColor;
@@ -143,7 +143,6 @@
     self.resumeInput.delegate = self;
     self.resumeInput.layer.borderColor = [UIColor lightGrayColor].CGColor;
     
-//    self.rootScrollView.contentSize = CGSizeMake( KscreenW, CGRectGetMaxY(self.postView.frame));
     UIView *statusView = [[UIView alloc] init];
     statusView.frame = CGRectMake( 0, 0, KscreenW, 20);
     statusView.backgroundColor = [UIColor blackColor];
@@ -234,12 +233,12 @@
     [self.userNameInput bk_addEventHandler:^(UITextField *textField) {
         @strongify(self);
         [self.viewModel setUserName:textField.text];
-    } forControlEvents:UIControlEventEditingChanged];
+    } forControlEvents:UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit];
     
     [self.telInput bk_addEventHandler:^(UITextField *textField) {
         @strongify(self);
         [self.viewModel setUserTel:textField.text];
-    } forControlEvents:UIControlEventEditingChanged];
+    } forControlEvents:UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit];
     
     //职位简介
     [self.postInfoButton bk_addEventHandler:^(id sender) {
@@ -274,13 +273,15 @@
     //申请职位
     [self.applyButton bk_addEventHandler:^(id sender) {
         @strongify(self);
-//        [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionLayoutSubviews animations:^{
-//            CGRect frame = self.applyView.frame;
-//            frame.origin.y = KscreenH - 315 - 20;
-//            self.applyView.frame = frame;
-//        } completion:^(BOOL finished) {
-//            self.coverView.hidden = NO;
-//        }];
+        [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionLayoutSubviews animations:^{
+            CGRect frame = self.applyView.frame;
+            frame.origin.y = KscreenH - 315;
+            self.applyView.frame = frame;
+            self.applyView.hidden = NO;
+            self.cancelApplyButton.hidden = NO;
+        } completion:^(BOOL finished) {
+            self.coverView.hidden = NO;
+        }];
         self.applyView.hidden = NO;
         self.cancelApplyButton.hidden = NO;
     } forControlEvents:UIControlEventTouchUpInside];
@@ -337,12 +338,26 @@
         }];
     } forControlEvents:UIControlEventTouchUpInside];
     
-    //收起弹框
-    [self.coverView bk_whenTapped:^{
-
+    [self.cancelApplyButton bk_addEventHandler:^(id sender) {
+        @strongify(self);
         [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionLayoutSubviews animations:^{
             CGRect frame = self.applyView.frame;
-            frame.origin.y = self.rootScrollView.contentSize.height + 44;
+            frame.origin.y = self.view.frame.size.height + 44;
+            self.applyView.frame = frame;
+            self.coverView.hidden = YES;
+            self.cancelApplyButton.hidden = YES;
+        } completion:nil];
+
+    } forControlEvents:UIControlEventTouchUpInside];
+    //收起弹框
+    
+    [self.coverView bk_whenTapped:^{
+        [self.view endEditing:YES];
+        [self.applyView endEditing:YES];
+        self.cancelApplyButton.hidden = YES;
+        [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionLayoutSubviews animations:^{
+            CGRect frame = self.applyView.frame;
+            frame.origin.y = self.view.frame.size.height + 44;
             self.applyView.frame = frame;
             self.coverView.hidden = YES;
         } completion:nil];
@@ -390,6 +405,24 @@
         frame.origin.y += height;
         self.rootScrollView.frame = frame;
     }];
+}
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        CGRect frame = self.applyView.frame;
+        frame.origin.y -= 165;
+        self.applyView.frame = frame;
+    }];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        CGRect frame = self.applyView.frame;
+        frame.origin.y += 165;
+        self.applyView.frame = frame;
+    }];
+
 }
 
 @end
