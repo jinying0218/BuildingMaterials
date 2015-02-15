@@ -219,6 +219,7 @@
             button.tag = Tag_paramsButton + buttonTag;
             button.indexPath = [NSIndexPath indexPathForItem:buttonTag inSection:i];
             [self.goodsParamsView addSubview:button];
+            [oneParameterModel.parameterButtons addObject:button];
             buttonTag ++;
             [button addTarget:self action:@selector(paramsButtonClick:) forControlEvents:UIControlEventTouchUpInside];
         }
@@ -233,9 +234,6 @@
 
 - (void)layoutSubviews{
     
-    if (!self.viewModel.goodsInfoModel.isRecommend) {
-        self.recommendLabel.hidden = YES;
-    }
     self.goodsCommentCount.text = @"";
     self.goodsName.text = self.viewModel.goodsInfoModel.goodsName;
     self.goodsName.adjustsFontSizeToFitWidth = YES;
@@ -290,12 +288,19 @@
 
     [self bindActionHandler];
 }
-
+//点击参数
 - (void)paramsButtonClick:(TSParamsButton *)button{
     //////   确定选中的是哪个一个，，， 赋值非viewModel
     NSUInteger index = button.indexPath.section;
     TSGoodsParamsModel *paramsModel = self.viewModel.dataArray[index];
     //点击一下，创建一个参数对象     判断该参数是否已经加入过，。加入过，不在加入，paramsCount 不增加
+    for (UIButton *oneParamButton in paramsModel.parameterButtons) {
+        oneParamButton.layer.borderColor = [UIColor blackColor].CGColor;
+        [oneParamButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    }
+    button.layer.borderColor = [UIColor colorWithHexString:@"1ca6df"].CGColor;
+    [button setTitleColor:[UIColor colorWithHexString:@"1ca6df"] forState:UIControlStateNormal];
+    
     TSParametersList *newParams = [[TSParametersList alloc] init];
     newParams.parametersId = paramsModel.goodsParametersId;
     newParams.parametersName = button.titleLabel.text;

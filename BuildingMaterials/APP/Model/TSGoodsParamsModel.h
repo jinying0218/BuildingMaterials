@@ -12,6 +12,7 @@
 @interface TSGoodsParamsModel : NSObject
 @property (nonatomic, strong) NSString *goodsParametersName;
 @property (nonatomic, strong) NSArray *parametersList;
+@property (nonatomic, strong) NSMutableArray *parameterButtons;
 @property (nonatomic, assign) int goodsParametersId;
 
 - (void)setValueWithDictionary:(NSDictionary *)dict;

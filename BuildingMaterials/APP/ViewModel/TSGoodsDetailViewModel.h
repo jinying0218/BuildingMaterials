@@ -25,6 +25,6 @@
 @property (nonatomic, assign) int paramsCount;   // 选中参数个数
 
 @property (nonatomic, strong) NSMutableArray *paramsValue;  //参数字典
-@property (nonatomic, strong) NSMutableArray *dataArray;
+@property (nonatomic, strong) NSMutableArray *dataArray;    //存放所有的参数
 @property (nonatomic, strong) NSMutableArray *imageArray;   //商品图片
 @end

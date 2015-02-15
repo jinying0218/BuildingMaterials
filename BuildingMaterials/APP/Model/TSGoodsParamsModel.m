@@ -9,6 +9,13 @@
 #import "TSGoodsParamsModel.h"
 
 @implementation TSGoodsParamsModel
+- (instancetype)init{
+    self = [super init];
+    if (self) {
+        _parameterButtons = [[NSMutableArray alloc] initWithCapacity:0];
+    }
+    return self;
+}
 
 - (void)setValueWithDictionary:(NSDictionary *)dict{
     self.goodsParametersName = [self objectOrNilForKey:@"goodsParametersName" fromDictionary:dict];

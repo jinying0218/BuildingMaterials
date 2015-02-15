@@ -68,9 +68,10 @@ static NSString *const popTableViewCell = @"popTableViewCell";
                    @"goodsOrderType" : self.viewModel.goodsOrderType,
                    @"goodsClassifyId" : [NSString stringWithFormat:@"%d",self.viewModel.classifyID]};
     }
-    
+    [self showProgressHUD];
     [TSHttpTool getWithUrl:GoodsLoad_URL params:params withCache:NO success:^(id result) {
 //        NSLog(@"商品推荐列表:%@",result);
+        [self hideProgressHUD];
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneRecommendGoodsDict in result[@"result"]) {
                 TSGoodsRecommandModel *goodsModel = [[TSGoodsRecommandModel alloc] init];
