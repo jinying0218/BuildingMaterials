@@ -322,51 +322,6 @@
     
 }
 #pragma mark - blind methods
-- (void)normalBuy {
-    NSMutableString *goodsParameters = [[NSMutableString alloc] initWithCapacity:0];
-    for (TSParametersList *params in self.viewModel.paramsValue) {
-        [goodsParameters appendFormat:@"%@ : %@,",params.fatherParameterName,params.parametersName];
-    }
-    if (goodsParameters.length > 0) {
-        [goodsParameters deleteCharactersInRange:NSMakeRange( goodsParameters.length - 1, 1)];
-    }
-    NSDictionary *goodsInformation = nil;
-    if (self.viewModel.isSecondsDeal) {
-        NSArray *postArr = @[@{@"carId" : @"",
-                               @"seckillId" : [NSString stringWithFormat:@"%d",self.viewModel.seckillModel.SecondsDeal_EventID],
-                               @"goodsId" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID],
-                               @"price" : [NSString stringWithFormat:@"%d",self.viewModel.goodsInfoModel.goodsNewPrice],
-                               @"number" : [NSString stringWithFormat:@"%d",self.viewModel.count],
-                               @"goodsParameters" : goodsParameters}];
-        goodsInformation = @{@"post" : postArr};
-
-    }else {
-        NSArray *postArr = @[@{@"carId" : @"",
-                               @"seckillId" : @"",
-                               @"goodsId" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID],
-                               @"price" : [NSString stringWithFormat:@"%d",self.viewModel.goodsInfoModel.goodsNewPrice],
-                               @"number" : [NSString stringWithFormat:@"%d",self.viewModel.count],
-                               @"goodsParameters" : goodsParameters}];
-        goodsInformation = @{@"post" : postArr};
-    }
-    
-    [self showProgressHUD];
-    NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId],
-                             @"goodsInformation" : [goodsInformation JSONString]};
-    [TSHttpTool postWithUrl:OrderSure_URL params:params success:^(id result) {
-        [self hideProgressHUD];
-        //            NSLog(@"购买：%@",result);
-        if ([result[@"success"] intValue] == 1) {
-            TSOrderConfirmViewModel *viewModel = [[TSOrderConfirmViewModel alloc] init];
-            TSOrderConfirmViewController *orderConfirmVC = [[TSOrderConfirmViewController alloc] initWithViewModel:viewModel];
-            [self.navigationController pushViewController:orderConfirmVC animated:YES];
-        }
-        
-    } failure:^(NSError *error) {
-        [self hideProgressHUD];
-        NSLog(@"购买：%@",error);
-    }];
-}
 
 - (void)bindActionHandler{
     @weakify(self);
@@ -435,17 +390,20 @@
             [self showProgressHUD:@"请选择参数" delay:1];
             return ;
         }
-
         NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:0];
         for (TSParametersList *params in self.viewModel.paramsValue) {
             NSDictionary *dict = @{@"goodsParametersId" : [NSString stringWithFormat:@"%d",params.parametersId],
-                                   @"goodsParametersName" : params.parametersName};
+                                   @"parametersName" : params.parametersName};
             [arr addObject:dict];
         }
-        NSDictionary *goodsParameters = @{@"result" : arr};
+        NSDictionary *goodsParametersDict = @{@"result" : arr};
+        NSData *goodsParametersData = [goodsParametersDict JSONDataWithOptions:JKSerializeOptionEscapeUnicode error:nil];
+        
+        NSString *goodsParameters = [[NSString alloc] initWithData:goodsParametersData encoding:NSUTF8StringEncoding];
+        
         NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId],
                                  @"goodsId" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID],
-                                 @"goodsParameters" : [goodsParameters JSONString],
+                                 @"goodsParameters" : goodsParameters,
                                  @"number" : [NSString stringWithFormat:@"%d",self.viewModel.count]};
         [TSHttpTool getWithUrl:ShopCarAdd_URL params:params withCache:NO success:^(id result) {
             if ([result[@"success"] intValue] == 1) {
@@ -466,7 +424,6 @@
         if (self.viewModel.isSecondsDeal) {
             //秒杀            
             ////
-
             NSDictionary *params = @{@"id" : [NSString stringWithFormat:@"%d",self.viewModel.seckillModel.S_ID]};
             [TSHttpTool getWithUrl:SeckillCheck params:params withCache:NO success:^(id result) {
                 NSLog(@"秒杀商品数量:%@",result);
@@ -493,34 +450,60 @@
 }
 
 - (void)blindViewModel{
-//    @weakify(self);
     [self.KVOController
      observe:self.viewModel
      keyPath:@keypath(self.viewModel,count)
      options:NSKeyValueObservingOptionNew
      block:^(TSGoodsDetailViewController *observer, TSGoodsDetailViewModel *object, NSDictionary *change) {
-//       @strongify(self);
          if (![[change objectForKey:NSKeyValueChangeNewKey] isEqual:[NSNull null]]) {
              observer.count.text = [NSString stringWithFormat:@"%d",[[change objectForKey:NSKeyValueChangeNewKey] intValue]];
          }
     }];
+}
+- (void)normalBuy {
+    NSMutableString *goodsParameters = [[NSMutableString alloc] initWithCapacity:0];
+    for (TSParametersList *params in self.viewModel.paramsValue) {
+        [goodsParameters appendFormat:@"%@ : %@,",params.fatherParameterName,params.parametersName];
+    }
+    if (goodsParameters.length > 0) {
+        [goodsParameters deleteCharactersInRange:NSMakeRange( goodsParameters.length - 1, 1)];
+    }
+    NSDictionary *goodsInformation = nil;
+    if (self.viewModel.isSecondsDeal) {
+        NSArray *postArr = @[@{@"carId" : @"",
+                               @"seckillId" : [NSString stringWithFormat:@"%d",self.viewModel.seckillModel.SecondsDeal_EventID],
+                               @"goodsId" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID],
+                               @"price" : [NSString stringWithFormat:@"%d",self.viewModel.goodsInfoModel.goodsNewPrice],
+                               @"number" : [NSString stringWithFormat:@"%d",self.viewModel.count],
+                               @"goodsParameters" : goodsParameters}];
+        goodsInformation = @{@"post" : postArr};
+        
+    }else {
+        NSArray *postArr = @[@{@"carId" : @"",
+                               @"seckillId" : @"",
+                               @"goodsId" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID],
+                               @"price" : [NSString stringWithFormat:@"%d",self.viewModel.goodsInfoModel.goodsNewPrice],
+                               @"number" : [NSString stringWithFormat:@"%d",self.viewModel.count],
+                               @"goodsParameters" : goodsParameters}];
+        goodsInformation = @{@"post" : postArr};
+    }
     
-//    [self.KVOController
-//     observe:self.viewModel
-//     keyPath:@keypath(self.viewModel,loadGoodsInfo)
-//     options:NSKeyValueObservingOptionNew
-//     block:^(id observer, id object, NSDictionary *change) {
-//        
-//    }];
-//    
-//    [self.KVOController
-//     observe:self.viewModel
-//     keyPath:@keypath(self.viewModel,loadGoodsInfo)
-//     options:NSKeyValueObservingOptionNew
-//     block:^(id observer, id object, NSDictionary *change) {
-//         
-//     }];
-
+    [self showProgressHUD];
+    NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId],
+                             @"goodsInformation" : [goodsInformation JSONString]};
+    [TSHttpTool postWithUrl:OrderSure_URL params:params success:^(id result) {
+        [self hideProgressHUD];
+        //            NSLog(@"购买：%@",result);
+        if ([result[@"success"] intValue] == 1) {
+            TSOrderConfirmViewModel *viewModel = [[TSOrderConfirmViewModel alloc] init];
+            TSOrderConfirmViewController *orderConfirmVC = [[TSOrderConfirmViewController alloc] initWithViewModel:viewModel];
+            [self.navigationController pushViewController:orderConfirmVC animated:YES];
+        }
+        
+    } failure:^(NSError *error) {
+        [self hideProgressHUD];
+        NSLog(@"购买：%@",error);
+    }];
 }
 
 - (void)setupGoodsCountView{

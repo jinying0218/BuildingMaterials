@@ -27,7 +27,7 @@
     self.goodsName.text = model.goodsName;
     self.goodsPrice.text = [NSString stringWithFormat:@"￥%d",model.goods_price];
     self.goodsCount.text = [NSString stringWithFormat:@"%d",self.subviewModel.goodsCount];
-    
+    self.goodsParameters.text = model.parameters;
     if (self.subviewModel.inShopCar) {
         self.selectButton.selected = YES;
     }else {

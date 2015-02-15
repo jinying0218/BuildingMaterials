@@ -3107,8 +3107,8 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yingying Jin (2U45EL69EJ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yingying Jin (2U45EL69EJ)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yingying Jin (4C6P6Z426Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yingying Jin (4C6P6Z426Y)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -3131,7 +3131,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/BuildingMaterials/lib";
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "2060bb90-31e1-430d-b5ed-8204039d5879";
+				PROVISIONING_PROFILE = "29552fa0-4a12-4a04-b32c-cca9e7712580";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
@@ -3171,7 +3171,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/BuildingMaterials/lib";
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "2060bb90-31e1-430d-b5ed-8204039d5879";
+				PROVISIONING_PROFILE = "29552fa0-4a12-4a04-b32c-cca9e7712580";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -3184,49 +3184,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yingying Jin (2U45EL69EJ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Yingying Jin (2U45EL69EJ)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/BuildingMaterials/lib",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BuildingMaterials/BuildingMaterials-Prefix.pch";
-				HEADER_SEARCH_PATHS = (
-					"\"${PODS_ROOT}/Headers/Public\"",
-					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
-					"\"${PODS_ROOT}/Headers/Public/BlocksKit\"",
-					"\"${PODS_ROOT}/Headers/Public/KVOController\"",
-					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
-					"\"${PODS_ROOT}/Headers/Public/ReactiveCocoa\"",
-					"\"${PODS_ROOT}/Headers/Public/ReactiveCocoa/ReactiveCocoa\"",
-					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
-					"\"${PODS_ROOT}/Headers/Public/StandardPaths\"",
-					"\"${PODS_ROOT}/Headers/Public/libextobjc\"",
-					"$(SRCROOT)/BuildingMaterials/lib",
-				);
-				INFOPLIST_FILE = "BuildingMaterials/BuildingMaterials-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/BuildingMaterials/lib",
-					"$(PROJECT_DIR)/BuildingMaterials/lib/UMAnalytics_Sdk_3.1.8",
-				);
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2060bb90-31e1-430d-b5ed-8204039d5879";
-				VALID_ARCHS = "armv7 armv7s arm64";
-				WRAPPER_EXTENSION = app;
-			};
-			name = Debug;
-		};
-		B018474D19F898BF00938054 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D2F31DEF389312FF5F3525A /* Pods.release.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Yingying Jin (2U45EL69EJ)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yingying Jin (4C6P6Z426Y)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yingying Jin (4C6P6Z426Y)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3256,7 +3214,49 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "2060bb90-31e1-430d-b5ed-8204039d5879";
+				PROVISIONING_PROFILE = "29552fa0-4a12-4a04-b32c-cca9e7712580";
+				VALID_ARCHS = "armv7 armv7s arm64";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		B018474D19F898BF00938054 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D2F31DEF389312FF5F3525A /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Yingying Jin (4C6P6Z426Y)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Yingying Jin (4C6P6Z426Y)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BuildingMaterials/lib",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BuildingMaterials/BuildingMaterials-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/AFNetworking\"",
+					"\"${PODS_ROOT}/Headers/Public/BlocksKit\"",
+					"\"${PODS_ROOT}/Headers/Public/KVOController\"",
+					"\"${PODS_ROOT}/Headers/Public/MBProgressHUD\"",
+					"\"${PODS_ROOT}/Headers/Public/ReactiveCocoa\"",
+					"\"${PODS_ROOT}/Headers/Public/ReactiveCocoa/ReactiveCocoa\"",
+					"\"${PODS_ROOT}/Headers/Public/SDWebImage\"",
+					"\"${PODS_ROOT}/Headers/Public/StandardPaths\"",
+					"\"${PODS_ROOT}/Headers/Public/libextobjc\"",
+					"$(SRCROOT)/BuildingMaterials/lib",
+				);
+				INFOPLIST_FILE = "BuildingMaterials/BuildingMaterials-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BuildingMaterials/lib",
+					"$(PROJECT_DIR)/BuildingMaterials/lib/UMAnalytics_Sdk_3.1.8",
+				);
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "29552fa0-4a12-4a04-b32c-cca9e7712580";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};

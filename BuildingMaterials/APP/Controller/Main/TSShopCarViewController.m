@@ -16,7 +16,7 @@
 #import "TSOrderConfirmViewModel.h"
 #import "NSArray+BSJSONAdditions.h"
 #import "NSDictionary+BSJSONAdditions.h"
-
+#import "JSONKit.h"
 
 static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellIdentifier";
 
@@ -75,6 +75,7 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
                 subviewModel.goodsCount = model.goods_number;
                 subviewModel.shopCarModel = model;
                 subviewModel.goodsTotalMoney = subviewModel.goodsCount * model.goods_price;
+
                 [self.viewModel.subviewModels addObject:subviewModel];
             }
             [self.tableView reloadData];
@@ -172,19 +173,23 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
         NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:0];
         for (TSShopCarCellSubviewModel *subviewModel in self.viewModel.subviewModels) {
             if (subviewModel.inShopCar) {
+                
+                NSData *data = [subviewModel.shopCarModel.parameters JSONData];
+                NSString *goodsParameters = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                
                 NSDictionary *dict = @{@"carId" : [NSString stringWithFormat:@"%d",subviewModel.shopCarModel.C_ID],
                                        @"seckillId" : @"",
                                        @"goodsId" : [NSString stringWithFormat:@"%d",subviewModel.shopCarModel.goods_id],
                                        @"price" : [NSString stringWithFormat:@"%d",subviewModel.shopCarModel.goods_price],
                                        @"number" : [NSString stringWithFormat:@"%d",subviewModel.shopCarModel.goods_number],
-                                       @"goodsParameters" : subviewModel.shopCarModel.parameters};
+                                       @"goodsParameters" : goodsParameters};
                 [arr addObject:dict];
             }
         }
         
         NSDictionary *goodsInformation = @{@"post" : arr};
         NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId],
-                                 @"goodsInformation" : [goodsInformation jsonStringValue]};
+                                 @"goodsInformation" : [goodsInformation JSONString]};
         [TSHttpTool postWithUrl:OrderSure_URL params:params success:^(id result) {
             NSLog(@"OrderSure_URL--结算：%@",result);
             if ([result[@"success"] intValue] == 1) {
@@ -200,7 +205,7 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
 
 #pragma mark - dataSource method
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return 70;
+    return 100;
 }
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.viewModel.subviewModels.count;
@@ -219,6 +224,8 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
         cell.minutsButton.layer.borderWidth = 1;
         cell.plusButton.layer.borderColor = [UIColor colorWithHexString:@"f4f4f4"].CGColor;
         cell.plusButton.layer.borderWidth = 1;
+        cell.goodsParameters.adjustsFontSizeToFitWidth = YES;
+        cell.goodsParameters.numberOfLines = 0;
     }
     
     TSShopCarCellSubviewModel *subviewModel = self.viewModel.subviewModels[indexPath.row];

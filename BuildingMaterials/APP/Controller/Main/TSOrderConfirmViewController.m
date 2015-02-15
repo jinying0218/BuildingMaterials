@@ -86,6 +86,13 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
                 [orderModel modelWithDict:dict];
                 if (!orderModel.goodsParameters) {
                     orderModel.goodsParameters = @"";
+                }else {
+                    if ([orderModel.goodsParameters hasPrefix:@"\""]) {
+                        NSMutableString *goodsParameters = [orderModel.goodsParameters mutableCopy];
+                        [goodsParameters deleteCharactersInRange:NSMakeRange( goodsParameters.length - 1, 1)];
+                        [goodsParameters deleteCharactersInRange:NSMakeRange( 0, 1)];
+                        orderModel.goodsParameters = goodsParameters;
+                    }
                 }
                 [allGoodsArray addObject:orderModel];
                 if (![allCompanyIds containsObject:@(orderModel.CC_ID)]) {
@@ -466,7 +473,7 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
         self.viewModel.totalTransportMoney += subviewModel.transportPrice;
     }
     
-    self.postageMoney.text = [NSString stringWithFormat:@"￥%.2f",self.viewModel.totalTransportMoney];
-    self.totalMoney.text = [NSString stringWithFormat:@"￥%.2f",self.viewModel.totalGoodsMoney];
+    self.postageMoney.text = [NSString stringWithFormat:@"运费：￥%.2f",self.viewModel.totalTransportMoney];
+    self.totalMoney.text = [NSString stringWithFormat:@"总价：￥%.2f",self.viewModel.totalGoodsMoney + self.viewModel.totalTransportMoney];
 }
 @end

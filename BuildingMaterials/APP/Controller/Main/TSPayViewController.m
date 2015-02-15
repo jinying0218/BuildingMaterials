@@ -36,7 +36,7 @@
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?orderCode=%@",Pay_URL,self.orderCode]]]];
     }else {
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?orderId=%d&&orderCode=@""",Pay_URL,self.orderId]]]];
-        NSLog(@"%@",[NSString stringWithFormat:@"%@?orderId=%d&&orderCode=",Pay_URL,self.orderId]);
+//        NSLog(@"%@",[NSString stringWithFormat:@"%@?orderId=%d&&orderCode=",Pay_URL,self.orderId]);
     }
     
 }
@@ -54,7 +54,7 @@
     [self.backButton bk_addEventHandler:^(id sender) {
         @strongify(self);
         for (UIViewController *controller in self.navigationController.viewControllers) {
-            NSLog(@"%@",controller);
+//            NSLog(@"%@",controller);
             if ([controller isKindOfClass:[TSGoodsDetailViewController class]]) {
                 [self.navigationController popToViewController:controller animated:YES];
             }else if ([controller isKindOfClass:[TSShopCarViewController class]]){
