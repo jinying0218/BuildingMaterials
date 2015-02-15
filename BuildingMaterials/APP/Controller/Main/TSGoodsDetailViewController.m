@@ -295,8 +295,8 @@
     TSGoodsParamsModel *paramsModel = self.viewModel.dataArray[index];
     //点击一下，创建一个参数对象     判断该参数是否已经加入过，。加入过，不在加入，paramsCount 不增加
     for (UIButton *oneParamButton in paramsModel.parameterButtons) {
-        oneParamButton.layer.borderColor = [UIColor blackColor].CGColor;
-        [oneParamButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        oneParamButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        [oneParamButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     }
     button.layer.borderColor = [UIColor colorWithHexString:@"1ca6df"].CGColor;
     [button setTitleColor:[UIColor colorWithHexString:@"1ca6df"] forState:UIControlStateNormal];
@@ -304,6 +304,7 @@
     TSParametersList *newParams = [[TSParametersList alloc] init];
     newParams.parametersId = paramsModel.goodsParametersId;
     newParams.parametersName = button.titleLabel.text;
+    newParams.fatherParameterName = paramsModel.goodsParametersName;
     //遍历已选中的参数
     TSParametersList *deleteParam = nil;
     for (TSParametersList *param in self.viewModel.paramsValue) {
@@ -317,16 +318,17 @@
     }
     [self.viewModel.paramsValue addObject:newParams];
     self.viewModel.paramsCount += 1;
-    NSLog(@"%@-----%@",paramsModel.goodsParametersName,newParams.parametersName);
+//    NSLog(@"%@-----%@",paramsModel.goodsParametersName,newParams.parametersName);
     
 }
 #pragma mark - blind methods
 - (void)normalBuy {
-    NSMutableArray *arr = [[NSMutableArray alloc] initWithCapacity:0];
+    NSMutableString *goodsParameters = [[NSMutableString alloc] initWithCapacity:0];
     for (TSParametersList *params in self.viewModel.paramsValue) {
-        NSDictionary *dict = @{@"goodsParametersId" : [NSString stringWithFormat:@"%d",params.parametersId],
-                               @"goodsParametersName" : params.parametersName};
-        [arr addObject:dict];
+        [goodsParameters appendFormat:@"%@ : %@,",params.fatherParameterName,params.parametersName];
+    }
+    if (goodsParameters.length > 0) {
+        [goodsParameters deleteCharactersInRange:NSMakeRange( goodsParameters.length - 1, 1)];
     }
     NSDictionary *goodsInformation = nil;
     if (self.viewModel.isSecondsDeal) {
@@ -335,7 +337,7 @@
                                @"goodsId" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID],
                                @"price" : [NSString stringWithFormat:@"%d",self.viewModel.goodsInfoModel.goodsNewPrice],
                                @"number" : [NSString stringWithFormat:@"%d",self.viewModel.count],
-                               @"goodsParameters" : @""}];
+                               @"goodsParameters" : goodsParameters}];
         goodsInformation = @{@"post" : postArr};
 
     }else {
@@ -344,13 +346,15 @@
                                @"goodsId" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID],
                                @"price" : [NSString stringWithFormat:@"%d",self.viewModel.goodsInfoModel.goodsNewPrice],
                                @"number" : [NSString stringWithFormat:@"%d",self.viewModel.count],
-                               @"goodsParameters" : @""}];
+                               @"goodsParameters" : goodsParameters}];
         goodsInformation = @{@"post" : postArr};
     }
     
+    [self showProgressHUD];
     NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId],
                              @"goodsInformation" : [goodsInformation JSONString]};
     [TSHttpTool postWithUrl:OrderSure_URL params:params success:^(id result) {
+        [self hideProgressHUD];
         //            NSLog(@"购买：%@",result);
         if ([result[@"success"] intValue] == 1) {
             TSOrderConfirmViewModel *viewModel = [[TSOrderConfirmViewModel alloc] init];
@@ -359,6 +363,7 @@
         }
         
     } failure:^(NSError *error) {
+        [self hideProgressHUD];
         NSLog(@"购买：%@",error);
     }];
 }
