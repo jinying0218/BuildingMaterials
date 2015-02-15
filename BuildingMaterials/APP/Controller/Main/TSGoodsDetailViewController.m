@@ -165,6 +165,7 @@
         self.addShopCarButton.hidden = YES;
         self.buyButton.frame = CGRectMake( KscreenW - 70 - 60, 80, 60, 35);
     }
+
 }
 - (void)loadBannerImageView{
     self.banner.contentSize = CGSizeMake( KscreenW * self.viewModel.imageArray.count, 129);
@@ -287,6 +288,11 @@
     self.baseView.contentSize = CGSizeMake(KscreenW, CGRectGetMaxY(self.shopView.frame) + 54 + 120);
 
     [self bindActionHandler];
+    
+    if (self.viewModel.isSecondsDeal) {
+        self.minerBtn.enabled = NO;
+        self.plusBtn.enabled = NO;
+    }
 }
 //点击参数
 - (void)paramsButtonClick:(TSParamsButton *)button{
