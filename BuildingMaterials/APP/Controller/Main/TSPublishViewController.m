@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *titleInput;
 @property (weak, nonatomic) IBOutlet UITextView *contentInput;
 @property (weak, nonatomic) IBOutlet UIButton *takePictureButton;
-@property (weak, nonatomic) IBOutlet UIScrollView *imageBackScrollview;
+@property (weak, nonatomic) IBOutlet TSScrollView *imageBackScrollview;
 @property (nonatomic, strong) UIImagePickerController *imagePickerController;
 @property (nonatomic, strong) UIActionSheet *actionSheet;
 @property (nonatomic, strong) TSUserModel *userModel;
@@ -225,8 +225,10 @@
 
     NSString *baseImage = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     NSDictionary *params = @{@"photo" : baseImage};
+    [self showProgressHUD];
     [TSHttpTool postWithUrl:ImageUpload_URL params:params success:^(id result) {
-        NSLog(@"图片上传结果:%@",result);
+//        NSLog(@"图片上传结果:%@",result);
+        [self hideProgressHUD];
         if ([result[@"success"] intValue] == 1) {
             if (self.viewModel.imageURLArray.count < 6) {
                 [self.viewModel.imageURLArray addObject:result[@"url"]];
@@ -234,6 +236,7 @@
             [self layoutSubviews];
         }
     } failure:^(NSError *error) {
+        [self hideProgressHUD];
         NSLog(@"图片上传结果:%@",error);
     }];
 

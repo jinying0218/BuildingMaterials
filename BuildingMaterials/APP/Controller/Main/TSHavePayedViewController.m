@@ -71,6 +71,7 @@ static NSString *const HavePayedTableViewCellIdendifier = @"HavePayedTableViewCe
     TSUserModel *userModel = [TSUserModel getCurrentLoginUser];
     [self.viewModel.dataArray removeAllObjects];
     NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",userModel.userId]};
+    [self showProgressHUD];
     [TSHttpTool getWithUrl:WaitForPay_URL params:params withCache:NO success:^(id result) {
                 NSLog(@"待付款订单:%@",result);
         [self hideProgressHUD];
@@ -78,7 +79,9 @@ static NSString *const HavePayedTableViewCellIdendifier = @"HavePayedTableViewCe
             for (NSDictionary *dict in result[@"result"]) {
                 TSWaitOrderModel *orderModel = [[TSWaitOrderModel alloc] init];
                 [orderModel modelWithDict:dict];
-                if ([orderModel.orderStatus isEqualToString:@"HAVE_PAY"]) {
+                if ([orderModel.orderStatus isEqualToString:@"WAIT_PAY"] ||
+                    [orderModel.orderStatus isEqualToString:@"TIME_OVER"]) {
+                }else {
                     [self.viewModel.dataArray addObject:orderModel];
                 }
 //                [self.viewModel.dataArray addObject:orderModel];
@@ -104,6 +107,7 @@ static NSString *const HavePayedTableViewCellIdendifier = @"HavePayedTableViewCe
 
     self.askBackView.frame = CGRectMake( 0, KscreenH, KscreenW, 90);
     [[UIApplication sharedApplication].keyWindow addSubview:self.askBackView];
+    self.askBackView.hidden = YES;
 
     self.checkTransportView.frame = CGRectMake( 0, KscreenH, KscreenW, 90);
     [[UIApplication sharedApplication].keyWindow addSubview:self.checkTransportView];
@@ -143,8 +147,8 @@ static NSString *const HavePayedTableViewCellIdendifier = @"HavePayedTableViewCe
         TSWaitOrderModel *orderModel = self.viewModel.dataArray[self.askBackIndexPath.row];
         NSDictionary *params = @{@"orderId" : [NSString stringWithFormat:@"%d",orderModel.orderId],
                                  @"backReason" : self.viewModel.reasonString};
-        [TSHttpTool postWithUrl:PostGoodsComment_URL params:params success:^(id result) {
-            NSLog(@"退款结果：%@",result);
+        [TSHttpTool postWithUrl:OrderAskBack_URL params:params success:^(id result) {
+//            NSLog(@"退款结果：%@",result);
             if ([result[@"success"] intValue] == 1) {
                 [self showProgressHUD:@"退款成功" delay:1];
                 self.reasonInput.text = @"";
@@ -265,7 +269,6 @@ static NSString *const HavePayedTableViewCellIdendifier = @"HavePayedTableViewCe
     }
     [self moveInputBarWithKeyboardHeight:-self.popHeight withDuration:animationDuration];
 }
-
 - (void)keyboardWillHide:(NSNotification *)notification {
     
     NSDictionary* userInfo = [notification userInfo];

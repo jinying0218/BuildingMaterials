@@ -13,10 +13,10 @@
 @property (nonatomic, strong) NSString *orderCode;
 @property (nonatomic, strong) NSString *orderStatus;
 @property (nonatomic, strong) NSString *orderSureTime;
-@property (nonatomic, assign) int orderTotalPrice;
+@property (nonatomic, assign) float orderTotalPrice;
 @property (nonatomic, strong) NSString *transportCode;
 @property (nonatomic, strong) NSString *transportName;
-@property (nonatomic, assign) int transportPrice;
+@property (nonatomic, assign) float transportPrice;
 @property (nonatomic, assign) int orderId;
 @property (nonatomic, strong) NSMutableArray *goods;
 

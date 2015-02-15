@@ -35,7 +35,7 @@
     if (self.orderCode) {
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?orderCode=%@",Pay_URL,self.orderCode]]]];
     }else {
-        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?orderId=%d&&orderCode=@""",Pay_URL,self.orderId]]]];
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?orderId=%d&&orderCode=%@",Pay_URL,self.orderId,@""]]]];
 //        NSLog(@"%@",[NSString stringWithFormat:@"%@?orderId=%d&&orderCode=",Pay_URL,self.orderId]);
     }
     

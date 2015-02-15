@@ -120,14 +120,14 @@
 //    self.bottomView.frame = CGRectMake(0, KscreenH - 60, KscreenW, 60);
 //    [self.view addSubview:self.bottomView];
     
-    _coverView = [[UIView alloc] initWithFrame:self.view.bounds];
+    _coverView = [[UIView alloc] initWithFrame:CGRectMake( 0, 0, KscreenW, KscreenH)];
     _coverView.backgroundColor = [UIColor blackColor];
     _coverView.alpha = 0.5;
     _coverView.hidden = YES;
     [self.view insertSubview:_coverView belowSubview:self.postView];
     
     //KscreenH - 315 - 20
-    self.applyView.frame = CGRectMake( 0, self.view.frame.size.height, KscreenW, 315);
+    self.applyView.frame = CGRectMake( 0, KscreenH, KscreenW, 315);
     [[UIApplication sharedApplication].keyWindow addSubview:self.applyView];
     
     self.cancelApplyButton.frame = CGRectMake( KscreenW - 22, KscreenH - 315 - 11, 22, 22);
@@ -346,6 +346,7 @@
             self.applyView.frame = frame;
             self.coverView.hidden = YES;
             self.cancelApplyButton.hidden = YES;
+            [self.view endEditing:YES];
         } completion:nil];
 
     } forControlEvents:UIControlEventTouchUpInside];
@@ -354,13 +355,13 @@
     [self.coverView bk_whenTapped:^{
         [self.view endEditing:YES];
         [self.applyView endEditing:YES];
-        self.cancelApplyButton.hidden = YES;
-        [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionLayoutSubviews animations:^{
-            CGRect frame = self.applyView.frame;
-            frame.origin.y = self.view.frame.size.height + 44;
-            self.applyView.frame = frame;
-            self.coverView.hidden = YES;
-        } completion:nil];
+//        self.cancelApplyButton.hidden = YES;
+//        [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionLayoutSubviews animations:^{
+//            CGRect frame = self.applyView.frame;
+//            frame.origin.y = self.view.frame.size.height + 44;
+//            self.applyView.frame = frame;
+//            self.coverView.hidden = YES;
+//        } completion:nil];
     }];
 }
 
@@ -412,6 +413,10 @@
         CGRect frame = self.applyView.frame;
         frame.origin.y -= 165;
         self.applyView.frame = frame;
+        
+        CGRect frame2 = self.cancelApplyButton.frame;
+        frame2.origin.y -= 165;
+        self.cancelApplyButton.frame = frame2;
     }];
 }
 
@@ -421,6 +426,11 @@
         CGRect frame = self.applyView.frame;
         frame.origin.y += 165;
         self.applyView.frame = frame;
+        
+        CGRect frame2 = self.cancelApplyButton.frame;
+        frame2.origin.y += 165;
+        self.cancelApplyButton.frame = frame2;
+
     }];
 
 }
