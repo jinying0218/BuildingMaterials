@@ -16,10 +16,10 @@
 @property (nonatomic, strong) NSString *GOODS_DES_SIMPLE;
 @property (nonatomic, strong) NSString *GOODS_HEAD_IMAGE;
 @property (nonatomic, strong) NSString *GOODS_NAME;
-@property (nonatomic, assign) int GOODS_NEW_PRICE;
-@property (nonatomic, assign) int GOODS_OLD_PRICE;
+@property (nonatomic, assign) float GOODS_NEW_PRICE;
+@property (nonatomic, assign) float GOODS_OLD_PRICE;
 @property (nonatomic, assign) int GOODS_SELL_NUMBER;
-@property (nonatomic, assign) int GOODS_WEIGHT;
+@property (nonatomic, assign) float GOODS_WEIGHT;
 @property (nonatomic, assign) int I_D;
 @property (nonatomic, assign) int IS_RECOMMEND;
 @property (nonatomic, assign) int IS_USED;

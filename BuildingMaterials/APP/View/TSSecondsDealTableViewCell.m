@@ -19,6 +19,13 @@
 @implementation TSSecondsDealTableViewCell
 
 - (void)awakeFromNib {
+    self.fristGoodsNowPrice.adjustsFontSizeToFitWidth = YES;
+    self.fristGoodsPrice.adjustsFontSizeToFitWidth = YES;
+    self.secondGoodsNowPrice.adjustsFontSizeToFitWidth = YES;
+    self.secondGoodsPrice.adjustsFontSizeToFitWidth = YES;
+    self.thirdGoodsNowPrice.adjustsFontSizeToFitWidth = YES;
+    self.thirdGoodsPrice.adjustsFontSizeToFitWidth = YES;
+
 }
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
@@ -35,8 +42,9 @@
             case 0:{
                 [self.fristGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.GOODS_HEAD_IMAGE] placeholderImage:[UIImage imageNamed:@"not_load"]];
                 self.fristGoodsName.text = model.GOODS_NAME;
-                self.fristGoodsNowPrice.text = [NSString stringWithFormat:@"￥%d",model.SECKILL_PRICE];
-                self.fristGoodsPrice.text = [NSString stringWithFormat:@"￥%d",model.GOODS_NEW_PRICE];
+
+                self.fristGoodsNowPrice.text = [NSString stringWithFormat:@"￥%.2f",model.SECKILL_PRICE];
+                self.fristGoodsPrice.text = [NSString stringWithFormat:@"￥%.2f",model.GOODS_NEW_PRICE];
                 self.fristGoodsPrice.strikeThroughEnabled = YES;
                 
                 self.endTimeView = [[ClockView alloc] initWithFrame:CGRectMake( CGRectGetMaxX(self.secondsDealLabel.frame) + 10, 10, 100, 20) style:ClockStyleDefault];
@@ -62,8 +70,8 @@
             case 1:{
                 [self.secondGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.GOODS_HEAD_IMAGE] placeholderImage:[UIImage imageNamed:@"not_load"]];
                 self.secondGoodsName.text = model.GOODS_NAME;
-                self.secondGoodsNowPrice.text = [NSString stringWithFormat:@"￥%d",model.SECKILL_PRICE];
-                self.secondGoodsPrice.text = [NSString stringWithFormat:@"￥%d",model.GOODS_NEW_PRICE];
+                self.secondGoodsNowPrice.text = [NSString stringWithFormat:@"￥%.2f",model.SECKILL_PRICE];
+                self.secondGoodsPrice.text = [NSString stringWithFormat:@"￥%.2f",model.GOODS_NEW_PRICE];
                 self.secondGoodsPrice.strikeThroughEnabled = YES;
 
             }
@@ -71,8 +79,8 @@
             case 2:{
                 [self.thirdGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.GOODS_HEAD_IMAGE] placeholderImage:[UIImage imageNamed:@"not_load"]];
                 self.thirdGoodsName.text = model.GOODS_NAME;
-                self.thirdGoodsNowPrice.text = [NSString stringWithFormat:@"￥%d",model.SECKILL_PRICE];
-                self.thirdGoodsPrice.text = [NSString stringWithFormat:@"￥%d",model.GOODS_NEW_PRICE];
+                self.thirdGoodsNowPrice.text = [NSString stringWithFormat:@"￥%.2f",model.SECKILL_PRICE];
+                self.thirdGoodsPrice.text = [NSString stringWithFormat:@"￥%.2f",model.GOODS_NEW_PRICE];
                 self.thirdGoodsPrice.strikeThroughEnabled = YES;
 
             }

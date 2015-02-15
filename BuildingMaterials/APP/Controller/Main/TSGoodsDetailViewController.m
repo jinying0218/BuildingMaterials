@@ -239,9 +239,9 @@
     self.goodsName.text = self.viewModel.goodsInfoModel.goodsName;
     self.goodsName.adjustsFontSizeToFitWidth = YES;
     self.goodsDes.text = self.viewModel.goodsInfoModel.goodsDesSimple;
-    self.goodsNewPrice.text = [NSString stringWithFormat:@"￥%d",self.viewModel.goodsInfoModel.goodsNewPrice];
+    self.goodsNewPrice.text = [NSString stringWithFormat:@"￥%.2f",self.viewModel.goodsInfoModel.goodsNewPrice];
     if (self.viewModel.isSecondsDeal) {
-        self.goodsOldPrice.text = [NSString stringWithFormat:@"￥%d",self.viewModel.goodsInfoModel.goodsOldPrice];
+        self.goodsOldPrice.text = [NSString stringWithFormat:@"￥%.2f",self.viewModel.goodsInfoModel.goodsOldPrice];
         CGSize labelSize = [UILabel sizeWithLabel:self.goodsNewPrice];
         self.goodsNewPrice.bounds = CGRectMake( 0, 0, labelSize.width, labelSize.height);
         CGSize oldPriceLableSize = [UILabel sizeWithLabel:self.goodsOldPrice];

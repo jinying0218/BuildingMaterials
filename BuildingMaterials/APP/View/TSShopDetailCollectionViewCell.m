@@ -34,7 +34,7 @@ static NSString *const cellIdentifier = @"TSShopDetailCollectionViewCell";
     if (![goodsModel.GOODS_HEAD_IMAGE isEqual:[NSNull null]]) {
         [self.goodsImage sd_setImageWithURL:[NSURL URLWithString:goodsModel.GOODS_HEAD_IMAGE]];
     }
-    self.goodsPrice.text = [NSString stringWithFormat:@"￥%d",goodsModel.GOODS_NEW_PRICE];
+    self.goodsPrice.text = [NSString stringWithFormat:@"￥%.2f",goodsModel.GOODS_NEW_PRICE];
     self.goodsName.text = goodsModel.GOODS_NAME;
     
 }

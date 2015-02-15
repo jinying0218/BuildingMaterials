@@ -124,11 +124,15 @@ static NSString *const SecondsDealDetailTableViewCell = @"SecondsDealDetailTable
 }
 #pragma mark - tableView delegateMethod
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    TSSecKillModel *secKillModel = self.viewModel.dataArray[indexPath.row];
     if ([self.overLabel.text isEqualToString:@"秒杀结束"]) {
         [self showProgressHUD:@"秒杀已结束" delay:1];
         return;
     }
-    TSSecKillModel *secKillModel = self.viewModel.dataArray[indexPath.row];
+    if (secKillModel.haveOver) {
+        [self showProgressHUD:@"已抢光了" delay:1];
+        return;
+    }
     //秒杀
     TSGoodsDetailViewModel *viewModel = [[TSGoodsDetailViewModel alloc] init];
     viewModel.goodsID = secKillModel.goodsId;
