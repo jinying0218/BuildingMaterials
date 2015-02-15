@@ -127,7 +127,7 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
      options:NSKeyValueObservingOptionNew
      block:^(TSShopCarViewController *observer, TSShopCarViewModel *object, NSDictionary *change) {
          if (![change[NSKeyValueChangeNewKey] isEqual:[NSNull null]]) {
-             self.totalMoney.text = [NSString stringWithFormat:@"%.2f",[change[NSKeyValueChangeNewKey] floatValue]];
+             self.totalMoney.text = [NSString stringWithFormat:@"￥%.2f",[change[NSKeyValueChangeNewKey] floatValue]];
          }
     }];
     [self.KVOController

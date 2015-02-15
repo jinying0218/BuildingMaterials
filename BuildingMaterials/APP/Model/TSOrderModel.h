@@ -16,9 +16,9 @@
 @property (nonatomic, strong) NSString *goodsName;
 @property (nonatomic, assign) int goodsNumber;
 @property (nonatomic, strong) NSString *goodsParameters;
-@property (nonatomic, assign) int goodsWeight;
+@property (nonatomic, assign) float goodsWeight;
 @property (nonatomic, assign) int G_ID;
-@property (nonatomic, assign) int price;
+@property (nonatomic, assign) float price;
 @property (nonatomic, assign) int seckillId;
 
 - (void)modelWithDict:(NSDictionary *)dict;

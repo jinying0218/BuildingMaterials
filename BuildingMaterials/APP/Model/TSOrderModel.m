@@ -17,9 +17,9 @@
     self.goodsName = [self objectOrNilForKey:@"GOODS_NAME" fromDictionary:dict];
     self.goodsNumber = [[self objectOrNilForKey:@"GOODS_NUMBER" fromDictionary:dict] intValue];
     self.goodsParameters = [self objectOrNilForKey:@"GOODS_PARAMETERS" fromDictionary:dict];
-    self.goodsWeight = [[self objectOrNilForKey:@"GOODS_WEIGHT" fromDictionary:dict] intValue];
+    self.goodsWeight = [[self objectOrNilForKey:@"GOODS_WEIGHT" fromDictionary:dict] floatValue];
     self.G_ID = [[self objectOrNilForKey:@"G_ID" fromDictionary:dict] intValue];
-    self.price = [[self objectOrNilForKey:@"PRICE" fromDictionary:dict] intValue];
+    self.price = [[self objectOrNilForKey:@"PRICE" fromDictionary:dict] floatValue];
     self.seckillId = [[self objectOrNilForKey:@"SECKILL_ID" fromDictionary:dict] intValue];
 
 }
