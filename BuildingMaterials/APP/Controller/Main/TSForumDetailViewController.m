@@ -18,6 +18,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *forumClassifyImage;
 @property (weak, nonatomic) IBOutlet UILabel *forumClassifyName;
 @property (weak, nonatomic) IBOutlet UILabel *commentNumber;
+@property (weak, nonatomic) IBOutlet UILabel *forumUser;
 
 @end
 
@@ -49,6 +50,8 @@
     self.forumTitle.text = self.forumClassifyModel.forum_content_title;
     self.commentNumber.text = [NSString stringWithFormat:@"%d",self.forumClassifyModel.forum_content_comment_number];
     [self.forumClassifyImage sd_setImageWithURL:[NSURL URLWithString:self.forumClassifyImageURL]];
+    
+    self.forumUser.text = self.forumClassifyModel.forum_user;
     
     [self.webView loadHTMLString:self.forumClassifyModel.forum_content baseURL:nil];
     self.webView.scrollView.showsHorizontalScrollIndicator = NO;

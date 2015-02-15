@@ -113,13 +113,21 @@
     self.viewModel.publishContent = [NSString stringWithFormat:@"%@%@",mutableContent,self.viewModel.imageContent];
 }
 - (void)blindViewModel{
-    [self.KVOController observe:self keyPath:@keypath(self.viewModel,titleInputString) options:NSKeyValueObservingOptionNew block:^(TSPublishViewController *observer, TSPublishViewModel *object, NSDictionary *change) {
+    [self.KVOController
+     observe:self
+     keyPath:@keypath(self.viewModel,titleInputString)
+     options:NSKeyValueObservingOptionNew
+     block:^(TSPublishViewController *observer, TSPublishViewModel *object, NSDictionary *change) {
         if (![change[NSKeyValueChangeNewKey] isEqual:[NSNull null]]) {
             observer.titleInput.text = change[NSKeyValueChangeNewKey];
         }
     }];
     
-    [self.KVOController observe:self keyPath:@keypath(self.viewModel,contentInputString) options:NSKeyValueObservingOptionNew block:^(TSPublishViewController *observer, TSPublishViewModel *object, NSDictionary *change) {
+    [self.KVOController
+     observe:self
+     keyPath:@keypath(self.viewModel,contentInputString)
+     options:NSKeyValueObservingOptionNew
+     block:^(TSPublishViewController *observer, TSPublishViewModel *object, NSDictionary *change) {
         if (![change[NSKeyValueChangeNewKey] isEqual:[NSNull null]]) {
             observer.contentInput.text = change[NSKeyValueChangeNewKey];
         }
@@ -141,12 +149,20 @@
     [self.titleInput bk_addEventHandler:^(UITextField *textField) {
         @strongify(self);
         [self.viewModel setTitleInputString:textField.text];
-    } forControlEvents:UIControlEventEditingChanged];
+    } forControlEvents:UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit];
     
     [self.naviRightBtn bk_addEventHandler:^(id sender) {
         @strongify(self);
+        [self.view endEditing:YES];
+        if (!self.viewModel.titleInputString ||
+            !self.viewModel.contentInputString ||
+            [self.viewModel.titleInputString isEqualToString:@""] ||
+            [self.viewModel.contentInputString isEqualToString:@""]) {
+            [self showProgressHUD:@"请填写帖子内容" delay:1];
+            return ;
+        }
         NSDictionary *params = @{@"forumName" : self.viewModel.titleInputString,
-                                 @"forumContent" : self.viewModel.publishContent,
+                                 @"forumContent" : self.viewModel.contentInputString,
                                  @"forumClassifyId" : @(self.viewModel.forumClassifyId),
                                  @"userId" : @(self.userModel.userId)};
         [TSHttpTool postWithUrl:ForumSave_URL params:params success:^(id result) {
@@ -169,6 +185,8 @@
 }
 #pragma mark - textView Delegate
 - (void)textViewDidChange:(UITextView *)textView{
+}
+- (void)textViewDidEndEditing:(UITextView *)textView{
     [self.viewModel setContentInputString:textView.text];
 }
 #pragma mark - UIActionSheetDelegate method
