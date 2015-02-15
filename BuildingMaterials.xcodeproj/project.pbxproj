@@ -3131,7 +3131,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/BuildingMaterials/lib";
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "29552fa0-4a12-4a04-b32c-cca9e7712580";
+				PROVISIONING_PROFILE = "b3683a37-fec3-45b8-b54b-bf3828cdaded";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
@@ -3171,7 +3171,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(PROJECT_DIR)/BuildingMaterials/lib";
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "29552fa0-4a12-4a04-b32c-cca9e7712580";
+				PROVISIONING_PROFILE = "b3683a37-fec3-45b8-b54b-bf3828cdaded";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -3214,7 +3214,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "29552fa0-4a12-4a04-b32c-cca9e7712580";
+				PROVISIONING_PROFILE = "b3683a37-fec3-45b8-b54b-bf3828cdaded";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};
@@ -3256,7 +3256,7 @@
 				);
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "29552fa0-4a12-4a04-b32c-cca9e7712580";
+				PROVISIONING_PROFILE = "b3683a37-fec3-45b8-b54b-bf3828cdaded";
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
 			};

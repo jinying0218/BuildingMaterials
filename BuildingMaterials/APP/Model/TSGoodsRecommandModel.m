@@ -21,8 +21,8 @@
     self.GOODS_DES_SIMPLE = [self objectOrNilForKey:@"GOODS_DES_SIMPLE" fromDictionary:dict];
     self.GOODS_HEAD_IMAGE = dict[@"GOODS_HEAD_IMAGE"];
     self.GOODS_NAME = dict[@"GOODS_NAME"];
-    self.GOODS_NEW_PRICE = [dict[@"GOODS_NEW_PRICE"] intValue];
-    
+    self.GOODS_NEW_PRICE = [dict[@"GOODS_NEW_PRICE"] floatValue];
+    self.GOODS_OLD_PRICE = [[self objectOrNilForKey:@"GOODS_OLD_PRICE" fromDictionary:dict] floatValue];
     self.GOODS_SELL_NUMBER = [dict[@"GOODS_SELL_NUMBER"] intValue];
     self.GOODS_WEIGHT = [dict[@"GOODS_WEIGHT"] intValue];
     self.I_D = [dict[@"ID"] intValue];

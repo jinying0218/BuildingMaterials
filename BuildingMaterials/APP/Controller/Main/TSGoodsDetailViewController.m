@@ -78,11 +78,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.tabBarController.tabBar.hidden =  YES;
+
     self.userModel = [TSUserModel getCurrentLoginUser];
     [self initializeData];
     [self setupUI];
-    self.tabBarController.tabBar.hidden =  YES;
     
     [self blindViewModel];
 }
@@ -94,7 +94,7 @@
     [self showProgressHUD];
     NSDictionary *params = @{@"id" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID]};
     [TSHttpTool getWithUrl:GoodsInfo_URL params:params withCache:NO success:^(id result) {
-//        NSLog(@"商品信息:%@",result);
+        NSLog(@"商品信息:%@",result);
         if ([result[@"success"] intValue] == 1) {
             [self.viewModel.shopModel setShopModelValueForDictionary:result[@"companyResult"]];
             [self.viewModel.goodsInfoModel setValueForDictionary:result[@"goodsResult"]];
@@ -239,9 +239,14 @@
     self.goodsName.text = self.viewModel.goodsInfoModel.goodsName;
     self.goodsName.adjustsFontSizeToFitWidth = YES;
     self.goodsDes.text = self.viewModel.goodsInfoModel.goodsDesSimple;
+    
     self.goodsNewPrice.text = [NSString stringWithFormat:@"￥%.2f",self.viewModel.goodsInfoModel.goodsNewPrice];
+    self.goodsNewPrice.adjustsFontSizeToFitWidth = YES;
+    self.goodsOldPrice.adjustsFontSizeToFitWidth = YES;
     if (self.viewModel.isSecondsDeal) {
-        self.goodsOldPrice.text = [NSString stringWithFormat:@"￥%.2f",self.viewModel.goodsInfoModel.goodsOldPrice];
+        self.goodsNewPrice.text = [NSString stringWithFormat:@"￥%.2f",self.viewModel.seckillModel.SECKILL_PRICE];
+
+        self.goodsOldPrice.text = [NSString stringWithFormat:@"￥%.2f",self.viewModel.seckillModel.GOODS_NEW_PRICE];
         CGSize labelSize = [UILabel sizeWithLabel:self.goodsNewPrice];
         self.goodsNewPrice.bounds = CGRectMake( 0, 0, labelSize.width, labelSize.height);
         CGSize oldPriceLableSize = [UILabel sizeWithLabel:self.goodsOldPrice];
@@ -479,7 +484,7 @@
         NSArray *postArr = @[@{@"carId" : @"",
                                @"seckillId" : [NSString stringWithFormat:@"%d",self.viewModel.seckillModel.SecondsDeal_EventID],
                                @"goodsId" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID],
-                               @"price" : [NSString stringWithFormat:@"%d",self.viewModel.goodsInfoModel.goodsNewPrice],
+                               @"price" : [NSString stringWithFormat:@"%.2f",self.viewModel.seckillModel.SECKILL_PRICE],
                                @"number" : [NSString stringWithFormat:@"%d",self.viewModel.count],
                                @"goodsParameters" : goodsParameters}];
         goodsInformation = @{@"post" : postArr};
@@ -488,7 +493,7 @@
         NSArray *postArr = @[@{@"carId" : @"",
                                @"seckillId" : @"",
                                @"goodsId" : [NSString stringWithFormat:@"%d",self.viewModel.goodsID],
-                               @"price" : [NSString stringWithFormat:@"%d",self.viewModel.goodsInfoModel.goodsNewPrice],
+                               @"price" : [NSString stringWithFormat:@"%.2f",self.viewModel.goodsInfoModel.goodsNewPrice],
                                @"number" : [NSString stringWithFormat:@"%d",self.viewModel.count],
                                @"goodsParameters" : goodsParameters}];
         goodsInformation = @{@"post" : postArr};

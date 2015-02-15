@@ -18,11 +18,11 @@
     self.goodsHeadImage = [self objectOrNilForKey:@"goodsHeadImage" fromDictionary:dict];
     self.goodsName = [self objectOrNilForKey:@"goodsName" fromDictionary:dict];
 
-    self.goodsNewPrice = [[self objectOrNilForKey:@"goodsNewPrice" fromDictionary:dict] intValue];
-    self.goodsOldPrice = [[self objectOrNilForKey:@"goodsOldPrice" fromDictionary:dict] intValue];
+    self.goodsNewPrice = [[self objectOrNilForKey:@"goodsNewPrice" fromDictionary:dict] floatValue];
+    self.goodsOldPrice = [[self objectOrNilForKey:@"goodsOldPrice" fromDictionary:dict] floatValue];
 
     self.goodsSellNumber = [[self objectOrNilForKey:@"goodsSellNumber" fromDictionary:dict] intValue];
-    self.goodsWeight = [[self objectOrNilForKey:@"goodsWeight" fromDictionary:dict] intValue];
+    self.goodsWeight = [[self objectOrNilForKey:@"goodsWeight" fromDictionary:dict] floatValue];
     self.goodsID = [[self objectOrNilForKey:@"id" fromDictionary:dict] intValue];
     self.isRecommend = [[self objectOrNilForKey:@"isRecommend" fromDictionary:dict] intValue];
     self.isUsed = [[self objectOrNilForKey:@"isUsed" fromDictionary:dict] intValue];

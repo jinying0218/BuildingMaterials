@@ -68,6 +68,8 @@
     
     
     self.contentInput.delegate = self;
+    self.contentInput.text = @"帖子内容";
+    self.contentInput.textColor = [UIColor lightGrayColor];
 
     self.imagePickerController = [[UIImagePickerController alloc] init];
     [self.imagePickerController setDelegate:self];
@@ -184,8 +186,13 @@
     } forControlEvents:UIControlEventTouchUpInside];
 }
 #pragma mark - textView Delegate
-- (void)textViewDidChange:(UITextView *)textView{
+- (void)textViewDidBeginEditing:(UITextView *)textView{
+    if ([textView.text isEqualToString:@"帖子内容"]) {
+        textView.text = @"";
+        textView.textColor = [UIColor blackColor];
+    }
 }
+
 - (void)textViewDidEndEditing:(UITextView *)textView{
     [self.viewModel setContentInputString:textView.text];
 }

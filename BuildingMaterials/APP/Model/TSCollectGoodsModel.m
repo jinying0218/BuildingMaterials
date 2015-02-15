@@ -19,10 +19,10 @@
     self.goods_Head_ImageUrl = [self objectOrNilForKey:@"GOODS_HEAD_IMAGE" fromDictionary:dict];
     self.goodsName = [self objectOrNilForKey:@"GOODS_NAME" fromDictionary:dict];
 
-    self.goods_new_price = [[self objectOrNilForKey:@"GOODS_NEW_PRICE" fromDictionary:dict] intValue];
-    self.goods_old_price = [[self objectOrNilForKey:@"GOODS_OLD_PRICE" fromDictionary:dict] intValue];
+    self.goods_new_price = [[self objectOrNilForKey:@"GOODS_NEW_PRICE" fromDictionary:dict] floatValue];
+    self.goods_old_price = [[self objectOrNilForKey:@"GOODS_OLD_PRICE" fromDictionary:dict] floatValue];
     self.goods_sell_number = [[self objectOrNilForKey:@"GOODS_SELL_NUMBER" fromDictionary:dict] intValue];
-    self.goods_weight = [[self objectOrNilForKey:@"GOODS_WEIGHT" fromDictionary:dict] intValue];
+    self.goods_weight = [[self objectOrNilForKey:@"GOODS_WEIGHT" fromDictionary:dict] floatValue];
     self.Collect_id = [[self objectOrNilForKey:@"ID" fromDictionary:dict] intValue];
     self.is_recommend = [[self objectOrNilForKey:@"IS_RECOMMEND" fromDictionary:dict] intValue];
     self.is_used = [[self objectOrNilForKey:@"IS_USED" fromDictionary:dict] intValue];
