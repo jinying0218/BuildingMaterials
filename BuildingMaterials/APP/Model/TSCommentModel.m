@@ -20,7 +20,6 @@
     NSMutableString *contactString = [self.userName mutableCopy];
     [contactString replaceCharactersInRange:NSMakeRange( 3, 4) withString:@"****"];
     self.userName = contactString;
-
 }
 
 

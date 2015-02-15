@@ -77,8 +77,36 @@ static NSString *const CommentTableViewCellIdentifier = @"CommentTableViewCell";
     
     [self.rootView addSubview:self.tableView];
 
+    //集成上拉加载更多
+    [self.tableView addFooterWithTarget:self action:@selector(footerRereshing)];
+    self.tableView.footerPullToRefreshText = @"上拉加载更多";
+    self.tableView.footerReleaseToRefreshText = @"松开马上加载更多数据";
+    self.tableView.footerRefreshingText = @"加载中……";
+
 
 }
 
+#pragma mark - 上拉加载更多
+- (void)footerRereshing{
+    self.viewModel.page += 1;
+    NSDictionary *params = @{@"page" : [NSString stringWithFormat:@"%d",self.viewModel.page],
+                             @"id" : [NSString stringWithFormat:@"%d",self.viewModel.goodsInfoModel.goodsID]};
+    [TSHttpTool getWithUrl:GoodsComment_URL params:params withCache:NO success:^(id result) {
+//        NSLog(@"商品评价：%@",result);
+        if ([result[@"success"] intValue] == 1) {
+            for (NSDictionary *dict in result[@"result"]) {
+                TSCommentModel *commentModel = [[TSCommentModel alloc] init];
+                [commentModel setValueWithDict:dict];
+                [self.viewModel.allComments addObject:commentModel];
+            }
+            [self.tableView reloadData];
+            [self.tableView footerEndRefreshing];
+            
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"商品评价：%@",error);
+    }];
+
+}
 
 @end
