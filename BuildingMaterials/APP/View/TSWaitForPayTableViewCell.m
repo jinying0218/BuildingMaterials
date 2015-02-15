@@ -32,7 +32,7 @@
     
     self.orderCode.text = orderModel.orderCode;
     self.companyName.text = orderModel.companyName;
-    self.orderTotalPrice.text = [NSString stringWithFormat:@"￥%d",orderModel.orderTotalPrice];
+    self.orderTotalPrice.text = [NSString stringWithFormat:@"￥%.2f",orderModel.orderTotalPrice];
     self.orderDetailButtonHandler = orderDetailButtonHandler;
     self.buyNowButtonHandler = buyNowButtonHandler;
     self.orderModel = orderModel;

@@ -49,7 +49,7 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
     [super viewDidLoad];
     self.tabBarController.tabBar.hidden =  YES;
     self.userModel = [TSUserModel getCurrentLoginUser];
-    [self initializeData];
+//    [self initializeData];
     [self setupUI];
     [self blindViewModel];
     [self blindActionHandler];
