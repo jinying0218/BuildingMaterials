@@ -71,12 +71,14 @@ static NSString *const popTableViewCell = @"popTableViewCell";
 
     [self getCompanyGoods:params];
     
-    [TSHttpTool getWithUrl:GoodsClassify_URL params:nil withCache:NO success:^(id result) {
-        //        NSLog(@"商品分类:%@",result);
+    NSDictionary *classifyParams = @{@"companyId" : [NSString stringWithFormat:@"%d",self.viewModel.companyID]};
+    
+    [TSHttpTool getWithUrl:CompanyGoodsClassifyLoad_URL params:classifyParams withCache:NO success:^(id result) {
+//                NSLog(@"商品分类:%@",result);
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneResult in result[@"result"]) {
                 TSCategoryModel *model = [[TSCategoryModel alloc] init];
-                [model setValueForDictionary:oneResult];
+                [model modelWithDictionary:oneResult];
                 [self.viewModel.categoryDataArray addObject:model];
             }
             TSCategoryModel *model = [[TSCategoryModel alloc] init];

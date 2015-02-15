@@ -17,6 +17,7 @@
         self.popDataArray = [[NSMutableArray alloc] initWithCapacity:0];
         self.categoryDataArray = [[NSMutableArray alloc] initWithCapacity:0];
         self.sortDataArray = [[NSMutableArray alloc] initWithCapacity:0];
+        self.goodsSearchName = @"";
     }
     return self;
 }

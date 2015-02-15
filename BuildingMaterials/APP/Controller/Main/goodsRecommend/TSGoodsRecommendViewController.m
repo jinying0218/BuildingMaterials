@@ -62,11 +62,13 @@ static NSString *const popTableViewCell = @"popTableViewCell";
     
     if (self.viewModel.classifyID == 0) {
         params = @{@"page":[NSString stringWithFormat:@"%d",self.viewModel.page],
-                   @"goodsOrderType" : self.viewModel.goodsOrderType};
+                   @"goodsOrderType" : self.viewModel.goodsOrderType,
+                   @"goodsSearchName" : self.viewModel.goodsSearchName};
     }else {
         params = @{@"page":[NSString stringWithFormat:@"%d",self.viewModel.page],
                    @"goodsOrderType" : self.viewModel.goodsOrderType,
-                   @"goodsClassifyId" : [NSString stringWithFormat:@"%d",self.viewModel.classifyID]};
+                   @"goodsClassifyId" : [NSString stringWithFormat:@"%d",self.viewModel.classifyID],
+                   @"goodsSearchName" : self.viewModel.goodsSearchName};
     }
     [self showProgressHUD];
     [TSHttpTool getWithUrl:GoodsLoad_URL params:params withCache:NO success:^(id result) {

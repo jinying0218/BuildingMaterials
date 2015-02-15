@@ -98,6 +98,7 @@ static NSString * const categoryCellIdentifier = @"categoryCell";
 //        TSCategoryModel *model = self.viewModel.dataArray[indexPath.row];
         TSGoodsRecommandViewModel *viewModel = [[TSGoodsRecommandViewModel alloc] init];
         viewModel.page = 1;
+        viewModel.goodsSearchName = self.searchTextField.text;
         viewModel.classifyID = classifyID;
         viewModel.goodsOrderType = @"1";
         TSGoodsRecommendViewController *goodsRecommedVC = [[TSGoodsRecommendViewController alloc] init];

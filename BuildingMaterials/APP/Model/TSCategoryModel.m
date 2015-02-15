@@ -15,4 +15,11 @@
     self.classifyName = dict[@"classifyName"];
     self.classifyID = [dict[@"id"] intValue];
 }
+- (void)modelWithDictionary:(NSDictionary *)dict{
+    self.classifyDes = dict[@"CLASSIFY_DES"];
+    self.classifyImageUrl = dict[@"CLASSIFY_IMAGE_URL"];
+    self.classifyName = dict[@"CLASSIFY_NAME"];
+    self.classifyID = [dict[@"ID"] intValue];
+}
+
 @end
