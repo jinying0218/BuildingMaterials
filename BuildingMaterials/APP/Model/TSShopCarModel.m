@@ -16,7 +16,7 @@
     self.goodsName = [self objectOrNilForKey:@"GOODS_NAME" fromDictionary:dict];
     self.goods_head_imageURL = [self objectOrNilForKey:@"GOODS_HEAD_IMAGE" fromDictionary:dict];
     self.goods_number = [[self objectOrNilForKey:@"GOODS_NUMBER" fromDictionary:dict] intValue];
-    self.goods_price = [[self objectOrNilForKey:@"PRICE" fromDictionary:dict] intValue];
+    self.goods_price = [[self objectOrNilForKey:@"PRICE" fromDictionary:dict] floatValue];
     self.goods_id = [[self objectOrNilForKey:@"G_ID" fromDictionary:dict] intValue];
     self.parameters = [self objectOrNilForKey:@"parameters" fromDictionary:dict];
 

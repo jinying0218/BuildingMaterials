@@ -180,7 +180,7 @@ static NSString *const ShopCarTableViewCellIdentifier = @"ShopCarTableViewCellId
                 NSDictionary *dict = @{@"carId" : [NSString stringWithFormat:@"%d",subviewModel.shopCarModel.C_ID],
                                        @"seckillId" : @"",
                                        @"goodsId" : [NSString stringWithFormat:@"%d",subviewModel.shopCarModel.goods_id],
-                                       @"price" : [NSString stringWithFormat:@"%d",subviewModel.shopCarModel.goods_price],
+                                       @"price" : [NSString stringWithFormat:@"%.2f",subviewModel.shopCarModel.goods_price],
                                        @"number" : [NSString stringWithFormat:@"%d",subviewModel.shopCarModel.goods_number],
                                        @"goodsParameters" : goodsParameters};
                 [arr addObject:dict];

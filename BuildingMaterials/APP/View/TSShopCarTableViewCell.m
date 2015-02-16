@@ -25,7 +25,7 @@
 - (void)configureCell:(TSShopCarModel *)model{
     [self.goodsImage sd_setImageWithURL:[NSURL URLWithString:model.goods_head_imageURL] placeholderImage:[UIImage imageNamed:@"not_load"]];
     self.goodsName.text = model.goodsName;
-    self.goodsPrice.text = [NSString stringWithFormat:@"￥%d",model.goods_price];
+    self.goodsPrice.text = [NSString stringWithFormat:@"￥%.2f",model.goods_price];
     self.goodsCount.text = [NSString stringWithFormat:@"%d",self.subviewModel.goodsCount];
     self.goodsParameters.text = model.parameters;
     if (self.subviewModel.inShopCar) {
