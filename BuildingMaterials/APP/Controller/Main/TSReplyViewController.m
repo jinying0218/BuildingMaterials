@@ -133,7 +133,7 @@ static NSString *const ReplyTableViewCellIdentifier = @"ReplyTableViewCellIdenti
 {
     [UIView animateWithDuration:0.25 animations:^{
         CGRect frame = self.bottomView.frame;
-        frame.origin.y -= 165;
+        frame.origin.y -= 272;
         self.bottomView.frame = frame;
     }];
 }
@@ -142,7 +142,7 @@ static NSString *const ReplyTableViewCellIdentifier = @"ReplyTableViewCellIdenti
 {
     [UIView animateWithDuration:0.25 animations:^{
         CGRect frame = self.bottomView.frame;
-        frame.origin.y += 165;
+        frame.origin.y += 272;
         self.bottomView.frame = frame;
     }];
 
