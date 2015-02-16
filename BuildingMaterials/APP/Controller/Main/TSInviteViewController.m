@@ -58,7 +58,7 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
     self.page = 1;
     NSDictionary *params = @{@"page":[NSString stringWithFormat:@"%d",self.page]};
     [TSHttpTool getWithUrl:Invite_URL params:params withCache:NO success:^(id result) {
-//        NSLog(@"招聘:%@",result);
+        NSLog(@"招聘:%@",result);
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneResult in result[@"result"]) {
                 TSInviteModel *model = [[TSInviteModel alloc] init];
@@ -72,7 +72,7 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
     }];
     
     [TSHttpTool getWithUrl:Invite_Category_URL params:nil withCache:NO success:^(id result) {
-        NSLog(@"招聘类别:%@",result);
+//        NSLog(@"招聘类别:%@",result);
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneCategory in result[@"result"]) {
                 TSInviteCategoryModel *model = [[TSInviteCategoryModel alloc] init];

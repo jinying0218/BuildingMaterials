@@ -40,6 +40,7 @@ static NSString *const ForumTableViewCellIdentifier = @"ForumTableViewCellIdenti
 
 - (void)initailizeData{
     [TSHttpTool getWithUrl:Forum_URL params:nil withCache:NO success:^(id result) {
+        
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *dict in result[@"result"]) {
                 TSForumModel *forumModel = [[TSForumModel alloc] init];

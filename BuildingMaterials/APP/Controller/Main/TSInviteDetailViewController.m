@@ -282,8 +282,6 @@
         } completion:^(BOOL finished) {
             self.coverView.hidden = NO;
         }];
-        self.applyView.hidden = NO;
-        self.cancelApplyButton.hidden = NO;
     } forControlEvents:UIControlEventTouchUpInside];
     
     //举报
@@ -324,15 +322,19 @@
             NSLog(@"投递简历:%@",result);
             if ([result[@"success"] intValue] == 1) {
                 [self showProgressHUD:@"投递简历成功" delay:1];
-                [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionLayoutSubviews animations:^{
-                    CGRect frame = self.applyView.frame;
-                    frame.origin.y = self.rootScrollView.contentSize.height + 44;
-                    self.applyView.frame = frame;
-                    self.coverView.hidden = YES;
-                } completion:nil];
             }else if ([result[@"success"] intValue] == 0 && [result[@"errorMsg"] isEqualToString:@"have_ask"]){
                 [self showProgressHUD:@"已经申请过" delay:1];
             }
+            [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionLayoutSubviews animations:^{
+                CGRect frame = self.applyView.frame;
+                frame.origin.y = KscreenH;
+                self.applyView.frame = frame;
+                self.applyView.hidden = YES;
+                self.cancelApplyButton.hidden = YES;
+            } completion:^(BOOL finished) {
+                self.coverView.hidden = YES;
+            }];
+
         } failure:^(NSError *error) {
             NSLog(@"投递简历:%@",error);
         }];

@@ -30,7 +30,7 @@
     self.G_ID = [[self objectOrNilForKey:@"G_ID" fromDictionary:dict] intValue];
     self.ID = [[self objectOrNilForKey:@"ID" fromDictionary:dict] intValue];
     self.orderId = [[self objectOrNilForKey:@"ORDER_ID" fromDictionary:dict] intValue];
-    self.orderGoodsPrice = [[self objectOrNilForKey:@"ORDER_GOODS_PRICE" fromDictionary:dict] intValue];
+    self.orderGoodsPrice = [[self objectOrNilForKey:@"ORDER_GOODS_PRICE" fromDictionary:dict] floatValue];
 
 }
 - (void)havePayModelWithDict:(NSDictionary *)dict{
@@ -39,7 +39,7 @@
     self.goodsNumber = [[self objectOrNilForKey:@"GOODS_NUMBER" fromDictionary:dict] intValue];
     self.goodsParameters = [self objectOrNilForKey:@"GOODS_PARAMETERS" fromDictionary:dict];
     self.G_ID = [[self objectOrNilForKey:@"G_ID" fromDictionary:dict] intValue];
-    self.orderGoodsPrice = [[self objectOrNilForKey:@"ORDER_GOODS_PRICE" fromDictionary:dict] intValue];
+    self.orderGoodsPrice = [[self objectOrNilForKey:@"ORDER_GOODS_PRICE" fromDictionary:dict] floatValue];
 }
 #pragma mark - Helper Method
 - (id)objectOrNilForKey:(id)aKey fromDictionary:(NSDictionary *)dict

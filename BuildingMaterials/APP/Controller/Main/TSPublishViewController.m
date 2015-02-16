@@ -234,7 +234,7 @@
     NSDictionary *params = @{@"photo" : baseImage};
     [self showProgressHUD];
     [TSHttpTool postWithUrl:ImageUpload_URL params:params success:^(id result) {
-//        NSLog(@"图片上传结果:%@",result);
+        NSLog(@"图片上传结果:%@",result);
         [self hideProgressHUD];
         if ([result[@"success"] intValue] == 1) {
             if (self.viewModel.imageURLArray.count < 6) {

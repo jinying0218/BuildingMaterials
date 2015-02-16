@@ -15,7 +15,7 @@
 @property (nonatomic, assign) int I_D;
 @property (nonatomic, assign) int IS_USED;
 @property (nonatomic, assign) int N_O;
-@property (nonatomic, assign) int POST_ASK_NUMBER;
+@property (nonatomic, assign) int POST_ASK_NUMBER;  //申请人数
 @property (nonatomic, assign) int POST_CLASSIFY_ID;
 @property (nonatomic, assign) int POST_COMPANY_ID;
 @property (nonatomic, strong) NSString *POST_DES;

@@ -109,7 +109,7 @@ static NSString *const ForumClassifyTableViewCellIdentifier = @"ForumClassifyTab
                              @"forumClassifyId" : [NSString stringWithFormat:@"%d",self.forumClassifyId],
                              @"page" : [NSString stringWithFormat:@"%d",self.page]};
     [TSHttpTool getWithUrl:ForumClassifyLoad_URL params:params withCache:NO success:^(id result) {
-        //        NSLog(@"论坛--栏目：%@",result);
+//                NSLog(@"论坛--栏目：%@",result);
         [self hideProgressHUD];
 
         if ([result[@"success"] intValue] == 1) {
@@ -139,7 +139,7 @@ static NSString *const ForumClassifyTableViewCellIdentifier = @"ForumClassifyTab
                              @"page" : [NSString stringWithFormat:@"%d",self.page]};
     [self showProgressHUD];
     [TSHttpTool getWithUrl:ForumClassifyLoad_URL params:params withCache:NO success:^(id result) {
-        //        NSLog(@"论坛--栏目：%@",result);
+                NSLog(@"论坛--栏目：%@",result);
         [self hideProgressHUD];
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *dict in result[@"result"]) {

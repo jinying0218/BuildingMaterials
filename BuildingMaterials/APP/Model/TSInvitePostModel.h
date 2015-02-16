@@ -12,7 +12,7 @@
 @property (nonatomic, assign) int companyId;
 @property (nonatomic, assign) int post_id;
 @property (nonatomic, assign) int isUsed;
-@property (nonatomic, assign) int postAskNumber;
+@property (nonatomic, assign) int postAskNumber;    //申请人数
 @property (nonatomic, assign) int postClassifyId;
 @property (nonatomic, assign) int postCompanyId;
 
