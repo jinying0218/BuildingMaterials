@@ -86,6 +86,7 @@ static NSString *const GoodsExchangeDetailTableViewCell = @"GoodsExchangeDetailT
     self.tableView.footerRefreshingText = @"加载中……";
 
 }
+
 #pragma mark - 上拉加载更多
 - (void)footerRereshing{
     self.page += 1;
