@@ -157,18 +157,18 @@
         @strongify(self);
         [self.view endEditing:YES];
         if (!self.viewModel.titleInputString ||
-            !self.viewModel.contentInputString ||
+            !self.viewModel.publishContent ||
             [self.viewModel.titleInputString isEqualToString:@""] ||
-            [self.viewModel.contentInputString isEqualToString:@""]) {
+            [self.viewModel.publishContent isEqualToString:@""]) {
             [self showProgressHUD:@"请填写帖子内容" delay:1];
             return ;
         }
         NSDictionary *params = @{@"forumName" : self.viewModel.titleInputString,
-                                 @"forumContent" : self.viewModel.contentInputString,
+                                 @"forumContent" : self.viewModel.publishContent,
                                  @"forumClassifyId" : @(self.viewModel.forumClassifyId),
                                  @"userId" : @(self.userModel.userId)};
         [TSHttpTool postWithUrl:ForumSave_URL params:params success:^(id result) {
-            NSLog(@"发帖子:%@",result);
+//            NSLog(@"发帖子:%@",result);
             if ([result[@"success"] intValue] == 1) {
                 [self showProgressHUD:@"发布成功" delay:1];
 
