@@ -9,9 +9,11 @@
             <connections>
                 <outlet property="address" destination="Fbe-1j-u88" id="sz7-BD-qdS"/>
                 <outlet property="baseView" destination="BcF-A0-uHd" id="skx-uc-D86"/>
+                <outlet property="changeDescView" destination="BHD-Sx-TBh" id="NBX-bp-pcV"/>
                 <outlet property="releaseButton" destination="QrP-dk-Y4C" id="hxN-Ad-UET"/>
                 <outlet property="releaseTime" destination="CJC-O3-9HI" id="qJ2-Jd-FEY"/>
                 <outlet property="reportButton" destination="09N-a2-E5S" id="PvX-fX-ek5"/>
+                <outlet property="seperatorLine" destination="baz-Ca-Vb1" id="ITD-GT-YfO"/>
                 <outlet property="telButton" destination="ZZE-aQ-PfO" id="JPp-vo-Axr"/>
                 <outlet property="telPhone" destination="EMN-96-XWm" id="0v9-jD-hdS"/>
                 <outlet property="thingDes" destination="FhR-7c-TQd" id="i7w-f0-dhE"/>
@@ -207,17 +209,22 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
+                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="uxv-xB-xmi">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        </scrollView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="baz-Ca-Vb1">
-                            <rect key="frame" x="0.0" y="435" width="320" height="1"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <rect key="frame" x="0.0" y="449" width="320" height="1"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="QrP-dk-Y4C">
-                            <rect key="frame" x="17" y="444" width="130" height="46"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <rect key="frame" x="17" y="458" width="120" height="38"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="我要发布" backgroundImage="invite_telButton.png">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -225,19 +232,14 @@
                             </state>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="09N-a2-E5S">
-                            <rect key="frame" x="176" y="444" width="130" height="46"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <rect key="frame" x="176" y="458" width="120" height="38"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <state key="normal" title="我要举报" backgroundImage="invite_applyButton.png">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
-                        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="uxv-xB-xmi">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                        </scrollView>
                     </subviews>
                     <color key="backgroundColor" red="0.92549019610000005" green="0.92549019610000005" blue="0.92549019610000005" alpha="1" colorSpace="calibratedRGB"/>
                     <inset key="insetFor6xAndEarlier" minX="0.0" minY="-21" maxX="0.0" maxY="21"/>
@@ -245,7 +247,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
-            <point key="canvasLocation" x="439" y="340"/>
+            <point key="canvasLocation" x="666" y="247"/>
         </view>
     </objects>
     <resources>

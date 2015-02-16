@@ -40,6 +40,9 @@
 #import "TSExchangeModel.h"
 #import "TSAdModel.h"
 
+#import "TSInviteDetailViewController.h"
+#import "TSInviteDetailViewModel.h"
+
 static NSString * const goodsRecommendCell = @"goodsRecommendCell";     //商品推荐
 static NSString * const goodsExchangeCell = @"goodsExchangeCell";     //以物换物
 static NSString * const shopRecommendCell = @"shopRecommendCell";     //商家推荐
@@ -130,22 +133,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneGoodsModel in result[@"result"]) {
                 TSGoodsRecommandModel *goodsModel = [[TSGoodsRecommandModel alloc] init];
-                goodsModel.GOODS_CLASSIFY_ID = [oneGoodsModel[@"GOODS_CLASSIFY_ID"] intValue];
-                goodsModel.GOODS_COMPANY_ID = [oneGoodsModel[@"GOODS_COMPANY_ID"] intValue];
-                goodsModel.GOODS_DES = oneGoodsModel[@"GOODS_DES"];
-                goodsModel.GOODS_DES_SIMPLE = oneGoodsModel[@"GOODS_DES_SIMPLE"];
-                goodsModel.GOODS_HEAD_IMAGE = oneGoodsModel[@"GOODS_HEAD_IMAGE"];
-                goodsModel.GOODS_NAME = oneGoodsModel[@"GOODS_NAME"];
-                goodsModel.GOODS_NEW_PRICE = [oneGoodsModel[@"GOODS_NEW_PRICE"] intValue];
-//                goodsModel.GOODS_OLD_PRICE = oneGoodsModel[@"GOODS_OLD_PRICE"] ? [oneGoodsModel[@"GOODS_OLD_PRICE"] intValue] : @"";
-                goodsModel.GOODS_SELL_NUMBER = [oneGoodsModel[@"GOODS_SELL_NUMBER"] intValue];
-                goodsModel.GOODS_WEIGHT = [oneGoodsModel[@"GOODS_WEIGHT"] intValue];
-                goodsModel.I_D = [oneGoodsModel[@"ID"] intValue];
-                goodsModel.IS_RECOMMEND = [oneGoodsModel[@"IS_RECOMMEND"] intValue];
-                goodsModel.IS_USED = [oneGoodsModel[@"IS_USED"] intValue];
-                goodsModel.N_O = [oneGoodsModel[@"NO"] intValue];
-                goodsModel.RECOMMEND_TIME = oneGoodsModel[@"RECOMMEND_TIME"];
-
+                [goodsModel setValueForDictionary:oneGoodsModel];
                 [self.viewModel.goodsRecommendDataArray addObject:goodsModel];
             }
             [self.firstTable reloadData];
@@ -187,6 +175,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     [self.rootView addSubview:_firstTable];
     
     UIView *banner = [[UIView alloc] initWithFrame:CGRectMake( 0, 0, KscreenW, 130)];
+    banner.userInteractionEnabled = YES;
     self.firstTable.tableHeaderView = banner;
 
     self.bannerScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake( 0, 0, KscreenW, 120)];
@@ -203,10 +192,40 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     int i = 0;
     for (TSAdModel *oneAdModel in self.viewModel.adArray) {
         UIImageView *imageView1 = [[UIImageView alloc] init];
+        imageView1.userInteractionEnabled = YES;
         imageView1.frame = CGRectMake( KscreenW * i, 0, KscreenW, 120);
         [imageView1 sd_setImageWithURL:[NSURL URLWithString:oneAdModel.ad_url]placeholderImage:[UIImage imageNamed:@"not_load_ad"]];
         [self.bannerScrollView addSubview:imageView1];
         i ++;
+        
+        [imageView1 bk_whenTapped:^{
+            
+            if ([oneAdModel.ad_type isEqualToString:@"TYPE_COMPANY"]) {
+                TSShopDetailViewModel *viewModel = [[TSShopDetailViewModel alloc] init];
+                viewModel.companyID = oneAdModel.ad_go_ID;
+                TSShopDetailViewController *shopDetailVC = [[TSShopDetailViewController alloc] initWithViewModel:viewModel];
+                [self.navigationController pushViewController:shopDetailVC animated:YES];
+
+            }else if ([oneAdModel.ad_type isEqualToString:@"TYPE_GOODS"]){
+                TSGoodsDetailViewModel *viewModel = [[TSGoodsDetailViewModel alloc] init];
+                viewModel.isSecondsDeal = NO;
+                viewModel.goodsID = oneAdModel.ad_go_ID;
+                TSGoodsDetailViewController *goodsDetailVC = [[TSGoodsDetailViewController alloc] init];
+                goodsDetailVC.viewModel = viewModel;
+                [self.navigationController pushViewController:goodsDetailVC animated:YES];
+
+            }else if ([oneAdModel.ad_type isEqualToString:@"TYPE_POST"]){
+                
+                TSInviteDetailViewModel *viewModel = [[TSInviteDetailViewModel alloc] init];
+                viewModel.postID = oneAdModel.ad_go_ID;
+                TSInviteDetailViewController *inviteDetailVC = [[TSInviteDetailViewController alloc] init];
+                inviteDetailVC.viewModel = viewModel;
+                [self.navigationController pushViewController:inviteDetailVC animated:YES];
+
+            }
+        }];
+        
+        
     }
     if (self.viewModel.adArray.count == 0) {
         UIImageView *imageView1 = [[UIImageView alloc] init];
@@ -222,6 +241,11 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
     int index = (int)button.tag - 10000;
     TSSecKillModel *model = self.viewModel.secKillDataArray[index];
 //秒杀
+    if (model.SECKILL_NUMBER - model.SECKILL_NUMBER_NOW <= 0) {
+        [self showProgressHUD:@"已抢光了" delay:1];
+        return;
+    }
+
     TSSecondsDealTableViewCell *cell = (TSSecondsDealTableViewCell *)[self.firstTable cellForRowAtIndexPath:[NSIndexPath indexPathForItem:0 inSection:0]];
     if (cell.isOver) {
         [self showProgressHUD:@"秒杀已结束" delay:1];
@@ -320,6 +344,7 @@ static NSString * const secondsDealCell = @"secondsDealCell";     //掌上秒杀
                 TSGoodsRecommandModel *goodsModel = self.viewModel.goodsRecommendDataArray[cell.secondGoodsImage.tag - 21000];
                 TSGoodsDetailViewModel *viewModel = [[TSGoodsDetailViewModel alloc] init];
                 viewModel.goodsID = goodsModel.I_D;
+                viewModel.isSecondsDeal = NO;
                 TSGoodsDetailViewController *goodsDetailVC = [[TSGoodsDetailViewController alloc] init];
                 goodsDetailVC.viewModel = viewModel;
                 [self.navigationController pushViewController:goodsDetailVC animated:YES];

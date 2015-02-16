@@ -17,7 +17,7 @@
 @property (nonatomic, assign) int G_ID;     //用来做商品评价
 @property (nonatomic, assign) int ID;
 @property (nonatomic, assign) int orderId;
-@property (nonatomic, assign) int orderGoodsPrice;
+@property (nonatomic, assign) float orderGoodsPrice;
 
 - (void)modelWithDict:(NSDictionary *)dict;
 

@@ -17,10 +17,10 @@
 @property (nonatomic, strong) NSString *goods_des_simple;
 @property (nonatomic, strong) NSString *goods_Head_ImageUrl;
 @property (nonatomic, strong) NSString *goodsName;
-@property (nonatomic, assign) int goods_new_price;
-@property (nonatomic, assign) int goods_old_price;
+@property (nonatomic, assign) float goods_new_price;
+@property (nonatomic, assign) float goods_old_price;
 @property (nonatomic, assign) int goods_sell_number;
-@property (nonatomic, assign) int goods_weight;
+@property (nonatomic, assign) float goods_weight;
 @property (nonatomic, assign) int Collect_id;
 @property (nonatomic, assign) int is_recommend;
 @property (nonatomic, assign) int is_used;

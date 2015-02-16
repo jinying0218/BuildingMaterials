@@ -12,6 +12,8 @@
 @property (nonatomic, assign) int parametersId;
 @property (nonatomic, strong) NSString *parametersName;
 
+@property (nonatomic, strong) NSString *fatherParameterName;
+
 + (instancetype)modelObjectWithDictionary:(NSDictionary *)dict;
 
 @end

@@ -22,6 +22,8 @@ typedef void(^TSGetCarInfo)(BOOL refreshCarMoney);
 @property (weak, nonatomic) IBOutlet UILabel *goodsCount;
 @property (weak, nonatomic) IBOutlet UIButton *plusButton;
 @property (weak, nonatomic) IBOutlet UIButton *minutsButton;
+@property (weak, nonatomic) IBOutlet UILabel *goodsParameters;
+
 @property (nonatomic, strong) TSGetCarInfo getCarInfo;
 //- (void)configureCell:(TSShopCarModel *)model;
 - (void)attachViewModel:(TSShopCarCellSubviewModel *)subviewModel carInfo:(TSGetCarInfo)getCarInfo;

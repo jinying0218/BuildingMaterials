@@ -62,7 +62,7 @@ typedef void(^ConfirmReceiveButtonHandler)(NSIndexPath *indexPath);
         self.moneyBackButton.enabled = NO;
         self.confirmReceiveButton.enabled = NO;
     }
-    self.orderTotalPrice.text = [NSString stringWithFormat:@"￥%d",orderModel.orderTotalPrice];
+    self.orderTotalPrice.text = [NSString stringWithFormat:@"￥%.2f",orderModel.orderTotalPrice];
     self.orderDetailButtonHandler = orderDetailButtonHandler;
     self.oneyBackButtonHandler = moneyBackButtonHandler;
     self.checkTransportButtonHandler = checkTransportButtonHandler;

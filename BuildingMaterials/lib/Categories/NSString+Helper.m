@@ -9,6 +9,7 @@
 #import "NSString+Helper.h"
 #import <CommonCrypto/CommonDigest.h>
 
+
 @implementation NSString (Helper)
 
 - (NSString *)trimString

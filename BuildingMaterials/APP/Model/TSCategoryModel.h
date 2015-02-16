@@ -13,6 +13,9 @@
 @property (nonatomic, strong) NSString *classifyImageUrl;
 @property (nonatomic, strong) NSString *classifyName;
 @property (nonatomic, assign) int classifyID;
-
+//所有商品的类别
 - (void)setValueForDictionary:(NSDictionary *)dict;
+//商家的类别
+- (void)modelWithDictionary:(NSDictionary *)dict;
+
 @end

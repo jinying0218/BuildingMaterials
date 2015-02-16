@@ -16,4 +16,6 @@
 @property (nonatomic, assign) int page;
 @property (nonatomic, assign) int classifyID;
 @property (nonatomic, strong) NSString *goodsOrderType;
+@property (nonatomic, strong) NSString *goodsSearchName;
+
 @end

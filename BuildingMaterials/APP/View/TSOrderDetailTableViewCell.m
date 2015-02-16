@@ -35,7 +35,7 @@
 - (void)configureCell:(TSOrderDetailGoodsModel *)orderGoodsModel commentButtonHandler:(CommentButtonHandler)commentButtonHandler{
     [self.orderHeaderImage sd_setImageWithURL:[NSURL URLWithString:orderGoodsModel.goodsHeadImage] placeholderImage:[UIImage imageNamed:@"not_load"]];
     self.goodsName.text = orderGoodsModel.goodsName;
-    self.goodsPrice.text = [NSString stringWithFormat:@"%d*%d",orderGoodsModel.orderGoodsPrice,orderGoodsModel.goodsNumber];
+    self.goodsPrice.text = [NSString stringWithFormat:@"￥%.2f*%d",orderGoodsModel.orderGoodsPrice,orderGoodsModel.goodsNumber];
     self.goodsParameters.text = orderGoodsModel.goodsParameters;
     self.commentButtonHandler = commentButtonHandler;
 }

@@ -34,6 +34,8 @@
 #define CompanyDetail_URL Domain"/companyLoadById"
 //商家商品加载
 #define CompanyGoodsLoad_URL Domain"/goodsLoadByCompanyId"
+//商家类别加载
+#define CompanyGoodsClassifyLoad_URL Domain"/goodsClassifyLoadByCompanyId"
 
 //////////  商品相关
 //首页商品加载
@@ -44,6 +46,8 @@
 #define GoodsClassify_URL Domain"/goodsClassifyLoad"
 //商品信息
 #define GoodsInfo_URL Domain"/goodsLoadById"
+//商品图片加载
+#define GoodsImageLoad_URL Domain"/goodsImageLoadById"
 //商品规格参数
 #define GoodsParameters_URL Domain"/goodsParametersLoadById"
 //商品评论加载

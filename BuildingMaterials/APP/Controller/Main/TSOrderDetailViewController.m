@@ -124,6 +124,7 @@ static NSString *const OrderDetailTableViewCellIdendifier = @"OrderDetailTableVi
                                  @"commentContent" : self.viewModel.commentContentString,
                                  @"userId" : [NSString stringWithFormat:@"%d",self.userModel.userId]};
         [TSHttpTool postWithUrl:PostGoodsComment_URL params:params success:^(id result) {
+//            NSLog(@"%@",result);
             if ([result[@"success"] intValue] == 1) {
                 [self showProgressHUD:@"评论成功" delay:1];
             }else if ([result[@"errorMsg"] isEqualToString:@"have_comment"]){

@@ -33,14 +33,14 @@
                 }
                 self.firstGoodsName.text = model.GOODS_NAME;
                 self.firstGoodsName.adjustsFontSizeToFitWidth = YES;
-                self.firstGoodsPrice.text = [NSString stringWithFormat:@"￥%d",model.GOODS_NEW_PRICE];
+                self.firstGoodsPrice.text = [NSString stringWithFormat:@"￥%.2f",model.GOODS_NEW_PRICE];
             }
                 break;
             case 1:{
                 [self.secondGoodsImage sd_setImageWithURL:[NSURL URLWithString:model.GOODS_HEAD_IMAGE] placeholderImage:[UIImage imageNamed:@"not_load"]];
                 self.secondGoddsName.text = model.GOODS_NAME;
                 self.secondGoddsName.adjustsFontSizeToFitWidth = YES;
-                self.secondGoodsPrice.text = [NSString stringWithFormat:@"￥%d",model.GOODS_NEW_PRICE];
+                self.secondGoodsPrice.text = [NSString stringWithFormat:@"￥%.2f",model.GOODS_NEW_PRICE];
             }
                 break;
             default:

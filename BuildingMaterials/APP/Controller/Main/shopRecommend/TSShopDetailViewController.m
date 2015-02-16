@@ -19,6 +19,8 @@
 #import "TSGoodsDetailViewModel.h"
 #import "TSUserModel.h"
 
+
+
 static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailCollectionHeaderIdentifier";
 
 @interface TSShopDetailViewController ()<UICollectionViewDataSource,UICollectionViewDelegate>
@@ -75,6 +77,8 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
         TSShopGoodsViewController *shopGoodsVC = [[TSShopGoodsViewController alloc] init];
         shopGoodsVC.viewModel = viewModel;
         [self.navigationController pushViewController:shopGoodsVC animated:YES];
+        
+
 
     } forControlEvents:UIControlEventTouchUpInside];
     
@@ -99,10 +103,12 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
 }
 
 - (void)initializeData{
-//    self.tableDataArray = [[NSMutableArray alloc] initWithObjects:@"莫非瓷砖商家",@"莫非瓷砖商家",@"莫非瓷砖商家",@"莫非瓷砖",@"莫非瓷砖商家",@"莫非瓷砖商家", nil];
     
+    [self showProgressHUD];
     NSDictionary *params = @{@"companyId" : [NSString stringWithFormat:@"%d",self.viewModel.companyID]};
     [TSHttpTool getWithUrl:CompanyDetail_URL params:params withCache:NO success:^(id result) {
+        [self hideProgressHUD];
+
 //        NSLog(@"商家详情：%@",result);
         if ([result[@"success"] intValue] == 1) {
             [self.viewModel.shopModel setShopModelValueForDictionary:result[@"result"]];
@@ -111,6 +117,7 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
         }
     } failure:^(NSError *error) {
         NSLog(@"商家详情：%@",error);
+        [self hideProgressHUD];
     }];
     
     NSDictionary *shopGoodsParams = @{@"page" : [NSString stringWithFormat:@"%d",self.page],
@@ -118,6 +125,8 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
                                       @"companyId" : [NSString stringWithFormat:@"%d",self.viewModel.companyID]};
     [TSHttpTool getWithUrl:CompanyGoodsLoad_URL params:shopGoodsParams withCache:NO success:^(id result) {
 //        NSLog(@"商家物品：%@",result);
+        [self hideProgressHUD];
+
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneDict in result[@"result"]) {
                 TSGoodsRecommandModel *goodsModel = [[TSGoodsRecommandModel alloc] init];
@@ -130,6 +139,8 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
             [self.collectionView reloadData];
         }
     } failure:^(NSError *error) {
+        [self hideProgressHUD];
+
         NSLog(@"商家物品：%@",error);
 
     }];
@@ -145,8 +156,9 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
     // 1.创建流水布局
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     // 2.设置每个格子的尺寸
+    layout.itemSize = CGSizeMake( 150, 170);
+
     if ([UIScreen mainScreen].bounds.size.width > 320) {
-        layout.itemSize = CGSizeMake( 150, 170);
         layout.sectionInset = UIEdgeInsetsMake( 5, 15, 0, 15);
     }else {
         layout.sectionInset = UIEdgeInsetsMake( 5, 5, 0, 5);
@@ -205,13 +217,13 @@ static  NSString *const ShopDetailCollectionHeaderIdentifier = @"ShopDetailColle
     self.bannerScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake( 0, 0, KscreenW, 120)];
     //    banner.showsVerticalScrollIndicator = NO;
     //    banner.showsHorizontalScrollIndicator = NO;
-    self.bannerScrollView.contentSize = CGSizeMake( 3 * KscreenW, 120);
+    self.bannerScrollView.contentSize = CGSizeMake( 1 * KscreenW, 120);
     self.bannerScrollView.delegate = self;
     self.bannerScrollView.pagingEnabled = YES;
     self.bannerScrollView.backgroundColor = [UIColor yellowColor];
     [headerView addSubview:self.bannerScrollView];
     
-    UIImageView *imageView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamedString:@"banner1"]];
+    UIImageView *imageView1 = [[UIImageView alloc] initWithImage:[UIImage imageNamedString:@"shopDetail_top"]];
     imageView1.frame = CGRectMake( 0, 0, KscreenW, 120);
     [self.bannerScrollView addSubview:imageView1];
     

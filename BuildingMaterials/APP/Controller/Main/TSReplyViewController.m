@@ -13,7 +13,7 @@
 
 static NSString *const ReplyTableViewCellIdentifier = @"ReplyTableViewCellIdentifier";
 
-@interface TSReplyViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface TSReplyViewController ()<UITableViewDataSource,UITableViewDelegate,UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet UIButton *replyButton;
@@ -71,6 +71,8 @@ static NSString *const ReplyTableViewCellIdentifier = @"ReplyTableViewCellIdenti
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
+    
+    self.replyInput.delegate = self;
 }
 - (void)blindActionHandler{
     @weakify(self);
@@ -127,5 +129,24 @@ static NSString *const ReplyTableViewCellIdentifier = @"ReplyTableViewCellIdenti
 //    forumDetailVC.forumClassifyModel = model;
 //    [self.navigationController pushViewController:forumDetailVC animated:YES];
 }
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        CGRect frame = self.bottomView.frame;
+        frame.origin.y -= 272;
+        self.bottomView.frame = frame;
+    }];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        CGRect frame = self.bottomView.frame;
+        frame.origin.y += 272;
+        self.bottomView.frame = frame;
+    }];
+
+}
+
 
 @end

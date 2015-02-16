@@ -29,6 +29,6 @@
     self.inviteName.text = model.POST_NAME;
     self.inviteDes.text = model.POST_DES;
     self.invitePrice.text = [NSString stringWithFormat:@"%d/月",model.POST_PRICE];
-    self.inviteNumber.text = [NSString stringWithFormat:@"已有%d人申请",model.POST_NUMBER];
+    self.inviteNumber.text = [NSString stringWithFormat:@"已有%d人申请",model.POST_ASK_NUMBER];
 }
 @end

@@ -86,6 +86,13 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
                 [orderModel modelWithDict:dict];
                 if (!orderModel.goodsParameters) {
                     orderModel.goodsParameters = @"";
+                }else {
+                    if ([orderModel.goodsParameters hasPrefix:@"\""]) {
+                        NSMutableString *goodsParameters = [orderModel.goodsParameters mutableCopy];
+                        [goodsParameters deleteCharactersInRange:NSMakeRange( goodsParameters.length - 1, 1)];
+                        [goodsParameters deleteCharactersInRange:NSMakeRange( 0, 1)];
+                        orderModel.goodsParameters = goodsParameters;
+                    }
                 }
                 [allGoodsArray addObject:orderModel];
                 if (![allCompanyIds containsObject:@(orderModel.CC_ID)]) {
@@ -100,11 +107,16 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
                     subviewModel.goodsArray = [companyArr mutableCopy];
                     //有多少个分组
                     [self.viewModel.subviewModels addObject:subviewModel];
-//                    [self.viewModel.dataArray addObject:companyArr];
+                    for (TSOrderModel *orderModel in subviewModel.goodsArray) {
+                        subviewModel.companyTotalPrice += (float)orderModel.goodsNumber * orderModel.price;
+                        NSLog(@"%f",subviewModel.companyTotalPrice);
+                    }
+
                 }
             }
             [self.tableView reloadData];
-            
+            [self countTotalMoney];
+/*
             //默认提示第一个选择运送方式
             TSOrderModel *firstOrderModel = [self.viewModel.subviewModels[0] goodsArray][0];
             NSDictionary *paramsTransport = @{@"companyId" : [NSString stringWithFormat:@"%d",firstOrderModel.CC_ID]};
@@ -123,7 +135,7 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
             } failure:^(NSError *error) {
                 NSLog(@"TransportLoad_URL---运输方式：%@",error);
             }];
-            
+*/
         }
     } failure:^(NSError *error) {
         NSLog(@"订单数据加载:%@",error);
@@ -183,7 +195,7 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
             NSMutableArray *goods = [[NSMutableArray alloc] initWithCapacity:0];
             for (TSOrderModel *orderModel in subviewModel.goodsArray) {
                 NSDictionary *dict = @{@"goodsId" : [NSString stringWithFormat:@"%d",orderModel.G_ID],
-                                       @"price" : [NSString stringWithFormat:@"%d",orderModel.price],
+                                       @"price" : [NSString stringWithFormat:@"%.2f",orderModel.price],
                                        @"number" : [NSString stringWithFormat:@"%d",orderModel.goodsNumber],
                                        @"goodsParameters" : orderModel.goodsParameters};
                 [goods addObject:dict];
@@ -193,10 +205,16 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
                 [self showProgressHUD:@"请选择配送方式" delay:1];
                 return ;
             }
+            if (!self.viewModel.address ||
+                [self.viewModel.address isEqualToString:@""]) {
+                [self showProgressHUD:@"请选择地址" delay:1];
+                return ;
+            }
+            
             NSDictionary *dict = @{@"companyId" : [NSString stringWithFormat:@"%d",firstOrderModel.CC_ID],
-                                   @"totalPrice" : [NSString stringWithFormat:@"%d",subviewModel.companyTotalPrice],
-                                   @"goodsPrice" : [NSString stringWithFormat:@"%d",firstOrderModel.price],
-                                   @"transportPrice" : [NSString stringWithFormat:@"%d",subviewModel.transportPrice],
+                                   @"totalPrice" : [NSString stringWithFormat:@"%.2f",subviewModel.companyTotalPrice],
+                                   @"goodsPrice" : [NSString stringWithFormat:@"%.2f",firstOrderModel.price],
+                                   @"transportPrice" : [NSString stringWithFormat:@"%.2f",subviewModel.transportPrice],
                                    @"transportName" : subviewModel.transportModel.transportName,
                                    @"transportType" : [NSString stringWithFormat:@"%d",subviewModel.transportModel.transportType],
                                    @"goods" : goods};
@@ -380,6 +398,8 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
         return nil;
     }
 }
+
+#pragma mark - 定制某一行Cell
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView.tag == Tag_orderTable) {
         TSOrderConfirmTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:OrderConfirmTableViewCellIdendifier];
@@ -390,7 +410,7 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
         TSOrderModel *model = subviewModel.goodsArray[indexPath.row];
         cell.goodsName.text = model.goodsName;
         cell.goodsParamters.text = model.goodsParameters;
-        cell.goodsNumberPrice.text = [NSString stringWithFormat:@"%d * %d",model.price,model.goodsNumber];
+        cell.goodsNumberPrice.text = [NSString stringWithFormat:@"￥%.2f * %d",model.price,model.goodsNumber];
         [cell.headerImage sd_setImageWithURL:[NSURL URLWithString:model.goodsHeadImageURL] placeholderImage:[UIImage imageNamed:@"not_load"]];
         return cell;
     }else {
@@ -403,13 +423,46 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
         return cell;
     }
 }
-
+#pragma mark - 选择某一行
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (tableView.tag == Tag_transportTable) {
         //选择运送方式
         TSTransportModel *transportModel = self.viewModel.transportsArray[indexPath.row];
         TSOrderSubviewModel *subviewModel = self.viewModel.subviewModels[self.viewModel.currentSection];
         subviewModel.transportModel = transportModel;
+        subviewModel.companyTotalPrice = 0;
+        for (TSOrderModel *orderModel in subviewModel.goodsArray) {
+            subviewModel.companyTotalPrice += orderModel.goodsNumber * orderModel.price;
+            subviewModel.goodsWeight += orderModel.goodsWeight;
+        }
+        switch (transportModel.transportType) {
+            case 1:{
+                subviewModel.transportPrice = 0;
+            }
+                break;
+            case 2:{
+                if (subviewModel.goodsWeight > transportModel.transportFirstWeight) {
+                    subviewModel.transportPrice =  (subviewModel.goodsWeight - transportModel.transportFirstWeight) * transportModel.transportOverFee + transportModel.transportFirstFee;
+                }else {
+                    subviewModel.transportPrice = transportModel.transportFirstFee;
+                }
+            }
+                break;
+            case 3:{
+                subviewModel.transportPrice = transportModel.transportFee;
+
+            }
+                break;
+            case 4:{
+                subviewModel.transportPrice = transportModel.transportFee;
+
+            }
+                break;
+            default:
+                break;
+        }
+        
+        [self countTotalMoney];
         
         TSOrderTableFooterView *footerView = (TSOrderTableFooterView *)[self.tableView footerViewForSection:self.viewModel.currentSection];
         footerView.transportName.text = transportModel.transportName;
@@ -418,5 +471,16 @@ static NSString *const TransportTableViewCellIdendifier = @"TransportTableViewCe
         self.popView.hidden = YES;
     }
 }
-
+#pragma mark - 计算总价格
+- (void)countTotalMoney{
+    self.viewModel.totalGoodsMoney = 0;
+    self.viewModel.totalTransportMoney = 0;
+    for (TSOrderSubviewModel *subviewModel in self.viewModel.subviewModels) {
+        self.viewModel.totalGoodsMoney += subviewModel.companyTotalPrice;
+        self.viewModel.totalTransportMoney += subviewModel.transportPrice;
+    }
+    
+    self.postageMoney.text = [NSString stringWithFormat:@"运费：￥%.2f",self.viewModel.totalTransportMoney];
+    self.totalMoney.text = [NSString stringWithFormat:@"总价：￥%.2f",self.viewModel.totalGoodsMoney + self.viewModel.totalTransportMoney];
+}
 @end

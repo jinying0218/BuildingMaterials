@@ -19,6 +19,7 @@
         self.dataArray = [[NSMutableArray alloc] initWithCapacity:0];
         self.count = 1;
         _paramsValue = [[NSMutableArray alloc] initWithCapacity:0];
+        _imageArray = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }

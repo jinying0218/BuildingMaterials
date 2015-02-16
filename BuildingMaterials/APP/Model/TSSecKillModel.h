@@ -12,9 +12,9 @@
 @property (nonatomic, strong) NSString *GOODS_DES;
 @property (nonatomic, strong) NSString *GOODS_HEAD_IMAGE;
 @property (nonatomic, strong) NSString *GOODS_NAME;
-@property (nonatomic, assign) int GOODS_NEW_PRICE;
+@property (nonatomic, assign) float GOODS_NEW_PRICE;
 @property (nonatomic, assign) int goodsId;   //商品ID
-@property (nonatomic, assign) int SECKILL_PRICE;
+@property (nonatomic, assign) float SECKILL_PRICE;
 @property (nonatomic, assign) int SECKILL_NUMBER;
 @property (nonatomic, assign) int SECKILL_NUMBER_NOW;  //秒杀数量
 
@@ -24,6 +24,7 @@
 @property (nonatomic, assign) int SecondsDeal_EventID;
 @property (nonatomic, assign) int STATUS;
 
+@property (nonatomic, assign) BOOL haveOver;
 
 - (void)setValueForDictionary:(NSDictionary *)dict;
 @end

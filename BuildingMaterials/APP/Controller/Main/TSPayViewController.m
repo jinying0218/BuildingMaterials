@@ -7,12 +7,14 @@
 //
 
 #import "TSPayViewController.h"
+#import "TSGoodsDetailViewController.h"
+#import "TSShopCarViewController.h"
+#import "TSWaitForPayViewController.h"
 
 @interface TSPayViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *backItem;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextItem;
-@property (weak, nonatomic) IBOutlet UIButton *backButton;      //导航返回
 
 @end
 
@@ -33,14 +35,27 @@
     if (self.orderCode) {
         [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?orderCode=%@",Pay_URL,self.orderCode]]]];
     }else {
-        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?orderId=%d&&orderCode=@""",Pay_URL,self.orderId]]]];
-        NSLog(@"%@",[NSString stringWithFormat:@"%@?orderId=%d&&orderCode=",Pay_URL,self.orderId]);
+        [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@?orderId=%d&&orderCode=%@",Pay_URL,self.orderId,@""]]]];
+//        NSLog(@"%@",[NSString stringWithFormat:@"%@?orderId=%d&&orderCode=",Pay_URL,self.orderId]);
     }
     
 }
 - (void)configureUI{
-    
-    
+    [self createNavigationBarTitle:@"支付宝支付" leftButtonImageName:@"Previous" rightButtonImageName:nil];
+    self.navigationBar.frame = CGRectMake( 0, STATUS_BAR_HEGHT, KscreenW, 44);
+    [self.view addSubview:self.navigationBar];
+}
+- (void)leftButtonClick:(UIButton *)button{
+    for (UIViewController *controller in self.navigationController.viewControllers) {
+        //            NSLog(@"%@",controller);
+        if ([controller isKindOfClass:[TSGoodsDetailViewController class]]) {
+            [self.navigationController popToViewController:controller animated:YES];
+        }else if ([controller isKindOfClass:[TSShopCarViewController class]]){
+            [self.navigationController popToViewController:controller animated:YES];
+        }else if ([controller isKindOfClass:[TSWaitForPayViewController class]]){
+            [self.navigationController popToViewController:controller animated:YES];
+        }
+    }
 }
 
 - (void)blindViewModel{
@@ -49,11 +64,6 @@
 - (void)blindActionHandler{
     @weakify(self);
     
-    [self.backButton bk_addEventHandler:^(id sender) {
-        @strongify(self);
-        [self.navigationController popViewControllerAnimated:YES];
-    } forControlEvents:UIControlEventTouchUpInside];
-
     [self.webView bk_setDidStartLoadBlock:^(UIWebView *webView) {
         @strongify(self);
         [self showProgressHUD];

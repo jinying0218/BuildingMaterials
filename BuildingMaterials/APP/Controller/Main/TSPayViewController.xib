@@ -7,7 +7,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TSPayViewController">
             <connections>
-                <outlet property="backButton" destination="Tvc-uC-Ca5" id="NcL-wT-Qqc"/>
                 <outlet property="backItem" destination="8QH-0m-33C" id="pkB-2e-7sR"/>
                 <outlet property="nextItem" destination="aoR-am-6Lo" id="Mwn-ki-Sbc"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -37,26 +36,15 @@
                     </items>
                 </toolbar>
                 <webView contentMode="scaleToFill" id="yZT-Ke-Zea">
-                    <rect key="frame" x="0.0" y="20" width="320" height="504"/>
+                    <rect key="frame" x="0.0" y="64" width="320" height="460"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </webView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Tvc-uC-Ca5">
-                    <rect key="frame" x="0.0" y="20" width="60" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <inset key="contentEdgeInsets" minX="10" minY="6" maxX="14" maxY="6"/>
-                    <state key="normal" image="Previous.png">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="-160" y="40"/>
+            <point key="canvasLocation" x="26" y="188"/>
         </view>
     </objects>
-    <resources>
-        <image name="Previous.png" width="62" height="62"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

@@ -16,10 +16,10 @@
     self.orderCode = [self objectOrNilForKey:@"ORDER_CODE" fromDictionary:dict];
     self.orderStatus = [self objectOrNilForKey:@"ORDER_STATUS" fromDictionary:dict];
     self.orderSureTime = [self objectOrNilForKey:@"ORDER_SURE_TIME" fromDictionary:dict];
-    self.orderTotalPrice = [[self objectOrNilForKey:@"ORDER_TOTAL_PRICE" fromDictionary:dict] intValue];
+    self.orderTotalPrice = [[self objectOrNilForKey:@"ORDER_TOTAL_PRICE" fromDictionary:dict] floatValue];
     self.transportCode = [self objectOrNilForKey:@"ORDER_TRANSPORT_CODE" fromDictionary:dict];
     self.transportName = [self objectOrNilForKey:@"ORDER_TRANSPORT_NAME" fromDictionary:dict];
-    self.transportPrice = [[self objectOrNilForKey:@"ORDER_TRANSPORT_PRICE" fromDictionary:dict] intValue];
+    self.transportPrice = [[self objectOrNilForKey:@"ORDER_TRANSPORT_PRICE" fromDictionary:dict] floatValue];
     self.orderId = [[self objectOrNilForKey:@"O_ID" fromDictionary:dict] intValue];
     self.goods = [[NSMutableArray alloc] initWithCapacity:0];
     for (NSDictionary *goodDict in [self objectOrNilForKey:@"goods" fromDictionary:dict]) {

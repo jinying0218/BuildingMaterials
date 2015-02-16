@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *titleInput;
 @property (weak, nonatomic) IBOutlet UITextView *contentInput;
 @property (weak, nonatomic) IBOutlet UIButton *takePictureButton;
-@property (weak, nonatomic) IBOutlet UIScrollView *imageBackScrollview;
+@property (weak, nonatomic) IBOutlet TSScrollView *imageBackScrollview;
 @property (nonatomic, strong) UIImagePickerController *imagePickerController;
 @property (nonatomic, strong) UIActionSheet *actionSheet;
 @property (nonatomic, strong) TSUserModel *userModel;
@@ -68,6 +68,8 @@
     
     
     self.contentInput.delegate = self;
+    self.contentInput.text = @"帖子内容";
+    self.contentInput.textColor = [UIColor lightGrayColor];
 
     self.imagePickerController = [[UIImagePickerController alloc] init];
     [self.imagePickerController setDelegate:self];
@@ -113,13 +115,21 @@
     self.viewModel.publishContent = [NSString stringWithFormat:@"%@%@",mutableContent,self.viewModel.imageContent];
 }
 - (void)blindViewModel{
-    [self.KVOController observe:self keyPath:@keypath(self.viewModel,titleInputString) options:NSKeyValueObservingOptionNew block:^(TSPublishViewController *observer, TSPublishViewModel *object, NSDictionary *change) {
+    [self.KVOController
+     observe:self
+     keyPath:@keypath(self.viewModel,titleInputString)
+     options:NSKeyValueObservingOptionNew
+     block:^(TSPublishViewController *observer, TSPublishViewModel *object, NSDictionary *change) {
         if (![change[NSKeyValueChangeNewKey] isEqual:[NSNull null]]) {
             observer.titleInput.text = change[NSKeyValueChangeNewKey];
         }
     }];
     
-    [self.KVOController observe:self keyPath:@keypath(self.viewModel,contentInputString) options:NSKeyValueObservingOptionNew block:^(TSPublishViewController *observer, TSPublishViewModel *object, NSDictionary *change) {
+    [self.KVOController
+     observe:self
+     keyPath:@keypath(self.viewModel,contentInputString)
+     options:NSKeyValueObservingOptionNew
+     block:^(TSPublishViewController *observer, TSPublishViewModel *object, NSDictionary *change) {
         if (![change[NSKeyValueChangeNewKey] isEqual:[NSNull null]]) {
             observer.contentInput.text = change[NSKeyValueChangeNewKey];
         }
@@ -141,16 +151,24 @@
     [self.titleInput bk_addEventHandler:^(UITextField *textField) {
         @strongify(self);
         [self.viewModel setTitleInputString:textField.text];
-    } forControlEvents:UIControlEventEditingChanged];
+    } forControlEvents:UIControlEventEditingDidEnd | UIControlEventEditingDidEndOnExit];
     
     [self.naviRightBtn bk_addEventHandler:^(id sender) {
         @strongify(self);
+        [self.view endEditing:YES];
+        if (!self.viewModel.titleInputString ||
+            !self.viewModel.publishContent ||
+            [self.viewModel.titleInputString isEqualToString:@""] ||
+            [self.viewModel.publishContent isEqualToString:@""]) {
+            [self showProgressHUD:@"请填写帖子内容" delay:1];
+            return ;
+        }
         NSDictionary *params = @{@"forumName" : self.viewModel.titleInputString,
                                  @"forumContent" : self.viewModel.publishContent,
                                  @"forumClassifyId" : @(self.viewModel.forumClassifyId),
                                  @"userId" : @(self.userModel.userId)};
         [TSHttpTool postWithUrl:ForumSave_URL params:params success:^(id result) {
-            NSLog(@"发帖子:%@",result);
+//            NSLog(@"发帖子:%@",result);
             if ([result[@"success"] intValue] == 1) {
                 [self showProgressHUD:@"发布成功" delay:1];
 
@@ -168,7 +186,14 @@
     } forControlEvents:UIControlEventTouchUpInside];
 }
 #pragma mark - textView Delegate
-- (void)textViewDidChange:(UITextView *)textView{
+- (void)textViewDidBeginEditing:(UITextView *)textView{
+    if ([textView.text isEqualToString:@"帖子内容"]) {
+        textView.text = @"";
+        textView.textColor = [UIColor blackColor];
+    }
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView{
     [self.viewModel setContentInputString:textView.text];
 }
 #pragma mark - UIActionSheetDelegate method
@@ -207,8 +232,10 @@
 
     NSString *baseImage = [imageData base64EncodedStringWithOptions:NSDataBase64Encoding64CharacterLineLength];
     NSDictionary *params = @{@"photo" : baseImage};
+    [self showProgressHUD];
     [TSHttpTool postWithUrl:ImageUpload_URL params:params success:^(id result) {
         NSLog(@"图片上传结果:%@",result);
+        [self hideProgressHUD];
         if ([result[@"success"] intValue] == 1) {
             if (self.viewModel.imageURLArray.count < 6) {
                 [self.viewModel.imageURLArray addObject:result[@"url"]];
@@ -216,6 +243,7 @@
             [self layoutSubviews];
         }
     } failure:^(NSError *error) {
+        [self hideProgressHUD];
         NSLog(@"图片上传结果:%@",error);
     }];
 

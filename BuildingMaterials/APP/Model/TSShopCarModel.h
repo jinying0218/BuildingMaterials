@@ -16,7 +16,7 @@
 @property (nonatomic, strong) NSString *goods_head_imageURL;
 @property (nonatomic, strong) NSString *goodsName;
 @property (nonatomic, assign) int goods_number;
-@property (nonatomic, assign) int goods_price;
+@property (nonatomic, assign) float goods_price;
 @property (nonatomic, assign) int goods_id;
 @property (nonatomic, strong) NSString *parameters;
 

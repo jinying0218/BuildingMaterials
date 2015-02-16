@@ -52,7 +52,7 @@ static NSString *const WaitForPayTableViewCellIdendifier = @"WaitForPayTableView
     TSUserModel *userModel = [TSUserModel getCurrentLoginUser];
     NSDictionary *params = @{@"userId" : [NSString stringWithFormat:@"%d",userModel.userId]};
     [TSHttpTool getWithUrl:WaitForPay_URL params:params withCache:NO success:^(id result) {
-//        NSLog(@"待付款订单:%@",result);
+        NSLog(@"待付款订单:%@",result);
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *dict in result[@"result"]) {
                 TSWaitOrderModel *orderModel = [[TSWaitOrderModel alloc] init];

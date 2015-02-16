@@ -17,7 +17,9 @@
     self.comment_id = [[self objectOrNilForKey:@"ID" fromDictionary:dict] intValue];
     self.N_O = [[self objectOrNilForKey:@"NO" fromDictionary:dict] intValue];
     self.userName = [self objectOrNilForKey:@"USER_NAME" fromDictionary:dict];
-
+    NSMutableString *contactString = [self.userName mutableCopy];
+    [contactString replaceCharactersInRange:NSMakeRange( 3, 4) withString:@"****"];
+    self.userName = contactString;
 }
 
 

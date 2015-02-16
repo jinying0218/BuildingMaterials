@@ -58,7 +58,7 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
     self.page = 1;
     NSDictionary *params = @{@"page":[NSString stringWithFormat:@"%d",self.page]};
     [TSHttpTool getWithUrl:Invite_URL params:params withCache:NO success:^(id result) {
-//        NSLog(@"招聘:%@",result);
+        NSLog(@"招聘:%@",result);
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneResult in result[@"result"]) {
                 TSInviteModel *model = [[TSInviteModel alloc] init];
@@ -72,7 +72,7 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
     }];
     
     [TSHttpTool getWithUrl:Invite_Category_URL params:nil withCache:NO success:^(id result) {
-        NSLog(@"招聘类别:%@",result);
+//        NSLog(@"招聘类别:%@",result);
         if ([result[@"success"] intValue] == 1) {
             for (NSDictionary *oneCategory in result[@"result"]) {
                 TSInviteCategoryModel *model = [[TSInviteCategoryModel alloc] init];
@@ -146,6 +146,12 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
     self.inviteTableView.delegate = self;
     self.inviteTableView.dataSource = self;
     
+    //集成下拉刷新
+    [self.inviteTableView addHeaderWithTarget:self action:@selector(headerRefreshing)];
+    self.inviteTableView.headerPullToRefreshText = @"下拉刷新";
+    self.inviteTableView.headerReleaseToRefreshText = @"松开马上加载更多数据";
+    self.inviteTableView.headerRefreshingText = @"加载中……";
+    
     //集成上拉加载更多
     [self.inviteTableView addFooterWithTarget:self action:@selector(footerRereshing)];
     self.inviteTableView.footerPullToRefreshText = @"上拉加载更多";
@@ -212,6 +218,28 @@ static NSString * const inviteCategoryCellIdentifier = @"inviteCategoryCell";
         self.coverBottom.hidden = !self.coverBottom.hidden;
     } forControlEvents:UIControlEventTouchUpInside];
 }
+#pragma mark - 下拉刷新
+- (void)headerRefreshing{
+    self.page = 1;
+    NSDictionary *params = @{@"page":[NSString stringWithFormat:@"%d",self.page]};
+    [TSHttpTool getWithUrl:Invite_URL params:params withCache:NO success:^(id result) {
+        NSLog(@"招聘:%@",result);
+        if ([result[@"success"] intValue] == 1) {
+            [self.viewModel.dataArray removeAllObjects];
+            for (NSDictionary *oneResult in result[@"result"]) {
+                TSInviteModel *model = [[TSInviteModel alloc] init];
+                [model setValueForDictionary:oneResult];
+                [self.viewModel.dataArray addObject:model];
+            }
+            [self.inviteTableView reloadData];
+            [self.inviteTableView headerEndRefreshing];
+        }
+    } failure:^(NSError *error) {
+        NSLog(@"分类:%@",error);
+    }];
+    
+}
+
 #pragma mark - 上拉加载更多
 - (void)footerRereshing{
     self.page += 1;
