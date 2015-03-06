@@ -174,7 +174,7 @@
         self.postView.contentSize = CGSizeMake( KscreenW, CGRectGetMaxY(self.reportButton.frame) + 10);
     }
     
-    self.postPrice.text = [NSString stringWithFormat:@"%d 元/月",self.viewModel.postModel.postPrice];
+    self.postPrice.text = [NSString stringWithFormat:@"%d 面试/月",self.viewModel.postModel.postPrice];
     self.postNumber.text = [NSString stringWithFormat:@"%d",self.viewModel.postModel.postNumber];
     self.companyAddress.text = self.viewModel.comanyModel.companyAddress;
     self.companyName.text = self.viewModel.comanyModel.companyName;
@@ -312,7 +312,11 @@
     [self.postApplyButton bk_addEventHandler:^(id sender) {
         @strongify(self);
         TSUserModel *userModel = [TSUserModel getCurrentLoginUser];
-
+        if (self.viewModel.userName == nil ||
+            self.viewModel.userDes == nil) {
+            [self showProgressHUD:@"请填写完整信息" delay:1];
+            return ;
+        }
         NSDictionary *params = @{@"userId": [NSString stringWithFormat:@"%d",userModel.userId],
                                  @"postId": [NSString stringWithFormat:@"%d",self.viewModel.postID],
                                  @"des" : self.viewModel.userDes,
@@ -342,6 +346,7 @@
     
     [self.cancelApplyButton bk_addEventHandler:^(id sender) {
         @strongify(self);
+        
         [UIView animateKeyframesWithDuration:0.25 delay:0 options:UIViewKeyframeAnimationOptionLayoutSubviews animations:^{
             CGRect frame = self.applyView.frame;
             frame.origin.y = self.view.frame.size.height + 44;
@@ -349,6 +354,7 @@
             self.coverView.hidden = YES;
             self.cancelApplyButton.hidden = YES;
             [self.view endEditing:YES];
+            [self.applyView endEditing:YES];
         } completion:nil];
 
     } forControlEvents:UIControlEventTouchUpInside];
